@@ -4,19 +4,42 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
 
-              android:orientation="vertical"
-              >
+              android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/hello_tv"
+        android:id="@+id/weight"
+        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="90"
         />
-    <Button
-        android:id="@+id/hello_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Click me"/>
 
+    <TextView
+        android:id="@+id/length"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.70"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/calc_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Calculate"/>
+        <TextView
+            android:id="@+id/imt"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unknown"
+            />
+    </LinearLayout>
 </LinearLayout>
