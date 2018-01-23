@@ -7,34 +7,35 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity  {
-    private TextView helloTv;
+    private TextView weight;
+    private TextView length;
+    private TextView imt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        helloTv = (TextView) findViewById(R.id.hello_tv);
-        Button helloBtn = (Button) findViewById(R.id.hello_btn);
+        weight = (TextView) findViewById(R.id.weight);
+        length = (TextView) findViewById(R.id.length);
+        imt = (TextView) findViewById(R.id.imt);
+        Button CalcBtn = (Button) findViewById(R.id.calc_btn);
 
-        helloTv.setOnClickListener(onClickListener); // Обработчик
-        helloBtn.setOnClickListener(onClickListener);
+     /*   helloTv.setOnClickListener(onClickListener); // Обработчик
+
+      */
+        CalcBtn.setOnClickListener(onClickListener);
     }
 
     private final View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v){
-            switch (v.getId()) {
 
-                case R.id.hello_btn:
-                    helloTv.setText("Hi!");
-                    break;
+                    imt.setText("Hi!");
 
-                case R.id.hello_tv:
-                    helloTv.setText("Hello, World!");
-                    break;
+
+
 
              }
-        }
-    };
+         };
 }
