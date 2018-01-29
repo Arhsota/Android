@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity  {
     private TextView length;
     private TextView imt;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity  {
         length = (TextView) findViewById(R.id.length);
         imt = (TextView) findViewById(R.id.imt);
         Button CalcBtn = (Button) findViewById(R.id.calc_btn);
+     //*   len = String.valueOf(length);
 
      /*   helloTv.setOnClickListener(onClickListener); // Обработчик
 
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity  {
         @Override
         public void onClick(View v){
 
-                    imt.setText("Hi!");
+                    imt.setText("Hi");
 
 
 
