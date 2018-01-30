@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Уроки</string>
+    <string name="butt_name">Скажи ПРИВЕТ</string>
+    <string name="hello_text">Привет</string>
+    <string name="hint_txt">Введите имя</string>
+    <string name="name_text_format">Привет, %1$s</string>
+</resources>
