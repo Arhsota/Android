@@ -2,6 +2,7 @@ package com.test.packages;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.List;
@@ -16,11 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        appManager = new AppManager(this);
-        List<AppInfo> installedApps = appManager.getInstalledApps();
-        for (AppInfo installedApp : installedApps) {
-            Log.i(TAG, "App: " + installedApp);
+        RecyclerView recyclerView = findViewById(R.id.apps_rv);
 
-        }
+        appManager = new AppManager(this);
+
+
     }
 }
