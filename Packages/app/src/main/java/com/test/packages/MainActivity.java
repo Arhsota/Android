@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         RecyclerView recyclerView = findViewById(R.id.apps_rv);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
