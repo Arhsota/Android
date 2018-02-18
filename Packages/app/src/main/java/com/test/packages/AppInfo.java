@@ -8,15 +8,7 @@ import android.graphics.drawable.Drawable;
  */
 
 public class AppInfo {
-    @Override
-    public String toString() {
-        return "AppInfo{" + "packageName='" + packageName + '\'' +
-                ", versionCode=" + versionCode +
-                ", versionName='" + versionName + '\'' +
-                ", name='" + name + '\'' +
-                ", icon=" + icon +
-                '}';
-    }
+
 
     private final String packageName;
     private final int versionCode;
@@ -31,7 +23,15 @@ public class AppInfo {
         this.name = name;
         this.icon = icon;
     }
-
+    @Override
+    public String toString() {
+        return "AppInfo{" + "packageName='" + packageName + '\'' +
+                ", versionCode=" + versionCode +
+                ", versionName='" + versionName + '\'' +
+                ", name='" + name + '\'' +
+                ", icon=" + icon +
+                '}';
+    }
     public String getPackageName() {
         return packageName;
     }

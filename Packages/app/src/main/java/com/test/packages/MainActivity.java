@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(onRefreshListener);
 
+
         appManager = new AppManager(this);
 
-        AppsAdapter appsAdapter = new AppsAdapter();
+        appsAdapter = new AppsAdapter();
 
 
         RecyclerView recyclerView = findViewById(R.id.apps_rv);
