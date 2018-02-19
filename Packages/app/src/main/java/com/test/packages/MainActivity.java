@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-//                Log.i(TAG, "Text: " + newText);
+                Log.i(TAG, "Text: " + newText);
                 appsAdapter.setQuery(newText.toLowerCase().trim());
                 appsAdapter.notifyDataSetChanged();
                 return true;
