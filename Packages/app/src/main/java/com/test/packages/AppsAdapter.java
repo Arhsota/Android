@@ -17,11 +17,32 @@ import java.util.List;
 public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
 
     private List<AppInfo> apps = new ArrayList<>();
+    private List<AppInfo> filteredApps = new ArrayList<>();
+    private String query = "";
 
     public void setApps(List<AppInfo> apps) {
         this.apps = apps;
     }
 
+    private void filterApps() {
+        filteredApps.clear();
+
+        if (query.isEmpty()) {
+            filteredApps.addAll(apps);
+        } else {
+            for (AppInfo app : apps) {
+                if (app.getName().toLowerCase().contains(query)) {
+                    filteredApps.add(app);
+                }
+            }
+        }
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+
+        filterApps();
+    }
 
     // В этом методе мы создаем новую ячейку
     @Override
@@ -38,7 +59,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        AppInfo appInfo = apps.get(position);
+        AppInfo appInfo = filteredApps.get(position);
 
         holder.nameTv.setText(appInfo.getName());
         holder.versionTv.setText(appInfo.getVersionName());
@@ -48,7 +69,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
     // В этом методе мы возвращаем количество элементов списка
     @Override
     public int getItemCount() {
-        return apps.size();
+        return filteredApps.size();
     }
 
     /**
