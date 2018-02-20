@@ -1,5 +1,9 @@
 package com.test.packages;
 
+// Skillberg.com
+// Android lessons
+
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        Log.i(TAG, "onCreate");  for lesson 15
+
         setContentView(R.layout.activity_main);
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
@@ -46,11 +52,46 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(appsAdapter);
 
-
-
         reloadApps();
     }
 
+/*     for lesson 15
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
+    }
+*/
     private void reloadApps() {
         List<AppInfo> installedApps = appManager.getInstalledApps();
         appsAdapter.setApps(installedApps);
@@ -86,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+// Toast for testing of working that item
     private void showToast()
     {
         Toast toast = Toast.makeText(this, "Hello", Toast.LENGTH_LONG);
@@ -96,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.install_item:
+// check the working of item, should be deleted later
                 showToast();
+                startFilePickerActivity();
                 return true;
 
             default:
@@ -110,4 +153,9 @@ public class MainActivity extends AppCompatActivity {
             reloadApps();
         }
     };
+
+    private void startFilePickerActivity() {
+        Intent intent = new Intent(this, FilePickerActivity.class);
+        startActivity(intent);
+    }
 }
