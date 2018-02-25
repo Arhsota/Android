@@ -20,6 +20,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
     private List<AppInfo> filteredApps = new ArrayList<>();
     private String query = "";
 
+
     public void setApps(List<AppInfo> apps) {
         this.apps = apps;
     }
