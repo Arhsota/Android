@@ -23,11 +23,18 @@ public class FileManager {
 
     public FileManager(Context context) {
         File directory;
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            directory = Environment.getExternalStorageDirectory();
+//        directory = ContextCompat.getDataDir(context);
+//
+       if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            directory = Environment.getRootDirectory();
         } else {
-            directory = ContextCompat.getDataDir(context);
+//           as in lesson 16
+//           directory = Environment.getExternalStorageDirectory();
+
+//           my variant
+           directory = ContextCompat.getDataDir(context);
         }
+
         rootDirectory = directory;
         navigateTo(directory);
     }
