@@ -27,9 +27,10 @@ public class FileManager {
 //
        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             directory = Environment.getRootDirectory();
+           //           as in lesson 16
+           directory = Environment.getExternalStorageDirectory();
         } else {
-//           as in lesson 16
-//           directory = Environment.getExternalStorageDirectory();
+
 
 //           my variant
            directory = ContextCompat.getDataDir(context);

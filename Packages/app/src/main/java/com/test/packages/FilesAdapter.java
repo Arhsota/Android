@@ -51,8 +51,9 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         File file = files.get(position);
-
         holder.nameTv.setText(file.getName());
+//      lesson 17
+        holder.itemView.setTag(file);
     }
 
 
@@ -67,8 +68,15 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             nameTv = itemView.findViewById(R.id.name_tv);
+
+//            lesson 17 not finished !!!!!!!!!
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    File file = (File) view.getTag();
+                }
+            });
         }
 
     }
