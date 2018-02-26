@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IMT</string>
+    <string name="result_text">Your index</string>
+    <string name="butt_name">Say Hello</string>
+    <string name="hint_txt">Enter Your Name</string>
+    <string name="name_text_format">Hi, %1$s</string>
+</resources>
