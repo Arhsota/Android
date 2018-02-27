@@ -8,7 +8,7 @@
     tools:context="com.arhsota.android.imt.MainActivity">
 
     <TextView
-        android:id="@+id/hello_tv"
+        android:id="@+id/result_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorHelloBackground"
@@ -17,14 +17,21 @@
         android:textSize="@dimen/hello_text_size"/>
 
     <EditText
-        android:id="@+id/name_et"
+        android:id="@+id/weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_txt"
-        android:inputType="textPersonName"/>
+        android:hint="@string/hint_txt_weight"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_txt_length"
+        android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/hello_btn"
+        android:id="@+id/calculate_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"

@@ -2,8 +2,9 @@
 <resources>
     <string name="app_name">Индекс массы тела</string>
     <string name="butt_name">Рассчитать</string>
-    <string name="result_text">Ваш идекс: </string>
-    <string name="hint_txt">Введите вес</string>
-    <string name="name_text_format">Жир , %1$s</string>
-    <string name="name_text_format_normal">Норма , %1$s</string>
+    <string name="result_text">Ваш индекс: </string>
+    <string name="hint_txt_weight">Введите вес</string>
+    <string name="hint_txt_length">Введите рост в метрах</string>
+    <string name="name_text_format">Жир: %1$s</string>
+    <string name="name_text_format_normal">Норма: %1$s</string>
 </resources>
