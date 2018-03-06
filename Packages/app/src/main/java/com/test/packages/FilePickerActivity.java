@@ -1,6 +1,7 @@
 package com.test.packages;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +24,9 @@ import static android.content.ContentValues.TAG;
  */
 
 public class FilePickerActivity extends AppCompatActivity {
+
+    public static final String EXTRA_FILE_PATH =
+            "file_path";
 
 //    private static final String TAG = "FilePickerActivity";
 
@@ -72,6 +76,27 @@ public class FilePickerActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        filesAdapter.setOnFileClickListener(onFileClickListener)
+        ;
+    }
+    @Override
+    protected void onStop() {
+        filesAdapter.setOnFileClickListener(null);
+        super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (fileManager != null && fileManager.navigateUp()) {
+            updateFileList();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     private void initFileManager() {
 
         if (ContextCompat.checkSelfPermission(this,
@@ -99,4 +124,25 @@ public class FilePickerActivity extends AppCompatActivity {
         filesAdapter.setFiles(files);
         filesAdapter.notifyDataSetChanged();
     }
+
+    private final FilesAdapter.OnFileClickListener
+            onFileClickListener = new
+            FilesAdapter.OnFileClickListener() {
+                @Override
+                public void onFileClick(File file) {
+                    if (file.isDirectory()) {
+                        fileManager.navigateTo(file);
+                        updateFileList();
+                    } else {
+                        if (file.getName().endsWith(".apk")) {
+                            // Делаем что-то с файлом
+                            Intent intent = new Intent();
+                            intent.putExtra(EXTRA_FILE_PATH,
+                                    file.getAbsolutePath());
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        }
+                    }
+                }
+            };
 }

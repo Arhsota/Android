@@ -4,6 +4,9 @@ package com.test.packages;
 // Android lessons
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,9 +20,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int REQUEST_CODE_PICK_APK = 1;
     private static final String TAG = "MainActivity";
 
     private AppManager appManager;
@@ -55,6 +61,24 @@ public class MainActivity extends AppCompatActivity {
 
         reloadApps();
     }
+// path to APK file
+    @Override
+    protected void onActivityResult(int requestCode, int
+            resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PICK_APK &&
+                resultCode == RESULT_OK) {
+            String apkPath =
+                    data.getStringExtra(FilePickerActivity.EXTRA_FILE_PATH);
+            Log.i(TAG, "APK: " + apkPath);
+
+            startAppInstallation(apkPath);  //            lesson 17
+        } else {
+            super.onActivityResult(requestCode, resultCode,
+                    data);
+        }
+    }
+
+
 
 /*     for lesson 15
     @Override
@@ -156,7 +180,29 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void startFilePickerActivity() {
-        Intent intent = new Intent(this, FilePickerActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(this,
+                FilePickerActivity.class);
+        startActivityForResult(intent,
+                REQUEST_CODE_PICK_APK);
     }
+
+    private void startAppInstallation(String apkPath) {
+
+        Intent installIntent = new Intent(Intent.ACTION_VIEW);
+        Uri uri;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            uri = FileProvider.getUriForFile(this,
+                    BuildConfig.APPLICATION_ID + ".provider",
+                    new File(apkPath));
+            installIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            uri = Uri.fromFile(new File(apkPath));
+        }
+        installIntent.setDataAndType(uri, "application/vnd.android.package-archive");
+        installIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+// Создаст новый процесс
+        startActivity(installIntent);
+    }
+
+
 }
