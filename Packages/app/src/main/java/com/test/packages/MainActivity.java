@@ -14,6 +14,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -58,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(appsAdapter);
+// Lesson 18
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(itemTouchHelperCallback);
+        recyclerView.addItemDecoration(itemTouchHelper);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         reloadApps();
     }
@@ -203,6 +209,27 @@ public class MainActivity extends AppCompatActivity {
 // Создаст новый процесс
         startActivity(installIntent);
     }
+// Lesson 18
+    private final ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.Callback()
+    {
+        @Override
+        public int getMovementFlags(RecyclerView
+                                            recyclerView, RecyclerView.ViewHolder viewHolder) {
+            return
+                    makeMovementFlags(ItemTouchHelper.ACTION_STATE_IDLE,
+                            ItemTouchHelper.END);
+        }
+        @Override
+        public boolean onMove(RecyclerView recyclerView,
+                              RecyclerView.ViewHolder viewHolder,
+                              RecyclerView.ViewHolder target) {
+            return false;
+        }
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder
+                                     viewHolder, int direction) {
+        }
+    };
 
 
 }
