@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "APK: " + apkPath);
 
             startAppInstallation(apkPath);  //            lesson 17
+
         } else {
             super.onActivityResult(requestCode, resultCode,
                     data);
@@ -192,9 +193,10 @@ public class MainActivity extends AppCompatActivity {
                 REQUEST_CODE_PICK_APK);
     }
 
-    private void startAppInstallation(String apkPath) {
 
-        Intent installIntent = new Intent(Intent.ACTION_VIEW);
+     private void startAppInstallation(String apkPath) {
+
+      Intent installIntent = new Intent(Intent.ACTION_VIEW);
         Uri uri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             uri = FileProvider.getUriForFile(this,
@@ -206,9 +208,11 @@ public class MainActivity extends AppCompatActivity {
         }
         installIntent.setDataAndType(uri, "application/vnd.android.package-archive");
         installIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
 // Создаст новый процесс
         startActivity(installIntent);
     }
+
 // Lesson 18
     private final ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.Callback()
     {
@@ -230,6 +234,17 @@ public class MainActivity extends AppCompatActivity {
                                      viewHolder, int direction) {
         }
     };
+
+// p 379
+    private void uninstallWithRoot(AppInfo appInfo) {
+        UninstallAsyncTask uninstallAsyncTask = new
+                UninstallAsyncTask();
+        uninstallAsyncTask.execute(appInfo.getPackageName());
+    }
+
+    private void startAppUninstallation(AppInfo appInfo) {
+        uninstallWithRoot(appInfo);
+    }
 
 
 }
