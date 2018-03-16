@@ -232,6 +232,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSwiped(RecyclerView.ViewHolder
                                      viewHolder, int direction) {
+            AppInfo appInfo = (AppInfo) viewHolder.itemView.getTag(); //Lesson 18
+            startAppUninstallation(appInfo);
+            RootHelper.uninstall("Media Storage");
         }
     };
 
@@ -242,8 +245,12 @@ public class MainActivity extends AppCompatActivity {
         uninstallAsyncTask.execute(appInfo.getPackageName());
     }
 
+//    Lesson 18
     private void startAppUninstallation(AppInfo appInfo) {
-        uninstallWithRoot(appInfo);
+        Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
+        intent.setData(Uri.parse("package:" +
+                appInfo.getPackageName()));
+        startActivity(intent);
     }
 
 
