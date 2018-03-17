@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
                                      viewHolder, int direction) {
             AppInfo appInfo = (AppInfo) viewHolder.itemView.getTag(); //Lesson 18
             startAppUninstallation(appInfo);
-            RootHelper.uninstall("Media Storage");
+//            RootHelper.uninstall("info"); // ??? why info, any string is working, but I put Info
         }
     };
 
@@ -247,10 +247,12 @@ public class MainActivity extends AppCompatActivity {
 
 //    Lesson 18
     private void startAppUninstallation(AppInfo appInfo) {
-        Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
+        uninstallWithRoot(appInfo);
+        /* Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
         intent.setData(Uri.parse("package:" +
                 appInfo.getPackageName()));
         startActivity(intent);
+        */
     }
 
 
