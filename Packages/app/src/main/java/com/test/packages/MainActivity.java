@@ -238,13 +238,19 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-// p 379
-    private void uninstallWithRoot(AppInfo appInfo) {
-        UninstallAsyncTask uninstallAsyncTask = new
-                UninstallAsyncTask();
+// p 379    L18
+ /*   private void uninstallWithRoot(AppInfo appInfo) {
+        UninstallAsyncTask uninstallAsyncTask = new UninstallAsyncTask();
         uninstallAsyncTask.execute(appInfo.getPackageName());
     }
+*/
 
+//  Lesson 19
+private void uninstallWithRoot(AppInfo appInfo) {
+    UninstallAsyncTask uninstallAsyncTask = new
+            UninstallAsyncTask(uninstallListener);
+    uninstallAsyncTask.execute(appInfo.getPackageName());
+}
 //    Lesson 18
     private void startAppUninstallation(AppInfo appInfo) {
         uninstallWithRoot(appInfo);
@@ -254,6 +260,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         */
     }
-
+    private final UninstallAsyncTask.UninstallListener
+            uninstallListener = new
+            UninstallAsyncTask.UninstallListener() {
+                @Override
+                public void onUninstalled() {
+                    Toast.makeText(MainActivity.this,"Удалено!",
+                            Toast.LENGTH_LONG).show();
+                }
+                @Override
+                public void onFailed() {
+                    Toast.makeText(MainActivity.this, "Не удалось удалить!", Toast.LENGTH_LONG).show();
+                }
+            };
 
 }
