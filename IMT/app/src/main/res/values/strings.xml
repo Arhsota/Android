@@ -2,8 +2,8 @@
     <string name="app_name">IMT</string>
     <string name="result_text">Your index is </string>
     <string name="butt_name">Calculate</string>
-    <string name="hint_txt_weight">Enter Your Weight</string>
-    <string name="hint_txt_length">Enter Your Length in metres</string>
+    <string name="hint_txt_weight">Enter Your Weight in kg (Ex. 78)</string>
+    <string name="hint_txt_length">Enter Your Length in metres (Ex. 1.79)</string>
     <string name="name_text_format">Fat:  %1$s</string>
     <string name="name_text_format_normal">Normal: %1$s</string>
 </resources>

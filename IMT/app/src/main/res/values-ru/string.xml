@@ -3,8 +3,8 @@
     <string name="app_name">Индекс массы тела</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text">Ваш индекс: </string>
-    <string name="hint_txt_weight">Введите вес</string>
-    <string name="hint_txt_length">Введите рост в метрах</string>
+    <string name="hint_txt_weight">Введите вес в кг (Пример: 75)</string>
+    <string name="hint_txt_length">Введите рост в метрах (Пример: 1.78))</string>
     <string name="name_text_format">Жир: %1$s</string>
     <string name="name_text_format_normal">Норма: %1$s</string>
 </resources>

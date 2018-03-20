@@ -1,6 +1,10 @@
 package com.arhsota.android.imt;
 
-//* my first real soft based on lesson 8 Skillberg
+//version 1.1
+// my first real soft based on lesson 8 Skillberg
+// calculating index body fat from your weight and length both for male and female
+//Sevastyanov Andrew, 2018
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.google.android.gms.ads.MobileAds;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,11 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private   double myweight;
     private   double mylength;
     private   double myresult;
+    private final String YOUR_ADMOB_APP_ID = "58fd171274ed00c90079860acbfcfda3";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment
+        MobileAds.initialize(this, "YOUR_ADMOB_APP_ID");
 
         textView = findViewById(R.id.result_out);
         final Button button = findViewById(R.id.calculate_btn);
@@ -107,4 +116,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+
 }
