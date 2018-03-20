@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private   double myweight;
     private   double mylength;
     private   double myresult;
-    private final String YOUR_ADMOB_APP_ID = "ca-app-pub-3940256099942544/6300978111";
+    private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421/8449841795";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
