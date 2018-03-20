@@ -14,9 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private AdView mAdView;
 
     private TextView textView;
     private EditText editTextW;
@@ -25,15 +30,19 @@ public class MainActivity extends AppCompatActivity {
     private   double myweight;
     private   double mylength;
     private   double myresult;
-    private final String YOUR_ADMOB_APP_ID = "58fd171274ed00c90079860acbfcfda3";
+    private final String YOUR_ADMOB_APP_ID = "ca-app-pub-3940256099942544/6300978111";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment 58fd171274ed00c90079860acbfcfda3
         MobileAds.initialize(this, "YOUR_ADMOB_APP_ID");
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         textView = findViewById(R.id.result_out);
         final Button button = findViewById(R.id.calculate_btn);
