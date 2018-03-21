@@ -5,6 +5,7 @@ package com.arhsota.android.imt;
 // calculating index body fat from your weight and length both for male and female
 //Sevastyanov Andrew, 2018
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.reward.RewardedVideoAd;
 
 
 
@@ -23,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
     private AdView mAdView;
     private AdView mAdView2;
+ //   private RewardedVideoAd mRewardedVideoAd;
 
     private TextView textView;
     private EditText editTextW;
     private EditText editTextL;
-    private Button button;
+//    private Button button;
     private   double myweight;
     private   double mylength;
     private   double myresult;
@@ -45,9 +48,13 @@ public class MainActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        mAdView2 = findViewById(R.id.adView2);
-        AdRequest adRequest2 = new AdRequest.Builder().build();
+
+
+       mAdView2 = findViewById(R.id.adView2);
+       AdRequest adRequest2 = new AdRequest.Builder().build();
         mAdView2.loadAd(adRequest2);
+
+
 
         textView = findViewById(R.id.result_out);
         final Button button = findViewById(R.id.calculate_btn);
@@ -121,9 +128,12 @@ public class MainActivity extends AppCompatActivity {
 
 //            if (weight.equals ("11")) {                // for string
             if (myresult >= 30) {
+
+                textView.setTextColor(Color.MAGENTA);
                 textView.setText(getString(R.string.name_text_format,myresultStrFormat));
             }
             else {
+                textView.setTextColor(Color.GREEN);
                 textView.setText(getString(R.string.name_text_format_normal,myresultStrFormat));
             }
 
