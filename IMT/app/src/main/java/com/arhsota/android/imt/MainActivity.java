@@ -22,6 +22,7 @@ import com.google.android.gms.ads.AdView;
 public class MainActivity extends AppCompatActivity {
 
     private AdView mAdView;
+    private AdView mAdView2;
 
     private TextView textView;
     private EditText editTextW;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private   double myweight;
     private   double mylength;
     private   double myresult;
-    private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421/8449841795";
+    private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        mAdView2 = findViewById(R.id.adView2);
+        AdRequest adRequest2 = new AdRequest.Builder().build();
+        mAdView2.loadAd(adRequest2);
 
         textView = findViewById(R.id.result_out);
         final Button button = findViewById(R.id.calculate_btn);
