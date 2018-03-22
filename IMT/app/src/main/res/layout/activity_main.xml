@@ -36,6 +36,18 @@
         android:layout_height="wrap_content"
         android:enabled="false"
         android:text="@string/butt_name"/>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/my_banner_1">
+    </com.google.android.gms.ads.AdView>
+
     <TextView
         android:id="@+id/text_table1"
         android:layout_width="wrap_content"
@@ -88,17 +100,6 @@
         android:background="@color/colorTextTable1"
         android:text="@string/text_table8"
         android:textColor="@color/color_text_Table1"/>
-
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/my_banner_1">
-    </com.google.android.gms.ads.AdView>
 
 
 </LinearLayout>
