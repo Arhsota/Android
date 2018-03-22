@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
 
-
+/*
        mAdView2 = findViewById(R.id.adView2);
        AdRequest adRequest2 = new AdRequest.Builder().build();
         mAdView2.loadAd(adRequest2);
 
-
+*/
 
         textView = findViewById(R.id.result_out);
         final Button button = findViewById(R.id.calculate_btn);

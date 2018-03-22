@@ -44,13 +44,7 @@
         android:text="@string/text_table1"
         android:textColor="@color/color_text_Table1"/>
 
-    <TextView
-        android:id="@+id/text_table2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorTextTable1"
-        android:text="@string/text_table2"
-        android:textColor="@color/color_text_Table1"/>
+
 
     <TextView
         android:id="@+id/text_table3"
@@ -103,21 +97,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/test_banner">
-
+        ads:adUnitId="@string/my_banner_1">
     </com.google.android.gms.ads.AdView>
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/test_banner">
-
-    </com.google.android.gms.ads.AdView>
 
 </LinearLayout>
 
