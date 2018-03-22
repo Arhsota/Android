@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorHelloBackground">#000</color>
     <color name="colorHelloText">#FFFFFF</color>
+    <color name="color_text_Table1">#000000</color>
+    <color name="colorTextTable1">#ffffff</color>
 </resources>

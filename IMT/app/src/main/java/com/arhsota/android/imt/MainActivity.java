@@ -119,22 +119,29 @@ public class MainActivity extends AppCompatActivity {
 
 
             myweight = Double.parseDouble(weight);
-            mylength = Double.parseDouble(length);
+            mylength = Double.parseDouble(length)/100;
             myresult = myweight/(mylength * mylength); //calculatin IMT
 
 
 //            String myresultStr = Double.toString(myresult);
             String myresultStrFormat = String.format("%.2f",myresult);
 
-//            if (weight.equals ("11")) {                // for string
-            if (myresult >= 30) {
 
-                textView.setTextColor(Color.MAGENTA);
-                textView.setText(getString(R.string.name_text_format,myresultStrFormat));
+            if (myresult <= 18.50) {
+                textView.setTextColor(Color.RED);
+                textView.setText(getString(R.string.name_text_format_thin,myresultStrFormat));
             }
-            else {
+            if ((myresult > 18.50) && (myresult <=25)) {
                 textView.setTextColor(Color.GREEN);
                 textView.setText(getString(R.string.name_text_format_normal,myresultStrFormat));
+            }
+            if ((myresult > 25) && (myresult < 30)) {
+                textView.setTextColor(Color.MAGENTA);
+                textView.setText(getString(R.string.name_text_format_prefat,myresultStrFormat));
+            }
+            if ((myresult >= 30)) {
+                textView.setTextColor(Color.RED);
+                textView.setText(getString(R.string.name_text_format_fat,myresultStrFormat));
             }
 
         }

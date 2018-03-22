@@ -4,7 +4,19 @@
     <string name="butt_name">Рассчитать</string>
     <string name="result_text">Ваш индекс: </string>
     <string name="hint_txt_weight">Введите вес в кг (Пример: 75)</string>
-    <string name="hint_txt_length">Введите рост в метрах (Пример: 1.78))</string>
-    <string name="name_text_format">Жир: %1$s</string>
+    <string name="hint_txt_length">Введите рост в см (Пример: 178))</string>
+    <string name="name_text_format_fat">Ожирение: %1$s</string>
+    <string name="name_text_format_prefat">Избыточный вес: %1$s</string>
+    <string name="name_text_format_thin">Недостаток веса: %1$s</string>
     <string name="name_text_format_normal">Норма: %1$s</string>
+    <string name="text_table1">Таблица ИМТ по возрастным группам</string>
+    <string name="text_table2">ВОЗРАСТ                         ИМТ</string>
+    <string name="text_table3">для 19 - 24 лет    приемлим ИМТ     	19 - 24</string>
+    <string name="text_table4">для 25 - 34    лет    приемлим ИМТ        	20 - 25</string>
+    <string name="text_table5">для 35 - 44	  лет    приемлим ИМТ           21 - 26</string>
+    <string name="text_table6">для 45 - 54    лет    приемлим ИМТ        	22 - 27</string>
+    <string name="text_table7">для 55 - 64	  лет    приемлим ИМТ           23 - 28</string>
+    <string name="text_table8">для старше 65  лет    приемлим ИМТ         	24 - 29</string>
+    <string name="test_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="my_banner_1">ca-app-pub-7279174300665421/8731793267</string>
 </resources>
