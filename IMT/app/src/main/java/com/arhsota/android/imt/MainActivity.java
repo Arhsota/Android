@@ -1,6 +1,6 @@
 package com.arhsota.android.imt;
 
-// version 1.1
+// version .11
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat from your weight and length both for male and female
 // Sevastyanov Andrew, 2018
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment 58fd171274ed00c90079860acbfcfda3
 
-        MobileAds.initialize(this, "YOUR_ADMOB_APP_ID");
+        MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();

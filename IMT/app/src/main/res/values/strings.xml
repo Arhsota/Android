@@ -15,8 +15,6 @@
     <string name="text_table6">for 45 - 54 age   fit for BMI       	22 - 27</string>
     <string name="text_table7">for 55 - 64 age   fit for BMI        23 - 28</string>
     <string name="text_table8">elder 65 age   fit for BMI     	24 - 29</string>
-    <string name="name_text_format">Fat:  %1$s</string>
-    <string name="test_banner">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="my_banner_1">ca-app-pub-7279174300665421/8731793267</string>
+
 
 </resources>
