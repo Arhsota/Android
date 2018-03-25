@@ -31,9 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private EditText editTextW;
     private EditText editTextL;
+    private EditText editTextAge;
 //    private Button button;
     private   double myweight;
     private   double mylength;
+    private   double myage;
     private   double myresult;
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
 
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.calculate_btn);
         editTextW = findViewById(R.id.weight);
         editTextL = findViewById(R.id.length);
+        editTextAge = findViewById(R.id.age);
 
 //        reading weight
         editTextW.addTextChangedListener(new TextWatcher() {
@@ -109,6 +112,28 @@ public class MainActivity extends AppCompatActivity {
         );
 
         button.setOnClickListener(onClickListener);
+// reading age
+        editTextAge.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+              }
+
+            @Override
+             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+               }
+
+             @Override
+              public void afterTextChanged(Editable editable) {
+                     if (editable.toString().trim().length() > 0) {
+                         button.setEnabled(true);
+                     } else {
+                       button.setEnabled(false);
+                      }
+              }
+         }
+        );
+
+        button.setOnClickListener(onClickListener);
     }
 
 
@@ -118,10 +143,12 @@ public class MainActivity extends AppCompatActivity {
 
             String weight = editTextW.getText().toString();
             String length = editTextL.getText().toString();
+            String age = editTextAge.getText().toString();
 
 
             myweight = Double.parseDouble(weight);
             mylength = Double.parseDouble(length)/100;
+            myage = Double.parseDouble(age);
             myresult = myweight/(mylength * mylength); //calculatin IMT
 
 

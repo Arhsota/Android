@@ -4,6 +4,7 @@
     <string name="butt_name">Calculate</string>
     <string name="hint_txt_weight">Enter Your Weight in kg (Ex. 78)</string>
     <string name="hint_txt_length">Enter Your Length in sm (Ex. 179)</string>
+    <string name="hint_txt_age">Enter Your Age in sm (Ex. 49)</string>
     <string name="name_text_format_fat">Fat: %1$s</string>
     <string name="name_text_format_prefat">Too much: %1$s</string>
     <string name="name_text_format_thin">Not enough: %1$s</string>

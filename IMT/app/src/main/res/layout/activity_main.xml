@@ -18,35 +18,36 @@
 
     <EditText
         android:id="@+id/weight"
-        android:layout_width="match_parent"
+        android:layout_width="324dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_weight"
         android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/length"
-        android:layout_width="match_parent"
+        android:layout_width="324dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_length"
-        android:inputType="numberDecimal" />
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWeightBackground"
+        android:hint="@string/hint_txt_age"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/calculate_btn"
-        android:layout_width="match_parent"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="324dp"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="@string/butt_name"/>
+        android:text="@string/butt_name" />
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
-    </com.google.android.gms.ads.AdView>
 
     <TextView
         android:id="@+id/text_table1"
@@ -101,6 +102,15 @@
         android:text="@string/text_table8"
         android:textColor="@color/color_text_Table1"/>
 
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
+
+    </com.google.android.gms.ads.AdView>
 
 </LinearLayout>
 

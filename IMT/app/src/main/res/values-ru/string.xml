@@ -5,6 +5,7 @@
     <string name="result_text">Ваш индекс: </string>
     <string name="hint_txt_weight">Введите вес в кг (Пример: 75)</string>
     <string name="hint_txt_length">Введите рост в см (Пример: 178)</string>
+    <string name="hint_txt_age">Введите возраст (Пример: 48)</string>
     <string name="name_text_format_fat">Ожирение: %1$s</string>
     <string name="name_text_format_prefat">Избыточный вес: %1$s</string>
     <string name="name_text_format_thin">Недостаток веса: %1$s</string>

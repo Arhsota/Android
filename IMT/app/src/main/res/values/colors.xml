@@ -7,4 +7,6 @@
     <color name="colorHelloText">#FFFFFF</color>
     <color name="color_text_Table1">#000000</color>
     <color name="colorTextTable1">#ffffff</color>
+    <color name="colorWeightBackground">#71d2d4</color>
+
 </resources>
