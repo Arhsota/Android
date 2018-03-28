@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@drawable/gradient"
+    android:adjustViewBounds="true"
+    android:divider="@drawable/separator"
+    android:dividerPadding="3dp"
+    android:showDividers="middle" >
     tools:context="com.arhsota.android.imt.MainActivity">
 
     <TextView
@@ -14,6 +19,7 @@
         android:background="@color/colorWeightBackground"
         android:text="@string/result_text"
         android:textColor="@color/colorHelloText"
+        android:layout_marginTop="8dp"
         android:textSize="@dimen/hello_text_size"/>
 
     <EditText
@@ -23,6 +29,7 @@
         android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_weight"
         android:inputType="numberDecimal"
+        android:layout_marginTop="8dp"
         android:scrollIndicators="bottom" />
 
     <EditText
@@ -31,6 +38,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_length"
+        android:layout_marginTop="8dp"
         android:inputType="number" />
 
     <EditText
@@ -39,6 +47,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_age"
+        android:layout_marginTop="8dp"
         android:inputType="number" />
 
     <Button
