@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
  //   private RewardedVideoAd mRewardedVideoAd;
 
     private TextView textView;
+    private TextView textViewAge;
     private EditText editTextW;
     private EditText editTextL;
     private EditText editTextAge;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment 58fd171274ed00c90079860acbfcfda3
+//        test id ca-app-pub-3940256099942544/6300978111 for layout XML
 
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
 
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
         textView = findViewById(R.id.result_out);
+        textViewAge = findViewById(R.id.text_table_age);
         final Button button = findViewById(R.id.calculate_btn);
         editTextW = findViewById(R.id.weight);
         editTextL = findViewById(R.id.length);
@@ -150,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
             mylength = Double.parseDouble(length)/100;
             myage = Double.parseDouble(age);
             myresult = myweight/(mylength * mylength); //calculatin IMT
+            textViewAge.setText(getString(R.string.name_text_table_datail_age,age));
+            textViewAge.setBackgroundColor(Color.GRAY);
 
 
 //            String myresultStr = Double.toString(myresult);

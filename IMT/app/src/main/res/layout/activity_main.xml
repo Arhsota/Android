@@ -11,7 +11,7 @@
         android:id="@+id/result_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorHelloBackground"
+        android:background="@color/colorWeightBackground"
         android:text="@string/result_text"
         android:textColor="@color/colorHelloText"
         android:textSize="@dimen/hello_text_size"/>
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_weight"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:scrollIndicators="bottom" />
 
     <EditText
         android:id="@+id/length"
@@ -44,73 +45,116 @@
         android:id="@+id/calculate_btn"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="324dp"
-        android:layout_height="wrap_content"
+        android:layout_height="71dp"
         android:enabled="false"
-        android:text="@string/butt_name" />
+        android:text="@string/butt_name"
+        tools:labelFor="@id/age" />
+
+    <TextView
+        android:id="@+id/text_table_weight"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
+        android:text="@string/name_text_table_datail_weight"
+        android:textColor="@color/color_text_Table1" />
+
+    <TextView
+        android:id="@+id/text_table_length"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
+        android:text="@string/name_text_table_datail_length"
+        android:textColor="@color/color_text_Table1" />
+
+    <TextView
+        android:id="@+id/text_table_age"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
+        android:text="@string/name_text_table_datail_age"
+        android:textColor="@color/color_text_Table1" />
+
 
 
     <TextView
         android:id="@+id/text_table1"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
         android:text="@string/text_table1"
-        android:textColor="@color/color_text_Table1"/>
-
+        android:textColor="@color/color_text_Table1" />
 
 
     <TextView
         android:id="@+id/text_table3"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
         android:text="@string/text_table3"
-        android:textColor="@color/color_text_Table1"/>
+        android:textColor="@color/color_text_Table1" />
+
     <TextView
         android:id="@+id/text_table4"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
         android:text="@string/text_table4"
-        android:textColor="@color/color_text_Table1"/>
+        android:textColor="@color/color_text_Table1" />
+
     <TextView
         android:id="@+id/text_table5"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
         android:text="@string/text_table5"
-        android:textColor="@color/color_text_Table1"/>
+        android:textColor="@color/color_text_Table1" />
+
     <TextView
         android:id="@+id/text_table6"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
         android:text="@string/text_table6"
-        android:textColor="@color/color_text_Table1"/>
+        android:textColor="@color/color_text_Table1" />
+
     <TextView
         android:id="@+id/text_table7"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
         android:text="@string/text_table7"
-        android:textColor="@color/color_text_Table1"/>
+        android:textColor="@color/color_text_Table1" />
+
     <TextView
         android:id="@+id/text_table8"
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@color/colorTextTable1"
+        android:gravity="center_horizontal"
         android:text="@string/text_table8"
-        android:textColor="@color/color_text_Table1"/>
+        android:textColor="@color/color_text_Table1" />
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
 
     </com.google.android.gms.ads.AdView>
+
+
 
 </LinearLayout>
 

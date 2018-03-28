@@ -10,6 +10,10 @@
     <string name="name_text_format_prefat">Избыточный вес: %1$s</string>
     <string name="name_text_format_thin">Недостаток веса: %1$s</string>
     <string name="name_text_format_normal">Норма: %1$s</string>
+    <string name="name_text_table_datail_weight">Ваш вес: %1$s</string>
+    <string name="name_text_table_datail_length">Ваш рост: %1$s</string>
+    <string name="name_text_table_datail_age">Ваш возраст: %1$s</string>
+
     <string name="text_table1">Таблица ИМТ по возрастным группам</string>
     <string name="text_table3">для 19 - 24 лет    приемлим ИМТ     	19 - 24</string>
     <string name="text_table4">для 25 - 34    лет    приемлим ИМТ        	20 - 25</string>
