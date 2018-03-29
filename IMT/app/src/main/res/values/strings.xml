@@ -10,8 +10,7 @@
     <string name="name_text_format_thin">Not enough: %1$s</string>
     <string name="name_text_format_normal">Norma: %1$s</string>
     <string name="text_table1">Table of BMI according age groups</string>
-    <string name="text_table3">for 19 - 24 age   fit for BMI     	19 - 24
-        for 19 - 24 age   fit for BMI     	19 - 24</string>
+    <string name="text_table3">for 19 - 24 age   fit for BMI     	19 - 24</string>
     <string name="text_table4">for 25 - 34 age   fit for BMI       	20 - 25</string>
     <string name="text_table5">for 35 - 44 age   fit for BMI        21 - 26</string>
     <string name="text_table6">for 45 - 54 age   fit for BMI       	22 - 27</string>

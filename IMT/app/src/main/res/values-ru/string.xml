@@ -10,7 +10,7 @@
     <string name="name_text_format_prefat">Избыточный вес: %1$s</string>
     <string name="name_text_format_thin">Недостаток веса: %1$s</string>
     <string name="name_text_format_normal">Норма: %1$s</string>
-    <string name="name_text_table_datail_weight">Ваш вес: </string>
+    <string name="name_text_table_datail_weight">Ваш вес: %1$s</string>
     <string name="name_text_table_datail_length">Ваш рост: %1$s</string>
     <string name="name_text_table_datail_age">Ваш возраст: %1$s</string>
 

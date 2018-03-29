@@ -1,6 +1,6 @@
 package com.arhsota.android.imt;
 
-// version .11
+// version 1.3
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat from your weight and length both for male and female
 // Sevastyanov Andrew, 2018
@@ -29,7 +29,15 @@ public class MainActivity extends AppCompatActivity {
  //   private RewardedVideoAd mRewardedVideoAd;
 
     private TextView textView;
+    private TextView textViewW;
+    private TextView textViewL;
     private TextView textViewAge;
+    private TextView textViewTable3;
+    private TextView textViewTable4;
+    private TextView textViewTable5;
+    private TextView textViewTable6;
+    private TextView textViewTable7;
+    private TextView textViewTable8;
     private EditText editTextW;
     private EditText editTextL;
     private EditText editTextAge;
@@ -64,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.result_out);
         textViewAge = findViewById(R.id.text_table_age);
+        textViewW = findViewById(R.id.text_table_weight);
+        textViewL = findViewById(R.id.text_table_length);
+        textViewTable3 = findViewById(R.id.text_table3);
+        textViewTable4 = findViewById(R.id.text_table4);
+        textViewTable5 = findViewById(R.id.text_table5);
+        textViewTable6 = findViewById(R.id.text_table6);
+        textViewTable7 = findViewById(R.id.text_table7);
+        textViewTable8 = findViewById(R.id.text_table8);
         final Button button = findViewById(R.id.calculate_btn);
         editTextW = findViewById(R.id.weight);
         editTextL = findViewById(R.id.length);
@@ -153,6 +169,66 @@ public class MainActivity extends AppCompatActivity {
             mylength = Double.parseDouble(length)/100;
             myage = Double.parseDouble(age);
             myresult = myweight/(mylength * mylength); //calculatin IMT
+
+            textViewW.setText(getString(R.string.name_text_table_datail_weight,weight));
+            textViewL.setText(getString(R.string.name_text_table_datail_length,length));
+//            highlighting age tables
+        //    if (myage >=19){
+//                textViewTable3.setBackgroundColor(Color.GRAY);
+//            }
+            if ((myage >= 19) && (myage <= 24)){
+                textViewTable3.setBackgroundColor(Color.GRAY);
+                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+
+            }
+            if ((myage > 24) && (myage <= 34)){
+                textViewTable4.setBackgroundColor(Color.GRAY);
+                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+
+            }
+            if ((myage > 34) && (myage <= 44)){
+                textViewTable5.setBackgroundColor(Color.GRAY);
+                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+            }
+            if ((myage > 44) && (myage <= 54)){
+                textViewTable6.setBackgroundColor(Color.GRAY);
+                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+            }
+            if ((myage > 54) && (myage <= 64)){
+                textViewTable7.setBackgroundColor(Color.GRAY);
+                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+            }
+
+            if (myage > 64) {
+                textViewTable8.setBackgroundColor(Color.GRAY);
+                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
+            }
+
+// highlighting age
             textViewAge.setText(getString(R.string.name_text_table_datail_age,age));
             textViewAge.setBackgroundColor(Color.GRAY);
 

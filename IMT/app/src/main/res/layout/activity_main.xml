@@ -54,6 +54,7 @@
     <Button
         android:id="@+id/calculate_btn"
         style="@style/Widget.AppCompat.Button"
+        android:layout_marginTop="8dp"
         android:layout_width="324dp"
         android:layout_height="71dp"
         android:enabled="false"
@@ -64,7 +65,7 @@
         android:id="@+id/text_table_weight"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/name_text_table_datail_weight"
@@ -163,6 +164,7 @@
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
+        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
