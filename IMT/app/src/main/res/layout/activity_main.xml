@@ -16,7 +16,8 @@
         android:id="@+id/result_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorWeightBackground"
+
+        android:background="@android:color/transparent"
         android:text="@string/result_text"
         android:textColor="@color/colorHelloText"
         android:layout_marginTop="8dp"
@@ -63,7 +64,8 @@
         android:id="@+id/text_table_weight"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextTable1"
+
+        android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/name_text_table_datail_weight"
         android:textColor="@color/color_text_Table1" />
@@ -72,7 +74,8 @@
         android:id="@+id/text_table_length"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextTable1"
+
+        android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/name_text_table_datail_length"
         android:textColor="@color/color_text_Table1" />
@@ -81,7 +84,8 @@
         android:id="@+id/text_table_age"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextTable1"
+
+        android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/name_text_table_datail_age"
         android:textColor="@color/color_text_Table1" />
@@ -132,7 +136,7 @@
         android:id="@+id/text_table6"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextTable1"
+        android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/text_table6"
         android:textColor="@color/color_text_Table1" />
@@ -141,7 +145,7 @@
         android:id="@+id/text_table7"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextTable1"
+        android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/text_table7"
         android:textColor="@color/color_text_Table1" />
@@ -150,7 +154,8 @@
         android:id="@+id/text_table8"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorTextTable1"
+
+        android:background="@android:color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/text_table8"
         android:textColor="@color/color_text_Table1" />

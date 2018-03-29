@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(getString(R.string.name_text_format_thin,myresultStrFormat));
             }
             if ((myresult > 18.50) && (myresult <=25)) {
-                textView.setTextColor(Color.GREEN);
+                textView.setTextColor(Color.WHITE);
                 textView.setText(getString(R.string.name_text_format_normal,myresultStrFormat));
             }
             if ((myresult > 25) && (myresult < 30)) {

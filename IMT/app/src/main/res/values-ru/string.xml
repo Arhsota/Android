@@ -10,7 +10,7 @@
     <string name="name_text_format_prefat">Избыточный вес: %1$s</string>
     <string name="name_text_format_thin">Недостаток веса: %1$s</string>
     <string name="name_text_format_normal">Норма: %1$s</string>
-    <string name="name_text_table_datail_weight">Ваш вес: %1$s</string>
+    <string name="name_text_table_datail_weight">Ваш вес: </string>
     <string name="name_text_table_datail_length">Ваш рост: %1$s</string>
     <string name="name_text_table_datail_age">Ваш возраст: %1$s</string>
 
@@ -20,6 +20,6 @@
     <string name="text_table5">для 35 - 44	  лет    приемлим ИМТ           21 - 26</string>
     <string name="text_table6">для 45 - 54    лет    приемлим ИМТ        	22 - 27</string>
     <string name="text_table7">для 55 - 64	  лет    приемлим ИМТ           23 - 28</string>
-    <string name="text_table8">для старше 65  лет    приемлим ИМТ         	24 - 29</string>
+    <string name="text_table8">старше 65  лет    приемлим ИМТ         	24 - 29</string>
 
 </resources>
