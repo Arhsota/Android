@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     private   double mylength;
     private   double myage;
     private   double myresult;
+
+    private   boolean fillTextW = false;  // checking for filling all 3 input parametres
+    private   boolean fillTextL = false;
+    private   boolean fillTextA = false;
+
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
 
     @Override
@@ -85,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
         editTextL = findViewById(R.id.length);
         editTextAge = findViewById(R.id.age);
 
+
+
+
 //        reading weight
         editTextW.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,12 +109,22 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.toString().trim().length() > 0) {
-                    button.setEnabled(true);
+                if (editable.toString().trim().length() > 0)  {
+
+                    fillTextW = true;
+
                 } else {
+                    fillTextW = false;
+                }
+                if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true)) {
+                    button.setEnabled(true);
+                }
+                else {
                     button.setEnabled(false);
                 }
             }
+
+
           }
         );
 
@@ -121,12 +141,22 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
                  public void afterTextChanged(Editable editable) {
-                    if (editable.toString().trim().length() > 0) {
-                      button.setEnabled(true);
-                   } else {
-                      button.setEnabled(false);
+                  if (editable.toString().trim().length() > 0)  {
+                      fillTextL = true;
                    }
-             }
+                   else {
+
+                          fillTextL = false;
+                   }
+
+                if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true)) {
+                    button.setEnabled(true);
+                }
+                else {
+                    button.setEnabled(false);
+                }
+
+              }
         }
         );
 
@@ -143,11 +173,19 @@ public class MainActivity extends AppCompatActivity {
 
              @Override
               public void afterTextChanged(Editable editable) {
-                     if (editable.toString().trim().length() > 0) {
-                         button.setEnabled(true);
+                 if (editable.toString().trim().length() > 0)  {
+                     fillTextA = true;
+
                      } else {
-                       button.setEnabled(false);
-                      }
+
+                       fillTextA = false;
+                     }
+                 if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true)) {
+                     button.setEnabled(true);
+                 }
+                 else {
+                     button.setEnabled(false);
+                 }
               }
          }
         );
@@ -176,6 +214,17 @@ public class MainActivity extends AppCompatActivity {
         //    if (myage >=19){
 //                textViewTable3.setBackgroundColor(Color.GRAY);
 //            }
+            if (myage < 19) {
+                Toast.makeText(MainActivity.this, "Too young, to be in table of age",
+                      Toast.LENGTH_LONG).show();
+                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+
+            }
             if ((myage >= 19) && (myage <= 24)){
                 textViewTable3.setBackgroundColor(Color.GRAY);
                 textViewTable4.setBackgroundColor(Color.TRANSPARENT);

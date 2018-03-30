@@ -27,10 +27,10 @@
         android:id="@+id/weight"
         android:layout_width="324dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_weight"
         android:inputType="numberDecimal"
-        android:layout_marginTop="8dp"
         android:scrollIndicators="bottom" />
 
     <EditText
@@ -53,13 +53,11 @@
 
     <Button
         android:id="@+id/calculate_btn"
-        style="@style/Widget.AppCompat.Button"
         android:layout_marginTop="8dp"
         android:layout_width="324dp"
         android:layout_height="71dp"
         android:enabled="false"
-        android:text="@string/butt_name"
-        tools:labelFor="@id/age" />
+        android:text="@string/butt_name"/>
 
     <TextView
         android:id="@+id/text_table_weight"

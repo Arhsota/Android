@@ -3,8 +3,8 @@
     <string name="result_text">Your index is </string>
     <string name="butt_name">Calculate</string>
     <string name="hint_txt_weight">Enter Your Weight in kg (Ex. 78)</string>
-    <string name="hint_txt_length">Enter Your Length in sm (Ex. 179)</string>
-    <string name="hint_txt_age">Enter Your Age in sm (Ex. 49)</string>
+    <string name="hint_txt_length">Enter Your Length in cm (Ex. 179)</string>
+    <string name="hint_txt_age">Enter Your Age(Ex. 49)</string>
     <string name="name_text_format_fat">Fat: %1$s</string>
     <string name="name_text_format_prefat">Too much: %1$s</string>
     <string name="name_text_format_thin">Not enough: %1$s</string>
@@ -16,6 +16,5 @@
     <string name="text_table6">for 45 - 54 age   fit for BMI       	22 - 27</string>
     <string name="text_table7">for 55 - 64 age   fit for BMI        23 - 28</string>
     <string name="text_table8">elder 65 age   fit for BMI     	24 - 29</string>
-
 
 </resources>
