@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">BMI Body Mass Index</string>
-    <string name="result_text">Your index is </string>
+    <string name="result_text_before">Your index is: ___</string>
+    <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
     <string name="hint_txt_weight">Enter Your Weight in kg (Ex. 78)</string>
     <string name="hint_txt_length">Enter Your Length in cm (Ex. 179)</string>
@@ -8,7 +9,15 @@
     <string name="name_text_format_fat">Fat: %1$s</string>
     <string name="name_text_format_prefat">Too much: %1$s</string>
     <string name="name_text_format_thin">Not enough: %1$s</string>
-    <string name="name_text_format_normal">Norma: %1$s</string>
+    <string name="name_text_format_normal">Normal: %1$s</string>
+
+    <string name="name_text_table_detail_weight_before">Your weight: </string>
+    <string name="name_text_table_detail_length_before">Your length: </string>
+    <string name="name_text_table_detail_age_before">Your age: </string>
+
+    <string name="name_text_table_detail_weight">Your weight: %1$s</string>
+    <string name="name_text_table_detail_length">Your length: %1$s</string>
+    <string name="name_text_table_detail_age">Your age: %1$s</string>
     <string name="text_table1">Table of BMI according age groups</string>
     <string name="text_table3">for 19 - 24 age   fit for BMI     	19 - 24</string>
     <string name="text_table4">for 25 - 34 age   fit for BMI       	20 - 25</string>

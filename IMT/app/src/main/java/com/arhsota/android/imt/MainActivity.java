@@ -208,8 +208,11 @@ public class MainActivity extends AppCompatActivity {
             myage = Double.parseDouble(age);
             myresult = myweight/(mylength * mylength); //calculatin IMT
 
-            textViewW.setText(getString(R.string.name_text_table_datail_weight,weight));
-            textViewL.setText(getString(R.string.name_text_table_datail_length,length));
+            textViewW.setText(getString(R.string.name_text_table_detail_weight,weight));
+            textViewL.setText(getString(R.string.name_text_table_detail_length,length));
+            // highlighting age
+            textViewAge.setText(getString(R.string.name_text_table_detail_age,age));
+            textViewAge.setBackgroundColor(Color.GRAY);
 //            highlighting age tables
         //    if (myage >=19){
 //                textViewTable3.setBackgroundColor(Color.GRAY);
@@ -277,30 +280,22 @@ public class MainActivity extends AppCompatActivity {
                 textViewTable3.setBackgroundColor(Color.TRANSPARENT);
             }
 
-// highlighting age
-            textViewAge.setText(getString(R.string.name_text_table_datail_age,age));
-            textViewAge.setBackgroundColor(Color.GRAY);
-
 
 //            String myresultStr = Double.toString(myresult);
             String myresultStrFormat = String.format("%.2f",myresult);
+            textView.setText(getString(R.string.result_text,myresultStrFormat));
 
-
-            if (myresult <= 18.50) {
+            if (myresult < 19) {
                 textView.setTextColor(Color.RED);
-                textView.setText(getString(R.string.name_text_format_thin,myresultStrFormat));
-            }
-            if ((myresult > 18.50) && (myresult <=25)) {
+                }
+            if ((myresult >= 19) && (myresult <=24)) {
                 textView.setTextColor(Color.WHITE);
-                textView.setText(getString(R.string.name_text_format_normal,myresultStrFormat));
             }
-            if ((myresult > 25) && (myresult < 30)) {
+            if ((myresult > 25) && (myresult <= 34)) {
                 textView.setTextColor(Color.MAGENTA);
-                textView.setText(getString(R.string.name_text_format_prefat,myresultStrFormat));
             }
-            if ((myresult >= 30)) {
+                        if ((myresult > 34)) {
                 textView.setTextColor(Color.RED);
-                textView.setText(getString(R.string.name_text_format_fat,myresultStrFormat));
             }
 
         }

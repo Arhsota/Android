@@ -2,7 +2,8 @@
 <resources>
     <string name="app_name">Индекс массы тела</string>
     <string name="butt_name">Рассчитать</string>
-    <string name="result_text">Ваш индекс: </string>
+    <string name="result_text_before">Ваш индекс: __ </string>
+    <string name="result_text">Ваш индекс: %1Ss </string>
     <string name="hint_txt_weight">Введите вес в кг (Пример: 75)</string>
     <string name="hint_txt_length">Введите рост в см (Пример: 178)</string>
     <string name="hint_txt_age">Введите возраст (Пример: 48)</string>
@@ -10,9 +11,14 @@
     <string name="name_text_format_prefat">Избыточный вес: %1$s</string>
     <string name="name_text_format_thin">Недостаток веса: %1$s</string>
     <string name="name_text_format_normal">Норма: %1$s</string>
-    <string name="name_text_table_datail_weight">Ваш вес: %1$s</string>
-    <string name="name_text_table_datail_length">Ваш рост: %1$s</string>
-    <string name="name_text_table_datail_age">Ваш возраст: %1$s</string>
+
+    <string name="name_text_table_detail_weight_before">Ваш вес: </string>
+    <string name="name_text_table_detail_length_before">Ваш рост: </string>
+    <string name="name_text_table_detail_age_before">Ваш возраст: </string>
+
+    <string name="name_text_table_detail_weight">Ваш вес: %1$s</string>
+    <string name="name_text_table_detail_length">Ваш рост: %1$s</string>
+    <string name="name_text_table_detail_age">Ваш возраст: %1$s</string>
 
     <string name="text_table1">Таблица ИМТ по возрастным группам</string>
     <string name="text_table3">для 19 - 24 лет    приемлим ИМТ     	19 - 24</string>

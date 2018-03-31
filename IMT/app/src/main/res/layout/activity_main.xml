@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
 
         android:background="@android:color/transparent"
-        android:text="@string/result_text"
+        android:text="@string/result_text_before"
         android:textColor="@color/colorHelloText"
         android:layout_marginTop="8dp"
         android:textSize="@dimen/hello_text_size"/>
@@ -66,7 +66,7 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
-        android:text="@string/name_text_table_datail_weight"
+        android:text="@string/name_text_table_detail_weight_before"
         android:textColor="@color/color_text_Table1" />
 
     <TextView
@@ -76,7 +76,7 @@
 
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
-        android:text="@string/name_text_table_datail_length"
+        android:text="@string/name_text_table_detail_length_before"
         android:textColor="@color/color_text_Table1" />
 
     <TextView
@@ -86,7 +86,7 @@
 
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
-        android:text="@string/name_text_table_datail_age"
+        android:text="@string/name_text_table_detail_age_before"
         android:textColor="@color/color_text_Table1" />
 
 
