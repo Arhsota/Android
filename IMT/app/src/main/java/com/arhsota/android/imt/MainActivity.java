@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 /*
+       one more banner
        mAdView2 = findViewById(R.id.adView2);
        AdRequest adRequest2 = new AdRequest.Builder().build();
         mAdView2.loadAd(adRequest2);
