@@ -2,9 +2,10 @@ package com.arhsota.android.imt;
 
 // version 1.3
 // my first real soft based on lesson 8 Skillberg
-// calculating index body fat from your weight and length both for male and female
-// Sevastyanov Andrew, 2018
+// calculating index body fat based on your weight and length both for male and female
+// Sevastyanov Andrey, 2018, march
 // Sabetta
+// Special thanks to A. Bakulina for testing this app
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -109,13 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.toString().trim().length() > 0)  {
-
-                    fillTextW = true;
-
-                } else {
-                    fillTextW = false;
-                }
+                fillTextW = editable.toString().trim().length() > 0;
                 if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true)) {
                     button.setEnabled(true);
                 }
@@ -141,13 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
                  public void afterTextChanged(Editable editable) {
-                  if (editable.toString().trim().length() > 0)  {
-                      fillTextL = true;
-                   }
-                   else {
-
-                          fillTextL = false;
-                   }
+                fillTextL = editable.toString().trim().length() > 0;
 
                 if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true)) {
                     button.setEnabled(true);
@@ -173,13 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
              @Override
               public void afterTextChanged(Editable editable) {
-                 if (editable.toString().trim().length() > 0)  {
-                     fillTextA = true;
-
-                     } else {
-
-                       fillTextA = false;
-                     }
+                 fillTextA = editable.toString().trim().length() > 0;
                  if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true)) {
                      button.setEnabled(true);
                  }
