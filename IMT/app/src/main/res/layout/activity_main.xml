@@ -7,9 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/gradient"
     android:adjustViewBounds="true"
-    android:divider="@drawable/separator"
-    android:dividerPadding="3dp"
-    android:showDividers="middle" >
+
     tools:context="com.arhsota.android.imt.MainActivity">
 
     <TextView
@@ -167,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
 
     </com.google.android.gms.ads.AdView>
 

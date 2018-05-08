@@ -1,6 +1,6 @@
 package com.arhsota.android.imt;
 
-// version 1.3
+// version 1.5
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
 // Sevastyanov Andrey, 2018, march
@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 //import com.google.android.gms.ads.reward.RewardedVideoAd;
 
 
@@ -28,6 +29,7 @@ import com.google.android.gms.ads.AdView;
 public class MainActivity extends AppCompatActivity {
 
     private AdView mAdView;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
  //   private RewardedVideoAd mRewardedVideoAd;
 
@@ -63,8 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment 58fd171274ed00c90079860acbfcfda3
 //        test id ca-app-pub-3940256099942544/6300978111 for layout XML
+//        working real banner ca-app-pub-7279174300665421/8731793267
 
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -133,13 +139,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
                  }
 
             @Override
                  public void afterTextChanged(Editable editable) {
                 fillTextL = editable.toString().trim().length() > 0;
 
-                if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true)) {
+                if ((fillTextW == true) && (fillTextL == true) && (fillTextA == true) ) {
                     button.setEnabled(true);
                 }
                 else {
@@ -190,6 +197,10 @@ public class MainActivity extends AppCompatActivity {
             myweight = Double.parseDouble(weight);
             mylength = Double.parseDouble(length)/100;
             myage = Double.parseDouble(age);
+//            Not devide to zero
+            if (mylength == 0)  {
+               mylength = 1;
+            }
             myresult = myweight/(mylength * mylength); //calculatin IMT
 
             textViewW.setText(getString(R.string.name_text_table_detail_weight,weight));
@@ -276,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                 textView.setTextColor(Color.WHITE);
             }
             if ((myresult > 25) && (myresult <= 34)) {
-                textView.setTextColor(Color.MAGENTA);
+                textView.setTextColor(Color.YELLOW);
             }
                         if ((myresult > 34)) {
                 textView.setTextColor(Color.RED);
