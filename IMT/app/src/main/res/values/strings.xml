@@ -16,11 +16,11 @@
     <string name="name_text_table_detail_length">Your length: %1$s</string>
     <string name="name_text_table_detail_age">Your age: %1$s</string>
     <string name="text_table1">Table of BMI according age groups</string>
-    <string name="text_table3">for 19 - 24 age   fit for BMI     	19 - 24</string>
-    <string name="text_table4">for 25 - 34 age   fit for BMI       	20 - 25</string>
-    <string name="text_table5">for 35 - 44 age   fit for BMI        21 - 26</string>
-    <string name="text_table6">for 45 - 54 age   fit for BMI       	22 - 27</string>
-    <string name="text_table7">for 55 - 64 age   fit for BMI        23 - 28</string>
-    <string name="text_table8">elder 65 age   fit for BMI     	24 - 29</string>
+    <string name="text_table3">for 19 - 24 age   for BMI     	19 - 24</string>
+    <string name="text_table4">for 25 - 34 age   for BMI       	20 - 25</string>
+    <string name="text_table5">for 35 - 44 age   for BMI        21 - 26</string>
+    <string name="text_table6">for 45 - 54 age   for BMI       	22 - 27</string>
+    <string name="text_table7">for 55 - 64 age   for BMI        23 - 28</string>
+    <string name="text_table8">elder 65 age   for BMI     	24 - 29</string>
 
 </resources>

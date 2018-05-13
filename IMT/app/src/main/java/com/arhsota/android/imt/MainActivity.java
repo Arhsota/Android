@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -189,9 +190,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
+//            MainActivity.this.getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+            getWindow().setSoftInputMode(
+                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+            );
             String weight = editTextW.getText().toString();
             String length = editTextL.getText().toString();
             String age = editTextAge.getText().toString();
+
+
+
 
 
             myweight = Double.parseDouble(weight);

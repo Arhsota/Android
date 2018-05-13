@@ -17,11 +17,11 @@
     <string name="name_text_table_detail_age">Ваш возраст: %1$s</string>
 
     <string name="text_table1">Таблица ИМТ по возрастным группам</string>
-    <string name="text_table3">для 19 - 24 лет    приемлим ИМТ     	19 - 24</string>
-    <string name="text_table4">для 25 - 34    лет    приемлим ИМТ        	20 - 25</string>
-    <string name="text_table5">для 35 - 44	  лет    приемлим ИМТ           21 - 26</string>
-    <string name="text_table6">для 45 - 54    лет    приемлим ИМТ        	22 - 27</string>
-    <string name="text_table7">для 55 - 64	  лет    приемлим ИМТ           23 - 28</string>
-    <string name="text_table8">старше 65  лет    приемлим ИМТ         	24 - 29</string>
+    <string name="text_table3"> для 19 - 24 лет    ИМТ     	19 - 24 </string>
+    <string name="text_table4"> для 25 - 34    лет   ИМТ        	20 - 25 </string>
+    <string name="text_table5"> для 35 - 44	  лет    ИМТ           21 - 26 </string>
+    <string name="text_table6"> для 45 - 54    лет   ИМТ        	22 - 27 </string>
+    <string name="text_table7"> для 55 - 64	  лет     ИМТ           23 - 28 </string>
+    <string name="text_table8"> старше 65  лет     ИМТ         	24 - 29 </string>
 
 </resources>
