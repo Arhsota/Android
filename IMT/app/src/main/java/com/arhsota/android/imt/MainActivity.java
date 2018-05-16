@@ -1,9 +1,10 @@
 package com.arhsota.android.imt;
 
-// version 1.5
+// version 1.6
+// changes in this version - make different size of text due to resolution
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
-// Sevastyanov Andrey, 2018, march
+// Sevastyanov Andrey, 2018, may
 // Sabetta
 // Special thanks to A. Bakulina for testing this app
 

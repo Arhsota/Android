@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI Body Mass Index. Ver.1.5</string>
+    <string name="app_name">BMI Body Mass Index. Ver.1.6</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ИМТ Индекс массы тела. Вер.1.5</string>
+    <string name="app_name">ИМТ Индекс массы тела. Вер.1.6</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>

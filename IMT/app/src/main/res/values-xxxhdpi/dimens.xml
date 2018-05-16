@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <dimen name="hello_text_size">20sp</dimen>
-    <dimen name="text_table_size">12sp</dimen>
+    <dimen name="hello_text_size">28sp</dimen>
+    <dimen name="text_table_size">14sp</dimen>
+    <dimen name="space_size">8dp</dimen>
+    <dimen name="weight_size">324dp</dimen>
 </resources>

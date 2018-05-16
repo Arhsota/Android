@@ -3,4 +3,6 @@
 <resources>
     <dimen name="hello_text_size">20sp</dimen>
     <dimen name="text_table_size">12sp</dimen>
+    <dimen name="space_size">2dp</dimen>
+    <dimen name="weight_size">270dp</dimen>
 </resources>
