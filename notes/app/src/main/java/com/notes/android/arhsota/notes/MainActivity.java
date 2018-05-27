@@ -1,7 +1,13 @@
 package com.notes.android.arhsota.notes;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.notes.android.arhsota.notes.db.NotesContract;
 
 import static android.provider.BaseColumns._ID;
 import static com.notes.android.arhsota.notes.db.NotesContract.Notes.COLUMN_CREATED_TS;
@@ -41,5 +47,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        insert();
+    }
+    private void insert() {
+
+        ContentResolver contentResolver = getContentResolver();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NotesContract.Notes.COLUMN_TITLE,
+                "Заголовок заметки");
+        contentValues.put(NotesContract.Notes.COLUMN_NOTE,
+                "Текст заметки");
+        contentValues.put(NotesContract.Notes.COLUMN_CREATED_TS,
+                System.currentTimeMillis());
+        contentValues.put(NotesContract.Notes.COLUMN_UPDATED_TS,
+                System.currentTimeMillis());
+        Uri uri =
+                contentResolver.insert(NotesContract.Notes.URI,
+                        contentValues);
+        Log.i("Test", "URI: " + uri);
     }
 }
