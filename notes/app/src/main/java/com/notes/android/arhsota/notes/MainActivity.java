@@ -25,12 +25,7 @@ import static com.notes.android.arhsota.notes.db.NotesContract.Notes.TABLE_NAME;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CREATE_TABLE =
-            String.format("CREATE TABLE %s " +
-                            "(%s INTEGER PRIMARY KEY, " +
-                            "%s TEXT NOT NULL, " +
-                            "%s TEXT NOT NULL, " +
-                            "%s INTEGER NOT NULL, " +
-                            "%s INTEGER NOT NULL);",
+            String.format("CREATE TABLE %s "+"(%s INTEGER PRIMARY KEY, "+"%s TEXT NOT NULL, "+"%s TEXT NOT NULL, " + "%s INTEGER NOT NULL, " + "%s INTEGER NOT NULL);",
                     TABLE_NAME,
                     _ID,
                     COLUMN_TITLE,
@@ -54,10 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         ContentResolver contentResolver = getContentResolver();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(NotesContract.Notes.COLUMN_TITLE,
-                "Заголовок заметки");
-        contentValues.put(NotesContract.Notes.COLUMN_NOTE,
-                "Текст заметки");
+        contentValues.put(NotesContract.Notes.COLUMN_TITLE,"Заголовок заметки");
+        contentValues.put(NotesContract.Notes.COLUMN_NOTE,"Текст заметки");
         contentValues.put(NotesContract.Notes.COLUMN_CREATED_TS,
                 System.currentTimeMillis());
         contentValues.put(NotesContract.Notes.COLUMN_UPDATED_TS,
