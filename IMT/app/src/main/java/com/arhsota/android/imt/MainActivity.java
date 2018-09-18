@@ -1,22 +1,27 @@
 package com.arhsota.android.imt;
 
-// version 1.6
-// changes in this version - make different size of text due to resolution
+// version 1.7
+// changes in this version - make different size of text due to resolution fix
+// ordinary background, intent to new activity and theme to bar
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
-// Sevastyanov Andrey, 2018, may
-// Sabetta
-// Special thanks to A. Bakulina for testing this app
+// Sevastyanov Andrey, 2018, september
+// Arkhangelsk
+//
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +33,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private AdView mAdView;
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -59,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
     private   boolean fillTextA = false;
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
+
+    @Override    public boolean onCreateOptionsMenu(Menu menu) {
+        // Заполнение меню; элементы (если они есть) добавляются на панель действий.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //  MenuItem menuItem = menu.findItem(R.id.action_share);
+        //  shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
+        // setIntent("This is example text");
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         editTextW = findViewById(R.id.weight);
         editTextL = findViewById(R.id.length);
         editTextAge = findViewById(R.id.age);
+
 
 
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:background="@drawable/gradient"
+
     android:adjustViewBounds="true"
 
     tools:context="com.arhsota.android.imt.MainActivity">
@@ -166,12 +166,12 @@
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
-        android:textSize="@dimen/space_size"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
 
     </com.google.android.gms.ads.AdView>
 
