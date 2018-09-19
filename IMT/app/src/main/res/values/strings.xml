@@ -24,7 +24,8 @@
     <string name="text_table8">elder 65 age   for BMI     	24 - 29</string>
 
     <string name="action_create_save">Save</string>
-    <string name="title_activity_order">title activity Order</string>
+    <string name="title_second_activity">Second Activity</string>
     <string name="action_share">Share</string>
+    <string name="action_history">History</string>
 
 </resources>

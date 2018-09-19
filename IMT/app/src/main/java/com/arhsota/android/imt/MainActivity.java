@@ -10,6 +10,7 @@ package com.arhsota.android.imt;
 //
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class MainActivity extends Activity {
 
     private AdView mAdView;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private ShareActionProvider shareActionProvider;
 
  //   private RewardedVideoAd mRewardedVideoAd;
 
@@ -65,13 +67,39 @@ public class MainActivity extends Activity {
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
 
+
     @Override    public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        //  MenuItem menuItem = menu.findItem(R.id.action_share);
-        //  shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-        // setIntent("This is example text");
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+        shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
+        setIntent("This is example text");
         return super.onCreateOptionsMenu(menu);
+    }
+    private void setIntent(String text) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        shareActionProvider.setShareIntent(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_create_save:
+                //Код, выполняемый при выборе элемента Create Save
+              //  Intent intent = new Intent(this, SecondActivity.class);
+              //  startActivity(intent);
+                Toast.makeText(MainActivity.this, "Saved",
+                        Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.action_history:
+                //Код, выполняемый при выборе элемента History
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -308,10 +336,10 @@ public class MainActivity extends Activity {
                 textView.setTextColor(Color.RED);
                 }
             if ((myresult >= 19) && (myresult <=24)) {
-                textView.setTextColor(Color.WHITE);
+                textView.setTextColor(Color.BLUE);
             }
             if ((myresult > 25) && (myresult <= 34)) {
-                textView.setTextColor(Color.YELLOW);
+                textView.setTextColor(Color.BLUE);
             }
                         if ((myresult > 34)) {
                 textView.setTextColor(Color.RED);
