@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI Body Mass Index. Ver.1.7</string>
+    <string name="app_name">BMI 1.7</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
@@ -24,7 +24,7 @@
     <string name="text_table8">elder 65 age   for BMI     	24 - 29</string>
 
     <string name="action_create_save">Save</string>
-    <string name="title_second_activity">Second Activity</string>
+    <string name="title_second_activity">Your Result</string>
     <string name="action_share">Share</string>
     <string name="action_history">History</string>
 

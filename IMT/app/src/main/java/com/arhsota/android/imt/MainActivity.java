@@ -30,6 +30,9 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.analytics.FirebaseAnalytics;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 //import com.google.android.gms.ads.reward.RewardedVideoAd;
 
 
@@ -57,6 +60,12 @@ public class MainActivity extends Activity {
     private EditText editTextAge;
 //    private Button button;
     private   double myweight;
+    // str_XXX for intent
+    private   String str_IMT = "0";
+    private   String str_Weight= "0";
+    private   String str_Length = "0";
+    private   String str_Age = "0";
+
     private   double mylength;
     private   double myage;
     private   double myresult;
@@ -73,12 +82,18 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-        setIntent("This is example text");
+        String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+        setIntent("Дата: " + date + "Ваш ИМТ " + str_IMT+ " Вес: " + str_Weight);
         return super.onCreateOptionsMenu(menu);
     }
     private void setIntent(String text) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
+        //  intent.putExtra("IMT", str_IMT);
+        //  intent.putExtra("Weight", str_Weight);
+        // intent.putExtra("Length", str_Length);
+        // intent.putExtra("Age", str_Age);
+      //  text = str_IMT + str_Weight;
         intent.putExtra(Intent.EXTRA_TEXT, text);
         shareActionProvider.setShareIntent(intent);
     }
@@ -88,10 +103,15 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_create_save:
                 //Код, выполняемый при выборе элемента Create Save
-              //  Intent intent = new Intent(this, SecondActivity.class);
-              //  startActivity(intent);
-                Toast.makeText(MainActivity.this, "Saved",
-                        Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, SecondActivity.class);
+                intent.setType("text/plain");
+                intent.putExtra("IMT", str_IMT);
+                intent.putExtra("Weight", str_Weight);
+                intent.putExtra("Length", str_Length);
+                intent.putExtra("Age", str_Age);
+                startActivity(intent);
+            //    textViewW.setText(getString(R.string.name_text_table_detail_weight,str_weight));
+
                 return true;
             case R.id.action_history:
                 //Код, выполняемый при выборе элемента History
@@ -241,6 +261,9 @@ public class MainActivity extends Activity {
             String weight = editTextW.getText().toString();
             String length = editTextL.getText().toString();
             String age = editTextAge.getText().toString();
+            str_Weight = weight;
+            str_Length = length;
+            str_Age = age;
 
 
 
@@ -253,7 +276,8 @@ public class MainActivity extends Activity {
             if (mylength == 0)  {
                mylength = 1;
             }
-            myresult = myweight/(mylength * mylength); //calculatin IMT
+            myresult = myweight/(mylength * mylength); //calculating IMT
+            str_IMT =  String.format("%.2f",myresult); // making string format
 
             textViewW.setText(getString(R.string.name_text_table_detail_weight,weight));
             textViewL.setText(getString(R.string.name_text_table_detail_length,length));
