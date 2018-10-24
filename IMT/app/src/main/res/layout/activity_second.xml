@@ -19,4 +19,16 @@
         android:textColor="@color/colorHelloText"
         android:layout_marginTop="@dimen/space_size"
         android:textSize="@dimen/result_size"/>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewSecond"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
+
+    </com.google.android.gms.ads.AdView>
 </LinearLayout>

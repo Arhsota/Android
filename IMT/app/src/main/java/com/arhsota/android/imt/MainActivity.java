@@ -2,7 +2,8 @@ package com.arhsota.android.imt;
 
 // version 1.7
 // changes in this version - make different size of text due to resolution fix
-// ordinary background, intent to new activity and theme to bar
+// ordinary background, intent to new activity and theme to bar (not working properly yet)
+// action choice due to action bar
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
 // Sevastyanov Andrey, 2018, september
@@ -10,8 +11,11 @@ package com.arhsota.android.imt;
 //
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.inputmethodservice.Keyboard;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ShareActionProvider;
@@ -61,10 +66,12 @@ public class MainActivity extends Activity {
 //    private Button button;
     private   double myweight;
     // str_XXX for intent
-    private   String str_IMT = "0";
+    private   String str_IMT ;
+
     private   String str_Weight= "0";
     private   String str_Length = "0";
     private   String str_Age = "0";
+    private   String str_Date = "0";
 
     private   double mylength;
     private   double myage;
@@ -77,28 +84,33 @@ public class MainActivity extends Activity {
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
 
 
-    @Override    public boolean onCreateOptionsMenu(Menu menu) {
+ /*   @Override    public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-        String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
-        setIntent("Дата: " + date + "Ваш ИМТ " + str_IMT+ " Вес: " + str_Weight);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_TEXT, str_Date + str_IMT);
+        shareActionProvider.setShareIntent(intent);
+     //   setIntent("Дата: " + date + " Ваш ИМТ " + str_IMT+ " Вес: " + str_Weight + " Рост: " +str_Length + " Возраст: " + str_Age);
+       // setIntent("test");
         return super.onCreateOptionsMenu(menu);
     }
     private void setIntent(String text) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        //  intent.putExtra("IMT", str_IMT);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+      //  intent.setType("text/plain");
+          intent.putExtra("IMT", str_IMT);
         //  intent.putExtra("Weight", str_Weight);
-        // intent.putExtra("Length", str_Length);
-        // intent.putExtra("Age", str_Age);
-      //  text = str_IMT + str_Weight;
-        intent.putExtra(Intent.EXTRA_TEXT, text);
+         // intent.putExtra("Length", str_Length);
+      //   intent.putExtra("Age", str_Age);
+         text = str_IMT + str_Weight;
+        intent.putExtra(Intent.EXTRA_TEXT, str_Date + str_IMT);
         shareActionProvider.setShareIntent(intent);
     }
-
-    @Override
+*/
+ /*   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_save:
@@ -121,7 +133,7 @@ public class MainActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,7 +144,7 @@ public class MainActivity extends Activity {
 //        working real banner ca-app-pub-7279174300665421/8731793267
 
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+       // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
 
 
@@ -251,13 +263,11 @@ public class MainActivity extends Activity {
 
 
     private final View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
+
         public void onClick(View view) {
 
-//            MainActivity.this.getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-            getWindow().setSoftInputMode(
-                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
-            );
+
+            KeyboardHide.hide(view); // Hide keyboard after click on button CALCULATE
             String weight = editTextW.getText().toString();
             String length = editTextL.getText().toString();
             String age = editTextAge.getText().toString();
@@ -265,9 +275,8 @@ public class MainActivity extends Activity {
             str_Length = length;
             str_Age = age;
 
-
-
-
+         //   String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+         //   str_Date = date;
 
             myweight = Double.parseDouble(weight);
             mylength = Double.parseDouble(length)/100;
@@ -353,6 +362,7 @@ public class MainActivity extends Activity {
 
 
 //            String myresultStr = Double.toString(myresult);
+
             String myresultStrFormat = String.format("%.2f",myresult);
             textView.setText(getString(R.string.result_text,myresultStrFormat));
 

@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,12 +18,23 @@ import java.util.Date;
 public class SecondActivity extends Activity {
 
     private TextView tvView;
+    private AdView mAdViewSecond;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
 
     @Override
       protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
+     //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
+
+        mAdViewSecond = findViewById(R.id.adViewSecond);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdViewSecond.loadAd(adRequest);
 
         tvView = findViewById(R.id.result_save_out);
 

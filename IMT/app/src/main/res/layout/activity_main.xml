@@ -171,8 +171,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
 
     </com.google.android.gms.ads.AdView>
 
