@@ -1,9 +1,7 @@
 package com.arhsota.android.imt;
 
-// version 1.7
-// changes in this version - make different size of text due to resolution fix
-// ordinary background, intent to new activity and theme to bar (not working properly yet)
-// action choice due to action bar
+// version 1.9
+// changes in this version - second activity with correspondent features and banner on every activity
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
 // Sevastyanov Andrey, 2018, september
@@ -34,7 +32,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,7 +43,7 @@ import java.util.Calendar;
 public class MainActivity extends Activity {
 
     private AdView mAdView;
-    private FirebaseAnalytics mFirebaseAnalytics;
+//    private FirebaseAnalytics mFirebaseAnalytics;
     private ShareActionProvider shareActionProvider;
 
  //   private RewardedVideoAd mRewardedVideoAd;
@@ -84,19 +82,28 @@ public class MainActivity extends Activity {
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
 
 
- /*   @Override    public boolean onCreateOptionsMenu(Menu menu) {
+    @Override    public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_TEXT, str_Date + str_IMT);
-        shareActionProvider.setShareIntent(intent);
+      //  Intent intent = new Intent(Intent.ACTION_SENDTO);
+    //   Intent intent = new Intent(Intent.ACTION_SEND);
+    //    intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+    //    intent.setType("text/plain");
+     //   Toast.makeText(MainActivity.this, "111111111111111",
+     //           Toast.LENGTH_LONG).show();
+    //    intent.putExtra(Intent.EXTRA_TEXT, str_Date + str_IMT+"22222");
+    //    intent.putExtra("IMT", str_IMT);
+   //     shareActionProvider.setShareIntent(intent);
      //   setIntent("Дата: " + date + " Ваш ИМТ " + str_IMT+ " Вес: " + str_Weight + " Рост: " +str_Length + " Возраст: " + str_Age);
        // setIntent("test");
+
         return super.onCreateOptionsMenu(menu);
     }
+
+
+  /*
     private void setIntent(String text) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
@@ -110,7 +117,7 @@ public class MainActivity extends Activity {
         shareActionProvider.setShareIntent(intent);
     }
 */
- /*   @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_save:
@@ -121,19 +128,34 @@ public class MainActivity extends Activity {
                 intent.putExtra("Weight", str_Weight);
                 intent.putExtra("Length", str_Length);
                 intent.putExtra("Age", str_Age);
+                intent.putExtra("Date", str_Date);
                 startActivity(intent);
             //    textViewW.setText(getString(R.string.name_text_table_detail_weight,str_weight));
 
                 return true;
-            case R.id.action_history:
-                //Код, выполняемый при выборе элемента History
+            case R.id.action_share:
+             /*   //Код, выполняемый при выборе элемента Share
+                Intent intent_mail = new Intent(Intent.ACTION_SENDTO);
+                intent_mail.setData(Uri.parse("mailto:")); // only email apps should handle this
+                //   intent_mail.setType("text/plain");
+                intent_mail.putExtra("IMT", str_IMT);
+                intent_mail.putExtra(Intent.EXTRA_TEXT,str_Date + " IMT  " + str_IMT + " Weight " + str_Weight);
+                startActivity(intent_mail);
+              */
+                Intent intent_mes = new Intent(Intent.ACTION_SEND);
+                intent_mes.setType("text/plain");
+                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date +" "+str_IMT);
+//          page 143 always choose intent
+                String chooserTitle = "Sharing";
+                Intent chosenIntent = Intent.createChooser(intent_mes, chooserTitle);
+                startActivity(chosenIntent);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -275,8 +297,9 @@ public class MainActivity extends Activity {
             str_Length = length;
             str_Age = age;
 
-         //   String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
-         //   str_Date = date;
+            String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+            str_Date = date;
+           // str_Date = "MyDate";
 
             myweight = Double.parseDouble(weight);
             mylength = Double.parseDouble(length)/100;

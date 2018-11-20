@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
     android:orientation="vertical"
 
     android:adjustViewBounds="true"
@@ -13,22 +12,22 @@
     <TextView
         android:id="@+id/result_save_out"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space_size"
         android:background="@android:color/transparent"
         android:text="@string/result_text_before"
         android:textColor="@color/colorHelloText"
-        android:layout_marginTop="@dimen/space_size"
-        android:textSize="@dimen/result_size"/>
+        android:textSize="@dimen/result_size" />
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adViewSecond"
-
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-7279174300665421/8731793267">
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="LARGE_BANNER"
+        ads:adUnitId="ca-app-pub-7279174300665421/5527400646">
 
     </com.google.android.gms.ads.AdView>
-</LinearLayout>
+</RelativeLayout>

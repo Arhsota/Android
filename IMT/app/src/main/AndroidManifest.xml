@@ -23,7 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_second_activity"
+            android:parentActivityName=".MainActivity">
+        </activity>
 
     </application>
 

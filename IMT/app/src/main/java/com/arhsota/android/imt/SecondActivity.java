@@ -3,13 +3,14 @@ package com.arhsota.android.imt;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.firebase.analytics.FirebaseAnalytics;
+// import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,7 +20,7 @@ public class SecondActivity extends Activity {
 
     private TextView tvView;
     private AdView mAdViewSecond;
-    private FirebaseAnalytics mFirebaseAnalytics;
+ //   private FirebaseAnalytics mFirebaseAnalytics;
 
 
     @Override
@@ -27,7 +28,7 @@ public class SecondActivity extends Activity {
        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
+      //  MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
      //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
 
@@ -43,10 +44,11 @@ public class SecondActivity extends Activity {
         String str_Weight = getIntent().getStringExtra("Weight");
         String str_Length = getIntent().getStringExtra("Length");
         String str_Age = getIntent().getStringExtra("Age");
-        String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+        String str_Date = getIntent().getStringExtra("Date");
+      //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
 
 
-        tvView.setText(date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+        tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
 
         Toast.makeText(SecondActivity.this, "Saving...",
                 Toast.LENGTH_LONG).show();
