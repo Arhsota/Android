@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +13,10 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 // import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +25,14 @@ public class SecondActivity extends Activity {
 
     private TextView tvView;
     private AdView mAdViewSecond;
+
+    final String LOG_TAG = "myLogs";
+
+    final String FILENAME = "file";
+
+    final String DIR_SD = "MyFiles";
+    final String FILENAME_SD = "fileSD";
+    private String str_Date;
  //   private FirebaseAnalytics mFirebaseAnalytics;
 
 
@@ -44,13 +57,32 @@ public class SecondActivity extends Activity {
         String str_Weight = getIntent().getStringExtra("Weight");
         String str_Length = getIntent().getStringExtra("Length");
         String str_Age = getIntent().getStringExtra("Age");
-        String str_Date = getIntent().getStringExtra("Date");
+        str_Date = getIntent().getStringExtra("Date");
+        writeFile();
       //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+
+
 
 
         tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
 
         Toast.makeText(SecondActivity.this, "Saving...",
                 Toast.LENGTH_LONG).show();
+    }
+    void writeFile() {
+        try {
+            // отрываем поток для записи
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                    openFileOutput(FILENAME, MODE_PRIVATE)));
+            // пишем данные
+            bw.write(str_Date);
+            // закрываем поток
+            bw.close();
+            Log.d(LOG_TAG, "Файл записан");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
