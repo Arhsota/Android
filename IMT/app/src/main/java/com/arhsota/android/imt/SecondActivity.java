@@ -13,9 +13,11 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 // import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,6 +35,10 @@ public class SecondActivity extends Activity {
     final String DIR_SD = "MyFiles";
     final String FILENAME_SD = "fileSD";
     private String str_Date;
+    private String str_IMT;
+    private String str_Weight;
+    private String str_Length;
+    private String str_Age;
  //   private FirebaseAnalytics mFirebaseAnalytics;
 
 
@@ -53,15 +59,13 @@ public class SecondActivity extends Activity {
         tvView = findViewById(R.id.result_save_out);
 
 
-        String str_IMT = getIntent().getStringExtra("IMT");
-        String str_Weight = getIntent().getStringExtra("Weight");
-        String str_Length = getIntent().getStringExtra("Length");
-        String str_Age = getIntent().getStringExtra("Age");
+        str_IMT = getIntent().getStringExtra("IMT");
+        str_Weight = getIntent().getStringExtra("Weight");
+        str_Length = getIntent().getStringExtra("Length");
+        str_Age = getIntent().getStringExtra("Age");
         str_Date = getIntent().getStringExtra("Date");
         writeFile();
       //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
-
-
 
 
         tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
@@ -75,7 +79,7 @@ public class SecondActivity extends Activity {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
                     openFileOutput(FILENAME, MODE_PRIVATE)));
             // пишем данные
-            bw.write(str_Date);
+            bw.append(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
             // закрываем поток
             bw.close();
             Log.d(LOG_TAG, "Файл записан");
@@ -85,4 +89,5 @@ public class SecondActivity extends Activity {
             e.printStackTrace();
         }
     }
+
 }

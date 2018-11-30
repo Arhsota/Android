@@ -1,19 +1,32 @@
 package com.arhsota.android.imt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+// import com.google.firebase.analytics.FirebaseAnalytics;
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
-import static android.content.Context.MODE_PRIVATE;
+public class History extends Activity {
 
-public class History  {
+    private TextView tvHistory;
+    private AdView mAdViewSecond;
 
     final String LOG_TAG = "myLogs";
 
@@ -21,19 +34,59 @@ public class History  {
 
     final String DIR_SD = "MyFiles";
     final String FILENAME_SD = "fileSD";
+    private String str_Date;
+    private String str_IMT;
+    private String str_Weight;
+    private String str_Length;
+    private String str_Age;
+    private String str_History;
+    //   private FirebaseAnalytics mFirebaseAnalytics;
 
-    /** Called when the activity is first created. */
 
-  /*  void writeFile() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.history);
+
+        //  MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
+        //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
+
+        mAdViewSecond = findViewById(R.id.adViewSecond);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdViewSecond.loadAd(adRequest);
+
+        tvHistory = findViewById(R.id.result_history);
+
+
+      /*  str_IMT = getIntent().getStringExtra("IMT");
+        str_Weight = getIntent().getStringExtra("Weight");
+        str_Length = getIntent().getStringExtra("Length");
+        str_Age = getIntent().getStringExtra("Age");
+        str_Date = getIntent().getStringExtra("Date");
+*/
+        readFile();
+        //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+        tvHistory.setText (str_History + "History");
+
+
+     //   tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+
+        Toast.makeText(History.this, "Reading...",
+                Toast.LENGTH_LONG).show();
+    }
+    void readFile() {
         try {
-            // отрываем поток для записи
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-          /         openFileOutput(FILENAME, MODE_PRIVATE)));
-            // пишем данные
-            bw.write("Содержимое файла");
-            // закрываем поток
-            bw.close();
-            Log.d(LOG_TAG, "Файл записан");
+            // открываем поток для чтения
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    openFileInput(FILENAME)));
+            String str  = "";
+            // читаем содержимое
+            while ((str = br.readLine()) != null) {
+                Log.d(LOG_TAG, str);
+            }
+            str_History = str;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -41,5 +94,5 @@ public class History  {
         }
     }
 
-*/
 }
+

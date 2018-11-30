@@ -35,12 +35,16 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 //import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import static android.provider.Telephony.Mms.Part.FILENAME;
 //import com.google.android.gms.ads.reward.RewardedVideoAd;
 
 
@@ -84,6 +88,12 @@ public class MainActivity extends Activity {
     private   boolean fillTextL = false;
     private   boolean fillTextA = false;
 
+    final String LOG_TAG = "myLogs";
+
+    final String FILENAME = "file";
+
+    final String DIR_SD = "MyFiles";
+    final String FILENAME_SD = "fileSD";
 
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
@@ -126,6 +136,8 @@ public class MainActivity extends Activity {
 */
    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
         switch (item.getItemId()) {
             case R.id.action_create_save:
                 //Код, выполняемый при выборе элемента Create Save
@@ -158,10 +170,19 @@ public class MainActivity extends Activity {
                 startActivity(chosenIntent);
                 return true;
 
+            case R.id.action_history:
+                Intent intent_history = new Intent(this, History.class);
+                startActivity(intent_history);
+
+
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
+
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

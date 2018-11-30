@@ -26,6 +26,7 @@
 
     <string name="action_create_save">Сохранить</string>
     <string name="title_second_activity">Результаты</string>
+    <string name="title_history">История</string>
     <string name="action_share">Поделиться</string>
     <string name="action_history">История</string>
 

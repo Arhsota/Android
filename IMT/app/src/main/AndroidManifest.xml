@@ -28,6 +28,11 @@
             android:label="@string/title_second_activity"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity
+            android:name=".History"
+            android:label="@string/title_history"
+            android:parentActivityName=".MainActivity">
+        </activity>
 
     </application>
 

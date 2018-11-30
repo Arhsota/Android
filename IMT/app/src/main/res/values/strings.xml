@@ -25,6 +25,7 @@
 
     <string name="action_create_save">Save</string>
     <string name="title_second_activity">Your Result</string>
+    <string name="title_history">Your History</string>
     <string name="action_share">Share</string>
     <string name="action_history">History</string>
 
