@@ -17,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,8 @@ public class History extends Activity {
     private String str_Length;
     private String str_Age;
     private String str_History;
+    private String line;
+
     //   private FirebaseAnalytics mFirebaseAnalytics;
 
 
@@ -68,7 +71,7 @@ public class History extends Activity {
 */
         readFile();
         //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
-        tvHistory.setText (str_History + "History");
+        tvHistory.setText (str_History + "History" + line);
 
 
      //   tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
@@ -77,7 +80,7 @@ public class History extends Activity {
                 Toast.LENGTH_LONG).show();
     }
     void readFile() {
-        try {
+    /*    try {
             // открываем поток для чтения
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     openFileInput(FILENAME)));
@@ -92,7 +95,30 @@ public class History extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
+        try {
+            InputStream inputStream = openFileInput(FILENAME);
+
+            if (inputStream != null) {
+                InputStreamReader isr = new InputStreamReader(inputStream);
+                BufferedReader reader = new BufferedReader(isr);
+             //   String line;
+                StringBuilder builder = new StringBuilder();
+
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line + "\n");
+                 //   Log.d ("History","IMT");
+                }
+
+                inputStream.close();
+              //  mEditText.setText(builder.toString());
+            }
+        } catch (Throwable t) {
+            Toast.makeText(getApplicationContext(),
+                    "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
+        }
     }
+
 
 }
 

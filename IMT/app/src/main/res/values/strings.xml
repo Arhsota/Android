@@ -3,9 +3,9 @@
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
-    <string name="hint_txt_weight">Enter Your Weight in kg (Ex. 78)</string>
-    <string name="hint_txt_length">Enter Your Length in cm (Ex. 179)</string>
-    <string name="hint_txt_age">Enter Your Age(Ex. 49)</string>
+    <string name="hint_txt_weight">Weight,kg</string>
+    <string name="hint_txt_length">Length,cm</string>
+    <string name="hint_txt_age">Age</string>
 
 
     <string name="name_text_table_detail_weight_before">Your weight: </string>
@@ -16,12 +16,12 @@
     <string name="name_text_table_detail_length">Your length: %1$s</string>
     <string name="name_text_table_detail_age">Your age: %1$s</string>
     <string name="text_table1">Table of BMI according age groups</string>
-    <string name="text_table3">for 19 - 24 age   for BMI     	19 - 24</string>
-    <string name="text_table4">for 25 - 34 age   for BMI       	20 - 25</string>
-    <string name="text_table5">for 35 - 44 age   for BMI        21 - 26</string>
-    <string name="text_table6">for 45 - 54 age   for BMI       	22 - 27</string>
-    <string name="text_table7">for 55 - 64 age   for BMI        23 - 28</string>
-    <string name="text_table8">elder 65 age   for BMI     	24 - 29</string>
+    <string name="text_table3">19 - 24 age   for BMI     	19 - 24</string>
+    <string name="text_table4">25 - 34 age   for BMI       	20 - 25</string>
+    <string name="text_table5">35 - 44 age   for BMI        21 - 26</string>
+    <string name="text_table6">45 - 54 age   for BMI       	22 - 27</string>
+    <string name="text_table7">55 - 64 age   for BMI        23 - 28</string>
+    <string name="text_table8">65 -    age   for BMI     	24 - 29</string>
 
     <string name="action_create_save">Save</string>
     <string name="title_second_activity">Your Result</string>

@@ -4,9 +4,9 @@
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
-    <string name="hint_txt_weight">Введите вес в кг (Пример: 75)</string>
-    <string name="hint_txt_length">Введите рост в см (Пример: 178)</string>
-    <string name="hint_txt_age">Введите возраст (Пример: 48)</string>
+    <string name="hint_txt_weight">Вес,кг</string>
+    <string name="hint_txt_length">Рост,см</string>
+    <string name="hint_txt_age">Возраст</string>
 
     <string name="name_text_table_detail_weight_before">Ваш вес: </string>
     <string name="name_text_table_detail_length_before">Ваш рост: </string>

@@ -77,7 +77,7 @@ public class SecondActivity extends Activity {
         try {
             // отрываем поток для записи
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-                    openFileOutput(FILENAME, MODE_PRIVATE)));
+                    openFileOutput(FILENAME, MODE_APPEND)));
             // пишем данные
             bw.append(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
             // закрываем поток
