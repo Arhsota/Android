@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ИМТ 1.9</string>
+    <string name="app_name">ИМТ 2.0</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
     <string name="hint_txt_weight">Вес,кг</string>
     <string name="hint_txt_length">Рост,см</string>
-    <string name="hint_txt_age">Возраст</string>
+    <string name="hint_txt_age">Возр.</string>
 
-    <string name="name_text_table_detail_weight_before">Ваш вес: </string>
-    <string name="name_text_table_detail_length_before">Ваш рост: </string>
-    <string name="name_text_table_detail_age_before">Ваш возраст: </string>
 
-    <string name="name_text_table_detail_weight">Ваш вес: %1$s</string>
-    <string name="name_text_table_detail_length">Ваш рост: %1$s</string>
-    <string name="name_text_table_detail_age">Ваш возраст: %1$s</string>
 
     <string name="text_table1">Таблица ИМТ по возрастным группам</string>
-    <string name="text_table3"> для 19 - 24 лет    ИМТ     	19 - 24 </string>
-    <string name="text_table4"> для 25 - 34    лет   ИМТ        	20 - 25 </string>
-    <string name="text_table5"> для 35 - 44	  лет    ИМТ           21 - 26 </string>
-    <string name="text_table6"> для 45 - 54    лет   ИМТ        	22 - 27 </string>
-    <string name="text_table7"> для 55 - 64	  лет     ИМТ           23 - 28 </string>
-    <string name="text_table8"> старше 65  лет     ИМТ         	24 - 29 </string>
+    <string name="text_table3">19 до 24 лет ваш ИМТ должен быть 19 до 24 </string>
+    <string name="text_table4">25 до 34 лет ваш ИМТ должен быть	20 до 25 </string>
+    <string name="text_table5">35 до 44 лет ваш ИМТ должен быть 21 до 26 </string>
+    <string name="text_table6">45 до 54 лет ваш ИМТ должен быть	22 до 27 </string>
+    <string name="text_table7">55 до 64 лет ваш ИМТ должен быть 23 до 28 </string>
+    <string name="text_table8">65 и старше ваш ИМТ должен быть	24 до 29 </string>
+
 
     <string name="action_create_save">Сохранить</string>
     <string name="title_second_activity">Результаты</string>
     <string name="title_history">История</string>
     <string name="action_share">Поделиться</string>
     <string name="action_history">История</string>
+
+    <string name="too_young">Вы слишком молоды, чтоб беспокоится</string>
 
 </resources>

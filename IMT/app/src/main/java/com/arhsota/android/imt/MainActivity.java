@@ -12,9 +12,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.inputmethodservice.Keyboard;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,8 +21,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ShareActionProvider;
@@ -35,16 +33,11 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 //import com.google.firebase.analytics.FirebaseAnalytics;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import static android.provider.Telephony.Mms.Part.FILENAME;
+
 //import com.google.android.gms.ads.reward.RewardedVideoAd;
 
 
@@ -58,7 +51,7 @@ public class MainActivity extends Activity {
  //   private RewardedVideoAd mRewardedVideoAd;
 
     private TextView textView;
-    private TextView textViewW;
+ /*   private TextView textViewW;
     private TextView textViewL;
     private TextView textViewAge;
     private TextView textViewTable3;
@@ -67,6 +60,8 @@ public class MainActivity extends Activity {
     private TextView textViewTable6;
     private TextView textViewTable7;
     private TextView textViewTable8;
+    */
+    private TextView textViewTable;
     private EditText editTextW;
     private EditText editTextL;
     private EditText editTextAge;
@@ -214,7 +209,8 @@ public class MainActivity extends Activity {
 */
 
         textView = findViewById(R.id.result_out);
-        textViewAge = findViewById(R.id.text_table_age);
+        textViewTable = findViewById(R.id.text_table);
+       /* textViewAge = findViewById(R.id.text_table_age);
         textViewW = findViewById(R.id.text_table_weight);
         textViewL = findViewById(R.id.text_table_length);
         textViewTable3 = findViewById(R.id.text_table3);
@@ -223,6 +219,7 @@ public class MainActivity extends Activity {
         textViewTable6 = findViewById(R.id.text_table6);
         textViewTable7 = findViewById(R.id.text_table7);
         textViewTable8 = findViewById(R.id.text_table8);
+        */
         final Button button = findViewById(R.id.calculate_btn);
         editTextW = findViewById(R.id.weight);
         editTextL = findViewById(R.id.length);
@@ -341,76 +338,52 @@ public class MainActivity extends Activity {
             myresult = myweight/(mylength * mylength); //calculating IMT
             str_IMT =  String.format("%.2f",myresult); // making string format
 
-            textViewW.setText(getString(R.string.name_text_table_detail_weight,weight));
-            textViewL.setText(getString(R.string.name_text_table_detail_length,length));
+          //  textViewW.setText(getString(R.string.name_text_table_detail_weight,weight));
+         //   textViewL.setText(getString(R.string.name_text_table_detail_length,length));
             // highlighting age
-            textViewAge.setText(getString(R.string.name_text_table_detail_age,age));
-            textViewAge.setBackgroundColor(Color.GRAY);
+         //   textViewAge.setText(getString(R.string.name_text_table_detail_age,age));
+         //   textViewAge.setBackgroundColor(Color.GRAY);
 //            highlighting age tables
         //    if (myage >=19){
 //                textViewTable3.setBackgroundColor(Color.GRAY);
 //            }
             if (myage < 19) {
-                Toast.makeText(MainActivity.this, "Too young, to be in table of age",
+                Toast.makeText(MainActivity.this, R.string.too_young,
                       Toast.LENGTH_LONG).show();
-                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
 
             }
             if ((myage >= 19) && (myage <= 24)){
+
+                textViewTable.setText( R.string.text_table3);
+
+                /*
                 textViewTable3.setBackgroundColor(Color.GRAY);
                 textViewTable4.setBackgroundColor(Color.TRANSPARENT);
                 textViewTable5.setBackgroundColor(Color.TRANSPARENT);
                 textViewTable6.setBackgroundColor(Color.TRANSPARENT);
                 textViewTable7.setBackgroundColor(Color.TRANSPARENT);
                 textViewTable8.setBackgroundColor(Color.TRANSPARENT);
-
+                */
             }
             if ((myage > 24) && (myage <= 34)){
-                textViewTable4.setBackgroundColor(Color.GRAY);
-                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
-
+                textViewTable.setText(R.string.text_table4);
             }
             if ((myage > 34) && (myage <= 44)){
-                textViewTable5.setBackgroundColor(Color.GRAY);
-                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable.setText(R.string.text_table5);
+
             }
             if ((myage > 44) && (myage <= 54)){
-                textViewTable6.setBackgroundColor(Color.GRAY);
-                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable.setText(R.string.text_table6);
+
             }
             if ((myage > 54) && (myage <= 64)){
-                textViewTable7.setBackgroundColor(Color.GRAY);
-                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable.setText(R.string.text_table7);
+
             }
 
             if (myage > 64) {
-                textViewTable8.setBackgroundColor(Color.GRAY);
-                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable3.setBackgroundColor(Color.TRANSPARENT);
+                textViewTable.setText(R.string.text_table8);
+
             }
 
 

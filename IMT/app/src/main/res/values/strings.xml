@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI 1.9</string>
+    <string name="app_name">BMI 2.0</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
@@ -8,25 +8,20 @@
     <string name="hint_txt_age">Age</string>
 
 
-    <string name="name_text_table_detail_weight_before">Your weight: </string>
-    <string name="name_text_table_detail_length_before">Your length: </string>
-    <string name="name_text_table_detail_age_before">Your age: </string>
 
-    <string name="name_text_table_detail_weight">Your weight: %1$s</string>
-    <string name="name_text_table_detail_length">Your length: %1$s</string>
-    <string name="name_text_table_detail_age">Your age: %1$s</string>
     <string name="text_table1">Table of BMI according age groups</string>
-    <string name="text_table3">19 - 24 age   for BMI     	19 - 24</string>
-    <string name="text_table4">25 - 34 age   for BMI       	20 - 25</string>
-    <string name="text_table5">35 - 44 age   for BMI        21 - 26</string>
-    <string name="text_table6">45 - 54 age   for BMI       	22 - 27</string>
-    <string name="text_table7">55 - 64 age   for BMI        23 - 28</string>
-    <string name="text_table8">65 -    age   for BMI     	24 - 29</string>
+    <string name="text_table3">19 to 24 age you should have 19 to 24 BMI</string>
+    <string name="text_table4">25 to 34 age you should have	20 to 25 BMI</string>
+    <string name="text_table5">35 to 44 age you should have 21 to 26 BMI</string>
+    <string name="text_table6">45 to 54 age you should have 22 to 27 BMI</string>
+    <string name="text_table7">55 to 64 age you should have 23 to 28 BMI</string>
+    <string name="text_table8">65 and elder age you should have 24 to 29</string>
 
     <string name="action_create_save">Save</string>
     <string name="title_second_activity">Your Result</string>
     <string name="title_history">Your History</string>
     <string name="action_share">Share</string>
     <string name="action_history">History</string>
+    <string name="too_young">Too young, to be in table of age</string>
 
 </resources>
