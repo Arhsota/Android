@@ -2,7 +2,7 @@
 <resources>
     <dimen name="hello_text_size">20sp</dimen>
     <dimen name="text_table_size">14sp</dimen>
-    <dimen name="space_size">8dp</dimen>
+    <dimen name="text_size_second_activity">20sp</dimen>
     <dimen name="vertical_size">20dp</dimen>
     <dimen name="result_size">24dp</dimen>
     <dimen name="button_width">270dp</dimen>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,16 +71,16 @@ public class History extends Activity {
 */
         readFile();
         //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
-        tvHistory.setText (str_History + "History" + line);
+        tvHistory.setText (str_History );
 
 
      //   tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
 
-        Toast.makeText(History.this, "Reading...",
+        Toast.makeText(History.this, R.string.reading,
                 Toast.LENGTH_LONG).show();
     }
     void readFile() {
-    /*    try {
+       try {
             // открываем поток для чтения
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     openFileInput(FILENAME)));
@@ -87,15 +88,16 @@ public class History extends Activity {
             // читаем содержимое
             while ((str = br.readLine()) != null) {
                 Log.d(LOG_TAG, str);
+                str_History = str;
             }
-            str_History = str;
+          //  str_History = str;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
-        try {
+
+   /*     try {
             InputStream inputStream = openFileInput(FILENAME);
 
             if (inputStream != null) {
@@ -105,7 +107,7 @@ public class History extends Activity {
                 StringBuilder builder = new StringBuilder();
 
                 while ((line = reader.readLine()) != null) {
-                    builder.append(line + "\n");
+                      builder.append(line + "\n");
                  //   Log.d ("History","IMT");
                 }
 
@@ -116,7 +118,9 @@ public class History extends Activity {
             Toast.makeText(getApplicationContext(),
                     "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
         }
+        */
     }
+
 
 
 }

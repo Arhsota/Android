@@ -1,7 +1,8 @@
 package com.arhsota.android.imt;
 
-// version 1.9
+// version 2.1
 // changes in this version - second activity with correspondent features and banner on every activity
+// using constraint layout
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
 // Sevastyanov Andrey, 2018, september
@@ -69,6 +70,7 @@ public class MainActivity extends Activity {
     private   double myweight;
     // str_XXX for intent
     private   String str_IMT ;
+    private   String str_IMT_mail ;
 
     private   String str_Weight= "0";
     private   String str_Length = "0";
@@ -143,6 +145,7 @@ public class MainActivity extends Activity {
                 intent.putExtra("Length", str_Length);
                 intent.putExtra("Age", str_Age);
                 intent.putExtra("Date", str_Date);
+             //   str_IMT_mail= str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age;
                 startActivity(intent);
             //    textViewW.setText(getString(R.string.name_text_table_detail_weight,str_weight));
 
@@ -158,7 +161,7 @@ public class MainActivity extends Activity {
               */
                 Intent intent_mes = new Intent(Intent.ACTION_SEND);
                 intent_mes.setType("text/plain");
-                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date +" "+str_IMT);
+                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
 //          page 143 always choose intent
                 String chooserTitle = "Sharing";
                 Intent chosenIntent = Intent.createChooser(intent_mes, chooserTitle);
@@ -396,12 +399,15 @@ public class MainActivity extends Activity {
                 textView.setTextColor(Color.RED);
                 }
             if ((myresult >= 19) && (myresult <=24)) {
+                textView.setTextColor(Color.BLACK);
+            }
+            if ((myresult > 25) && (myresult <= 30)) {
                 textView.setTextColor(Color.BLUE);
             }
-            if ((myresult > 25) && (myresult <= 34)) {
-                textView.setTextColor(Color.BLUE);
+            if ((myresult > 30) && (myresult <= 33)) {
+                textView.setTextColor(Color.MAGENTA);
             }
-                        if ((myresult > 34)) {
+                        if ((myresult > 33)) {
                 textView.setTextColor(Color.RED);
             }
 

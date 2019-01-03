@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ИМТ 2.0</string>
+    <string name="app_name">ИМТ 2.1</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
@@ -26,5 +26,8 @@
     <string name="action_history">История</string>
 
     <string name="too_young">Вы слишком молоды, чтоб беспокоится</string>
+
+    <string name="saving">Записываю...</string>
+    <string name="reading">Считываю...</string>
 
 </resources>

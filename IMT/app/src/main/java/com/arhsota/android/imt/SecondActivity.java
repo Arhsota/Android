@@ -39,6 +39,7 @@ public class SecondActivity extends Activity {
     private String str_Weight;
     private String str_Length;
     private String str_Age;
+    private String str_Main_Output;
  //   private FirebaseAnalytics mFirebaseAnalytics;
 
 
@@ -64,22 +65,23 @@ public class SecondActivity extends Activity {
         str_Length = getIntent().getStringExtra("Length");
         str_Age = getIntent().getStringExtra("Age");
         str_Date = getIntent().getStringExtra("Date");
+        str_Main_Output = str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age;
         writeFile();
       //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
 
 
-        tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+        tvView.setText(str_Main_Output);
 
-        Toast.makeText(SecondActivity.this, "Saving...",
+        Toast.makeText(SecondActivity.this, R.string.saving,
                 Toast.LENGTH_LONG).show();
     }
     void writeFile() {
         try {
             // отрываем поток для записи
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-                    openFileOutput(FILENAME, MODE_APPEND)));
+                    openFileOutput(FILENAME, MODE_PRIVATE)));
             // пишем данные
-            bw.append(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+            bw.append(str_Main_Output);
             // закрываем поток
             bw.close();
             Log.d(LOG_TAG, "Файл записан");

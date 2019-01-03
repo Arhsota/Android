@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI 2.0</string>
+    <string name="app_name">BMI 2.1</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
@@ -23,5 +23,7 @@
     <string name="action_share">Share</string>
     <string name="action_history">History</string>
     <string name="too_young">Too young, to be in table of age</string>
+    <string name="saving">Saving...</string>
+    <string name="reading">Reading...</string>
 
 </resources>
