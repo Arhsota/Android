@@ -24,4 +24,11 @@
     <dimen name="text_size_start_button">10sp</dimen>
     <dimen name="margin_top_radio_button">8dp</dimen>
     <dimen name="text_size_button_adjust">14sp</dimen>
+    <dimen name="text_size_reset_score_button">50sp</dimen>
+    <dimen name="margin_start_button_reset_score">8dp</dimen>
+    <dimen name="margin_left_button_reset_score">8dp</dimen>
+    <dimen name="margin_top_button_reset_score">8dp</dimen>
+    <dimen name="margin_end_button_reset_score">8dp</dimen>
+    <dimen name="margin_right_button_reset_score">8dp</dimen>
+    <dimen name="margin_bottom_button_reset_score">8dp</dimen>
 </resources>
