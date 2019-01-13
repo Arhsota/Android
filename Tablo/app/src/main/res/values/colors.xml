@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ca3377</color>
+    <color name="colorTimer">#2b4609</color>
+    <color name="colorScore">#ca3377</color>
+    <color name="colorRadioButton">#0d0c0c</color>
+    <color name="colorStartStopButton">#c3ca3d33</color>
+
+</resources>
