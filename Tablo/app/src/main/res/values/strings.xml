@@ -1,6 +1,12 @@
 <resources>
-    <string name="app_name">Tablo</string>
+    <string name="app_name">Tablo 1.0</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Reset</string>
+    <string name="player_2">Player 2</string>
+    <string name="player_1">Player 1</string>
+    <string name="_5_min">5 min</string>
+    <string name="_10_min">10 min</string>
+    <string name="adj_score">Adj Score</string>
+    <string name="reset_score">Reset Score</string>
 </resources>
