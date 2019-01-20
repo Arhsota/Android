@@ -7,6 +7,6 @@
     <string name="player_1">Игрок 1</string>
     <string name="_5_min">5 мин</string>
     <string name="_10_min">10 мин</string>
-    <string name="adj_score">Кор. Счета</string>
+    <string name="adj_score"> Кор. </string>
     <string name="reset_score">Сброс Счета</string>
 </resources>

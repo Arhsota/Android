@@ -5,7 +5,8 @@
     <color name="colorAccent">#ca3377</color>
     <color name="colorTimer">#2b4609</color>
     <color name="colorScore">#ca3377</color>
-    <color name="colorRadioButton">#0d0c0c</color>
+    <color name="colorRadioButton">#84B8B8</color>
     <color name="colorStartStopButton">#c3ca3d33</color>
+    <color name="colorBackground">#0d0c0c</color>
 
 </resources>

@@ -21,14 +21,19 @@ import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
     //Количество секунд на секундомере
-    private int seconds = 300;
-    private int secondsChoice = 300;
+    private int seconds = 105;
+    private int secondsChoice = 105;
+    private int secs100 = 60;
     //Score
     private int scorePlayer1 = 0;
     private int scorePlayer2 = 0;
     //Секундомер работает?
     private boolean running;
     private boolean wasRunning;
+
+    //Clicks on button time_view
+    private boolean first_click = false;
+    private boolean second_click = false;
 
     private RadioButton radioButton5;
     private RadioButton radioButton10;
@@ -123,20 +128,30 @@ public class MainActivity extends AppCompatActivity {
                 int hours = seconds / 3600;
                 int minutes = (seconds % 3600) / 60;
                 int secs = seconds % 60;
-                String time = String.format("%d:%02d:%02d",hours, minutes, secs);
+
+                String time = String.format("%02d:%02d", minutes, secs);
+                // for the last minute
+                String time_min = String.format("%02d:%02d", secs, secs100);
                 if (seconds == 0) {
                     Toast.makeText(MainActivity.this, "Game OVER",
                             Toast.LENGTH_SHORT).show();
                     Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                     MediaPlayer mp = MediaPlayer.create(getApplicationContext(), notification);
                     mp.start();
-                    }
-                timeView.setText(time);
+                }
+                if (seconds > 60) {
+                    timeView.setText(time);
+
+                } else {
+                    timeView.setText(time_min);
+                    secs100--;
+                }
                 if ((running) && (seconds > 0)) {
                     seconds--;
+
+
                 }
                 handler.postDelayed(this, 1000);
-
             }
         });
     }
@@ -164,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.radioButton5:
                 if (checked) {
-                    secondsChoice = 300;
+                    secondsChoice = 105;
                     radioButton10.setChecked(false);
 
                 }
@@ -214,5 +229,21 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
         String strScorePlayer2 = String.format("%d",scorePlayer2);
         scoreViewPlayer2.setText(strScorePlayer2);
+    }
+
+    //starting or not timer depending on clicks and timer in work or not
+    public void onClickWorkTimer(View view) {
+
+
+     if (!first_click) {
+         running = true;
+         first_click = true;
+     }
+
+        else {
+            running = false;
+         first_click = false;
+        }
+
     }
 }
