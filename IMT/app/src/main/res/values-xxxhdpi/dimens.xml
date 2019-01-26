@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <dimen name="hello_text_size">20sp</dimen>
+    <dimen name="hello_text_size">28sp</dimen>
     <dimen name="text_table_size">16sp</dimen>
     <dimen name="text_size_second_activity">20sp</dimen>
     <dimen name="vertical_size">20dp</dimen>
     <dimen name="button_width">270dp</dimen>
     <dimen name="result_size">18dp</dimen>
+    <dimen name="input_parametres_top">20dp</dimen>
+    <dimen name="ad_margin_top">100dp</dimen>
+    <dimen name="ad_margin_bottom">8dp</dimen>
 </resources>

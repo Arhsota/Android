@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ИМТ 2.1</string>
+    <string name="app_name">ИМТ 2.2</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
@@ -11,12 +11,12 @@
 
 
     <string name="text_table1">Таблица ИМТ по возрастным группам</string>
-    <string name="text_table3">19 до 24 лет ваш ИМТ должен быть 19 до 24 </string>
-    <string name="text_table4">25 до 34 лет ваш ИМТ должен быть	20 до 25 </string>
-    <string name="text_table5">35 до 44 лет ваш ИМТ должен быть 21 до 26 </string>
-    <string name="text_table6">45 до 54 лет ваш ИМТ должен быть	22 до 27 </string>
-    <string name="text_table7">55 до 64 лет ваш ИМТ должен быть 23 до 28 </string>
-    <string name="text_table8">65 и старше ваш ИМТ должен быть	24 до 29 </string>
+    <string name="text_table3">от 19 до 24 лет, ваш ИМТ должен быть в диапазоне от 19 до 24 </string>
+    <string name="text_table4">от 25 до 34 лет, ваш ИМТ должен быть	в диапазоне от 20 до 25 </string>
+    <string name="text_table5">от 35 до 44 лет, ваш ИМТ должен быть в диапазоне от 21 до 26 </string>
+    <string name="text_table6">от 45 до 54 лет, ваш ИМТ должен быть	в диапазоне от 22 до 27 </string>
+    <string name="text_table7">от 55 до 64 лет, ваш ИМТ должен быть в диапазоне от 23 до 28 </string>
+    <string name="text_table8">от 65 и старше, ваш ИМТ должен быть в диапазоне от 24 до 29 </string>
 
 
     <string name="action_create_save">Сохранить</string>

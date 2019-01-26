@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="input_parametres_top">16dp</dimen>
+    <dimen name="ad_margin_top">100dp</dimen>
+    <dimen name="ad_margin_bottom">8dp</dimen>
+</resources>

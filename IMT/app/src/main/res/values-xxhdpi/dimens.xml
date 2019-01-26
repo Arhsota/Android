@@ -2,6 +2,11 @@
 <resources>
     <dimen name="hello_text_size">28sp</dimen>
     <dimen name="text_table_size">14sp</dimen>
+    <dimen name="text_size_second_activity">20sp</dimen>
+    <dimen name="vertical_size">20dp</dimen>
     <dimen name="space_size">8dp</dimen>
     <dimen name="weight_size">324dp</dimen>
+    <dimen name="input_parametres_top">20dp</dimen>
+    <dimen name="ad_margin_top">200dp</dimen>
+    <dimen name="ad_margin_bottom">4dp</dimen>
 </resources>

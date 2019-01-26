@@ -2,10 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="73dp"
-    tools:context=".MainActivity">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="73dp">
 
     <TextView
         android:id="@+id/result_out"
@@ -31,7 +31,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/input_parametres_top"
         android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_weight"
         android:inputType="numberDecimal"
@@ -46,12 +46,13 @@
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/input_parametres_top"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/colorWeightBackground"
         android:hint="@string/hint_txt_length"
         android:inputType="number"
+        android:textAllCaps="false"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/age"
@@ -62,7 +63,7 @@
         android:id="@+id/age"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/input_parametres_top"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/colorWeightBackground"
@@ -82,19 +83,22 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="@dimen/ad_margin_top"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/ad_margin_bottom"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-7279174300665421/8731793267"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent">
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/text_table">
 
     </com.google.android.gms.ads.AdView>
 
     <Button
         android:id="@+id/calculate_btn"
+        style="@android:style/Widget.Button.Inset"
         android:layout_width="@dimen/button_width"
         android:layout_height="94dp"
         android:layout_marginStart="8dp"
@@ -112,10 +116,13 @@
         android:id="@+id/text_table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculate_btn" />
 
