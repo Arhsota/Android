@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_top_right_score">50dp</dimen>
-    <dimen name="margin_top_left_score">50dp</dimen>
-    <dimen name="margin_top_time_view">170dp</dimen>
-    <dimen name="text_size_score">150sp</dimen>
-    <dimen name="text_size_time_view">200sp</dimen>
+    <dimen name="margin_top_time_view">180dp</dimen>
+    <dimen name="text_size_score">250sp</dimen>
+    <dimen name="text_size_time_view">310sp</dimen>
     <dimen name="margin_right_score">50dp</dimen>
     <dimen name="margin_end_right_score">50dp</dimen>
     <dimen name="radio_button_top">16dp</dimen>
     <dimen name="start_button_top">16dp</dimen>
     <dimen name="text_size_radio_button">34sp</dimen>
-    <dimen name="start_button_width">120dp</dimen>
+    <dimen name="start_button_width">250dp</dimen>
     <dimen name="start_button_height">57dp</dimen>
     <dimen name="button_score_minus1">12dp</dimen>
     <dimen name="button_score_minus2">16dp</dimen>
@@ -24,7 +22,7 @@
     <dimen name="text_size_start_button">24sp</dimen>
     <dimen name="margin_top_radio_button">8dp</dimen>
     <dimen name="text_size_button_adjust">14sp</dimen>
-    <dimen name="text_size_reset_score_button">20sp</dimen>
+    <dimen name="text_size_reset_score_button">24sp</dimen>
     <dimen name="margin_start_button_reset_score">8dp</dimen>
     <dimen name="margin_left_button_reset_score">8dp</dimen>
     <dimen name="margin_top_button_reset_score">8dp</dimen>
@@ -33,4 +31,11 @@
     <dimen name="margin_bottom_button_reset_score">8dp</dimen>
     <dimen name="margin_start_5min_button">8dp</dimen>
     <dimen name="margin_left_5min_button">8dp</dimen>
+    <dimen name="rest_score_button_end">8dp</dimen>
+    <dimen name="margin_top_minus1">180dp</dimen>
+    <dimen name="margin_top_score">250dp</dimen>
+    <dimen name="margin_end_score_adj">692dp</dimen>
+    <dimen name="button_score_adj_width">69dp</dimen>
+    <dimen name="button_score_adj_height">37dp</dimen>
+    <dimen name="margin_start_left_score">40dp</dimen>
 </resources>

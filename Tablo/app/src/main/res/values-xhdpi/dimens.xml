@@ -33,4 +33,11 @@
     <dimen name="margin_bottom_button_reset_score">8dp</dimen>
     <dimen name="margin_start_5min_button">8dp</dimen>
     <dimen name="margin_left_5min_button">8dp</dimen>
+    <dimen name="rest_score_button_end">44dp</dimen>
+    <dimen name="margin_top_minus1">161dp</dimen>
+    <dimen name="margin_top_score">176dp</dimen>
+    <dimen name="margin_end_score_adj">692dp</dimen>
+    <dimen name="button_score_adj_width">69dp</dimen>
+    <dimen name="button_score_adj_height">37dp</dimen>
+    <dimen name="margin_start_left_score">40dp</dimen>
 </resources>

@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_top_time_view">100dp</dimen>
-    <dimen name="margin_top_left_score">200dp</dimen>
-    <dimen name="margin_top_right_score">200dp</dimen>
-    <dimen name="text_size_score">286sp</dimen>
-    <dimen name="text_size_time_view">86sp</dimen>
+    <dimen name="margin_top_time_view">348dp</dimen>
+     <dimen name="text_size_score">106sp</dimen>
+    <dimen name="text_size_time_view">206sp</dimen>
     <dimen name="margin_right_score">50dp</dimen>
     <dimen name="margin_end_right_score">50dp</dimen>
     <dimen name="radio_button_top">16dp</dimen>
     <dimen name="start_button_top">16dp</dimen>
     <dimen name="text_size_radio_button">34sp</dimen>
-    <dimen name="start_button_width">120dp</dimen>
-    <dimen name="start_button_height">57dp</dimen>
-    <dimen name="button_score_minus1">12dp</dimen>
-    <dimen name="button_score_minus2">16dp</dimen>
+    <dimen name="start_button_width">210dp</dimen>
+    <dimen name="start_button_height">75dp</dimen>
     <dimen name="margin_top_button_p1">8dp</dimen>
     <dimen name="margin_top_button_p2">8dp</dimen>
     <dimen name="text_size_button_player">24sp</dimen>
@@ -24,7 +20,7 @@
     <dimen name="text_size_start_button">24sp</dimen>
     <dimen name="margin_top_radio_button">16dp</dimen>
     <dimen name="text_size_button_adjust">14sp</dimen>
-    <dimen name="text_size_reset_score_button">20sp</dimen>
+    <dimen name="text_size_reset_score_button">24sp</dimen>
     <dimen name="margin_start_button_reset_score">8dp</dimen>
     <dimen name="margin_left_button_reset_score">8dp</dimen>
     <dimen name="margin_top_button_reset_score">8dp</dimen>
@@ -33,4 +29,11 @@
     <dimen name="margin_bottom_button_reset_score">8dp</dimen>
     <dimen name="margin_start_5min_button">8dp</dimen>
     <dimen name="margin_left_5min_button">8dp</dimen>
+    <dimen name="rest_score_button_end">44dp</dimen>
+    <dimen name="margin_top_minus1">161dp</dimen>
+    <dimen name="margin_top_score">360dp</dimen>
+    <dimen name="margin_end_score_adj">692dp</dimen>
+    <dimen name="button_score_adj_width">69dp</dimen>
+    <dimen name="button_score_adj_height">37dp</dimen>
+    <dimen name="margin_start_left_score">40dp</dimen>
 </resources>

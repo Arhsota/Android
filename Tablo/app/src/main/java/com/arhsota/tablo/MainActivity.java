@@ -4,11 +4,12 @@
 
 package com.arhsota.tablo;
 
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -19,10 +20,10 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     //Количество секунд на секундомере
-    private int seconds = 105;
-    private int secondsChoice = 105;
+    private int seconds = 305;
+    private int secondsChoice = 305;
     private int secs100 = 60;
     //Score
     private int scorePlayer1 = 0;
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
         MobileAds.initialize(this,
                 "ca-app-pub-7279174300665421~2703649226");
+
+
+        //test ad ca-app-pub-3940256099942544/6300978111
+        //real ad ca-app-pub-7279174300665421/3496010231
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -112,8 +117,13 @@ public class MainActivity extends AppCompatActivity {
     }
     //Обнулить секундомер при щелчке на кнопке Reset.
     public void onClickReset(View view) {
+        final TextView timeView = (TextView) findViewById(R.id.time_view);
+        int minutes = (seconds % 3600) / 60;
+        int secs = seconds % 60;
         running = false;
         seconds = secondsChoice;
+        String time = String.format("%02d:%02d", minutes, secs);
+        timeView.setText(time);
     }
 
     private void runTimer() {
@@ -131,23 +141,23 @@ public class MainActivity extends AppCompatActivity {
 
                 String time = String.format("%02d:%02d", minutes, secs);
                 // for the last minute
-                String time_min = String.format("%02d:%02d", secs, secs100);
+            //    String time_min = String.format("%02d:%02d", secs, secs100);
                 if (seconds == 0) {
                     Toast.makeText(MainActivity.this, "Game OVER",
                             Toast.LENGTH_SHORT).show();
                     Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                     MediaPlayer mp = MediaPlayer.create(getApplicationContext(), notification);
                     mp.start();
+                    running = false;
+                    first_click = false;
                 }
-                if (seconds > 60) {
+                if ((running) && (seconds >= 0)) {
+                    seconds--;
                     timeView.setText(time);
 
-                } else {
-                    timeView.setText(time_min);
-                    secs100--;
-                }
-                if ((running) && (seconds > 0)) {
-                    seconds--;
+
+
+
 
 
                 }
@@ -179,14 +189,14 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.radioButton5:
                 if (checked) {
-                    secondsChoice = 105;
+                    secondsChoice = 305;
                     radioButton10.setChecked(false);
 
                 }
                 break;
             case R.id.radioButton10:
                 if (checked) {
-                    secondsChoice = 600;
+                    secondsChoice = 605;
                     radioButton5.setChecked(false);
                 }
                 break;

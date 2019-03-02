@@ -21,15 +21,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="348dp"
+        android:layout_marginTop="@dimen/margin_top_time_view"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fontFamily="@font/digital7_mono"
         android:gravity="center"
         android:onClick="onClickWorkTimer"
-        android:text="0"
+        android:text="00:00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorTimer"
+        android:background="@color/colorBackground"
         android:textSize="@dimen/text_size_time_view"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,79 +38,84 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/leftScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/time_view"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/margin_top_score"
         android:fontFamily="@font/digital7_mono"
         android:gravity="center"
         android:inputType="number"
+        android:onClick="onClickPlayer1"
         android:text="0"
         android:textColor="@color/colorScore"
+        android:background="@color/colorBackground"
         android:textSize="@dimen/text_size_score"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="259dp" />
+        app:layout_constraintEnd_toStartOf="@+id/time_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/rightScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/time_view"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/margin_top_score"
         android:fontFamily="@font/digital7_mono"
         android:gravity="center"
         android:inputType="number"
+        android:onClick="onClickPlayer2"
         android:text="0"
         android:textColor="@color/colorScore"
+        android:background="@color/colorBackground"
         android:textSize="@dimen/text_size_score"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="256dp" />
+        app:layout_constraintStart_toEndOf="@+id/time_view"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_reset_score"
-        style="@android:style/Widget.DeviceDefault.Button.Inset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        style="@android:style/Widget.Holo.Light.Button.Inset"
+        android:layout_width="@dimen/start_button_width"
+        android:layout_height="@dimen/start_button_height"
+        android:layout_marginTop="@dimen/start_button_top"
+        android:layout_marginEnd="@dimen/rest_score_button_end"
+        android:layout_marginRight="@dimen/rest_score_button_end"
         android:onClick="onClickResetScore"
         android:text="@string/reset_score"
         android:textSize="@dimen/text_size_reset_score_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/reset_button"
+        app:layout_constraintEnd_toStartOf="@+id/reset_button"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
         android:id="@+id/reset_button"
+        style="@android:style/Widget.Holo.Light.Button.Inset"
         android:layout_width="@dimen/start_button_width"
         android:layout_height="@dimen/start_button_height"
-        android:layout_below="@+id/stop_button"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="16dp"
+
+        android:layout_marginTop="@dimen/start_button_top"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:onClick="onClickReset"
         android:text="@string/reset"
-
         android:textSize="@dimen/text_size_start_button"
-        app:layout_constraintStart_toEndOf="@+id/radioButton10"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
         android:id="@+id/buttonPlayer1"
+        style="@android:style/Widget.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/rightScore"
@@ -117,7 +123,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginStart="@dimen/margin_start_player1"
         android:layout_marginLeft="@dimen/margin_left_player1"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_left_player1"
         android:layout_marginBottom="8dp"
         android:onClick="onClickPlayer1"
         android:text="@string/player_1"
@@ -128,13 +134,14 @@
 
     <Button
         android:id="@+id/buttonPlayer2"
+        style="@android:style/Widget.Button.Inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/rightScore"
         android:layout_alignBottom="@+id/buttonPlayer1"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/margin_start_player1"
+        android:layout_marginEnd="@dimen/margin_left_player1"
+        android:layout_marginRight="@dimen/margin_left_player1"
         android:layout_marginBottom="8dp"
         android:onClick="onClickPlayer2"
         android:text="@string/player_2"
@@ -142,7 +149,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rightScore" />
-
 
 
     <RadioButton
@@ -177,31 +183,36 @@
 
     <Button
         android:id="@+id/buttonScoreMinus1"
-        style="@android:style/Widget.DeviceDefault.Light.Button.Inset"
-        android:layout_width="69dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        style="@android:style/Widget.Holo.Light.Button.Inset"
+        android:layout_width="@dimen/button_score_adj_width"
+        android:layout_height="@dimen/button_score_adj_height"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
         android:onClick="onClickScoreAdj1"
         android:text="@string/adj_score"
         android:textSize="@dimen/text_size_button_adjust"
         app:layout_constraintBottom_toTopOf="@+id/leftScore"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton5"
-        tools:layout_editor_absoluteX="64dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonScoreMinus2"
-        style="@android:style/Widget.DeviceDefault.Light.Button.Inset"
-        android:layout_width="69dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
+        style="@android:style/Widget.Holo.Light.Button.Inset"
+        android:layout_width="@dimen/button_score_adj_width"
+        android:layout_height="@dimen/button_score_adj_height"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+
+        android:layout_marginBottom="8dp"
         android:onClick="onClickScoreAdj2"
         android:text="@string/adj_score"
         android:textSize="@dimen/text_size_button_adjust"
+        app:layout_constraintBottom_toTopOf="@+id/rightScore"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_reset_score" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
@@ -212,8 +223,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        ads:adSize="LARGE_BANNER"
-        ads:adUnitId="ca-app-pub-7279174300665421/3496010231"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
