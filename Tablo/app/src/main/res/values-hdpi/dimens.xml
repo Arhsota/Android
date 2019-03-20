@@ -38,4 +38,6 @@
     <dimen name="button_score_adj_width">60dp</dimen>
     <dimen name="button_score_adj_height">27dp</dimen>
     <dimen name="margin_start_left_score">40dp</dimen>
+    <dimen name="radius_reset_button">20dp</dimen>
+    <dimen name="radius_minus_button">66dp</dimen>
 </resources>

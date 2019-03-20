@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tablo 1.1</string>
+    <string name="app_name">Tablo 1.3</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Set/Reset Timer</string>
@@ -7,6 +7,6 @@
     <string name="player_1">Player 1</string>
     <string name="_5_min">5 min</string>
     <string name="_10_min">10 min</string>
-    <string name="adj_score"> Adj Score</string>
+    <string name="adj_score"> - </string>
     <string name="reset_score">Reset Score</string>
 </resources>

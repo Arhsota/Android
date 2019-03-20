@@ -20,7 +20,9 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
-public class MainActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
     //Количество секунд на секундомере
     private int seconds = 305;
     private int secondsChoice = 305;

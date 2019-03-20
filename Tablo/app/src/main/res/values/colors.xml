@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#ca3377</color>
+    <color name="colorAccent">#559C95</color>
     <color name="colorTimer">#2b4609</color>
     <color name="colorScore">#ca3377</color>
     <color name="colorRadioButton">#84B8B8</color>

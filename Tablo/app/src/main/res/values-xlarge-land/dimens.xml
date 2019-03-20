@@ -8,7 +8,7 @@
     <dimen name="radio_button_top">16dp</dimen>
     <dimen name="start_button_top">16dp</dimen>
     <dimen name="text_size_radio_button">34sp</dimen>
-    <dimen name="start_button_width">250dp</dimen>
+    <dimen name="start_button_width">260dp</dimen>
     <dimen name="start_button_height">57dp</dimen>
     <dimen name="button_score_minus1">12dp</dimen>
     <dimen name="button_score_minus2">16dp</dimen>
@@ -21,7 +21,7 @@
     <dimen name="margin_end_player2">32dp</dimen>
     <dimen name="text_size_start_button">24sp</dimen>
     <dimen name="margin_top_radio_button">8dp</dimen>
-    <dimen name="text_size_button_adjust">14sp</dimen>
+    <dimen name="text_size_button_adjust">34sp</dimen>
     <dimen name="text_size_reset_score_button">24sp</dimen>
     <dimen name="margin_start_button_reset_score">8dp</dimen>
     <dimen name="margin_left_button_reset_score">8dp</dimen>
@@ -35,7 +35,9 @@
     <dimen name="margin_top_minus1">180dp</dimen>
     <dimen name="margin_top_score">250dp</dimen>
     <dimen name="margin_end_score_adj">692dp</dimen>
-    <dimen name="button_score_adj_width">69dp</dimen>
+    <dimen name="button_score_adj_width">55dp</dimen>
     <dimen name="button_score_adj_height">37dp</dimen>
     <dimen name="margin_start_left_score">40dp</dimen>
+    <dimen name="radius_reset_button">20dp</dimen>
+    <dimen name="radius_minus_button">66dp</dimen>
 </resources>
