@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_top_time_view">180dp</dimen>
+    <dimen name="margin_top_time_view">100dp</dimen>
     <dimen name="text_size_score">150sp</dimen>
     <dimen name="text_size_time_view">200sp</dimen>
     <dimen name="margin_right_score">50dp</dimen>
@@ -33,7 +33,8 @@
     <dimen name="margin_left_5min_button">8dp</dimen>
     <dimen name="rest_score_button_end">8dp</dimen>
     <dimen name="margin_top_minus1">180dp</dimen>
-    <dimen name="margin_top_score">250dp</dimen>
+    <dimen name="margin_top_score_left">200dp</dimen>
+    <dimen name="margin_top_score_right">190dp</dimen>
     <dimen name="margin_end_score_adj">692dp</dimen>
     <dimen name="button_score_adj_width">55dp</dimen>
     <dimen name="button_score_adj_height">37dp</dimen>
