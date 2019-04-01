@@ -5,8 +5,9 @@
     <string name="reset">Уст/Сбр Таймера</string>
     <string name="player_2">Игрок 2</string>
     <string name="player_1">Игрок 1</string>
-    <string name="_5_min">5 мин</string>
-    <string name="_10_min">10 мин</string>
+    <string name="_5_min">5 м</string>
+    <string name="_10_min">10 м</string>
     <string name="adj_score"> - </string>
-    <string name="reset_score">Сброс Счета</string>
+    <string name="reset_score">Сброс Счета/Куб</string>
+    <string name="dice">Кубики</string>
 </resources>

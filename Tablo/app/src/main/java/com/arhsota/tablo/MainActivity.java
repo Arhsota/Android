@@ -20,12 +20,15 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
+import java.util.Random;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     //Количество секунд на секундомере
     private int seconds = 305;
     private int secondsChoice = 305;
+    private static final int MIN_10 = 605;
     private int secs100 = 60;
     //Score
     private int scorePlayer1 = 0;
@@ -37,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
     //Clicks on button time_view
     private boolean first_click = false;
     private boolean second_click = false;
+    private boolean clickCube = false;
 
     private RadioButton radioButton5;
     private RadioButton radioButton10;
+    private RadioButton radioButtonCube;
 
     private AdView mAdView;
 
@@ -158,10 +163,6 @@ public class MainActivity extends AppCompatActivity {
                     timeView.setText(time);
 
 
-
-
-
-
                 }
                 handler.postDelayed(this, 1000);
             }
@@ -169,22 +170,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickPlayer1(View view) {
-        TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
-        scorePlayer1 = scorePlayer1+1;
-        String strScorePlayer1 = String.format("%d",scorePlayer1);
-        scoreViewPlayer1.setText(strScorePlayer1);
+        if  (!clickCube) {
+            TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
+            scorePlayer1 = scorePlayer1 + 1;
+            String strScorePlayer1 = String.format("%d", scorePlayer1);
+            scoreViewPlayer1.setText(strScorePlayer1);
+        }
     }
 
     public void onClickPlayer2(View view) {
-        TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
-        scorePlayer2 = scorePlayer2+1;
-        String strScorePlayer2 = String.format("%d",scorePlayer2);
-        scoreViewPlayer2.setText(strScorePlayer2);
+        if (!clickCube) {
+            TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
+            scorePlayer2 = scorePlayer2 + 1;
+            String strScorePlayer2 = String.format("%d", scorePlayer2);
+            scoreViewPlayer2.setText(strScorePlayer2);
+        }
     }
 
     public void onClickSecondsRadio(View view) {
         radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
         radioButton10 = (RadioButton) findViewById(R.id.radioButton10);
+        radioButtonCube = (RadioButton) findViewById(R.id.radioButtonCube);
 
         boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked.
@@ -193,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 if (checked) {
                     secondsChoice = 305;
                     radioButton10.setChecked(false);
+                    radioButtonCube.setChecked(false);
 
                 }
                 break;
@@ -200,6 +207,17 @@ public class MainActivity extends AppCompatActivity {
                 if (checked) {
                     secondsChoice = 605;
                     radioButton5.setChecked(false);
+                    radioButtonCube.setChecked(false);
+                }
+                break;
+
+            case R.id.radioButtonCube:
+                if (checked) {
+                    radioButton5.setChecked(false);
+                    radioButton10.setChecked(false);
+                    clickCube = true;
+                    startCubes();
+                 //   clickCube = false;
                 }
                 break;
 
@@ -208,10 +226,27 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+    public void startCubes(){
+           if (clickCube){
+               Random r1 = new Random();
+               int i1 = r1.nextInt(7 - 1) + 1;
+               scorePlayer1 = i1;
 
+               Random r2 = new Random();
+               int i2 = r2.nextInt(7 - 1) + 1;
+               scorePlayer2 = i2;
+           }
+        TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
+        String strScorePlayer1 = String.format("%d",scorePlayer1);
+        scoreViewPlayer1.setText(strScorePlayer1);
+
+        TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
+        String strScorePlayer2 = String.format("%d",scorePlayer2);
+        scoreViewPlayer2.setText(strScorePlayer2);
+    }
 
     public void onClickScoreAdj1(View view) {
-        if (scorePlayer1 > 0) {
+        if ((scorePlayer1 > 0) && (!clickCube)) {
             TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
             scorePlayer1 -= 1;
             String strScorePlayer1 = String.format("%d", scorePlayer1);
@@ -221,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickScoreAdj2(View view) {
-        if (scorePlayer2 > 0) {
+        if ((scorePlayer2 > 0) && (!clickCube)) {
             TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
             scorePlayer2 -= 1;
             String strScorePlayer2 = String.format("%d", scorePlayer2);
@@ -232,15 +267,22 @@ public class MainActivity extends AppCompatActivity {
     public void onClickResetScore(View view) {
 
     //  Reset Score to zero
-        scorePlayer1 = 0;
-        scorePlayer2 = 0;
-        TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
-        String strScorePlayer1 = String.format("%d",scorePlayer1);
-        scoreViewPlayer1.setText(strScorePlayer1);
 
-        TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
-        String strScorePlayer2 = String.format("%d",scorePlayer2);
-        scoreViewPlayer2.setText(strScorePlayer2);
+            scorePlayer1 = 0;
+            scorePlayer2 = 0;
+            clickCube = false;
+            radioButton5.setChecked(true);
+            radioButton10.setChecked(false);
+            radioButtonCube.setChecked(false);
+
+            TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
+            String strScorePlayer1 = String.format("%d", scorePlayer1);
+            scoreViewPlayer1.setText(strScorePlayer1);
+
+            TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
+            String strScorePlayer2 = String.format("%d", scorePlayer2);
+            scoreViewPlayer2.setText(strScorePlayer2);
+
     }
 
     //starting or not timer depending on clicks and timer in work or not
@@ -258,4 +300,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

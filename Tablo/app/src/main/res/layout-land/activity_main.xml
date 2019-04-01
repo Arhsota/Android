@@ -178,6 +178,21 @@
         app:layout_constraintStart_toEndOf="@+id/radioButton5"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RadioButton
+        android:id="@+id/radioButtonCube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="@dimen/margin_top_radio_button"
+        android:checked="false"
+        android:onClick="onClickSecondsRadio"
+        android:text="@string/dice"
+        android:textColor="@color/colorRadioButton"
+        android:textSize="@dimen/text_size_radio_button"
+        app:layout_constraintStart_toEndOf="@+id/radioButton10"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/buttonScoreMinus1"
 

@@ -5,8 +5,9 @@
     <string name="reset">Set/Reset Timer</string>
     <string name="player_2">Player 2</string>
     <string name="player_1">Player 1</string>
-    <string name="_5_min">5 min</string>
-    <string name="_10_min">10 min</string>
+    <string name="_5_min">5 m</string>
+    <string name="_10_min">10 m</string>
     <string name="adj_score"> - </string>
-    <string name="reset_score">Reset Score</string>
+    <string name="reset_score">Reset Score/Dice</string>
+    <string name="dice">Dice</string>
 </resources>
