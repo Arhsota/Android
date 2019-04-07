@@ -272,6 +272,9 @@ public class MainActivity extends AppCompatActivity {
             scorePlayer1 = 0;
             scorePlayer2 = 0;
             clickCube = false;
+            radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
+            radioButton10 = (RadioButton) findViewById(R.id.radioButton10);
+            radioButtonCube = (RadioButton) findViewById(R.id.radioButtonCube);
             radioButton5.setChecked(true);
             radioButton10.setChecked(false);
             radioButtonCube.setChecked(false);
@@ -283,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
             TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
             String strScorePlayer2 = String.format("%d", scorePlayer2);
             scoreViewPlayer2.setText(strScorePlayer2);
+
 
     }
 
