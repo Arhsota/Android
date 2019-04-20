@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ScoreBoard 1.6</string>
+    <string name="app_name">ScoreBoard 1.7</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Set/Reset Timer</string>

@@ -25,6 +25,10 @@ import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
+
 public class MainActivity extends AppCompatActivity {
     //Количество секунд на секундомере
     private int seconds = 305;
