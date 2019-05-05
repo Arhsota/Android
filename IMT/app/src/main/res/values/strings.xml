@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI 2.2</string>
+    <string name="app_name">BMI 2.3</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
@@ -8,14 +8,13 @@
     <string name="hint_txt_age">Age</string>
 
 
-
     <string name="text_table1">Table of BMI according age groups</string>
-    <string name="text_table3">from 19 to 24 age, you should have 19 to 24 BMI</string>
-    <string name="text_table4">from 25 to 34 age, you should have 20 to 25 BMI</string>
-    <string name="text_table5">from 35 to 44 age, you should have 21 to 26 BMI</string>
-    <string name="text_table6">from 45 to 54 age, you should have 22 to 27 BMI</string>
-    <string name="text_table7">from 55 to 64 age, you should have 23 to 28 BMI</string>
-    <string name="text_table8">from 65 and elder, age you should have 24 to 29 BMT</string>
+    <string name="text_table3">19 to 24 age you should have 19 to 24 BMI</string>
+    <string name="text_table4">25 to 34 age you should have	20 to 25 BMI</string>
+    <string name="text_table5">35 to 44 age you should have 21 to 26 BMI</string>
+    <string name="text_table6">45 to 54 age you should have 22 to 27 BMI</string>
+    <string name="text_table7">55 to 64 age you should have 23 to 28 BMI</string>
+    <string name="text_table8">65 and elder age you should have 24 to 29</string>
 
     <string name="action_create_save">Save</string>
     <string name="title_second_activity">Your Result</string>
@@ -25,5 +24,7 @@
     <string name="too_young">Too young, to be in table of age</string>
     <string name="saving">Saving...</string>
     <string name="reading">Reading...</string>
+    <string name="minimum_password">Minimum password</string>
+    <string name="auth_failed">Auth failed</string>
 
 </resources>

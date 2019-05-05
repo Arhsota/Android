@@ -25,8 +25,8 @@ import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
+//import com.facebook.FacebookSdk;
+// import com.facebook.appevents.AppEventsLogger;
 
 
 public class MainActivity extends AppCompatActivity {
