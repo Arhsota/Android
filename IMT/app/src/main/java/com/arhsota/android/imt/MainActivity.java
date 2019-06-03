@@ -36,6 +36,8 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 //import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 import java.text.SimpleDateFormat;
@@ -46,7 +48,7 @@ import java.util.Calendar;
 
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private AdView mAdView;
 //    private FirebaseAnalytics mFirebaseAnalytics;
@@ -97,6 +99,8 @@ public class MainActivity extends Activity {
 
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
+
+
 
 
     @Override    public boolean onCreateOptionsMenu(Menu menu) {
@@ -422,4 +426,8 @@ public class MainActivity extends Activity {
 
     };
 
+    public void signClick(View view) {
+        Intent intent_main_activity_sign = new Intent(this, MainActivitySign.class);
+        startActivity(intent_main_activity_sign);
+    }
 }

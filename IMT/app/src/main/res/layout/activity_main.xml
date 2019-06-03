@@ -94,21 +94,39 @@
     </com.google.android.gms.ads.AdView>
 
     <Button
-        android:id="@+id/calculate_btn"
+    android:id="@+id/calculate_btn"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:layout_width="@dimen/button_width"
+    android:layout_height="94dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+
+    android:enabled="false"
+    android:text="@string/butt_name"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/length" />
+
+    <Button
+        android:id="@+id/sign_btn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="@dimen/button_width"
         android:layout_height="94dp"
+
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
 
-        android:enabled="false"
-        android:text="@string/butt_name"
+        android:text="sign"
+        android:onClick="signClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/length" />
+        app:layout_constraintTop_toBottomOf="@+id/calculate_btn" />
 
     <TextView
         android:id="@+id/text_table"
