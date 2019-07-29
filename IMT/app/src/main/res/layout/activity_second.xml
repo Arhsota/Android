@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorTextTable1"
+    android:adjustViewBounds="true"
+
+    tools:context="com.arhsota.android.imt.SecondActivity">
+
+    <TextView
+        android:id="@+id/result_save_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:text="@string/result_text_before"
+        android:textColor="@color/colorHelloText"
+        android:textSize="@dimen/text_size_second_activity" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="LARGE_BANNER"
+        ads:adUnitId="ca-app-pub-7279174300665421/5527400646">
+
+    </com.google.android.gms.ads.AdView>
+</RelativeLayout>
