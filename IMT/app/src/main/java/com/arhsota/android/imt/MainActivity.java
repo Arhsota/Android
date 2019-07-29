@@ -5,7 +5,7 @@ package com.arhsota.android.imt;
 // using constraint layout
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
-// Sevastyanov Andrey, 2019, May
+// Sevastyanov Andrey, 2019, july
 // Arkhangelsk
 //
 
