@@ -1,6 +1,6 @@
 package com.arhsota.android.imt;
 
-// version 2.2
+// version 2.2a
 // changes in this version - second activity with correspondent features and banner on every activity
 // using constraint layout
 // my first real soft based on lesson 8 Skillberg
