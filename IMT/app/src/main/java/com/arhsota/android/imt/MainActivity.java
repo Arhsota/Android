@@ -1,6 +1,6 @@
 package com.arhsota.android.imt;
 
-// version 2.3
+// version 2.3g
 // changes in this version - second activity with correspondent features and banner on every activity
 // using constraint layout
 // my first real soft based on lesson 8 Skillberg
@@ -48,7 +48,7 @@ import java.util.Calendar;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private AdView mAdView;
 //    private FirebaseAnalytics mFirebaseAnalytics;
