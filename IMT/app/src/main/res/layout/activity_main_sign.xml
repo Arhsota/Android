@@ -13,6 +13,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
+        <TextView
+        android:id="@+id/user_exist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:hint="user1"
+
+        android:background="@color/colorWeightBackground"
+        android:textColor="@color/colorHelloText"
+        android:textColorHint="@color/colorHelloText"
+            android:maxLines="1"
+            android:singleLine="true"
+        />
+
         <EditText
             android:id="@+id/old_email"
             android:layout_width="match_parent"

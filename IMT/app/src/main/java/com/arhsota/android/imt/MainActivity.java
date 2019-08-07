@@ -29,6 +29,9 @@ import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 //import android.support.v7.widget.ShareActionProvider;
+//import androidx.appcompat.app.AppCompatActivity;
+//import androidx.core.view.MenuItemCompat;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 
@@ -68,6 +71,7 @@ public class MainActivity extends Activity {
     private TextView textViewTable8;
     */
     private TextView textViewTable;
+
     private EditText editTextW;
     private EditText editTextL;
     private EditText editTextAge;
@@ -223,6 +227,7 @@ public class MainActivity extends Activity {
 */
 
         textView = findViewById(R.id.result_out);
+
         textViewTable = findViewById(R.id.text_table);
        /* textViewAge = findViewById(R.id.text_table_age);
         textViewW = findViewById(R.id.text_table_weight);

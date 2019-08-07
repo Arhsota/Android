@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,8 @@ public class LoginActivity extends Activity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
+    private TextView textViewUser;
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,7 @@ public class LoginActivity extends Activity {
         btnSignup = (Button) findViewById(R.id.btn_signup);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
-
+        textViewUser = findViewById(R.id.user_exist);
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
@@ -75,6 +78,8 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String email = inputEmail.getText().toString();
+                user = email;
+                textViewUser.setText(email);
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {

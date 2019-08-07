@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,9 +26,11 @@ public class MainActivitySign extends Activity {
             changeEmail, changePassword, sendEmail, remove, signOut;
 
     private EditText oldEmail, newEmail, password, newPassword;
+    private TextView textViewUser;
     private ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
+    private String userString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +68,15 @@ public class MainActivitySign extends Activity {
         sendEmail = (Button) findViewById(R.id.send);
         remove = (Button) findViewById(R.id.remove);
         signOut = (Button) findViewById(R.id.sign_out);
-
+        textViewUser = findViewById(R.id.user_exist);
         oldEmail = (EditText) findViewById(R.id.old_email);
         newEmail = (EditText) findViewById(R.id.new_email);
         password = (EditText) findViewById(R.id.password);
         newPassword = (EditText) findViewById(R.id.newPassword);
+        //todo: find user name
+        textViewUser = findViewById(R.id.user_exist);
+        userString = oldEmail.getText().toString();
+        textViewUser.setText(userString);
 
         oldEmail.setVisibility(View.GONE);
         newEmail.setVisibility(View.GONE);
