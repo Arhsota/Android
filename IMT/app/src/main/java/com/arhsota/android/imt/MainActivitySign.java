@@ -73,9 +73,10 @@ public class MainActivitySign extends Activity {
         newEmail = (EditText) findViewById(R.id.new_email);
         password = (EditText) findViewById(R.id.password);
         newPassword = (EditText) findViewById(R.id.newPassword);
-        //todo: find user name
+
         textViewUser = findViewById(R.id.user_exist);
-        userString = oldEmail.getText().toString();
+      //  userString = oldEmail.getText().toString();
+        userString = user.getEmail();
         textViewUser.setText(userString);
 
         oldEmail.setVisibility(View.GONE);
