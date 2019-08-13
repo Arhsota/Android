@@ -33,6 +33,7 @@ import android.widget.Toast;
 //import androidx.core.view.MenuItemCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
 
 import com.google.android.gms.ads.MobileAds;
@@ -51,7 +52,7 @@ import java.util.Calendar;
 
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private AdView mAdView;
 //    private FirebaseAnalytics mFirebaseAnalytics;
@@ -107,11 +108,12 @@ public class MainActivity extends Activity {
 
 
 
-    @Override    public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem menuItem = menu.findItem(R.id.action_share);
-        shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
+      //  MenuItem menuItem = menu.findItem(R.id.action_share);
+      //  shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
       //  Intent intent = new Intent(Intent.ACTION_SENDTO);
     //   Intent intent = new Intent(Intent.ACTION_SEND);
     //    intent.setData(Uri.parse("mailto:")); // only email apps should handle this
@@ -124,7 +126,8 @@ public class MainActivity extends Activity {
      //   setIntent("Дата: " + date + " Ваш ИМТ " + str_IMT+ " Вес: " + str_Weight + " Рост: " +str_Length + " Возраст: " + str_Age);
        // setIntent("test");
 
-        return super.onCreateOptionsMenu(menu);
+      //  return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
 
@@ -201,6 +204,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+     //   Toolbar toolbar = findViewById(R.id.toolbar);
+
+     //  setSupportActionBar(toolbar);
 
 
 

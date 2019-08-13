@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="73dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="73dp">
+
 
     <TextView
         android:id="@+id/result_out"
@@ -21,32 +22,46 @@
         android:textColor="@color/colorHelloText"
         android:textSize="@dimen/hello_text_size"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/weight"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutW"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorWeightBackground"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:hint="@string/hint_txt_weight"
-        android:inputType="numberDecimal"
-        android:textSize="22sp"
-        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
+        app:layout_constraintEnd_toStartOf="@+id/result_out"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_out" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weight"
+
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/colorWeightBackground"
+
+            android:inputType="number"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
+
         android:id="@+id/length"
+
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/colorWeightBackground"
@@ -55,23 +70,26 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/age"
-        app:layout_constraintStart_toEndOf="@+id/weight"
+
+        app:layout_constraintStart_toEndOf="@+id/textInputLayoutW"
         app:layout_constraintTop_toBottomOf="@+id/result_out" />
 
+
     <EditText
-        android:id="@+id/age"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@color/colorWeightBackground"
-        android:hint="@string/hint_txt_age"
-        android:inputType="number"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_out" />
+
+            android:id="@+id/age"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/colorWeightBackground"
+            android:hint="@string/hint_txt_age"
+            android:inputType="number"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -94,34 +112,31 @@
     </com.google.android.gms.ads.AdView>
 
     <Button
-    android:id="@+id/calculate_btn"
+        android:id="@+id/calculate_btn"
 
-    android:layout_width="@dimen/button_width"
-    android:layout_height="94dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="24dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginRight="8dp"
-    android:background="@color/colorBtnCalc"
-    android:enabled="false"
-    android:text="@string/butt_name"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/length" />
-
+        android:layout_width="@dimen/button_width"
+        android:layout_height="94dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorBtnCalc"
+        android:enabled="false"
+        android:text="@string/butt_name"
+        app:cornerRadius="66dp"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/length" />
 
 
     <TextView
         android:id="@+id/text_table"
-        android:layout_width="wrap_content"
+        android:layout_width="393dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculate_btn" />
+        android:textSize="18sp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
