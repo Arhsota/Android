@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="73dp">
+    tools:context=".MainActivity">
 
 
     <TextView
@@ -27,6 +26,32 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutW"
+        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/hint_txt_weight"
+        app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_out"
+        app:layout_constraintVertical_bias="0.502">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weight"
+
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:inputType="number"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutL"
+        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -35,61 +60,52 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:hint="@string/hint_txt_weight"
+        android:hint="@string/hint_txt_length"
         app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
-        app:layout_constraintEnd_toStartOf="@+id/result_out"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayoutW"
+        app:layout_constraintTop_toBottomOf="@+id/result_out"
+        app:layout_constraintVertical_bias="0.502">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/weight"
+            android:id="@+id/length"
 
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:background="@color/colorWeightBackground"
-
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:inputType="number"
             android:textSize="22sp"
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
 
-        android:id="@+id/length"
-
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutA"
+        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@color/colorWeightBackground"
-        android:hint="@string/hint_txt_length"
-        android:inputType="number"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/age"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/hint_txt_age"
+        app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
+        app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintStart_toEndOf="@+id/textInputLayoutW"
-        app:layout_constraintTop_toBottomOf="@+id/result_out" />
+        app:layout_constraintTop_toBottomOf="@+id/result_out">
 
-
-    <EditText
-
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/age"
+
             android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/colorWeightBackground"
-            android:hint="@string/hint_txt_age"
+            android:layout_height="60dp"
+
             android:inputType="number"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -118,25 +134,33 @@
         android:layout_height="94dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="124dp"
         android:background="@color/colorBtnCalc"
         android:enabled="false"
         android:text="@string/butt_name"
         app:cornerRadius="66dp"
-        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintBottom_toTopOf="@+id/text_table"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/length" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
         android:id="@+id/text_table"
-        android:layout_width="393dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp" />
+        android:layout_width="391dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="128dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
