@@ -1,6 +1,6 @@
 package com.arhsota.android.imt;
 
-// version 2.3
+// version 2.4
 // changes in this version - second activity with correspondent features and banner on every activity
 // using constraint layout
 // my first real soft based on lesson 8 Skillberg
@@ -39,6 +39,7 @@ import androidx.core.view.MenuItemCompat;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 //import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
     final String DIR_SD = "MyFiles";
     final String FILENAME_SD = "fileSD";
+
+    private InterstitialAd mInterstitialAd;
 
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
@@ -215,7 +218,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment 58fd171274ed00c90079860acbfcfda3
-//        test id ca-app-pub-3940256099942544/6300978111 for layout XML
+//        test id for banner ca-app-pub-3940256099942544/6300978111 for layout XML
+//        test id for interpage ca-app-pub-3940256099942544/1033173712 for layout XML
 //        working real banner ca-app-pub-7279174300665421/8731793267
 
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
@@ -227,7 +231,10 @@ public class MainActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+      //  mInterstitialAd.show();
 /*
        one more banner
        mAdView2 = findViewById(R.id.adView2);
@@ -346,6 +353,11 @@ public class MainActivity extends AppCompatActivity {
 
 
             KeyboardHide.hide(view); // Hide keyboard after click on button CALCULATE
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                Log.d("TAG", "The interstitial wasn't loaded yet.");
+            }
             String weight = editTextW.getText().toString();
             String length = editTextL.getText().toString();
             String age = editTextAge.getText().toString();
