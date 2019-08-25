@@ -11,12 +11,12 @@
 
 
     <string name="text_table1">Таблица ИМТ по возрастным группам</string>
-    <string name="text_table3">19 до 24 лет ваш ИМТ должен быть 19 до 24 </string>
-    <string name="text_table4">25 до 34 лет ваш ИМТ должен быть	20 до 25 </string>
-    <string name="text_table5">35 до 44 лет ваш ИМТ должен быть 21 до 26 </string>
-    <string name="text_table6">45 до 54 лет ваш ИМТ должен быть	22 до 27 </string>
-    <string name="text_table7">55 до 64 лет ваш ИМТ должен быть 23 до 28 </string>
-    <string name="text_table8">65 и старше ваш ИМТ должен быть	24 до 29 </string>
+    <string name="text_table3">19 до 24 лет ваш ИМТ должен быть от 19 до 24 </string>
+    <string name="text_table4">25 до 34 лет ваш ИМТ должен быть	от 20 до 25 </string>
+    <string name="text_table5">35 до 44 лет ваш ИМТ должен быть от 21 до 26 </string>
+    <string name="text_table6">45 до 54 лет ваш ИМТ должен быть	от 22 до 27 </string>
+    <string name="text_table7">55 до 64 лет ваш ИМТ должен быть от 23 до 28 </string>
+    <string name="text_table8">65 и старше ваш ИМТ должен быть	от 24 до 29 </string>
 
 
     <string name="action_create_save">Сохранить</string>
@@ -29,5 +29,8 @@
 
     <string name="saving">Записываю...</string>
     <string name="reading">Считываю...</string>
+    <string name="minimum_password">минимальный пароль</string>
+    <string name="auth_failed">ошибка аутендификации</string>
+    <string name="in_work">В разработке</string>
 
 </resources>

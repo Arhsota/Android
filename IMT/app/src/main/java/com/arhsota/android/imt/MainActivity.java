@@ -1,11 +1,11 @@
 package com.arhsota.android.imt;
 
-// version 2.3g
+// version 2.3
 // changes in this version - second activity with correspondent features and banner on every activity
 // using constraint layout
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
-// Sevastyanov Andrey, 2019, july
+// Sevastyanov Andrey, 2019, august
 // Arkhangelsk
 //
 
@@ -189,8 +189,11 @@ public class MainActivity extends AppCompatActivity {
 
 //todo
             case R.id.action_sign_up:
-                Intent intent_main_activity_sign = new Intent(this, MainActivitySign.class);
-                startActivity(intent_main_activity_sign);
+                // todo: NOTHING YET, waiting for next version
+               // Intent intent_main_activity_sign = new Intent(this, MainActivitySign.class);
+               // startActivity(intent_main_activity_sign);
+                Toast.makeText(MainActivity.this, R.string.in_work,
+                        Toast.LENGTH_LONG).show();
                 return true;
 
             default:

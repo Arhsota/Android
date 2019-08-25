@@ -26,5 +26,6 @@
     <string name="reading">Reading...</string>
     <string name="minimum_password">Minimum password</string>
     <string name="auth_failed">Auth failed</string>
+    <string name="in_work">in work</string>
 
 </resources>
