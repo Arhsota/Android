@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "40305784229",
+    "firebase_url": "https://health-6aa5e.firebaseio.com",
+    "project_id": "health-6aa5e",
+    "storage_bucket": "health-6aa5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40305784229:android:2e2f258e13f26a42",
+        "android_client_info": {
+          "package_name": "com.arhsota.android.imt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40305784229-174sgiiid6p3riisf0d00rg36qhv164l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arhsota.android.imt",
+            "certificate_hash": "0e74d94ce5bc4a80ccb53986342546a834c33eec"
+          }
+        },
+        {
+          "client_id": "40305784229-j11skdbng31mjehuc7a8up1g876chls7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh68sfRpU_yhKZckyUbxxo328u9cRt1cU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40305784229-j11skdbng31mjehuc7a8up1g876chls7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-7279174300665421~3105181624"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40305784229:android:cc438b49efc0b153",
+        "android_client_info": {
+          "package_name": "com.arhsota.tablo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40305784229-j11skdbng31mjehuc7a8up1g876chls7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh68sfRpU_yhKZckyUbxxo328u9cRt1cU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40305784229-j11skdbng31mjehuc7a8up1g876chls7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-7279174300665421~2703649226"
+    }
+  ],
+  "configuration_version": "1"
+}

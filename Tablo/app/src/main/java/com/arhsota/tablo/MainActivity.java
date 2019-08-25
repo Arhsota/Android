@@ -1,7 +1,8 @@
 // from stopwatch as pattern
 // 4 DMitry Siz
 // 2018, 2019
-// ver 1.4 starts with new feature - dices
+// august
+// ver 1.8
 
 package com.arhsota.tablo;
 
