@@ -36,6 +36,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -219,8 +220,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 for advertisment 58fd171274ed00c90079860acbfcfda3
 //        test id for banner ca-app-pub-3940256099942544/6300978111 for layout XML
-//        test id for interpage ca-app-pub-3940256099942544/1033173712 for layout XML
 //        working real banner ca-app-pub-7279174300665421/8731793267
+//        test id for interpage ca-app-pub-3940256099942544/1033173712 for layout XML
+//        working real page ca-app-pub-7279174300665421/5898016751
 
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
        // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -232,8 +234,17 @@ public class MainActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-7279174300665421/5898016751");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
       //  mInterstitialAd.show();
 /*
        one more banner
@@ -267,9 +278,10 @@ public class MainActivity extends AppCompatActivity {
 
 //        reading weight
         editTextW.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                textViewTable.setText("");
             }
 
             @Override
@@ -353,6 +365,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             KeyboardHide.hide(view); // Hide keyboard after click on button CALCULATE
+            // interpage adds
             if (mInterstitialAd.isLoaded()) {
                 mInterstitialAd.show();
             } else {

@@ -19,6 +19,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -78,6 +79,15 @@ public class MainActivity extends AppCompatActivity {
         mInterstitialAd.setAdUnitId("ca-app-pub-7279174300665421/6564833801");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
+
        // seconds = secondsChoice;
         if (savedInstanceState != null) {
             seconds = savedInstanceState.getInt("seconds");
@@ -111,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putInt("scorePlayer1", scorePlayer1);
         savedInstanceState.putInt("scorePlayer2", scorePlayer2);
         seconds = secondsChoice;
+
     }
 //    page 176
     @Override
@@ -204,10 +215,19 @@ public class MainActivity extends AppCompatActivity {
         radioButton10 = (RadioButton) findViewById(R.id.radioButton10);
         radioButtonCube = (RadioButton) findViewById(R.id.radioButtonCube);
 
+
         boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked.
+
+
         switch (view.getId()) {
             case R.id.radioButton5:
+                // interpage adds
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
                 if (checked) {
                     secondsChoice = 305;
                     radioButton10.setChecked(false);
@@ -216,6 +236,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.radioButton10:
+                // interpage adds
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
                 if (checked) {
                     secondsChoice = 605;
                     radioButton5.setChecked(false);
@@ -224,12 +250,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.radioButtonCube:
-                // interpage adds
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
-                }
+
+
                 if (checked) {
                     radioButton5.setChecked(false);
                     radioButton10.setChecked(false);
