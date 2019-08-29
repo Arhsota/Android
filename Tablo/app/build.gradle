@@ -6,8 +6,8 @@ android {
         applicationId "com.arhsota.tablo"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 9
-        versionName "1.9"
+        versionCode 10
+        versionName "1.9.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -37,7 +37,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 //  implementation 'com.google.android.gms:play-services-ads:18.1.1'
 
-
+    implementation 'com.google.firebase:firebase-core:17.1.0'
     implementation 'com.google.firebase:firebase-auth:19.0.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.firebase:firebase-database:19.0.0'
