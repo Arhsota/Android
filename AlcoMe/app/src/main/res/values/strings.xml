@@ -1,0 +1,132 @@
+<resources>
+    <string name="app_name">AlcoMe</string>
+    <string name="action_settings">Setting</string>
+    <string name="remain_0_35">0.35</string>
+    <string name="remain_0_30">0.30</string>
+    <string name="remain_0_25">0.25</string>
+    <string name="remain_0_23">0.23</string>
+    <string name="remain_0_21">0.21</string>
+    <string name="remain_1_44">1.44</string>
+    <string name="remain_1_29">1.29</string>
+    <string name="remain_1_18">1.18</string>
+    <string name="remain_1_10">1.10</string>
+    <string name="remain_1_03">1.03</string>
+    <string name="remain_2_54">2.54</string>
+    <string name="remain_2_29">2.29</string>
+    <string name="remain_2_11">2.11</string>
+    <string name="remain_1_56">1.56</string>
+
+    <string name="remain_0_52">0.52</string>
+    <string name="remain_0_45">0.45</string>
+    <string name="remain_0_39">0.39</string>
+    <string name="remain_0_31">0.31</string>
+    <string name="remain_2_37">2.37</string>
+    <string name="remain_2_14">2.14</string>
+    <string name="remain_1_57">1.57</string>
+    <string name="remain_1_34">1.34</string>
+    <string name="remain_4_21">4.21</string>
+    <string name="remain_3_44">3.44</string>
+    <string name="remain_3_16">3.16</string>
+
+    <string name="remain_1_07">1.07</string>
+    <string name="remain_0_59">0.59</string>
+    <string name="remain_0_47">0.47</string>
+    <string name="remain_3_55">3.55</string>
+    <string name="remain_3_21">3.21</string>
+    <string name="remain_2_56">2.56</string>
+    <string name="remain_2_21">2.21</string>
+    <string name="remain_6_32">6.32</string>
+    <string name="remain_5_36">5.36</string>
+    <string name="remain_4_54">4.54</string>
+
+    <string name="remain_1_36">1.36</string>
+    <string name="remain_1_22">1.22</string>
+    <string name="remain_1_12">1.12</string>
+    <string name="remain_1_04">1.04</string>
+    <string name="remain_0_57">0.57</string>
+    <string name="remain_4_47">4.47</string>
+    <string name="remain_4_06">4.06</string>
+    <string name="remain_3_35">3.35</string>
+    <string name="remain_3_11">3.11</string>
+    <string name="remain_2_52">2.52</string>
+    <string name="remain_7_59">7.59</string>
+    <string name="remain_6_50">6.50</string>
+    <string name="remain_5_59">5.59</string>
+    <string name="remain_5_19">5.19</string>
+
+    <string name="remain_7_50">7.50</string>
+    <string name="remain_6_43">6.43</string>
+    <string name="remain_5_52">5.52</string>
+    <string name="remain_5_13">5.13</string>
+    <string name="remain_4_42">4.42</string>
+    <string name="remain_13_03">13.03</string>
+    <string name="remain_11_11">11.11</string>
+    <string name="remain_9_47">9.47</string>
+    <string name="remain_8_42">8.42</string>
+
+    <string name="remain_3_29">3.29</string>
+    <string name="remain_2_59">2.59</string>
+    <string name="remain_2_19">2.19</string>
+    <string name="remain_2_05">2.05</string>
+    <string name="remain_10_26">10.26</string>
+    <string name="remain_8_57">8.57</string>
+    <string name="remain_6_58">6.58</string>
+    <string name="remain_6_16">6.16</string>
+    <string name="remain_17_24">17.24</string>
+    <string name="remain_11_36">11.36</string>
+
+    <string name="remain_21_45">21.45</string>
+    <string name="remain_18_39">18.39</string>
+    <string name="remain_16_19">16.19</string>
+    <string name="remain_14_30">14.30</string>
+    <string name="remain_5_48">5.48</string>
+    <string name="remain_4_58">4.58</string>
+    <string name="remain_3_52">3.52</string>
+    <string name="remain_14_55">14.55</string>
+    <string name="remain_29_00">29_00</string>
+    <string name="remain_24_51">24.51</string>
+    <string name="remain_19_20">19.20</string>
+
+    <string name="remain_6_05">6.05</string>
+    <string name="remain_4_34">4.34</string>
+    <string name="remain_4_04">4.04</string>
+    <string name="remain_3_39">3.39</string>
+    <string name="remain_18_16">18.16</string>
+    <string name="remain_15_40">15.40</string>
+    <string name="remain_13_42">13_42</string>
+    <string name="remain_12_11">12.11</string>
+    <string name="remain_10_59">10.59</string>
+    <string name="remain_30_27">30.27</string>
+    <string name="remain_26_06">26.06</string>
+    <string name="remain_22_50">22.50</string>
+    <string name="remain_20_18">20.18</string>
+
+
+    <string name="remain">Remain</string>
+    <string name="hours">Hours</string>
+
+
+
+    <string-array name="alcolist">
+    <item>Beer 4-5%</item>
+    <item>Beer 6%</item>
+    <item>Vine 9%</item>
+    <item>Vine 11%</item>
+    <item>Vine 18%</item>
+    <item>Vine 24%</item>
+    <item>Vine 30%</item>
+    <item>Vodka 40%</item>
+    <item>Gin 42%</item>
+</string-array>
+
+    <string-array name="weightist">
+        <item>60 kg</item>
+        <item>70 kg</item>
+        <item>80 kg</item>
+        <item>90 kg</item>
+        <item>100 kg</item>
+
+
+
+    </string-array>
+</resources>
