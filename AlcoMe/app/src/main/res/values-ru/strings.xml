@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">AlcoMe 1.0</string>
+    <string name="action_settings">Настройка</string>
+
+
+
+
+    <string name="remain">Осталось</string>
+    <string name="hours">Часов</string>
+    <string name="remaining_time">Осталось </string>
+    <string name="start_timer">Таймер</string>
+    <string name="calculate">РАССЧИТАТЬ</string>
+
+
+    <string-array name="alcolist">
+        <item>Пиво 4-5%</item>
+        <item>Пиво 6%</item>
+        <item>Вино 9%</item>
+        <item>Вино 11%</item>
+        <item>Вино 18%</item>
+        <item>Вино 24%</item>
+        <item>Вино 30%</item>
+        <item>Водка 40%</item>
+        <item>Джин 42%</item>
+    </string-array>
+
+    <string-array name="weightist">
+        <item>60 кг</item>
+        <item>70 кг</item>
+        <item>80 кг</item>
+        <item>90 кг</item>
+        <item>100 кг</item>
+    </string-array>
+</resources>

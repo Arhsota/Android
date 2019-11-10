@@ -2,7 +2,7 @@ package com.arhsota.alcome;
 
 // Info of hour much time remains alcohol in your body
 // Idea from DS
-// 2019 September, October, 05 november
+// 2019 September, October, 10 november
 // ver 1.0
 
 import android.media.MediaPlayer;
@@ -10,8 +10,10 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -20,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean wasRunning = true;
 
     private AdView mAdView;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-7279174300665421/4010107019");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
        /* Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -155,6 +172,11 @@ public class MainActivity extends AppCompatActivity {
         isClick100 = false;
         isClick300 = true;
         isClick500 = false;
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }
 
     }
 
@@ -162,6 +184,11 @@ public class MainActivity extends AppCompatActivity {
         isClick100 = false;
         isClick300 = false;
         isClick500 = true;
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }
     }
 
     public void onClickCalculate(View view) {
