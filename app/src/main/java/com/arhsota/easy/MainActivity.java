@@ -1,5 +1,8 @@
 package com.arhsota.easy;
 
+// for Nikita Lisenko
+// 12 nov 2019
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
