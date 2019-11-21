@@ -4,77 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.185" />
 
     <Button
         android:id="@+id/btnPhoto"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="136dp"
         android:onClick="onClickPhoto"
         android:text="Лучшее предложение"
         app:cornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
 
     <Button
         android:id="@+id/btnManual"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="148dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Рассчитать вручную"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:onClick="onClickManual"
+        android:text="Ручной ввод данных"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
 
-    <Button
-        android:id="@+id/btnLinkmanager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
-        android:text="Связь с менеджером"
-        app:cornerRadius="66dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
+    <EditText
         android:id="@+id/btnRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Регистрация"
+        android:layout_marginTop="60dp"
+        android:hint="Ваш номер телефона"
+        android:inputType="phone"
+        app:cornerRadius="66dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivPhoto"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </ImageView>
+        android:layout_height="wrap_content"></ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

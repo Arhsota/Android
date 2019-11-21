@@ -1,20 +1,25 @@
 package com.arhsota.easy;
 //
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.File;
 
-public class MakePhoto extends Activity {
+public class MakePhoto extends AppCompatActivity {
 
     private Button btnDoc;
     File directory;
@@ -37,10 +42,32 @@ public class MakePhoto extends Activity {
 
     }
     public void onClickPhotoDoc(View view) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, generateFileUri(TYPE_PHOTO));
-        startActivityForResult(intent, REQUEST_CODE_PHOTO);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to CAMERA - requesting it");
+                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, generateFileUri(TYPE_PHOTO));
+                startActivityForResult(intent, REQUEST_CODE_PHOTO);
+
+
+
     }
+
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent intent) {
