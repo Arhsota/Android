@@ -30,6 +30,7 @@ public class MakePhoto extends AppCompatActivity {
     final int REQUEST_CODE_VIDEO = 2;
 
     final String TAG = "myLogs";
+     static String myPath;
 
     ImageView ivPhoto;
 
@@ -129,5 +130,6 @@ public class MakePhoto extends AppCompatActivity {
                 "Easy");
         if (!directory.exists())
             directory.mkdirs();
+        myPath = directory.toString();
     }
 }
