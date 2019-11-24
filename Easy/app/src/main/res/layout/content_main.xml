@@ -7,41 +7,30 @@
     android:background="@drawable/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="56dp"
     tools:showIn="@layout/activity_main">
 
     <Button
         android:id="@+id/btnPhoto"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="84dp"
         android:onClick="onClickPhoto"
         android:text="Лучшее предложение"
         app:cornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
-
-    <Button
-        android:id="@+id/btnManual"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:onClick="onClickManual"
-        android:text="Ручной ввод данных"
-        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
 
     <EditText
         android:id="@+id/btnRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:hint="Ваш номер телефона"
         android:inputType="phone"
+        android:phoneNumber="true"
         app:cornerRadius="66dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,5 +40,26 @@
         android:id="@+id/ivPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></ImageView>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Я принимаю"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="321dp"
+        android:layout_height="127dp"
+        android:text="Я подверждаю, что соглашаюсь на передачу персональных данных для
+        ИП Лысенко Н.А., а ИП Лысенко Н.А. обязуется использовать ик исключительно для заключения
+        страхховых полисов, и не передавать третьим лицам"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPhoto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
