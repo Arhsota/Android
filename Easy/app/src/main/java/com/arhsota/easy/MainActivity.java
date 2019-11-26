@@ -1,7 +1,7 @@
 package com.arhsota.easy;
 
 // for Nikita Lisenko
-// 24 november 2019
+// 26 november 2019
 
 import android.Manifest;
 import android.app.Activity;
@@ -28,6 +28,8 @@ import androidx.core.content.FileProvider;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -58,16 +60,51 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivPhoto;
 
     private File file;
-    private EditText editRegistration;
+    private EditText editTxtClientPhone;
     private String strPhone;
 
     private CheckBox chBox;
+
+    private boolean fillTextLength = false;  //for ckecking length
+    private boolean checkFieldPhone = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        editTxtClientPhone = findViewById(R.id.txtClientPhone);
+        //                        for checking empty or not Client Phone field and length is less then 10
+        editTxtClientPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                editTxtClientPhone.setText("");
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                fillTextLength = editable.toString().trim().length() > 7;
+                if (fillTextLength) {
+//                    editTxtClientPhone.setEnabled((true));
+                    strPhone = editTxtClientPhone.getText().toString();
+                    checkFieldPhone = true;
+                }
+                else {
+//                    editTxtClientPhone.setEnabled((false));
+                    strPhone = "Вы не ввели номер телефона";
+                    checkFieldPhone = false;
+                }
+
+            }
+        });
+
+
 
         ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -106,10 +143,12 @@ public class MainActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    chBox = findViewById(R.id.checkBox);
-                    if (!chBox.isChecked()) {
 
-                        Toast.makeText(MainActivity.this, "Вы не приняли соглашение",
+
+                    chBox = findViewById(R.id.checkBox);
+                    if ((!chBox.isChecked()) || (!checkFieldPhone)){
+
+                        Toast.makeText(MainActivity.this, "Не приняли соглашение или не ввели номер",
                                 Toast.LENGTH_SHORT).show();
                         return;
 
@@ -130,8 +169,10 @@ public class MainActivity extends AppCompatActivity {
 //                        Uri uri = Uri.parse(myDir);
                        Uri uri = Uri.fromFile(new File((myDir)) );
 //                       Uri uri = FileProvider.getUriForFile(MainActivity.this,"read",file) ;
-                        editRegistration = findViewById(R.id.btnRegistration);
-                        strPhone = editRegistration.getText().toString();
+
+
+
+
 
                         Intent shareIntent = new Intent(Intent.ACTION_SEND);
                         shareIntent.setType("rar/image");
@@ -141,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                         shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Фото документов1");
       //                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "test1");
                         shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
+//                        todo: make multiattacment
 /*
                         ArrayList<Uri> uris = new ArrayList<Uri>();
                          for (String file : fileList())
@@ -199,14 +241,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-
-    public void onClickConnectmanager(View view) {
-
-// todo: try to change ACTION_DIAL to ACTION_CALL, due to dial immidiatly
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "+79022865609"));
-        startActivity(intent);
     }
 
 
