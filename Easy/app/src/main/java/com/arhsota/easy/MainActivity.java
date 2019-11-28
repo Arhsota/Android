@@ -167,14 +167,21 @@ public class MainActivity extends AppCompatActivity {
                         String myPath = directory.toString();
                         String myDir = myPath +"/21.jpg";
 //                        Uri uri = Uri.parse(myDir);
-                       Uri uri = Uri.fromFile(new File((myDir)) );
+//                       Uri uri = Uri.fromFile(new File((myDir)) );
 //                       Uri uri = FileProvider.getUriForFile(MainActivity.this,"read",file) ;
 
+                        String[] listOfPictures = directory.list();
+                        Uri uri=null;
+                        ArrayList<Uri> uris = new ArrayList<>();
+                        for (String file : listOfPictures)
+                        {
+                            uri = Uri.parse("file://" + directory.toString() + "/" + file);
+                            uris.add (uri);
+                        }
 
 
 
-
-                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                         shareIntent.setType("rar/image");
                         shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"arhsota@gmail.com"});
                         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -183,19 +190,14 @@ public class MainActivity extends AppCompatActivity {
       //                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "test1");
                         shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
 //                        todo: make multiattacment
-/*
-                        ArrayList<Uri> uris = new ArrayList<Uri>();
-                         for (String file : fileList())
-                         {
-                             File fileIn = new File (file);
-                             Uri u = Uri.fromFile((fileIn));
-                             uris.add (u);
-                         }
 
 
- */
-                        shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uri);
+
+
+
+//                        shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uris);
 //                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
                         startActivity(Intent.createChooser(shareIntent,"Email:"));
                     }
                 }
