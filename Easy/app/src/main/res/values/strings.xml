@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">Easy 1.0</string>
+    <string name="app_name">Easy 1.1</string>
     <string name="action_settings">Settings</string>
+    <string name="content_make_main">Сделать фото документов</string>
+    <string name="content_your_phone">Ваш номер телефона</string>
+    <string name="content_i_agree">Я принимаю</string>
+    <string name="content_text_agreement">Я подверждаю, что соглашаюсь на передачу персональных данных для ИП Лысенко Н.А., а ИП Лысенко Н.А. обязуется использовать ик исключительно для заключения страхховых полисов, и не передавать третьим лицам</string>
+    <string name="make_photo_1">Фото ВУ 1сторона + Фото ТС 1сторона</string>
+    <string name="make_photo_2">Фото ВУ 2сторона + Фото ТС 2сторона</string>
+    <string name="make_photo_3">Фото дополнительноых документов</string>
+    <string name="make_photo_send">Отправить документы</string>
 </resources>

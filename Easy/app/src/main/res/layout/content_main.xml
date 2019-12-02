@@ -12,11 +12,11 @@
 
     <Button
         android:id="@+id/btnPhoto"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="202dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="@dimen/content_photo_top"
         android:onClick="onClickPhoto"
-        android:text="Лучшее предложение"
+        android:text="@string/content_make_main"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -27,8 +27,8 @@
         android:id="@+id/txtClientPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:hint="Ваш номер телефона"
+        android:layout_marginTop="@dimen/content_top_phone"
+        android:hint="@string/content_your_phone"
         android:inputType="phone"
         app:cornerRadius="66dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,8 +44,8 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Я принимаю"
+        android:layout_marginTop="@dimen/content_check_box"
+        android:text="@string/content_i_agree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -54,13 +54,11 @@
         android:id="@+id/textView"
         android:layout_width="314dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="@dimen/content_text_agreement_start"
         android:layout_marginLeft="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:text="Я подверждаю, что соглашаюсь на передачу персональных данных для
-        ИП Лысенко Н.А., а ИП Лысенко Н.А. обязуется использовать ик исключительно для заключения
-        страхховых полисов, и не передавать третьим лицам"
+        android:text="@string/content_text_agreement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhoto" />

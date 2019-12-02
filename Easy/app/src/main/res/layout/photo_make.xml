@@ -9,11 +9,11 @@
 
     <Button
         android:id="@+id/btnPhotoDoc1"
-        android:layout_width="274dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="@dimen/make_photo_width"
+        android:layout_height="@dimen/make_photo_height"
+        android:layout_marginTop="@dimen/make_photo_top_1"
         android:onClick="onClickPhotoDoc"
-        android:text="Фото ВУ 1сторона + Фото ТС 1сторона"
+        android:text="@string/make_photo_1"
         app:backgroundTint="#2196F3"
         app:cornerRadius="66dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,11 +22,11 @@
 
     <Button
         android:id="@+id/btnPhotoDoc2"
-        android:layout_width="274dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="@dimen/make_photo_width"
+        android:layout_height="@dimen/make_photo_height"
+        android:layout_marginTop="@dimen/make_photo_top_2"
         android:onClick="onClickPhotoDoc"
-        android:text="Фото ВУ 2сторона + Фото ТС 2сторона"
+        android:text="@string/make_photo_2"
         app:backgroundTint="#4CAF50"
         app:cornerRadius="66dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,14 +35,31 @@
 
     <Button
         android:id="@+id/btnPhotoDoc3"
-        android:layout_width="274dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="@dimen/make_photo_width"
+        android:layout_height="@dimen/make_photo_height"
+        android:layout_marginTop="@dimen/make_photo_top_3"
         android:onClick="onClickPhotoDoc"
-        android:text="Фото Паспорт"
+        android:text="@string/make_photo_3"
         app:backgroundTint="#FF9800"
         app:cornerRadius="66dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhotoDoc2" />
+
+    <Button
+        android:id="@+id/btnPhotoDoc"
+        android:layout_width="@dimen/make_photo_width"
+        android:layout_height="@dimen/make_photo_height_send"
+        android:layout_marginTop="@dimen/make_photo_top_send"
+        android:onClick="onClickPhotoSend"
+        android:text="@string/make_photo_send"
+        app:backgroundTint="#CF655D"
+        app:cornerRadius="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPhotoDoc3" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

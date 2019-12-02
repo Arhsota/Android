@@ -1,7 +1,7 @@
 package com.arhsota.easy;
 
 // for Nikita Lisenko
-// 26 november 2019
+// 28 november 2019
 
 import android.Manifest;
 import android.app.Activity;
@@ -92,12 +92,11 @@ public class MainActivity extends AppCompatActivity {
                 fillTextLength = editable.toString().trim().length() > 7;
                 if (fillTextLength) {
 //                    editTxtClientPhone.setEnabled((true));
-                    strPhone = editTxtClientPhone.getText().toString();
                     checkFieldPhone = true;
                 }
                 else {
 //                    editTxtClientPhone.setEnabled((false));
-                    strPhone = "Вы не ввели номер телефона";
+//                    strPhone = "Вы не ввели номер телефона";
                     checkFieldPhone = false;
                 }
 
@@ -105,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+//        checkFieldPhone = true;
+//
         ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     chBox = findViewById(R.id.checkBox);
+                    strPhone = editTxtClientPhone.getText().toString();
                     if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
                         Toast.makeText(MainActivity.this, "Не приняли соглашение или не ввели номер",
@@ -186,19 +187,15 @@ public class MainActivity extends AppCompatActivity {
                         shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"arhsota@gmail.com"});
                         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Фото документов1");
+                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Содержимое каталога для: " +strPhone);
       //                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "test1");
-                        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
+//                        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
 //                        todo: make multiattacment
-
-
-
-
-
 //                        shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uris);
 //                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-                        startActivity(Intent.createChooser(shareIntent,"Email:"));
+//                        startActivity(Intent.createChooser(shareIntent,"Email:"));
+                        startActivity(shareIntent);
                     }
                 }
             }
@@ -209,15 +206,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickPhoto(View view) {
         chBox = findViewById(R.id.checkBox);
-        if (!chBox.isChecked()) {
+        if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
-            Toast.makeText(MainActivity.this, "Вы не приняли соглашение",
+            Toast.makeText(MainActivity.this, "Вы не приняли соглашение или не ввели номер",
                     Toast.LENGTH_SHORT).show();
             return;
 
         }
         else {
+            strPhone = editTxtClientPhone.getText().toString();
             Intent make_photo = new Intent(this, MakePhoto.class);
+
+            make_photo.setType("text/plain");
+            make_photo.putExtra("TELE", strPhone);
             startActivity(make_photo);
         }
     }
