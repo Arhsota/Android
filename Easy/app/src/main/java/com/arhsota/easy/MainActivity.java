@@ -30,6 +30,7 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -38,6 +39,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -68,11 +70,15 @@ public class MainActivity extends AppCompatActivity {
     private boolean fillTextLength = false;  //for ckecking length
     private boolean checkFieldPhone = false;
 
+    private TextView textView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = findViewById(R.id.textView);
+        textView.setMovementMethod(new ScrollingMovementMethod());
         editTxtClientPhone = findViewById(R.id.txtClientPhone);
         //                        for checking empty or not Client Phone field and length is less then 10
         editTxtClientPhone.addTextChangedListener(new TextWatcher() {

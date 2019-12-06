@@ -12,4 +12,6 @@
     <dimen name="content_photo_top">84dp</dimen>
     <dimen name="content_check_box">16dp</dimen>
     <dimen name="content_text_agreement_start">32dp</dimen>
+    <dimen name="content_textview_width">296dp</dimen>
+    <dimen name="content_textview_height">121dp</dimen>
 </resources>
