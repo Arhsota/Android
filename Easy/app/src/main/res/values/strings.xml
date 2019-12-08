@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Easy 1.1</string>
+    <string name="app_name">Easy 1.2</string>
     <string name="action_settings">Settings</string>
-    <string name="content_make_main">Сделать фото документов</string>
-    <string name="content_your_phone">Ваш номер телефона</string>
+    <string name="content_make_main">Подготовить документы для расчета стоимости ОСАГО</string>
+    <string name="content_your_phone">Номер тел. для связи со мной</string>
     <string name="content_i_agree">Я принимаю</string>
     <string name="content_text_agreement">
         Я подверждаю, что соглашаюсь на передачу персональных данных для ИП Лысенко Н.А.,
