@@ -176,7 +176,7 @@ public class MakePhoto extends AppCompatActivity {
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
         shareIntent.setType("rar/image");
-        shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"arhsota@gmail.com"});
+        shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, strPhone);

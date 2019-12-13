@@ -1,7 +1,7 @@
 package com.arhsota.easy;
 
 // for Nikita Lisenko
-// 28 november 2019
+// november december 2019
 
 import android.Manifest;
 import android.app.Activity;
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     }
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+79022865609"));
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getString (R.string.phone_number)));
                     startActivity(intent);
                 }
 
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                         shareIntent.setType("rar/image");
-                        shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"arhsota@gmail.com"});
+                        shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
                         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Содержимое каталога для: " +strPhone);
