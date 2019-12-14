@@ -178,30 +178,39 @@ public class MainActivity extends AppCompatActivity {
 //                       Uri uri = FileProvider.getUriForFile(MainActivity.this,"read",file) ;
 
                         String[] listOfPictures = directory.list();
-                        Uri uri=null;
-                        ArrayList<Uri> uris = new ArrayList<>();
-                        for (String file : listOfPictures)
-                        {
-                            uri = Uri.parse("file://" + directory.toString() + "/" + file);
-                            uris.add (uri);
-                        }
+                        if (listOfPictures != null) {
+// checks empty or not folder EASY
+
+                            Uri uri = null;
+                            ArrayList<Uri> uris = new ArrayList<>();
+                            for (String file : listOfPictures) {
+                                uri = Uri.parse("file://" + directory.toString() + "/" + file);
+                                uris.add(uri);
+                            }
 
 
-
-                        Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                        shareIntent.setType("rar/image");
-                        shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
-                        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Содержимое каталога для: " +strPhone);
-      //                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "test1");
+                            Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                            shareIntent.setType("rar/image");
+                            shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
+                            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Содержимое каталога для: " + strPhone);
+                            //                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "test1");
 //                        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
 //                        todo: make multiattacment
 //                        shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uris);
 //                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                            shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 //                        startActivity(Intent.createChooser(shareIntent,"Email:"));
-                        startActivity(shareIntent);
+                            startActivity(shareIntent);
+                        }
+                        else {
+
+                            Toast.makeText(MainActivity.this, "Вы ничего не сфотографировали, папка пустая",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+
+                        }
                     }
                 }
             }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Easy 1.4</string>
+    <string name="app_name">Easy 1.5</string>
     <string name="action_settings">Settings</string>
     <string name="content_make_main">Подготовить документы для расчета стоимости ОСАГО</string>
     <string name="content_your_phone">Номер тел. для связи со мной</string>
@@ -23,8 +23,8 @@
 Страховщик вправе обрабатывать персональные данные посредством включения
 их в базы данных Страховщика.
     </string>
-    <string name="make_photo_1">Фото ВУ + Фото ТС лицевая сторона</string>
-    <string name="make_photo_2">Фото ВУ + Фото ТС  оборотная сторона</string>
+    <string name="make_photo_1">Фото ВУ + Фото СТС лицевая сторона</string>
+    <string name="make_photo_2">Фото ВУ + Фото СТС  оборотная сторона</string>
     <string name="make_photo_3">Фото дополнительных документов</string>
     <string name="make_photo_send">Отправить документы</string>
     <string name="phone_number">+79600058880</string>
