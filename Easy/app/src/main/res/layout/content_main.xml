@@ -10,6 +10,21 @@
     tools:layout_editor_absoluteY="56dp"
     tools:showIn="@layout/activity_main">
 
+    <EditText
+        android:id="@+id/txtClientPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/content_top_phone"
+        android:hint="@string/content_your_phone"
+        android:inputType="phone"
+        android:textColor="#FDF5F0F0"
+        android:textColorHint="#FDF5F0F0"
+
+        app:cornerRadius="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btnPhoto"
         android:layout_width="202dp"
@@ -23,17 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
 
-    <EditText
-        android:id="@+id/txtClientPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/content_top_phone"
-        android:hint="@string/content_your_phone"
-        android:inputType="phone"
-        app:cornerRadius="66dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/ivPhoto"
