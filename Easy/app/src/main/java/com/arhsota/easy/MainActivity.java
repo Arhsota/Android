@@ -1,7 +1,8 @@
 package com.arhsota.easy;
 
 // for Nikita Lisenko
-// november december 2019
+// december 2019, january 2020
+// Sabetta release
 
 import android.Manifest;
 import android.app.Activity;
@@ -28,6 +29,7 @@ import androidx.core.content.FileProvider;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
@@ -45,6 +47,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 // Using help from https://startandroid.ru/ru/uroki/vse-uroki-spiskom/254-urok-131-kamera-ispolzuem-sistemnoe-prilozhenie.html
 
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     private String strPhone;
 
     private CheckBox chBox;
+
+    public static String PACKAGE_NAME;
 
     private boolean fillTextLength = false;  //for ckecking length
     private boolean checkFieldPhone = false;
@@ -172,51 +177,91 @@ public class MainActivity extends AppCompatActivity {
                                         .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                                 "Easy");
                         String myPath = directory.toString();
-                        String myDir = myPath +"/21.jpg";
-//                        Uri uri = Uri.parse(myDir);
-//                       Uri uri = Uri.fromFile(new File((myDir)) );
-//                       Uri uri = FileProvider.getUriForFile(MainActivity.this,"read",file) ;
+//                        String myDir = myPath +"/21.jpg";
 
-                        String[] listOfPictures = directory.list();
-                        if (listOfPictures != null) {
-// checks empty or not folder EASY
+                       choiceEmail();
 
-                            Uri uri = null;
-                            ArrayList<Uri> uris = new ArrayList<>();
-                            for (String file : listOfPictures) {
-                                uri = Uri.parse("file://" + directory.toString() + "/" + file);
-                                uris.add(uri);
-                            }
-
-
-                            Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                            shareIntent.setType("rar/image");
-                            shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
-                            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Содержимое каталога для: " + strPhone);
-                            //                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "test1");
-//                        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
-//                        todo: make multiattacment
-//                        shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uris);
-//                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-//                        startActivity(Intent.createChooser(shareIntent,"Email:"));
-                            startActivity(shareIntent);
-                        }
-                        else {
-
-                            Toast.makeText(MainActivity.this, "Вы ничего не сфотографировали, папка пустая",
-                                    Toast.LENGTH_SHORT).show();
-                            return;
-
-                        }
                     }
+
                 }
+
+
             }
         );
 
 
+    }
+    private void choiceEmail() {
+        String[] listOfPictures = directory.list();
+        if (listOfPictures != null) {
+
+            Uri uri;
+            ArrayList<Uri> uris = new ArrayList<>();
+            for (String file : listOfPictures) {
+                uri = Uri.parse("file://" + directory.toString() + "/" + file);
+                uris.add(uri);
+            }
+
+//            selector
+          Intent emailSelectorIntent = new Intent(Intent.ACTION_SENDTO);
+//            emailSelectorIntent.setDataAndType(Uri.parse("mailto:"),"text/plain");
+             emailSelectorIntent.setData(Uri.parse("mailto:"));
+
+           final  Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+//            shareIntent.setType("message/rfc822");
+//            shareIntent.setClassName("com.google.android.gm","com.google.android.gm.ComposeActivityGmail");
+//            shareIntent.setDataAndType(Uri.parse(getString(R.string.email)),"message/rfc822");
+//                            shareIntent.setType("text/html");
+//                            shareIntent.setData(uriEmail);
+            shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
+
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+//            shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Содержимое каталога для: " + strPhone);
+            shareIntent.setSelector( emailSelectorIntent );
+//                            shareIntent.putExtra(Intent.A, getString (R.string.phone_number));
+//                            shareIntent.putExtra("address", "12122222222");
+//                              shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, addressViber);
+//            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
+
+//                         shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uris);
+//                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+//            shareIntent.putExtra(Intent.EXTRA_STREAM, uris);
+//                            shareIntent.setComponent(new ComponentName("com.whatsapp","com.whatsapp.ContactPicker"));
+//                            shareIntent.putExtra("jid", "79022865609");
+//                        startActivity(Intent.createChooser(shareIntent,"Email:"));
+//                           startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("viber://chat?number=7900000000")));
+//                            shareIntent.setPackage("com.whatsapp");
+//                            startActivity(shareIntent);
+//            shareIntent.setSelector( emailSelectorIntent );
+//            shareIntent.setSelector( emailSelectorIntent );
+
+
+            if( shareIntent.resolveActivity(getPackageManager()) != null ) {
+//                startActivity(shareIntent);
+                startActivity(Intent.createChooser(shareIntent,"Выберите"));
+               }
+            else {
+                Toast.makeText(MainActivity.this, "Не установлен почтовый клиент! Установите, пожалуйста",
+                        Toast.LENGTH_SHORT).show();
+                return;
+                 }
+
+//            startActivity(shareIntent);
+//              shareIntent.setSelector( emailSelectorIntent );
+//            startActivity(Intent.createChooser(shareIntent,"choose"));
+
+        }
+         else {
+
+            Toast.makeText(MainActivity.this, "Вы ничего не сфотографировали, папка пустая",
+                    Toast.LENGTH_SHORT).show();
+            return;
+
+         }
     }
 
     public void onClickPhoto(View view) {

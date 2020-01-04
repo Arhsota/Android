@@ -52,7 +52,7 @@
         android:layout_width="@dimen/make_photo_width"
         android:layout_height="@dimen/make_photo_height_send"
         android:layout_marginTop="@dimen/make_photo_top_send"
-        android:onClick="onClickPhotoSend"
+        android:onClick="onClickPhotoSendWhatsApp"
         android:text="@string/make_photo_send"
         app:backgroundTint="#CF655D"
         app:cornerRadius="66dp"
@@ -61,5 +61,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhotoDoc3" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickPhotoFabEmail"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPhotoDoc"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
