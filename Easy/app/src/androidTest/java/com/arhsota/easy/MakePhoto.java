@@ -101,4 +101,8 @@ public class MakePhoto extends Activity {
 //                        startActivity(Intent.createChooser(shareIntent,"Email:"));
         startActivity(shareIntent);
     }
+
+
+    public void onClickPhotoSendWhatsApp(View view) {
+    }
 }

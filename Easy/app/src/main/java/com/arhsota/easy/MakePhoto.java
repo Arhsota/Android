@@ -3,15 +3,23 @@ package com.arhsota.easy;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.ContentProviderOperation;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +28,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -46,18 +56,20 @@ public class MakePhoto extends AppCompatActivity {
 
     private String strPhone;
     private String myPhone;
-
+//    private static final int PERMISSIONS_REQUEST_WRITE_CONTACTS = 1;
+//    private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo_make);
-        myPhone = getIntent().getStringExtra("TELE");
+//        myPhone = getIntent().getStringExtra("TELE");
         createDirectory();
         btnDoc = findViewById(R.id.btnPhotoDoc1);
 
 
     }
+
     public void onClickPhotoDoc(View view) {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -74,15 +86,12 @@ public class MakePhoto extends AppCompatActivity {
             }
         }
 
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, generateFileUri(TYPE_PHOTO));
-                startActivityForResult(intent, REQUEST_CODE_PHOTO);
-
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, generateFileUri(TYPE_PHOTO));
+        startActivityForResult(intent, REQUEST_CODE_PHOTO);
 
 
     }
-
-
 
 
     @Override
@@ -123,6 +132,9 @@ public class MakePhoto extends AppCompatActivity {
             }
         }
     }
+
+
+
     private Uri generateFileUri(int type) {
         File file = null;
         switch (type) {
@@ -151,69 +163,6 @@ public class MakePhoto extends AppCompatActivity {
 
 
 
-    public void onClickPhotoSend(View view) {
-        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy(builder.build());
-        Snackbar.make(view, "Отправляю документы...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-        String fileName = (MakePhoto.myPath);
-        String externalStorageDirectory = Environment.getRootDirectory().toString();
-        //                String myDir = externalStorageDirectory + "/Pictures/Easy/"; // the // file will be in saved_images
-        directory = new File(
-                Environment
-                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                "Easy");
-        String myPath = directory.toString();
-        String myDir = myPath +"/21.jpg";
-
-//        String myPhone = getIntent().getStringExtra(MainActivity."TELE");
-
-        strPhone = "Фото документов для: " + myPhone ;
-        String[] listOfPictures = directory.list();
-        if (listOfPictures != null) {
-            // checks empty or not folder EASY
-            Uri uri = null;
-            ArrayList<Uri> uris = new ArrayList<>();
-            for (String file : listOfPictures) {
-                uri = Uri.parse("file://" + directory.toString() + "/" + file);
-                uris.add(uri);
-            }
-
-            Intent emailSelectorIntent = new Intent(Intent.ACTION_SENDTO);
-//            emailSelectorIntent.setDataAndType(Uri.parse("mailto:"),"text/plain");
-            emailSelectorIntent.setData(Uri.parse("mailto:"));
-
-            final Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-//             shareIntent.setType("rar/image");
-//             shareIntent.setType("image/*");
-            shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
-//            shareIntent.setDataAndType(Uri.parse("mailto:"),"image/*"); // only email apps should handle this***
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, strPhone);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, myPhone);
-            shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-            shareIntent.setSelector( emailSelectorIntent );
-//            startActivity(shareIntent);
-//            PackageManager pm = getPackageManager();
-            if( shareIntent.resolveActivity(getPackageManager()) != null ) {
-//                startActivity(shareIntent);
-                startActivity(Intent.createChooser(shareIntent,"Выберите"));
-            }
-            else {
-                Toast.makeText(MakePhoto.this, "Не установлен почтовый клиент! Установите, пожалуйста",
-                        Toast.LENGTH_SHORT).show();
-                return;
-            }
-            startActivity(Intent.createChooser(shareIntent,"Выберите:"));
-        }
-        else {
-            Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-    }
-
-
     public void onClickPhotoFabEmail(View view) {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
@@ -230,8 +179,9 @@ public class MakePhoto extends AppCompatActivity {
 
         choiceEmail();
     }
+
     private void choiceEmail() {
-        strPhone = "Фото документов для: " + myPhone ;
+        strPhone = "Фото документов для: " + myPhone;
         String[] listOfPictures = directory.list();
         if (listOfPictures != null) {
 
@@ -247,43 +197,23 @@ public class MakePhoto extends AppCompatActivity {
 //            emailSelectorIntent.setDataAndType(Uri.parse("mailto:"),"text/plain");
             emailSelectorIntent.setData(Uri.parse("mailto:"));
 
-            final  Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-//            shareIntent.setType("message/rfc822");
-//            shareIntent.setClassName("com.google.android.gm","com.google.android.gm.ComposeActivityGmail");
-//            shareIntent.setDataAndType(Uri.parse(getString(R.string.email)),"message/rfc822");
-//                            shareIntent.setType("text/html");
-//                            shareIntent.setData(uriEmail);
+            final Intent shareIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+
             shareIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
 
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 //            shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, strPhone);
-            shareIntent.setSelector( emailSelectorIntent );
-//                            shareIntent.putExtra(Intent.A, getString (R.string.phone_number));
-//                            shareIntent.putExtra("address", "12122222222");
-//                              shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, addressViber);
+            shareIntent.setSelector(emailSelectorIntent);
 
-//                         shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uris);
-//                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-//            shareIntent.putExtra(Intent.EXTRA_STREAM, uris);
-//                            shareIntent.setComponent(new ComponentName("com.whatsapp","com.whatsapp.ContactPicker"));
-//                            shareIntent.putExtra("jid", "79022865609");
-//                        startActivity(Intent.createChooser(shareIntent,"Email:"));
-//                           startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("viber://chat?number=7900000000")));
-//                            shareIntent.setPackage("com.whatsapp");
-//                            startActivity(shareIntent);
-//            shareIntent.setSelector( emailSelectorIntent );
-//            shareIntent.setSelector( emailSelectorIntent );
 
-
-            if( shareIntent.resolveActivity(getPackageManager()) != null ) {
+            if (shareIntent.resolveActivity(getPackageManager()) != null) {
 //                startActivity(shareIntent);
-                startActivity(Intent.createChooser(shareIntent,"Выберите"));
-            }
-            else {
+                startActivity(Intent.createChooser(shareIntent, "Выберите"));
+            } else {
                 Toast.makeText(MakePhoto.this, "Не установлен почтовый клиент! Установите, пожалуйста",
                         Toast.LENGTH_SHORT).show();
                 return;
@@ -293,8 +223,7 @@ public class MakePhoto extends AppCompatActivity {
 //              shareIntent.setSelector( emailSelectorIntent );
 //            startActivity(Intent.createChooser(shareIntent,"choose"));
 
-        }
-        else {
+        } else {
 
             Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
                     Toast.LENGTH_SHORT).show();
@@ -302,30 +231,211 @@ public class MakePhoto extends AppCompatActivity {
 
         }
     }
-    public void onClickPhotoSendWhatsApp(View view){
-        Toast.makeText(MakePhoto.this, "В разработке!!",
-                Toast.LENGTH_SHORT).show();
-        return;
-    }
 
-/*  RESERVED for later
+    /*   public void onClickPhotoSendWhatsApp(View view){
+           Toast.makeText(MakePhoto.this, "В разработке!!",
+                   Toast.LENGTH_SHORT).show();
+           return;
+       }
+   */
+//  RESERVED for later
+
+
     public void onClickPhotoSendWhatsApp(View view) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
 
-        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy(builder.build());
-        Snackbar.make(view, "Отправляю документы...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-        String fileName = (MakePhoto.myPath);
-        String externalStorageDirectory = Environment.getRootDirectory().toString();
-        //                String myDir = externalStorageDirectory + "/Pictures/Easy/"; // the // file will be in saved_images
-        directory = new File(
-                Environment
-                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                "Easy");
-        String myPath = directory.toString();
-        choiceWhatsApp();
+            if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to Contacts - requesting it");
+                String[] permissions = {Manifest.permission.WRITE_CONTACTS};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+
+              Snackbar.make(view, "Отправляю документы...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+              String fileName = (MakePhoto.myPath);
+              String externalStorageDirectory = Environment.getRootDirectory().toString();
+              //                String myDir = externalStorageDirectory + "/Pictures/Easy/"; // the // file will be in saved_images
+              directory = new File(
+                    Environment
+                            .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                    "Easy");
+                    String myPath = directory.toString();
+
+        String sWhatsAppNo = getString(R.string.phone_number);
+//                    ID from contacts of Phone
+                    String sContactId = contactIdByPhoneNumber(getString(R.string.phone_number));
+//                    ID from WhatsApp contacts
+                    String sContactIdWhatsApp = hasWhatsApp(sWhatsAppNo);
+
+        /*
+                  * Once We get the contact id, we check whether contact has a registered with WhatsApp or not.
+                  * this hasWhatsApp(hasWhatsApp) method will return null,
+                  * if contact doesn't associate with whatsApp services.
+                  * */
+
+        // this contact does not exist in any WhatsApp application
+//                  String sWhatsAppNo = hasWhatsApp(sContactId);
+
+
+                 if ( sContactId == null){
+
+
+                   Toast.makeText(this, "Contact not found in WhatsApp !!", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(this, "create contact for " + (getString(R.string.phone_number)), Toast.LENGTH_LONG).show();
+                   onAddContact();
+                 }
+
+
+             choiceWhatsApp();
+
+
+
+
+
     }
-*/
+    private String contactIdByPhoneNumber(String phoneNumber) {
+          String contactId = null;
+        // Check the SDK version and whether the permission is already granted or not.
+        //         If higher than 6.0 grants are already done
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.READ_CONTACTS)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to Contacts - requesting it");
+                String[] permissions = {Manifest.permission.READ_CONTACTS};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+
+            if (phoneNumber != null && phoneNumber.length() > 0) {
+                ContentResolver contentResolver = getContentResolver();
+                Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
+                String[] projection = new String[]{ContactsContract.PhoneLookup._ID};
+
+                Cursor cursor = contentResolver.query(uri, projection, null, null, null);
+
+                if (cursor != null) {
+                    while (cursor.moveToNext()) {
+                        contactId = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.PhoneLookup._ID));
+                    }
+                    cursor.close();
+                }
+            }
+
+
+        return contactId;
+
+
+
+    }
+
+
+    public String hasWhatsApp(String contactID) {
+        String rowContactId = null;
+        boolean hasWhatsApp;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.READ_CONTACTS)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to Contacts - requesting it");
+                String[] permissions = {Manifest.permission.READ_CONTACTS};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+
+
+        String[] projection = new String[]{ContactsContract.RawContacts._ID};
+        String selection = ContactsContract.RawContacts.CONTACT_ID + " = ? AND " + ContactsContract.RawContacts.ACCOUNT_TYPE + " = ?";
+        String[] selectionArgs = new String[]{contactID, "com.whatsapp"};
+        Cursor cursor = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, projection, selection, selectionArgs, null);
+        if (cursor != null) {
+            hasWhatsApp = cursor.moveToNext();
+            if (hasWhatsApp) {
+                rowContactId = cursor.getString(0);
+            }
+            cursor.close();
+        }
+        return rowContactId;
+    }
+    public void onAddContact() {
+
+
+
+//        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+//        StrictMode.setVmPolicy(builder.build());
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to Contacts - requesting it");
+                String[] permissions = {Manifest.permission.WRITE_CONTACTS};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+        
+            ArrayList<ContentProviderOperation> op = new ArrayList<ContentProviderOperation>();
+
+            /* Добавляем пустой контакт */
+            op.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+                    .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                    .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                    .build());
+            /* Добавляем данные имени */
+            op.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, (getString(R.string.insurame)))
+                    .build());
+            /* Добавляем данные телефона */
+            op.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, (getString(R.string.phone_number)))
+                    .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                    .build());
+
+            try {
+                getContentResolver().applyBatch(ContactsContract.AUTHORITY, op);
+
+            } catch (Exception e) {
+                Log.e("Exception: ", e.getMessage());
+            }
+
+    }
+
     private void choiceWhatsApp() {
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to Contacts - requesting it");
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 1);
+
+            }
+        }
 
         String[] listOfPictures = directory.list();
         if (listOfPictures != null) {
@@ -337,39 +447,41 @@ public class MakePhoto extends AppCompatActivity {
                 uris.add(uri);
             }
 
-            String url = "https://api.whatsapp.com/send?phone=79115576999";
+//            String url = "https://api.whatsapp.com/send?phone=79600058880";
+//            String url = "whatsapp://send?phone=70000000000";
+//              String url = "smsto:79600058880";
 
-//            String url = "tel:"+getString (R.string.phone_number);
-           Intent shareIntentW = new Intent(Intent.ACTION_SEND_MULTIPLE);
+
+            Intent shareIntentW = new Intent(Intent.ACTION_SEND_MULTIPLE);
 //            Intent shareIntentW =new Intent("android.intent.action.MAIN");
 //              shareIntentW.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
 //            shareIntentW.setAction(Intent.ACTION_SEND_MULTIPLE);
-            shareIntentW.setPackage("com.whatsapp");
-              shareIntentW.setData(Uri.parse(url));
-//              shareIntentW.setType("text/plain");
+             shareIntentW.setPackage("com.whatsapp");
+
+//              shareIntentW.setData(Uri.parse(url));
+              shareIntentW.setType("text/plain");
 //             shareIntentW.setDataAndType(Uri.parse(url),"text/plain");
-//           shareIntent.setType("message/rfc822");
+//           shareIntentW.setType("message/rfc822");
 //            shareIntent.setClassName("com.google.android.gm","com.google.android.gm.ComposeActivityGmail");
 
-//                            shareIntent.setType("text/html");
-//                            shareIntent.setData(uriEmail);
+//
 //            shareIntentW.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
-
-//            shareIntentW.putExtra("jid",getString (R.string.phone_number) +"@s.whatsapp.net");
+//            shareIntentW.setComponent(new  ComponentName("com.whatsapp","com.whatsapp.Conversation"));
+            shareIntentW.putExtra("jid",(getString(R.string.phone_number)) +"@s.whatsapp.net");
             shareIntentW.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             shareIntentW.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            shareIntentW.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            shareIntentW.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //           shareIntentW.putExtra(Intent.EXTRA_SUBJECT, "Содержимое каталога для: " + strPhone);
 //            shareIntentW.setSelector( emailSelectorIntent );
 //                            shareIntent.putExtra(Intent.A, getString (R.string.phone_number));
 //                            shareIntent.putExtra("address", "12122222222");
 //                              shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, addressViber);
-            shareIntentW.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
+//            shareIntentW.putExtra(android.content.Intent.EXTRA_TEXT, strPhone);
 
 //                         shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, uris);
 //                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //            shareIntentW.putExtra(Intent.EXTRA_STREAM, uris);
-              shareIntentW.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+            shareIntentW.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 //            shareIntent.putExtra(Intent.EXTRA_STREAM, uris);
 //                            shareIntent.setComponent(new ComponentName("com.whatsapp","com.whatsapp.ContactPicker"));
 //                            shareIntent.putExtra("jid", "79022865609");
@@ -382,19 +494,24 @@ public class MakePhoto extends AppCompatActivity {
 
 
 //                startActivity(shareIntent);
-            shareIntentW.setPackage("com.whatsapp");
+//                shareIntentW.setPackage("com.whatsapp");
 //                startActivity(Intent.createChooser(shareIntentW,"Выберите"));
 
 
-
-//            startActivity(shareIntentW);
+               startActivity(shareIntentW);
 //              shareIntent.setSelector( emailSelectorIntent );
-            startActivity(Intent.createChooser(shareIntentW,"choose"));
+//            startActivity(Intent.createChooser(shareIntentW,"choose"));
 
-            }
+        } else {
+
+            Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
+                    Toast.LENGTH_SHORT).show();
+            return;
 
         }
+
 
     }
 
 
+}

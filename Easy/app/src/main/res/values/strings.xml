@@ -27,7 +27,8 @@
     <string name="make_photo_2">Фото ВУ и Свидетельства ТС  оборотная сторона</string>
     <string name="make_photo_3">Фото предыдущего полиса (при наличии)</string>
     <string name="make_photo_send">Отправить документы по WhatsApp</string>
-    <string name="phone_number">+79600058880</string>
-    <string name="email2">arhsota@gmail.com </string>
-    <string name="email">thefamilyarh@yandex.ru </string>
+    <string name="phone_number">+79022865609</string>
+    <string name="email">arhsota@gmail.com </string>
+    <string name="email2">thefamilyarh@yandex.ru </string>
+    <string name="insurame">Страховая online</string>
 </resources>
