@@ -63,7 +63,7 @@ public class MakePhoto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo_make);
-//        myPhone = getIntent().getStringExtra("TELE");
+        myPhone = getIntent().getStringExtra("TELE");
         createDirectory();
         btnDoc = findViewById(R.id.btnPhotoDoc1);
 
@@ -249,11 +249,13 @@ public class MakePhoto extends AppCompatActivity {
             if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS)
                     == PackageManager.PERMISSION_DENIED) {
 
-                Log.d("permission", "permission denied to Contacts - requesting it");
+                Log.d("permission", "permission denied to Contacts - requesting it in onClickPhotoSendWhatsApp");
                 String[] permissions = {Manifest.permission.WRITE_CONTACTS};
                 requestPermissions(permissions, 1);
 
             }
+
+
         }
 
               Snackbar.make(view, "Отправляю документы...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -266,7 +268,7 @@ public class MakePhoto extends AppCompatActivity {
                     "Easy");
                     String myPath = directory.toString();
 
-        String sWhatsAppNo = getString(R.string.phone_number);
+              String sWhatsAppNo = getString(R.string.phone_number);
 //                    ID from contacts of Phone
                     String sContactId = contactIdByPhoneNumber(getString(R.string.phone_number));
 //                    ID from WhatsApp contacts
@@ -284,11 +286,11 @@ public class MakePhoto extends AppCompatActivity {
 
                  if ( sContactId == null){
 
-
-                   Toast.makeText(this, "Contact not found in WhatsApp !!", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(this, "Contact not found in Contacts !!", Toast.LENGTH_SHORT).show();
                    Toast.makeText(this, "create contact for " + (getString(R.string.phone_number)), Toast.LENGTH_LONG).show();
                    onAddContact();
                  }
+
 
 
              choiceWhatsApp();
@@ -312,26 +314,26 @@ public class MakePhoto extends AppCompatActivity {
                 Log.d("permission", "permission denied to Contacts - requesting it");
                 String[] permissions = {Manifest.permission.READ_CONTACTS};
                 requestPermissions(permissions, 1);
-
             }
-        }
+            else {
 
-            if (phoneNumber != null && phoneNumber.length() > 0) {
-                ContentResolver contentResolver = getContentResolver();
-                Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
-                String[] projection = new String[]{ContactsContract.PhoneLookup._ID};
+                if (phoneNumber != null && phoneNumber.length() > 0) {
+                    ContentResolver contentResolver = getContentResolver();
+                    Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
+                    String[] projection = new String[]{ContactsContract.PhoneLookup._ID};
 
-                Cursor cursor = contentResolver.query(uri, projection, null, null, null);
+                    Cursor cursor = contentResolver.query(uri, projection, null, null, null);
 
-                if (cursor != null) {
-                    while (cursor.moveToNext()) {
-                        contactId = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.PhoneLookup._ID));
+                    if (cursor != null) {
+                        while (cursor.moveToNext()) {
+                            contactId = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.PhoneLookup._ID));
+                        }
+                        cursor.close();
                     }
-                    cursor.close();
+
                 }
             }
-
-
+        }
         return contactId;
 
 
@@ -353,20 +355,21 @@ public class MakePhoto extends AppCompatActivity {
                 String[] permissions = {Manifest.permission.READ_CONTACTS};
                 requestPermissions(permissions, 1);
 
-            }
-        }
+            } else {
 
 
-        String[] projection = new String[]{ContactsContract.RawContacts._ID};
-        String selection = ContactsContract.RawContacts.CONTACT_ID + " = ? AND " + ContactsContract.RawContacts.ACCOUNT_TYPE + " = ?";
-        String[] selectionArgs = new String[]{contactID, "com.whatsapp"};
-        Cursor cursor = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, projection, selection, selectionArgs, null);
-        if (cursor != null) {
-            hasWhatsApp = cursor.moveToNext();
-            if (hasWhatsApp) {
-                rowContactId = cursor.getString(0);
+                String[] projection = new String[]{ContactsContract.RawContacts._ID};
+                String selection = ContactsContract.RawContacts.CONTACT_ID + " = ? AND " + ContactsContract.RawContacts.ACCOUNT_TYPE + " = ?";
+                String[] selectionArgs = new String[]{contactID, "com.whatsapp"};
+                Cursor cursor = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, projection, selection, selectionArgs, null);
+                if (cursor != null) {
+                    hasWhatsApp = cursor.moveToNext();
+                    if (hasWhatsApp) {
+                        rowContactId = cursor.getString(0);
+                    }
+                    cursor.close();
+                }
             }
-            cursor.close();
         }
         return rowContactId;
     }

@@ -140,11 +140,15 @@ public class MainActivity extends AppCompatActivity {
                             String[] permissions = {Manifest.permission.CALL_PHONE};
                             requestPermissions(permissions, 1);
 
+
+                        }
+                        else {
+                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getString (R.string.phone_number)));
+                            startActivity(intent);
                         }
 
                     }
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getString (R.string.phone_number)));
-                    startActivity(intent);
+
                 }
 
 
