@@ -286,8 +286,9 @@ public class MakePhoto extends AppCompatActivity {
 
                  if ( sContactId == null){
 
-                   Toast.makeText(this, "Contact not found in Contacts !!", Toast.LENGTH_SHORT).show();
-                   Toast.makeText(this, "create contact for " + (getString(R.string.phone_number)), Toast.LENGTH_LONG).show();
+//                   Toast.makeText(this, "Contact not found in Contacts !!", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(this,
+                           " номер Easy Осаго сохранен в тел. книге, просто добавьте его в отправители", Toast.LENGTH_LONG).show();
                    onAddContact();
                  }
 
