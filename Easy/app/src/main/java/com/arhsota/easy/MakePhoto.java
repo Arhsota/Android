@@ -406,7 +406,7 @@ public class MakePhoto extends AppCompatActivity {
             op.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                     .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                     .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, (getString(R.string.insurame)))
+                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, (getString(R.string.insurname)))
                     .build());
             /* Добавляем данные телефона */
             op.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
@@ -509,7 +509,7 @@ public class MakePhoto extends AppCompatActivity {
         } else {
 
             Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
             return;
 
         }

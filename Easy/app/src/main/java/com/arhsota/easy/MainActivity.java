@@ -78,9 +78,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
@@ -115,46 +118,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        checkFieldPhone = true;
-//
-        ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
+
+//    for further maybe, was taken from example
+
+//        ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
+// Calling manager Lavinia
 
-            FloatingActionButton callphone = findViewById(R.id.callph);
+            final FloatingActionButton callphone = findViewById(R.id.callph);
 
             callphone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-// Checking permissions. If Not asks owner to make it by himself
+                  Toast.makeText(MainActivity.this, "Звонок менеджеру",
+                            Toast.LENGTH_LONG).show();
 
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-
-                        if (checkSelfPermission(Manifest.permission.CALL_PHONE)
-                                == PackageManager.PERMISSION_DENIED) {
-
-                            Log.d("permission", "permission denied to CALL PHONE - requesting it");
-                            String[] permissions = {Manifest.permission.CALL_PHONE};
-                            requestPermissions(permissions, 1);
-
-
-                        }
-                        else {
-                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getString (R.string.phone_number)));
-                            startActivity(intent);
-                        }
-
-                    }
+                   callPhone(getString (R.string.phone_number));
 
                 }
 
 
             });
 
-            FloatingActionButton fab = findViewById(R.id.fab);
+
+//   Send docs from folder Easy by mail
+
+        FloatingActionButton fab = findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -165,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
                         Toast.makeText(MainActivity.this, "Не приняли соглашение или не ввели номер",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
                         return;
 
                     }
@@ -250,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
                }
             else {
                 Toast.makeText(MainActivity.this, "Не установлен почтовый клиент! Установите, пожалуйста",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
                 return;
                  }
 
@@ -262,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
          else {
 
             Toast.makeText(MainActivity.this, "Вы ничего не сфотографировали, папка пустая",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
             return;
 
          }
@@ -273,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
         if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
             Toast.makeText(MainActivity.this, "Вы не приняли соглашение или не ввели номер",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
             return;
 
         }
@@ -304,11 +298,68 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, Help.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.action_callevacuator) {
+
+//            Toast.makeText(MainActivity.this, "Вызываю эвакуатор!!!",
+//                    Toast.LENGTH_LONG).show();
+
+//            callPhone(getString (R.string.phone_number_evacuator));
+
+           Toast.makeText(MainActivity.this, "В разработке",
+                    Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        if (id == R.id.action_service) {
+
+            Toast.makeText(MainActivity.this, "В разработке",
+                    Toast.LENGTH_LONG).show();
+
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void callPhone (final String strCallNumber){
+
+//         Calling total procedure
+
+//        strCallNumber = getString (R.string.phone_number);
+
+
+
+
+
+// Checking permissions. If Not asks owner to make it by himself
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+                    if (checkSelfPermission(Manifest.permission.CALL_PHONE)
+                            == PackageManager.PERMISSION_DENIED) {
+
+                        Log.d("permission", "permission denied to CALL PHONE - requesting it");
+                        String[] permissions = {Manifest.permission.CALL_PHONE};
+                        requestPermissions(permissions, 1);
+
+
+                    }
+                    else {
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + strCallNumber));
+                        startActivity(intent);
+                    }
+
+                }
+
+
+    }
+
 
 
 }
