@@ -1,8 +1,18 @@
 package com.arhsota.easy;
 
-// for Nikita Lisenko
-// december 2019, january 2020
-// Sabetta release
+/*
+ *
+ *  * Created by Andrey Sevastianov on 19.01.20 10:18
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 19.01.20 10:13
+ *
+ *
+
+ *  * for Nikita Lisenko
+ *  * december 2019, january 2020
+ *  * Sabetta release
+ *
+ */
 
 import android.Manifest;
 import android.app.Activity;
@@ -88,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
         editTxtClientPhone = findViewById(R.id.txtClientPhone);
-        //                        for checking empty or not Client Phone field and length is less then 10
+ //     for checking empty or not Client Phone field and length is less then 10
         editTxtClientPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
