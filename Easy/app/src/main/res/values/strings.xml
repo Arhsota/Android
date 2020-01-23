@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Easy 1.7</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Easy 2.1</string>
+    <string name="action_settings">Справка</string>
+    <string name="action_callevacuator">Эвакуатор</string>
+    <string name="action_service">Сервис</string>
     <string name="content_make_main">Подготовить документы для расчета стоимости ОСАГО</string>
     <string name="content_your_phone">Номер тел. для связи со мной</string>
     <string name="content_i_agree">Я принимаю</string>
@@ -26,7 +28,24 @@
     <string name="make_photo_1">Фото ВУ и Свидетельства ТС лицевая сторона</string>
     <string name="make_photo_2">Фото ВУ и Свидетельства ТС  оборотная сторона</string>
     <string name="make_photo_3">Фото предыдущего полиса (при наличии)</string>
-    <string name="make_photo_send">Отправить документы</string>
+    <string name="make_photo_send">Отправить документы по WhatsApp</string>
     <string name="phone_number">+79600058880</string>
+    <string name="phone_number2">+79022865609</string>
+    <string name="phone_number_evacuator">+79626594277</string>
+    <string name="phone_number_evacuator2">+79022865609</string>
+    <string name="email2">arhsota@gmail.com </string>
     <string name="email">thefamilyarh@yandex.ru </string>
+    <string name="insurname">Easy ОСАГО</string>
+    <string name="help">1.Введите свой номер телефона, прочитайте и примите соглашение.
+        2.Нажмите кнопку СДЕЛАТЬ ФОТО ДОКУМЕНТОВ, сфотографируйте свои документы.
+        3. Отправьте документы: 1-й способ, через Электронную почту - клик на иконке "конвертик".
+           2-й способ - WhatsApp - клик по кнопке WHATSAPP (создастся контакт Easy ОСАГО,
+           его необходимо внести в отправители).
+        4. Ожидаем звонок или письмо с выгодным предложением.
+
+        Вы всегда можете получить помощь, просто нажав на значок ТЕЛЕФОННОЙ ТРУБКИ на главном экране
+        Если у Вас уже были сделаны фото документов, то можно отправить сразу, выбрав способ.
+        Также Вы можете вызвать эвакуатор одним кликом
+        </string>
+
 </resources>
