@@ -14,4 +14,5 @@
     <dimen name="content_text_agreement_start">32dp</dimen>
     <dimen name="content_textview_width">296dp</dimen>
     <dimen name="content_textview_height">121dp</dimen>
+    <dimen name="content_texthelp_height">300dp</dimen>
 </resources>

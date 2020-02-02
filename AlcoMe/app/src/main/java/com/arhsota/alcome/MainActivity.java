@@ -3,7 +3,9 @@ package com.arhsota.alcome;
 // Info of hour much time remains alcohol in your body
 // Idea from DS
 // 2019 September, October, 10 november
-// ver 1.0
+// 2020 February
+// Arkhangelsk
+// ver 1.4 improved but not published
 
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;

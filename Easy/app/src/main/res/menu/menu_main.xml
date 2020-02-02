@@ -12,6 +12,7 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
+        android:icon="@android:drawable/ic_menu_help"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />
 
@@ -19,5 +20,11 @@
         android:id="@+id/action_service"
         android:orderInCategory="200"
         android:title="@string/action_service"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_krown"
+        android:orderInCategory="300"
+        android:title="@string/krown"
         app:showAsAction="ifRoom" />
 </menu>
