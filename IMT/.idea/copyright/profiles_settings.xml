@@ -1,0 +1,12 @@
+<component name="CopyrightManager">
+  <settings default="Main Copyright">
+    <module2copyright>
+      <element module="All" copyright="Main Copyright" />
+    </module2copyright>
+    <LanguageOptions name="__TEMPLATE__">
+      <option name="relativeBefore" value="false" />
+      <option name="separateBefore" value="true" />
+      <option name="separateAfter" value="true" />
+    </LanguageOptions>
+  </settings>
+</component>

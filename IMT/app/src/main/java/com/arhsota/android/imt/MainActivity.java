@@ -1,13 +1,11 @@
 package com.arhsota.android.imt;
 
-// version 2.4
-// changes in this version - second activity with correspondent features and banner on every activity
-// using constraint layout
+// version 2.7 only for backup and gradle update
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
-// Sevastyanov Andrey, 2019, august
+// Sevastyanov Andrey, 2019, 2020
 // Arkhangelsk
-//
+
 
 import android.app.Activity;
 import android.content.Context;
