@@ -1,8 +1,11 @@
-// from stopwatch as pattern
-// 4 DMitry Siz
-// 2018, 2019
-// august
-// ver 1.9
+/*
+ from stopwatch as pattern
+ 4 DMitry Siz
+ 2018, 2019, 2020
+ Arkhangelsk
+ ver 1.9.3
+ nothing new, only improvement
+*/
 
 package com.arhsota.tablo;
 
