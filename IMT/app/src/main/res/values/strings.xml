@@ -27,5 +27,11 @@
     <string name="minimum_password">Minimum password</string>
     <string name="auth_failed">Auth failed</string>
     <string name="in_work">in work</string>
+    <string name="share">Sharing</string>
+    <string name="my_IMT">My BMI:</string>
+    <string name="my_weight">Weight:</string>
+    <string name="my_length">Length:</string>
+    <string name="my_age">Age:</string>
+    <string name="for_subject_field">My Body Mass Index on:</string>
 
 </resources>

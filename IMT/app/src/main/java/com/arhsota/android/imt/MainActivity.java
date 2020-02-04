@@ -1,6 +1,7 @@
 package com.arhsota.android.imt;
 
-// version 2.7 only for backup and gradle update
+// version 2.7 some improvements such as normal input and translation in English version
+// and a little bit in text in main string with data
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
 // Sevastyanov Andrey, 2019, 2020
@@ -177,9 +178,12 @@ public class MainActivity extends AppCompatActivity {
               */
                 Intent intent_mes = new Intent(Intent.ACTION_SEND);
                 intent_mes.setType("text/plain");
-                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+                intent_mes.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.for_subject_field) + str_Date);
+                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date + " "+ getString(R.string.my_IMT) + " " + str_IMT
+                        + " " + getString(R.string.my_weight) + " " +str_Weight + " " + getString(R.string.my_length)
+                        + " " + str_Length + " " + getString(R.string.my_age) + " " +str_Age);
 //          page 143 always choose intent
-                String chooserTitle = "Sharing";
+                String chooserTitle = getString(R.string.share);
                 Intent chosenIntent = Intent.createChooser(intent_mes, chooserTitle);
                 startActivity(chosenIntent);
                 return true;
