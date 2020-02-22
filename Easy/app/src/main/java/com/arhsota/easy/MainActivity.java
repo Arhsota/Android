@@ -2,16 +2,16 @@ package com.arhsota.easy;
 
 /*
  *
- *  * Created by Andrey Sevastianov on 19.01.20 10:18
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 19.01.20 10:13
+ *  * Created by Andrey Sevastianov on 03.12.19 10:18
+ *  * Copyright (c) 2019,2020 . All rights reserved.
+ *  * Last modified 30.01.20 22:13
  *
  *
 
  *  * for Nikita Lisenko
  *  * december 2019, january 2020
  *  * Sabetta release
- *
+ *  * Arkhangelsk
  */
 
 import android.Manifest;
@@ -315,17 +315,26 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_callevacuator) {
 
-//            Toast.makeText(MainActivity.this, "Вызываю эвакуатор!!!",
+           Toast.makeText(MainActivity.this, "Вызываю эвакуатор!!!",
+                   Toast.LENGTH_LONG).show();
+
+            callPhone(getString (R.string.phone_number_evacuator));
+
+//           Toast.makeText(MainActivity.this, "В разработке",
 //                    Toast.LENGTH_LONG).show();
-
-//            callPhone(getString (R.string.phone_number_evacuator));
-
-           Toast.makeText(MainActivity.this, "В разработке",
-                    Toast.LENGTH_LONG).show();
             return true;
         }
 
         if (id == R.id.action_service) {
+
+            Toast.makeText(MainActivity.this, "В разработке",
+                    Toast.LENGTH_LONG).show();
+
+
+            return true;
+        }
+
+        if (id == R.id.action_krown) {
 
             Toast.makeText(MainActivity.this, "В разработке",
                     Toast.LENGTH_LONG).show();
@@ -340,9 +349,6 @@ public class MainActivity extends AppCompatActivity {
     private void callPhone (final String strCallNumber){
 
 //         Calling total procedure
-
-//        strCallNumber = getString (R.string.phone_number);
-
 
 
 
