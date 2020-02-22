@@ -1,13 +1,15 @@
 package com.arhsota.android.imt;
 
-// version 2.4
-// changes in this version - second activity with correspondent features and banner on every activity
-// using constraint layout
+// version 2.7 some improvements such as normal input and translation in English version
+// version 2.8 adding progress bar
+// version 2.8.1 move button calculate a little bit higher
+// and a little bit in text in main string with data
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
-// Sevastyanov Andrey, 2019, august
-// Arkhangelsk
-//
+// Sevastyanov Andrey, 2019, 2020
+// Arkhangelsk, Sabetta
+// Copyright (c) all rights reserved
+
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +17,7 @@ import android.content.Intent;
 import android.graphics.Color;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,6 +28,7 @@ import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,17 +67,9 @@ public class MainActivity extends AppCompatActivity {
  //   private RewardedVideoAd mRewardedVideoAd;
 
     private TextView textView;
- /*   private TextView textViewW;
-    private TextView textViewL;
-    private TextView textViewAge;
-    private TextView textViewTable3;
-    private TextView textViewTable4;
-    private TextView textViewTable5;
-    private TextView textViewTable6;
-    private TextView textViewTable7;
-    private TextView textViewTable8;
-    */
     private TextView textViewTable;
+    private TextView textMinImt;
+    private TextView textMaxImt;
 
     private EditText editTextW;
     private EditText editTextL;
@@ -109,6 +105,21 @@ public class MainActivity extends AppCompatActivity {
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
 
+    private final int num19 = 19;
+    private final int num20 = 20;
+    private final int num21 = 21;
+    private final int num22 = 22;
+    private final int num23 = 23;
+    private final int num24 = 24;
+    private final int num25 = 25;
+    private final int num26 = 26;
+    private final int num27 = 27;
+    private final int num28 = 28;
+    private final int num29 = 59;
+    private final int num34 = 34;
+    private final int num44 = 44;
+    private final int num54 = 54;
+    private final int num64 = 64;
 
 
 
@@ -116,39 +127,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-      //  MenuItem menuItem = menu.findItem(R.id.action_share);
-      //  shareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-      //  Intent intent = new Intent(Intent.ACTION_SENDTO);
-    //   Intent intent = new Intent(Intent.ACTION_SEND);
-    //    intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-    //    intent.setType("text/plain");
-     //   Toast.makeText(MainActivity.this, "111111111111111",
-     //           Toast.LENGTH_LONG).show();
-    //    intent.putExtra(Intent.EXTRA_TEXT, str_Date + str_IMT+"22222");
-    //    intent.putExtra("IMT", str_IMT);
-   //     shareActionProvider.setShareIntent(intent);
-     //   setIntent("Дата: " + date + " Ваш ИМТ " + str_IMT+ " Вес: " + str_Weight + " Рост: " +str_Length + " Возраст: " + str_Age);
-       // setIntent("test");
 
-      //  return super.onCreateOptionsMenu(menu);
         return true;
     }
 
 
-  /*
-    private void setIntent(String text) {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-      //  intent.setType("text/plain");
-          intent.putExtra("IMT", str_IMT);
-        //  intent.putExtra("Weight", str_Weight);
-         // intent.putExtra("Length", str_Length);
-      //   intent.putExtra("Age", str_Age);
-         text = str_IMT + str_Weight;
-        intent.putExtra(Intent.EXTRA_TEXT, str_Date + str_IMT);
-        shareActionProvider.setShareIntent(intent);
-    }
-*/
    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -169,19 +152,14 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.action_share:
-             /*   //Код, выполняемый при выборе элемента Share
-                Intent intent_mail = new Intent(Intent.ACTION_SENDTO);
-                intent_mail.setData(Uri.parse("mailto:")); // only email apps should handle this
-                //   intent_mail.setType("text/plain");
-                intent_mail.putExtra("IMT", str_IMT);
-                intent_mail.putExtra(Intent.EXTRA_TEXT,str_Date + " IMT  " + str_IMT + " Weight " + str_Weight);
-                startActivity(intent_mail);
-              */
                 Intent intent_mes = new Intent(Intent.ACTION_SEND);
                 intent_mes.setType("text/plain");
-                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+                intent_mes.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.for_subject_field) + str_Date);
+                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date + " "+ getString(R.string.my_IMT) + " " + str_IMT
+                        + " " + getString(R.string.my_weight) + " " +str_Weight + " " + getString(R.string.my_length)
+                        + " " + str_Length + " " + getString(R.string.my_age) + " " +str_Age);
 //          page 143 always choose intent
-                String chooserTitle = "Sharing";
+                String chooserTitle = getString(R.string.share);
                 Intent chosenIntent = Intent.createChooser(intent_mes, chooserTitle);
                 startActivity(chosenIntent);
                 return true;
@@ -227,8 +205,6 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
        // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-
-
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -245,35 +221,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-      //  mInterstitialAd.show();
-/*
-       one more banner
-       mAdView2 = findViewById(R.id.adView2);
-       AdRequest adRequest2 = new AdRequest.Builder().build();
-        mAdView2.loadAd(adRequest2);
 
-*/
 
         textView = findViewById(R.id.result_out);
 
         textViewTable = findViewById(R.id.text_table);
-       /* textViewAge = findViewById(R.id.text_table_age);
-        textViewW = findViewById(R.id.text_table_weight);
-        textViewL = findViewById(R.id.text_table_length);
-        textViewTable3 = findViewById(R.id.text_table3);
-        textViewTable4 = findViewById(R.id.text_table4);
-        textViewTable5 = findViewById(R.id.text_table5);
-        textViewTable6 = findViewById(R.id.text_table6);
-        textViewTable7 = findViewById(R.id.text_table7);
-        textViewTable8 = findViewById(R.id.text_table8);
-        */
+
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar.setMax(0);
+
+        textMinImt = findViewById(R.id.minImt);
+        textMaxImt = findViewById(R.id.maxImt);
+
         final Button button = findViewById(R.id.calculate_btn);
         editTextW = findViewById(R.id.weight);
         editTextL = findViewById(R.id.length);
         editTextAge = findViewById(R.id.age);
-
-
-
 
 
 //        reading weight
@@ -391,52 +354,81 @@ public class MainActivity extends AppCompatActivity {
             }
             myresult = myweight/(mylength * mylength); //calculating IMT
             str_IMT =  String.format("%.2f",myresult); // making string format
+            ProgressBar progressBar = findViewById(R.id.progressBar);
+            textMinImt = findViewById(R.id.minImt);
+            textMaxImt = findViewById(R.id.maxImt);
 
-          //  textViewW.setText(getString(R.string.name_text_table_detail_weight,weight));
-         //   textViewL.setText(getString(R.string.name_text_table_detail_length,length));
-            // highlighting age
-         //   textViewAge.setText(getString(R.string.name_text_table_detail_age,age));
-         //   textViewAge.setBackgroundColor(Color.GRAY);
-//            highlighting age tables
-        //    if (myage >=19){
-//                textViewTable3.setBackgroundColor(Color.GRAY);
-//            }
-            if (myage < 19) {
+            if (myage < num19) {
                 Toast.makeText(MainActivity.this, R.string.too_young,
                       Toast.LENGTH_LONG).show();
 
             }
-            if ((myage >= 19) && (myage <= 24)){
+            if ((myage >= num19) && (myage <= num24)){
 
                 textViewTable.setText( R.string.text_table3);
 
-                /*
-                textViewTable3.setBackgroundColor(Color.GRAY);
-                textViewTable4.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable5.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable6.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable7.setBackgroundColor(Color.TRANSPARENT);
-                textViewTable8.setBackgroundColor(Color.TRANSPARENT);
-                */
+                progressBar.setMax(num24);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    progressBar.setMin(num19);
+                }
+                progressBar.setProgress((int) myresult);
+                textMinImt.setText(String.valueOf(num19));
+                textMaxImt.setText(String.valueOf(num24));
+
             }
-            if ((myage > 24) && (myage <= 34)){
+            if ((myage > num24) && (myage <= num34)){
                 textViewTable.setText(R.string.text_table4);
+                progressBar.setMax(num25);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    progressBar.setMin(num20);
+                }
+                progressBar.setProgress((int) myresult);
+                textMinImt.setText(String.valueOf(num20));
+                textMaxImt.setText(String.valueOf(num25));
             }
-            if ((myage > 34) && (myage <= 44)){
+            if ((myage > num34) && (myage <= num44)){
                 textViewTable.setText(R.string.text_table5);
+                progressBar.setMax(num26);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    progressBar.setMin(num21);
+                }
+                progressBar.setProgress((int) myresult);
+                textMinImt.setText(String.valueOf(num21));
+                textMaxImt.setText(String.valueOf(num26));
 
             }
-            if ((myage > 44) && (myage <= 54)){
+            if ((myage > num44) && (myage <= num54)){
                 textViewTable.setText(R.string.text_table6);
+                progressBar.setMax(num27);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    progressBar.setMin(num22);
+                }
+                progressBar.setProgress((int) myresult);
+                textMinImt.setText(String.valueOf(num22));
+                textMaxImt.setText(String.valueOf(num27));
 
             }
-            if ((myage > 54) && (myage <= 64)){
+            if ((myage > num54) && (myage <= num64)){
                 textViewTable.setText(R.string.text_table7);
+                progressBar.setMax(num28);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    progressBar.setMin(num23);
+                }
+                progressBar.setProgress((int) myresult);
+                textMinImt.setText(String.valueOf(num23));
+                textMaxImt.setText(String.valueOf(num28));
 
             }
 
-            if (myage > 64) {
+            if (myage > num64) {
                 textViewTable.setText(R.string.text_table8);
+                progressBar.setMax(num29);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    progressBar.setMin(num24);
+                }
+                progressBar.setProgress((int) myresult);
+                textMinImt.setText(String.valueOf(num24));
+                textMaxImt.setText(String.valueOf(num29));
 
             }
 
@@ -446,19 +438,19 @@ public class MainActivity extends AppCompatActivity {
             String myresultStrFormat = String.format("%.2f",myresult);
             textView.setText(getString(R.string.result_text,myresultStrFormat));
 
-            if (myresult < 19) {
+            if (myresult < num19) {
                 textView.setTextColor(Color.RED);
                 }
-            if ((myresult >= 19) && (myresult <=24)) {
+            if ((myresult >= num19) && (myresult <=num24)) {
                 textView.setTextColor(Color.BLACK);
             }
-            if ((myresult > 25) && (myresult <= 30)) {
+            if ((myresult > num25) && (myresult <= num28)) {
                 textView.setTextColor(Color.BLUE);
             }
-            if ((myresult > 30) && (myresult <= 33)) {
+            if ((myresult > num28) && (myresult <= 30)) {
                 textView.setTextColor(Color.MAGENTA);
             }
-                        if ((myresult > 33)) {
+                        if ((myresult > 30)) {
                 textView.setTextColor(Color.RED);
             }
 

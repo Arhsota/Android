@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ИМТ 2.6</string>
+    <string name="app_name">ИМТ 2.8.1</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
@@ -32,5 +32,11 @@
     <string name="minimum_password">минимальный пароль</string>
     <string name="auth_failed">ошибка аутендификации</string>
     <string name="in_work">В разработке</string>
+    <string name="share">Поделиться</string>
+    <string name="my_IMT">Мой ИМТ:</string>
+    <string name="my_weight">Вес:</string>
+    <string name="my_length">Рост:</string>
+    <string name="my_age">Возраст:</string>
+    <string name="for_subject_field">Мой ИМТ на:</string>
 
 </resources>
