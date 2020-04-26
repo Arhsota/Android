@@ -5,9 +5,9 @@ android {
     defaultConfig {
         applicationId "com.arhsota.android.imt"
         minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 17
-        versionName '2.7'
+        targetSdkVersion 29
+        versionCode 18
+        versionName '2.8.1'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
