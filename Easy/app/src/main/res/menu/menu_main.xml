@@ -1,3 +1,11 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 12.05.20 0:13
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 12.05.20 0:05
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,21 +18,15 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:id="@+id/action_krown"
+        android:orderInCategory="200"
+        android:title="@string/action_krown"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_help"
+        android:orderInCategory="300"
         android:icon="@android:drawable/ic_menu_help"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_service"
-        android:orderInCategory="200"
-        android:title="@string/action_service"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_krown"
-        android:orderInCategory="300"
-        android:title="@string/krown"
-        app:showAsAction="ifRoom" />
 </menu>

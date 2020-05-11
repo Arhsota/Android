@@ -1,8 +1,16 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 12.05.20 0:13
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 12.05.20 0:01
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <resources>
     <string name="app_name">Easy 2.2</string>
     <string name="action_settings">Справка</string>
     <string name="action_callevacuator">Эвакуатор</string>
-    <string name="action_service">Сервис</string>
+    <string name="action_krown">Антикор N1</string>
     <string name="content_make_main">Подготовить документы для расчета стоимости ОСАГО</string>
     <string name="content_your_phone">Номер тел. для связи со мной</string>
     <string name="content_i_agree">Я принимаю</string>
@@ -33,20 +41,34 @@
     <string name="phone_number2">+79022865609</string>
     <string name="phone_number_evacuator">+79626594277</string>
     <string name="phone_number_evacuator2">+79022865609</string>
+    <string name="phone_number_krown">+79022865609</string>
+    <string name="phone_number_krown2">+79022865609</string>
     <string name="email2">arhsota@gmail.com </string>
     <string name="email">thefamilyarh@yandex.ru </string>
     <string name="insurname">Easy ОСАГО</string>
     <string name="help">1.Введите свой номер телефона, прочитайте и примите соглашение.
-        2.Нажмите кнопку СДЕЛАТЬ ФОТО ДОКУМЕНТОВ, сфотографируйте свои документы.
-        3. Отправьте документы: 1-й способ, через Электронную почту - клик на иконке "конвертик".
+        2. Ведите код дилера, если он есть
+        3.Нажмите кнопку СДЕЛАТЬ ФОТО ДОКУМЕНТОВ, сфотографируйте свои документы.
+        4. Отправьте документы: 1-й способ, через Электронную почту - клик на иконке "конвертик".
            2-й способ - WhatsApp - клик по кнопке WHATSAPP (создастся контакт Easy ОСАГО,
            его необходимо внести в отправители).
-        4. Ожидаем звонок или письмо с выгодным предложением.
+        5. Ожидаем звонок или письмо с выгодным предложением.
 
         Вы всегда можете получить помощь, просто нажав на значок ТЕЛЕФОННОЙ ТРУБКИ.
         Если у Вас уже были сделаны фото документов, то можно отправить сразу, выбрав способ.
         Также Вы можете вызвать эвакуатор одним кликом
         </string>
     <string name="krown">Обработка</string>
+
+    <string-array name="dealer_code">
+        <item>Без дилера</item>
+        <item>A дилер</item>
+        <item>B дилер</item>
+        <item>C дилер</item>
+        <item>D дилер</item>
+        <item>E дилер</item>
+    </string-array>
+
+
 
 </resources>

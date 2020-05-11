@@ -1,18 +1,12 @@
 package com.arhsota.easy;
 
-/*
+/*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 03.12.19 10:18
- *  * Copyright (c) 2019,2020 . All rights reserved.
- *  * Last modified 30.01.20 22:13
+ *  * Created by Andrey Sevastianov on 12.05.20 0:13
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 12.05.20 0:12
  *
- *
-
- *  * for Nikita Lisenko
- *  * december 2019, january 2020
- *  * Sabetta release
- *  * Arkhangelsk
- */
+ ******************************************************************************/
 
 import android.Manifest;
 import android.app.Activity;
@@ -307,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_help) {
             Intent intent = new Intent(this, Help.class);
             startActivity(intent);
             return true;
@@ -325,23 +319,18 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        if (id == R.id.action_service) {
-
-            Toast.makeText(MainActivity.this, "В разработке",
-                    Toast.LENGTH_LONG).show();
-
-
-            return true;
-        }
-
         if (id == R.id.action_krown) {
 
-            Toast.makeText(MainActivity.this, "В разработке",
+            Toast.makeText(MainActivity.this, "Звонок в Krown",
                     Toast.LENGTH_LONG).show();
-
+            callPhone(getString (R.string.phone_number_krown));
 
             return true;
         }
+
+
+
+
 
         return super.onOptionsItemSelected(item);
     }
