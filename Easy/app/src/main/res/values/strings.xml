@@ -1,8 +1,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 12.05.20 0:13
+  ~  * Created by Andrey Sevastianov on 13.05.20 0:05
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.05.20 0:01
+  ~  * Last modified 12.05.20 17:02
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -41,7 +41,7 @@
     <string name="phone_number2">+79022865609</string>
     <string name="phone_number_evacuator">+79626594277</string>
     <string name="phone_number_evacuator2">+79022865609</string>
-    <string name="phone_number_krown">+79022865609</string>
+    <string name="phone_number_krown">+79115940094</string>
     <string name="phone_number_krown2">+79022865609</string>
     <string name="email2">arhsota@gmail.com </string>
     <string name="email">thefamilyarh@yandex.ru </string>
@@ -62,11 +62,23 @@
 
     <string-array name="dealer_code">
         <item>Без дилера</item>
-        <item>A дилер</item>
-        <item>B дилер</item>
-        <item>C дилер</item>
-        <item>D дилер</item>
-        <item>E дилер</item>
+        <item>101 дилер</item>
+        <item>102 дилер</item>
+        <item>103 дилер</item>
+        <item>104 дилер</item>
+        <item>105 дилер</item>
+        <item>106 дилер</item>
+        <item>107 дилер</item>
+        <item>108 дилер</item>
+        <item>109 дилер</item>
+        <item>110 дилер</item>
+        <item>111 дилер</item>
+        <item>112 дилер</item>
+        <item>113 дилер</item>
+        <item>114 дилер</item>
+        <item>115 дилер</item>
+        <item>707 дилер</item>
+        <item>29  дилер</item>
     </string-array>
 
 

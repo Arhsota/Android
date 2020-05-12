@@ -1,4 +1,12 @@
 package com.arhsota.easy;
+/*******************************************************************************
+ *
+ *  * Created by Andrey Sevastianov on 13.05.20 0:05
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 12.05.20 21:42
+ *
+ ******************************************************************************/
+
 //
 import android.Manifest;
 import android.app.Activity;
@@ -45,6 +53,7 @@ public class MakePhoto extends AppCompatActivity {
     File directory;
     final int TYPE_PHOTO = 1;
     final int TYPE_VIDEO = 2;
+    final int TYPE_TXT = 3;
 
     final int REQUEST_CODE_PHOTO = 1;
     final int REQUEST_CODE_VIDEO = 2;
@@ -145,6 +154,11 @@ public class MakePhoto extends AppCompatActivity {
             case TYPE_VIDEO:
                 file = new File(directory.getPath() + "/" + "video_"
                         + System.currentTimeMillis() + ".mp4");
+                break;
+   // TODO: 12.05.2020 may be there is no need of type txt
+            case TYPE_TXT:
+                file = new File(directory.getPath() + "/" + "txt"
+                        + System.currentTimeMillis() + ".txt");
                 break;
         }
         Log.d(TAG, "fileName = " + file);

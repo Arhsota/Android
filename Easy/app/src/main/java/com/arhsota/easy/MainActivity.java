@@ -2,9 +2,9 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 12.05.20 0:13
+ *  * Created by Andrey Sevastianov on 13.05.20 0:05
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.05.20 0:12
+ *  * Last modified 12.05.20 23:56
  *
  ******************************************************************************/
 
@@ -45,13 +45,22 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import static android.provider.Telephony.Mms.Part.FILENAME;
 
 // Using help from https://startandroid.ru/ru/uroki/vse-uroki-spiskom/254-urok-131-kamera-ispolzuem-sistemnoe-prilozhenie.html
 
@@ -71,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
     private File file;
     private EditText editTxtClientPhone;
     private String strPhone;
+    private String strDealerCode;
+    final   String LOG_TAG = "myLogs";
 
     private CheckBox chBox;
 
@@ -80,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkFieldPhone = false;
 
     private TextView textView;
+    private Spinner textDealerCode;
 
 
 
@@ -91,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
+//        Spinner textDealerCode = (Spinner) findViewById(R.id.dealer_code);
+        textDealerCode = findViewById(R.id.dealer_code);
         editTxtClientPhone = findViewById(R.id.txtClientPhone);
  //     for checking empty or not Client Phone field and length is less then 10
         editTxtClientPhone.addTextChangedListener(new TextWatcher() {
@@ -160,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
 
                     chBox = findViewById(R.id.checkBox);
                     strPhone = editTxtClientPhone.getText().toString();
+                    strDealerCode = textDealerCode.getSelectedItem().toString();
+                    strPhone = strPhone + " " +strDealerCode;
                     if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
                         Toast.makeText(MainActivity.this, "Не приняли соглашение или не ввели номер",
@@ -277,6 +293,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             strPhone = editTxtClientPhone.getText().toString();
+            strDealerCode = textDealerCode.getSelectedItem().toString();
+            strPhone = strPhone + " " +strDealerCode;
             Intent make_photo = new Intent(this, MakePhoto.class);
 
             make_photo.setType("text/plain");
@@ -328,18 +346,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
     private void callPhone (final String strCallNumber){
 
 //         Calling total procedure
-
-
 
 
 // Checking permissions. If Not asks owner to make it by himself
@@ -365,6 +377,45 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void writeFile() {
+        try {
+            // отрываем поток для записи
+            BufferedWriter bw = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                bw = new BufferedWriter(new OutputStreamWriter(
+                        openFileOutput(FILENAME, MODE_PRIVATE)));
+            }
+            // пишем данные
+            bw.append(strDealerCode);
+            // закрываем поток
+            bw.close();
+            Log.d(LOG_TAG, "Файл записан");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    void readFile() {
+        try {
+            // открываем поток для чтения
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    openFileInput(FILENAME)));
+            String str  = "";
+            // читаем содержимое
+            while ((str = br.readLine()) != null) {
+                Log.d(LOG_TAG, str);
+                strDealerCode = str;
+            }
+            //  str_History = str;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
 }
