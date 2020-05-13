@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 14.05.20 0:38
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 13.05.20 23:13
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +19,7 @@
         android:layout_width="@dimen/content_textview_width"
 
         android:layout_height="@dimen/content_texthelp_height"
-        android:gravity="center"
+        android:gravity="left"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarSize="30dp"
         android:scrollbarStyle="outsideOverlay"
@@ -33,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
 
         <com.google.android.material.bottomappbar.BottomAppBar

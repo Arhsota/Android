@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 12.05.20 0:13
+  ~  * Created by Andrey Sevastianov on 14.05.20 0:38
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.05.20 0:01
+  ~  * Last modified 13.05.20 23:59
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -26,8 +26,6 @@
         android:layout_marginTop="@dimen/content_top_phone"
         android:hint="@string/content_your_phone"
         android:inputType="phone"
-
-
         android:textColor="#FDF5F0F0"
         android:textColorHint="#FDF5F0F0"
         app:cornerRadius="66dp"
@@ -35,20 +33,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/btnPhoto"
         android:layout_width="202dp"
         android:layout_height="116dp"
-        android:layout_marginTop="@dimen/content_photo_top"
+        android:layout_marginTop="116dp"
         android:onClick="onClickPhoto"
         android:text="@string/content_make_main"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
-
-
 
     <ImageView
         android:id="@+id/ivPhoto"
@@ -65,16 +62,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Spinner
+    <EditText
         android:id="@+id/dealer_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        android:entries="@array/dealer_code"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="36dp"
+        android:hint="Код дилера"
+        android:inputType="number"
+        android:textColor="#FDF5F0F0"
+        android:textColorHint="#FDF5F0F0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
+
+    <Button
+        android:id="@+id/assure_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Окончание страховки"
+        android:onClick="onClickDate"
+        android:textColor="#FDF5F0F0"
+        android:textColorHint="#FDF5F0F0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
 
     <TextView
         android:id="@+id/textView"

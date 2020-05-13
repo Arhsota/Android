@@ -1,9 +1,9 @@
 package com.arhsota.easy;
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 13.05.20 0:05
+ *  * Created by Andrey Sevastianov on 14.05.20 0:38
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.05.20 21:42
+ *  * Last modified 13.05.20 22:38
  *
  ******************************************************************************/
 
@@ -155,11 +155,7 @@ public class MakePhoto extends AppCompatActivity {
                 file = new File(directory.getPath() + "/" + "video_"
                         + System.currentTimeMillis() + ".mp4");
                 break;
-   // TODO: 12.05.2020 may be there is no need of type txt
-            case TYPE_TXT:
-                file = new File(directory.getPath() + "/" + "txt"
-                        + System.currentTimeMillis() + ".txt");
-                break;
+
         }
         Log.d(TAG, "fileName = " + file);
         return Uri.fromFile(file);
@@ -371,8 +367,6 @@ public class MakePhoto extends AppCompatActivity {
                 requestPermissions(permissions, 1);
 
             } else {
-
-
                 String[] projection = new String[]{ContactsContract.RawContacts._ID};
                 String selection = ContactsContract.RawContacts.CONTACT_ID + " = ? AND " + ContactsContract.RawContacts.ACCOUNT_TYPE + " = ?";
                 String[] selectionArgs = new String[]{contactID, "com.whatsapp"};

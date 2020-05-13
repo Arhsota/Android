@@ -2,9 +2,9 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 13.05.20 0:05
+ *  * Created by Andrey Sevastianov on 14.05.20 0:38
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.05.20 23:56
+ *  * Last modified 14.05.20 0:33
  *
  ******************************************************************************/
 
@@ -53,6 +53,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -79,19 +80,21 @@ public class MainActivity extends AppCompatActivity {
 
     private File file;
     private EditText editTxtClientPhone;
+    private EditText textDealerCode;
     private String strPhone;
-    private String strDealerCode;
+    private String strDealerCode = "Empty";
     final   String LOG_TAG = "myLogs";
 
     private CheckBox chBox;
 
     public static String PACKAGE_NAME;
+    public static String myPath;
 
     private boolean fillTextLength = false;  //for ckecking length
     private boolean checkFieldPhone = false;
 
     private TextView textView;
-    private Spinner textDealerCode;
+
 
 
 
@@ -101,11 +104,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_main);
+//   Help layout with scrolling
         textView = findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
-//        Spinner textDealerCode = (Spinner) findViewById(R.id.dealer_code);
-        textDealerCode = findViewById(R.id.dealer_code);
+//   Client's phone number
         editTxtClientPhone = findViewById(R.id.txtClientPhone);
+//   Dealer's code for discount
+        textDealerCode = findViewById(R.id.dealer_code);
+
  //     for checking empty or not Client Phone field and length is less then 10
         editTxtClientPhone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -134,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
 
@@ -174,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
 
                     chBox = findViewById(R.id.checkBox);
                     strPhone = editTxtClientPhone.getText().toString();
-                    strDealerCode = textDealerCode.getSelectedItem().toString();
+                    strDealerCode = textDealerCode.getText().toString();
                     strPhone = strPhone + " " +strDealerCode;
                     if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
@@ -283,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickPhoto(View view) {
+//    New layout on clicking button MAKE PHOTO
         chBox = findViewById(R.id.checkBox);
         if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
@@ -293,10 +302,13 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             strPhone = editTxtClientPhone.getText().toString();
-            strDealerCode = textDealerCode.getSelectedItem().toString();
+            strDealerCode = textDealerCode.getText().toString();
             strPhone = strPhone + " " +strDealerCode;
+            createDirectory();
+//   Dealer code is written to the same folder Easy, where photos
+            file = new File( this.directory,"code.txt");
+            writeFile();
             Intent make_photo = new Intent(this, MakePhoto.class);
-
             make_photo.setType("text/plain");
             make_photo.putExtra("TELE", strPhone);
             startActivity(make_photo);
@@ -383,10 +395,11 @@ public class MainActivity extends AppCompatActivity {
             BufferedWriter bw = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                 bw = new BufferedWriter(new OutputStreamWriter(
-                        openFileOutput(FILENAME, MODE_PRIVATE)));
+                        new FileOutputStream((String.valueOf(file)), true)));
             }
             // пишем данные
-            bw.append(strDealerCode);
+            assert bw != null;
+            bw.write(strDealerCode);
             // закрываем поток
             bw.close();
             Log.d(LOG_TAG, "Файл записан");
@@ -417,5 +430,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    private void createDirectory() {
+        directory = new File(
+                Environment
+                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                "Easy");
+        if (!directory.exists())
+            directory.mkdirs();
+        myPath = directory.toString();
+    }
 
+    public void onClickDate(View view) {
+        Intent intent = new Intent(this, AssureDate.class);
+        startActivity(intent);
+    }
 }

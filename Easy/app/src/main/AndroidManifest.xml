@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 14.05.20 0:38
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 14.05.20 0:15
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.arhsota.easy">
 
@@ -32,12 +40,15 @@
         <activity
             android:name=".Help"
             android:label="Справка"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".AssureDate"
+            android:label="Выбор Даты"
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".MakePhoto"
             android:label="Документы"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
