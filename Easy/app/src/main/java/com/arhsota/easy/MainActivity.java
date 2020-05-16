@@ -2,9 +2,9 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 14.05.20 0:38
+ *  * Created by Andrey Sevastianov on 16.05.20 23:57
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 14.05.20 0:33
+ *  * Last modified 16.05.20 16:42
  *
  ******************************************************************************/
 
@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean fillTextLength = false;  //for ckecking length
     private boolean checkFieldPhone = false;
 
+    private boolean fillTextLengthCodeDealer = false;  //for ckecking length
+    private boolean checkFieldCodeDealer = false;
+
     private TextView textView;
 
 
@@ -109,8 +112,10 @@ public class MainActivity extends AppCompatActivity {
         textView.setMovementMethod(new ScrollingMovementMethod());
 //   Client's phone number
         editTxtClientPhone = findViewById(R.id.txtClientPhone);
+
 //   Dealer's code for discount
         textDealerCode = findViewById(R.id.dealer_code);
+
 
  //     for checking empty or not Client Phone field and length is less then 10
         editTxtClientPhone.addTextChangedListener(new TextWatcher() {
