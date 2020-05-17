@@ -2,14 +2,15 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 16.05.20 23:57
+ *  * Created by Andrey Sevastianov on 18.05.20 1:16
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 16.05.20 16:42
+ *  * Last modified 18.05.20 1:11
  *
  ******************************************************************************/
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,6 +28,8 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
@@ -52,12 +55,14 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -76,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
     final String TAG = "myLogs";
 
+    String expDate = "";
+
+
     ImageView ivPhoto;
 
     private File file;
@@ -86,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     final   String LOG_TAG = "myLogs";
 
     private CheckBox chBox;
+    boolean isTime = false;
 
     public static String PACKAGE_NAME;
     public static String myPath;
@@ -97,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkFieldCodeDealer = false;
 
     private TextView textView;
+    private static final int NOTIFY_ID = 101;
+    private static String CHANNEL_ID = "Cat channel";
 
 
 
@@ -145,10 +156,45 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        createDirectory();
+//     Reading expiredate file and checking if it is empty or not. Is it have expire date
+        file = new File( directory,"expiredate.txt");
+        readFile();
+        if (expDate != null) { isTime = true; }
+//     Parsing, if we have something string in file to compare it with current date
+        if (isTime) {
+            String[] subStr;
+            String delimeter = "-"; // Разделитель
+            subStr = expDate.split(delimeter); // Разделения строки str с помощью метода split()
+            int dd = Integer.parseInt(subStr[0]); // Day from file
+            int mm = Integer.parseInt(subStr[1]); // Month from file
+            int yy = Integer.parseInt(subStr[2]); // Year from file
+//      Current date
+            Calendar currentDate = Calendar.getInstance();
+            int cYear = currentDate.get(Calendar.YEAR);
+            int cMonth = currentDate.get(Calendar.MONTH);
+            int cDay = currentDate.get(Calendar.DAY_OF_MONTH);
+// TODO: 16.05.2020 cDay only for testing
+            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 18) || (cDay == 30)){
+//                Toast.makeText(getApplicationContext(), "Time", Toast.LENGTH_LONG).show();
 
 
 
 
+                NotificationCompat.Builder builder =
+                        new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
+                                .setSmallIcon(R.drawable.ic_action_phone)
+                                .setContentTitle("Напоминание")
+                                .setContentText("Пора покормить кота")
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                NotificationManagerCompat notificationManager =
+                        NotificationManagerCompat.from(MainActivity.this);
+                notificationManager.notify(NOTIFY_ID, builder.build());
+
+            }
+
+        }
 
 //    for further maybe, was taken from example
 
@@ -400,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
             BufferedWriter bw = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                 bw = new BufferedWriter(new OutputStreamWriter(
-                        new FileOutputStream((String.valueOf(file)), true)));
+                        new FileOutputStream((String.valueOf(file)), false)));
             }
             // пишем данные
             assert bw != null;
@@ -419,15 +465,14 @@ public class MainActivity extends AppCompatActivity {
         try {
             // открываем поток для чтения
             BufferedReader br = new BufferedReader(new InputStreamReader(
-                    openFileInput(FILENAME)));
-            String str  = "";
+                    new FileInputStream(String.valueOf(file))));
+            String str;
             // читаем содержимое
             while ((str = br.readLine()) != null) {
                 Log.d(LOG_TAG, str);
-                strDealerCode = str;
+                expDate = str;
             }
-            //  str_History = str;
-        } catch (FileNotFoundException e) {
+                     } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
