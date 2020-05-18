@@ -2,14 +2,17 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 18.05.20 1:16
+ *  * Created by Andrey Sevastianov on 18.05.20 21:57
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 1:11
+ *  * Last modified 18.05.20 20:43
  *
  ******************************************************************************/
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
@@ -19,6 +22,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -35,6 +39,7 @@ import androidx.core.content.FileProvider;
 
 import android.os.Environment;
 import android.os.StrictMode;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
@@ -106,8 +111,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkFieldCodeDealer = false;
 
     private TextView textView;
-    private static final int NOTIFY_ID = 101;
-    private static String CHANNEL_ID = "Cat channel";
+    private TextView textViewAssure;
+    private NotificationManager mNotificationManager;
+    private static final int NOTIFICATION_ID = 0;
+    private static final String PRIMARY_CHANNEL_ID =
+            "primary_notification_channel";
 
 
 
@@ -115,9 +123,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
+//   For notification
+        mNotificationManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+        Intent notifyIntent = new Intent(this, AlarmReceiver.class);
+        boolean alarmUp = (PendingIntent.getBroadcast(this, NOTIFICATION_ID,
+                notifyIntent, PendingIntent.FLAG_NO_CREATE) != null);
+// TODO: 18.05.2020 may be need further to use toggle button
+//        alarmToggle.setChecked(alarmUp);
+        final PendingIntent notifyPendingIntent = PendingIntent.getBroadcast
+                (this, NOTIFICATION_ID, notifyIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+        final AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
 //   Help layout with scrolling
         textView = findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
@@ -126,7 +146,8 @@ public class MainActivity extends AppCompatActivity {
 
 //   Dealer's code for discount
         textDealerCode = findViewById(R.id.dealer_code);
-
+//   Text date of expire date in field to check if it's exist or not
+        textViewAssure = findViewById(R.id.txt_assure_end);
 
  //     for checking empty or not Client Phone field and length is less then 10
         editTxtClientPhone.addTextChangedListener(new TextWatcher() {
@@ -160,9 +181,10 @@ public class MainActivity extends AppCompatActivity {
 //     Reading expiredate file and checking if it is empty or not. Is it have expire date
         file = new File( directory,"expiredate.txt");
         readFile();
-        if (expDate != null) { isTime = true; }
+        if (expDate != "") { isTime = true; }
 //     Parsing, if we have something string in file to compare it with current date
         if (isTime) {
+            textViewAssure.setText(expDate); // for checking expire date
             String[] subStr;
             String delimeter = "-"; // Разделитель
             subStr = expDate.split(delimeter); // Разделения строки str с помощью метода split()
@@ -178,21 +200,26 @@ public class MainActivity extends AppCompatActivity {
             if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 18) || (cDay == 30)){
 //                Toast.makeText(getApplicationContext(), "Time", Toast.LENGTH_LONG).show();
 
+                String toastMessage;
+//  long repeatInterval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+                //  in the original
+                long repeatInterval = 10;
+                long triggerTime = SystemClock.elapsedRealtime();
+                // TODO !!!! 15 min interval
+                //           + repeatInterval;
 
-
-
-                NotificationCompat.Builder builder =
-                        new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
-                                .setSmallIcon(R.drawable.ic_action_phone)
-                                .setContentTitle("Напоминание")
-                                .setContentText("Пора покормить кота")
-                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-                NotificationManagerCompat notificationManager =
-                        NotificationManagerCompat.from(MainActivity.this);
-                notificationManager.notify(NOTIFY_ID, builder.build());
+                //If the Toggle is turned on, set the repeating alarm with a 15 minute interval
+                if (alarmManager != null) {
+                    alarmManager.setInexactRepeating
+                            (AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                                    triggerTime, repeatInterval, notifyPendingIntent);
+                }
+                //Set the toast message for the "on" case.
+                toastMessage = "Stand Up Alarm On!";
+                createNotificationChannel();
 
             }
+// TODO: 18.05.2020 add else for cancel notification next day
 
         }
 
@@ -215,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                   Toast.makeText(MainActivity.this, "Звонок менеджеру",
                             Toast.LENGTH_LONG).show();
 
-                   callPhone(getString (R.string.phone_number));
+                   callPhone(getString (R.string.phone_number2));
 
                 }
 
@@ -441,6 +468,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void writeFile() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to CAMERA - requesting it");
+                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+
         try {
             // отрываем поток для записи
             BufferedWriter bw = null;
@@ -462,6 +503,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void readFile() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to CAMERA - requesting it");
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+
         try {
             // открываем поток для чтения
             BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -494,4 +549,34 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AssureDate.class);
         startActivity(intent);
     }
+
+    /**
+     * Creates a Notification channel, for OREO and higher.
+     */
+    public void createNotificationChannel() {
+
+        // Create a notification manager object.
+        mNotificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        // Notification channels are only available in OREO and higher.
+        // So, add a check on SDK version.
+        if (android.os.Build.VERSION.SDK_INT >=
+                android.os.Build.VERSION_CODES.O) {
+
+            // Create the NotificationChannel with all the parameters.
+            NotificationChannel notificationChannel = new NotificationChannel
+                    (PRIMARY_CHANNEL_ID,
+                            "Stand up notification",
+                            NotificationManager.IMPORTANCE_HIGH);
+
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription
+                    ("Notifies every 15 minutes to stand up and walk");
+            mNotificationManager.createNotificationChannel(notificationChannel);
+        }
+    }
+
 }

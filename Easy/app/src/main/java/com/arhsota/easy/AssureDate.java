@@ -2,14 +2,17 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 18.05.20 1:16
+ *  * Created by Andrey Sevastianov on 18.05.20 21:57
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 0:00
+ *  * Last modified 18.05.20 20:11
  *
  ******************************************************************************/
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.Toast;
@@ -57,13 +60,6 @@ public class AssureDate extends AppCompatActivity {
                         .toString();
 
 
-/*            String selectedDate = new StringBuilder().append(mDay)
-                        .append(mMonth +1 ).append(mYear)
-                        .toString();
-
- */
-
-//                Toast.makeText(getApplicationContext(), selectedDate, Toast.LENGTH_LONG).show();
                 expDate = selectedDate;
  // TODO: 16.05.2020 remove old code using calendar etc...
                 Calendar validDate = Calendar.getInstance();
@@ -72,28 +68,25 @@ public class AssureDate extends AppCompatActivity {
                 cYear = currentDate.get(Calendar.YEAR);
                 cMonth = currentDate.get(Calendar.MONTH);
                 cDay = currentDate.get(Calendar.DAY_OF_MONTH);
-//      Check date to start broadcasting
-// TODO: 16.05.2020 cDay only for testing
-                if ((mYear == cYear) && (mMonth +1 == cMonth +1) && (cDay == 16) || (cDay == 30)){
-                    isTime = true;
-                    Toast.makeText(getApplicationContext(), "Time", Toast.LENGTH_LONG).show();
 
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                    StrictMode.setVmPolicy(builder.build());
+
+                    if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            == PackageManager.PERMISSION_DENIED) {
+
+                        Log.d("permission", "permission denied to external device - requesting it");
+                        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, 1);
+
+                    }
                 }
+
                 createDirectory();
                 file = new File( directory,"expiredate.txt");
                 writeFile();
-/*               if(validDate.compareTo(currentDate) < 0) {
-                    Toast.makeText(getApplicationContext(), "before today", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "after today", Toast.LENGTH_LONG).show();
-                }
 
- */
-/*                if (currentDate.after(validDate)) {
-                    Toast.makeText(getApplicationContext(), "after", Toast.LENGTH_LONG).show();
-                }
- */
             }
         });
 
@@ -123,6 +116,8 @@ public class AssureDate extends AppCompatActivity {
             bw.write(expDate);
             // закрываем поток
             bw.close();
+            Toast.makeText(AssureDate.this, "Дата окончания " +expDate + " записана",
+                    Toast.LENGTH_LONG).show();
             Log.d(LOG_TAG, "Файл записан");
         } catch (FileNotFoundException e) {
             e.printStackTrace();

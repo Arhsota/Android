@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 16.05.20 23:57
+  ~  * Created by Andrey Sevastianov on 18.05.20 21:57
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 16.05.20 15:27
+  ~  * Last modified 18.05.20 21:52
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -38,14 +38,13 @@
         android:id="@+id/btnPhoto"
         android:layout_width="202dp"
         android:layout_height="116dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="40dp"
         android:onClick="onClickPhoto"
         android:text="@string/content_make_main"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/assure_end" />
 
     <ImageView
         android:id="@+id/ivPhoto"
@@ -56,7 +55,7 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/content_check_box"
+        android:layout_marginTop="8dp"
         android:text="@string/content_i_agree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,11 +63,11 @@
 
     <EditText
         android:id="@+id/dealer_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="107dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="50dp"
         android:hint="Код дилера"
         android:inputType="number"
         android:textColor="#FDF5F0F0"
@@ -78,16 +77,29 @@
 
     <Button
         android:id="@+id/assure_end"
-        android:layout_width="163dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="180dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="140dp"
         android:onClick="onClickDate"
-        android:text="Окончание страховки"
+        android:text="Окончание пред.страховки"
         android:textColor="#FDF5F0F0"
         android:textColorHint="#FDF5F0F0"
         app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
+
+    <TextView
+        android:id="@+id/txt_assure_end"
+        android:layout_width="108dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:hint="дата  "
+        android:textColor="#FDF5F0F0"
+        android:textColorHint="#FDF5F0F0"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
 
@@ -95,18 +107,14 @@
         android:id="@+id/textView"
         android:layout_width="@dimen/content_textview_width"
         android:layout_height="@dimen/content_textview_height"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="@dimen/content_text_agreement_start"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="20dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarSize="20dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical"
         android:text="@string/content_text_agreement"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhoto" />
 

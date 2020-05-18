@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 14.05.20 0:38
+  ~  * Created by Andrey Sevastianov on 18.05.20 21:57
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 14.05.20 0:15
+  ~  * Last modified 18.05.20 21:44
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -25,11 +25,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,11 +45,11 @@
         <activity
             android:name=".Help"
             android:label="Справка"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AssureDate"
             android:label="Выбор Даты"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MakePhoto"
             android:label="Документы"

@@ -1,8 +1,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 12.05.20 0:13
+  ~  * Created by Andrey Sevastianov on 18.05.20 21:57
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.05.20 0:05
+  ~  * Last modified 18.05.20 16:10
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -12,21 +12,23 @@
     tools:context="com.arhsota.easy.MainActivity">
 
     <item
-        android:id="@+id/action_callevacuator"
+        android:id="@+id/action_help"
         android:orderInCategory="10"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_callevacuator"
+        android:orderInCategory="20"
         android:title="@string/action_callevacuator"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_krown"
-        android:orderInCategory="200"
+        android:orderInCategory="30"
         android:title="@string/action_krown"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_help"
-        android:orderInCategory="300"
-        android:icon="@android:drawable/ic_menu_help"
-        android:title="@string/action_settings"
-        app:showAsAction="ifRoom" />
+
 
 </menu>
