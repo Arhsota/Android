@@ -2,9 +2,9 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 18.05.20 21:57
+ *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 20:43
+ *  * Last modified 19.05.20 23:58
  *
  ******************************************************************************/
 
@@ -154,12 +154,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 //                editTxtClientPhone.setText("");
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -197,13 +195,13 @@ public class MainActivity extends AppCompatActivity {
             int cMonth = currentDate.get(Calendar.MONTH);
             int cDay = currentDate.get(Calendar.DAY_OF_MONTH);
 // TODO: 16.05.2020 cDay only for testing
-            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 18) || (cDay == 30)){
+            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 19)){
 //                Toast.makeText(getApplicationContext(), "Time", Toast.LENGTH_LONG).show();
 
                 String toastMessage;
 //  long repeatInterval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
                 //  in the original
-                long repeatInterval = 10;
+                long repeatInterval = alarmManager.INTERVAL_HALF_DAY;
                 long triggerTime = SystemClock.elapsedRealtime();
                 // TODO !!!! 15 min interval
                 //           + repeatInterval;
@@ -216,9 +214,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //Set the toast message for the "on" case.
                 toastMessage = "Stand Up Alarm On!";
-                createNotificationChannel();
-
             }
+            else {
+                // Cancel notification if the alarm is turned off.
+                mNotificationManager.cancelAll();
+                if (alarmManager != null) {
+                    alarmManager.cancel(notifyPendingIntent);
+                }
+                //Set the toast message for the "off" case.
+//                toastMessage = "Stand Up Alarm Off!";
+            }
+            createNotificationChannel();
 // TODO: 18.05.2020 add else for cancel notification next day
 
         }

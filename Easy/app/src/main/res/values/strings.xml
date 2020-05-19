@@ -1,8 +1,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 18.05.20 21:57
+  ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 18.05.20 17:39
+  ~  * Last modified 19.05.20 16:58
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -43,8 +43,8 @@
     <string name="phone_number_evacuator2">+79022865609</string>
     <string name="phone_number_krown">+79115940094</string>
     <string name="phone_number_krown2">+79022865609</string>
-    <string name="email2">arhsota@gmail.com </string>
-    <string name="email">thefamilyarh@yandex.ru </string>
+    <string name="email2">arhsota@gmail.com</string>
+    <string name="email">EasySemya@yandex.ru</string>
     <string name="insurname">Easy ОСАГО</string>
     <string name="notification_title">Напоминание</string>
     <string name="notification_text">Окончание страховки, запустите Easy и оформите новую страховку со скидкой</string>

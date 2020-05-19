@@ -2,9 +2,9 @@ package com.arhsota.easy;
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 18.05.20 21:57
+ *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 17:17
+ *  * Last modified 18.05.20 22:05
  *
  ******************************************************************************/
 
