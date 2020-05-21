@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 19.05.20 23:58
+ *  * Last modified 21.05.20 11:00
  *
  ******************************************************************************/
 
@@ -194,8 +194,8 @@ public class MainActivity extends AppCompatActivity {
             int cYear = currentDate.get(Calendar.YEAR);
             int cMonth = currentDate.get(Calendar.MONTH);
             int cDay = currentDate.get(Calendar.DAY_OF_MONTH);
-// TODO: 16.05.2020 cDay only for testing
-            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 19)){
+// TODO: cDay should be = 1 (the first day of month)
+            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 1)){
 //                Toast.makeText(getApplicationContext(), "Time", Toast.LENGTH_LONG).show();
 
                 String toastMessage;
@@ -203,8 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 //  in the original
                 long repeatInterval = alarmManager.INTERVAL_HALF_DAY;
                 long triggerTime = SystemClock.elapsedRealtime();
-                // TODO !!!! 15 min interval
-                //           + repeatInterval;
+                // TODO repeatInterval may vary, depends upon how often to make alarm
 
                 //If the Toggle is turned on, set the repeating alarm with a 15 minute interval
                 if (alarmManager != null) {
@@ -225,7 +224,6 @@ public class MainActivity extends AppCompatActivity {
 //                toastMessage = "Stand Up Alarm Off!";
             }
             createNotificationChannel();
-// TODO: 18.05.2020 add else for cancel notification next day
 
         }
 
@@ -248,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                   Toast.makeText(MainActivity.this, "Звонок менеджеру",
                             Toast.LENGTH_LONG).show();
 
-                   callPhone(getString (R.string.phone_number2));
+                   callPhone(getString (R.string.phone_number));
 
                 }
 

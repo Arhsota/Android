@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 22:05
+ *  * Last modified 21.05.20 11:00
  *
  ******************************************************************************/
 
@@ -48,7 +48,7 @@ public class Help extends AppCompatActivity {
                 Toast.makeText(Help.this, "Звонок менеджеру",
                         Toast.LENGTH_LONG).show();
 
-                callPhone(getString (R.string.phone_number2));
+                callPhone(getString (R.string.phone_number));
 
             }
 
