@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 19.05.20 23:49
+  ~  * Last modified 27.05.20 21:59
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -43,8 +43,9 @@
         android:text="@string/content_make_main"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assure_end" />
+        app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
 
     <ImageView
         android:id="@+id/ivPhoto"
@@ -62,41 +63,34 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/dealer_code"
-        android:layout_width="107dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
+        android:layout_width="129dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="@dimen/content_top_dealer_code"
-        android:hint="Код дилера"
+        android:gravity="center_horizontal|center_vertical"
+        android:hint="Код скидки"
         android:inputType="number"
+        android:textSize="18dp"
         android:textColor="#FDF5F0F0"
         android:textColorHint="#FDF5F0F0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
 
     <Button
-        android:id="@+id/assure_end"
-        android:layout_width="180dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="@dimen/button_top_expire_date"
-        android:onClick="onClickDate"
-        android:text="Окончание пред.страховки"
-        android:textColor="#FDF5F0F0"
-        android:textColorHint="#FDF5F0F0"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtClientPhone" />
-
-    <TextView
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/txt_assure_end"
-        android:layout_width="108dp"
-        android:layout_height="48dp"
+        android:layout_width="129dp"
+        android:layout_height="89dp"
         android:layout_marginTop="@dimen/content_top_expire_date"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:hint="дата  "
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@android:color/transparent"
+        android:hint="Оконч. пред.страховки"
+
+        android:onClick="onClickDate"
         android:textColor="#FDF5F0F0"
         android:textColorHint="#FDF5F0F0"
         android:textSize="18sp"

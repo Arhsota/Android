@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 22:05
+ *  * Last modified 27.05.20 0:41
  *
  ******************************************************************************/
 
@@ -31,7 +31,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class AssureDate extends AppCompatActivity {
-    String expDate,myPath;
+    String expDate="";
+    String myPath;
     int cYear,cMonth,cDay;
     boolean isTime = false;
 
@@ -121,6 +122,8 @@ public class AssureDate extends AppCompatActivity {
             Log.d(LOG_TAG, "Файл записан");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+//            Toast.makeText(AssureDate.this, "No file" +expDate + " записана",
+//                    Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
         }

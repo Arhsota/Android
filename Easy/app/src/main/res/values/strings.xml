@@ -2,12 +2,12 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 19.05.20 16:58
+  ~  * Last modified 27.05.20 21:52
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">Easy 2.2</string>
+    <string name="app_name">Easy 2.3</string>
     <string name="action_settings">Справка</string>
     <string name="action_callevacuator">Эвакуатор</string>
     <string name="action_krown">Антикор N1</string>
@@ -58,7 +58,7 @@
         6. Для вызова эвакуатора, выберите меню ЭВАКУАТОР \n
         7. Для антикорозийной обработки KROWN, выберите меню АНТИКОР #1\n
         6. Ожидайте звонок или письмо с выгодным предложением.\n\n
-
+        Не забывайте давать разрешения, запрашиваемые приложением
         Вы всегда можете получить помощь, просто нажав на значок ТЕЛЕФОННОЙ ТРУБКИ.
 
         </string>

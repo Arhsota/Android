@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 21.05.20 11:00
+ *  * Last modified 27.05.20 21:44
  *
  ******************************************************************************/
 
@@ -52,6 +52,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -87,15 +88,17 @@ public class MainActivity extends AppCompatActivity {
     final String TAG = "myLogs";
 
     String expDate = "";
+    String readStr;
+    String strDealerCode = "";
 
 
     ImageView ivPhoto;
 
-    private File file;
+//    private File fileExpDate;
+//    private File fileCode;
     private EditText editTxtClientPhone;
     private EditText textDealerCode;
     private String strPhone;
-    private String strDealerCode = "Empty";
     final   String LOG_TAG = "myLogs";
 
     private CheckBox chBox;
@@ -111,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkFieldCodeDealer = false;
 
     private TextView textView;
-    private TextView textViewAssure;
+    private Button textViewAssure;
     private NotificationManager mNotificationManager;
     private static final int NOTIFICATION_ID = 0;
     private static final String PRIMARY_CHANNEL_ID =
@@ -176,10 +179,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         createDirectory();
+
+//     Reading codedealer file and checking if it is empty or not. Is it have expire date
+         File fileReadCode = new File( directory,"code.txt");
+        // TODO: 27.05.2020 check existing of file
+        if (fileReadCode.exists()) {
+            readFile(fileReadCode);
+            strDealerCode = readStr;
+            textDealerCode.setText(strDealerCode);
+        } else {
+            writeFile(fileReadCode,strDealerCode);
+        }
+
+
 //     Reading expiredate file and checking if it is empty or not. Is it have expire date
-        file = new File( directory,"expiredate.txt");
-        readFile();
-        if (expDate != "") { isTime = true; }
+        File fileReadExpDate = new File( directory,"expiredate.txt");
+        if (fileReadExpDate.exists()) {
+            readFile(fileReadExpDate);
+            expDate = readStr;
+
+
+            if (expDate != "") {
+                isTime = true;
+            }
+        }
 //     Parsing, if we have something string in file to compare it with current date
         if (isTime) {
             textViewAssure.setText(expDate); // for checking expire date
@@ -195,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
             int cMonth = currentDate.get(Calendar.MONTH);
             int cDay = currentDate.get(Calendar.DAY_OF_MONTH);
 // TODO: cDay should be = 1 (the first day of month)
-            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 1)){
+            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 27)){
 //                Toast.makeText(getApplicationContext(), "Time", Toast.LENGTH_LONG).show();
 
                 String toastMessage;
@@ -388,8 +411,8 @@ public class MainActivity extends AppCompatActivity {
             strPhone = strPhone + " " +strDealerCode;
             createDirectory();
 //   Dealer code is written to the same folder Easy, where photos
-            file = new File( this.directory,"code.txt");
-            writeFile();
+            File file = new File( this.directory,"code.txt");
+            writeFile(file,strDealerCode);
             Intent make_photo = new Intent(this, MakePhoto.class);
             make_photo.setType("text/plain");
             make_photo.putExtra("TELE", strPhone);
@@ -471,7 +494,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void writeFile() {
+    private void writeFile(File file,String strWrite) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
@@ -495,7 +518,7 @@ public class MainActivity extends AppCompatActivity {
             }
             // пишем данные
             assert bw != null;
-            bw.write(strDealerCode);
+            bw.write(strWrite);
             // закрываем поток
             bw.close();
             Log.d(LOG_TAG, "Файл записан");
@@ -506,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void readFile() {
+    void readFile(File file) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
@@ -529,7 +552,7 @@ public class MainActivity extends AppCompatActivity {
             // читаем содержимое
             while ((str = br.readLine()) != null) {
                 Log.d(LOG_TAG, str);
-                expDate = str;
+                readStr = str;
             }
                      } catch (FileNotFoundException e) {
             e.printStackTrace();
