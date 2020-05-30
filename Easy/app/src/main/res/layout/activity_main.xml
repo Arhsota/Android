@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 12 nov 2019
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 27.05.20 23:27
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,6 +37,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/design_default_color_primary"
+        app:tint = "#FDF5F0F0"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -37,9 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        android:adjustViewBounds="false"
         app:backgroundTint="@color/design_default_color_primary"
         app:rippleColor="@color/cardview_light_background"
+        app:tint = "#FDF5F0F0"
         app:srcCompat="@drawable/ic_action_phone" />
 
 

@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 27.05.20 21:44
+ *  * Last modified 30.05.20 1:51
  *
  ******************************************************************************/
 
@@ -178,11 +178,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to WRITE - requesting it");
+                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 1);
+
+            }
+        }
         createDirectory();
 
 //     Reading codedealer file and checking if it is empty or not. Is it have expire date
          File fileReadCode = new File( directory,"code.txt");
-        // TODO: 27.05.2020 check existing of file
         if (fileReadCode.exists()) {
             readFile(fileReadCode);
             strDealerCode = readStr;
@@ -206,25 +218,28 @@ public class MainActivity extends AppCompatActivity {
 //     Parsing, if we have something string in file to compare it with current date
         if (isTime) {
             textViewAssure.setText(expDate); // for checking expire date
-            String[] subStr;
-            String delimeter = "-"; // Разделитель
-            subStr = expDate.split(delimeter); // Разделения строки str с помощью метода split()
-            int dd = Integer.parseInt(subStr[0]); // Day from file
-            int mm = Integer.parseInt(subStr[1]); // Month from file
-            int yy = Integer.parseInt(subStr[2]); // Year from file
+            if (expDate==null) { expDate ="0-0-0";} // for excluding mistake when the first install
+                String[] subStr;
+                String delimeter = "-"; // Разделитель
+                subStr = expDate.split(delimeter); // Разделения строки str с помощью метода split()
+                int dd = Integer.parseInt(subStr[0]); // Day from file
+                int mm = Integer.parseInt(subStr[1]); // Month from file
+                int yy = Integer.parseInt(subStr[2]); // Year from file
+
 //      Current date
             Calendar currentDate = Calendar.getInstance();
             int cYear = currentDate.get(Calendar.YEAR);
             int cMonth = currentDate.get(Calendar.MONTH);
             int cDay = currentDate.get(Calendar.DAY_OF_MONTH);
 // TODO: cDay should be = 1 (the first day of month)
-            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 27)){
+            if ((yy == cYear) && (mm  == cMonth +1) && (cDay == 1)){
 //                Toast.makeText(getApplicationContext(), "Time", Toast.LENGTH_LONG).show();
 
                 String toastMessage;
 //  long repeatInterval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
                 //  in the original
                 long repeatInterval = alarmManager.INTERVAL_HALF_DAY;
+//                long repeatInterval = 10;
                 long triggerTime = SystemClock.elapsedRealtime();
                 // TODO repeatInterval may vary, depends upon how often to make alarm
 
@@ -502,7 +517,7 @@ public class MainActivity extends AppCompatActivity {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_DENIED) {
 
-                Log.d("permission", "permission denied to CAMERA - requesting it");
+                Log.d("permission", "permission denied to WRITE - requesting it");
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 requestPermissions(permissions, 1);
 
