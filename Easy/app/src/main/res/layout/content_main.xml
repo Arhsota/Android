@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 27.05.20 21:59
+  ~  * Last modified 31.05.20 14:45
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -101,7 +101,7 @@
         android:id="@+id/textView"
         android:layout_width="@dimen/content_textview_width"
         android:layout_height="@dimen/content_textview_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/content_text_view_top"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarSize="20dp"
         android:scrollbarStyle="outsideOverlay"

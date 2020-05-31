@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 26.05.20 23:16
+  ~  * Last modified 31.05.20 14:45
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -26,5 +26,6 @@
     <dimen name="content_top_dealer_code">20dp</dimen>
     <dimen name="content_top_expire_date">16dp</dimen>
     <dimen name="button_top_expire_date">80dp</dimen>
-    <dimen name="button_top_main_photo">170dp</dimen>
+    <dimen name="button_top_main_photo">140dp</dimen>
+    <dimen name="content_text_view_top">20dp</dimen>
 </resources>
