@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 30.05.20 1:51
+ *  * Last modified 02.06.20 19:34
  *
  ******************************************************************************/
 
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     String expDate = "";
     String readStr;
     String strDealerCode = "";
+    String strPhone = "";
 
 
     ImageView ivPhoto;
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 //    private File fileCode;
     private EditText editTxtClientPhone;
     private EditText textDealerCode;
-    private String strPhone;
     final   String LOG_TAG = "myLogs";
 
     private CheckBox chBox;
@@ -193,7 +193,17 @@ public class MainActivity extends AppCompatActivity {
         }
         createDirectory();
 
-//     Reading codedealer file and checking if it is empty or not. Is it have expire date
+        //     Reading phone_number  file and checking if it is empty or not.
+        File fileReadPhoneNumber = new File( directory,"phone_number.txt"); //move from local
+        if (fileReadPhoneNumber.exists()) {
+            readFile(fileReadPhoneNumber);
+            strPhone = readStr;
+            editTxtClientPhone.setText(strPhone);
+        } else {
+            writeFile(fileReadPhoneNumber,strPhone);
+        }
+        readStr = "";
+//     Reading codedealer file and checking if it is empty or not.
          File fileReadCode = new File( directory,"code.txt");
         if (fileReadCode.exists()) {
             readFile(fileReadCode);
@@ -299,11 +309,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-
                     chBox = findViewById(R.id.checkBox);
                     strPhone = editTxtClientPhone.getText().toString();
                     strDealerCode = textDealerCode.getText().toString();
-                    strPhone = strPhone + " " +strDealerCode;
+//                    strPhone = strPhone + " " +strDealerCode;
                     if ((!chBox.isChecked()) || (!checkFieldPhone)){
 
                         Toast.makeText(MainActivity.this, "Не приняли соглашение или не ввели номер",
@@ -423,8 +432,11 @@ public class MainActivity extends AppCompatActivity {
         else {
             strPhone = editTxtClientPhone.getText().toString();
             strDealerCode = textDealerCode.getText().toString();
-            strPhone = strPhone + " " +strDealerCode;
             createDirectory();
+//   Phone number  is written to the same folder Easy, where photos
+            File filePhoneNumber = new File( this.directory,"phone_number.txt");
+            writeFile(filePhoneNumber,strPhone);
+
 //   Dealer code is written to the same folder Easy, where photos
             File file = new File( this.directory,"code.txt");
             writeFile(file,strDealerCode);
@@ -588,6 +600,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickDate(View view) {
+//      We had to read and write variables after clicking this button to remember in files
+        strPhone = editTxtClientPhone.getText().toString();
+        strDealerCode = textDealerCode.getText().toString();
+        createDirectory();
+//   Phone number  is written to the same folder Easy, where photos
+        File filePhoneNumber = new File( this.directory,"phone_number.txt");
+        writeFile(filePhoneNumber,strPhone);
+
+//   Dealer code is written to the same folder Easy, where photos
+        File file = new File( this.directory,"code.txt");
+        writeFile(file,strDealerCode);
         Intent intent = new Intent(this, AssureDate.class);
         startActivity(intent);
     }
