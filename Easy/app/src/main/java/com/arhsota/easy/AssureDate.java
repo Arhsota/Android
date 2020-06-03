@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 27.05.20 0:41
+ *  * Last modified 03.06.20 22:51
  *
  ******************************************************************************/
 
@@ -86,7 +86,8 @@ public class AssureDate extends AppCompatActivity {
 
                 createDirectory();
                 file = new File( directory,"expiredate.txt");
-                writeFile();
+
+                    writeFile();
 
             }
         });
@@ -112,6 +113,8 @@ public class AssureDate extends AppCompatActivity {
                 bw = new BufferedWriter(new OutputStreamWriter(
                         new FileOutputStream((String.valueOf(file)), false)));
             }
+
+
             // пишем данные
             assert bw != null;
             bw.write(expDate);

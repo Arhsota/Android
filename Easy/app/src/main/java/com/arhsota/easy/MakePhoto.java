@@ -3,7 +3,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 22:13
+ *  * Last modified 02.06.20 23:27
  *
  ******************************************************************************/
 
@@ -301,16 +301,14 @@ public class MakePhoto extends AppCompatActivity {
                            " номер Easy Осаго сохранен в тел. книге, просто добавьте его в отправители", Toast.LENGTH_LONG).show();
                    onAddContact();
                  }
-
-
-
              choiceWhatsApp();
-
-
-
-
-
     }
+
+    // TODO: 02.06.2020 add sending vs viber 
+    public void onClickPhotoSendViber(View view) {
+        Toast.makeText(this, "В разработке!!", Toast.LENGTH_SHORT).show();
+    }
+    
     private String contactIdByPhoneNumber(String phoneNumber) {
           String contactId = null;
         // Check the SDK version and whether the permission is already granted or not.
@@ -526,4 +524,5 @@ public class MakePhoto extends AppCompatActivity {
     }
 
 
+   
 }

@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 02.06.20 19:34
+ *  * Last modified 03.06.20 23:27
  *
  ******************************************************************************/
 
@@ -75,7 +75,6 @@ import java.util.Locale;
 import static android.provider.Telephony.Mms.Part.FILENAME;
 
 // Using help from https://startandroid.ru/ru/uroki/vse-uroki-spiskom/254-urok-131-kamera-ispolzuem-sistemnoe-prilozhenie.html
-
 public class MainActivity extends AppCompatActivity {
 
     File directory;
