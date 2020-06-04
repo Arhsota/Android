@@ -3,7 +3,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 02.06.20 23:27
+ *  * Last modified 04.06.20 23:40
  *
  ******************************************************************************/
 
@@ -307,6 +307,57 @@ public class MakePhoto extends AppCompatActivity {
     // TODO: 02.06.2020 add sending vs viber 
     public void onClickPhotoSendViber(View view) {
         Toast.makeText(this, "В разработке!!", Toast.LENGTH_SHORT).show();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to Contacts - requesting it in onClickPhotoSendWhatsApp");
+                String[] permissions = {Manifest.permission.WRITE_CONTACTS};
+                requestPermissions(permissions, 1);
+
+            }
+
+
+        }
+
+        Snackbar.make(view, "Отправляю документы...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        String fileName = (MakePhoto.myPath);
+        String externalStorageDirectory = Environment.getRootDirectory().toString();
+        //                String myDir = externalStorageDirectory + "/Pictures/Easy/"; // the // file will be in saved_images
+        directory = new File(
+                Environment
+                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                "Easy");
+        String myPath = directory.toString();
+
+        String sWhatsAppNo = getString(R.string.phone_number);
+//                    ID from contacts of Phone
+        String sContactId = contactIdByPhoneNumber(getString(R.string.phone_number));
+//                    ID from WhatsApp contacts
+        String sContactIdWhatsApp = hasWhatsApp(sWhatsAppNo);
+
+        /*
+         * Once We get the contact id, we check whether contact has a registered with WhatsApp or not.
+         * this hasWhatsApp(hasWhatsApp) method will return null,
+         * if contact doesn't associate with whatsApp services.
+         * */
+
+        // this contact does not exist in any WhatsApp application
+//                  String sWhatsAppNo = hasWhatsApp(sContactId);
+
+
+        if ( sContactId == null){
+
+//                   Toast.makeText(this, "Contact not found in Contacts !!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,
+                    " номер Easy Осаго сохранен в тел. книге, просто добавьте его в отправители", Toast.LENGTH_LONG).show();
+            onAddContact();
+        }
+        choiceViber();
+
     }
     
     private String contactIdByPhoneNumber(String phoneNumber) {
@@ -523,6 +574,47 @@ public class MakePhoto extends AppCompatActivity {
 
     }
 
+    private void choiceViber() {
 
-   
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to Contacts - requesting it");
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 1);
+
+            }
+        }
+
+        String[] listOfPictures = directory.list();
+        if (listOfPictures != null) {
+
+            Uri uri;
+            ArrayList<Uri> uris = new ArrayList<>();
+            for (String file : listOfPictures) {
+                uri = Uri.parse("file://" + directory.toString() + "/" + file);
+                uris.add(uri);
+            }
+
+            Intent shareIntentW = new Intent(Intent.ACTION_SEND_MULTIPLE);
+            shareIntentW.setPackage("com.viber.voip");
+            shareIntentW.setType("text/plain");
+
+            shareIntentW.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntentW.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+            shareIntentW.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+            startActivity(shareIntentW);
+        } else {
+
+            Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+    }
+
 }
