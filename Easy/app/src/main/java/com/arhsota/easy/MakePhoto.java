@@ -3,7 +3,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 04.06.20 23:40
+ *  * Last modified 10.06.20 12:27
  *
  ******************************************************************************/
 
@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Intent.EXTRA_SUBJECT;
+import static android.content.Intent.createChooser;
 
 public class MakePhoto extends AppCompatActivity {
 
@@ -306,7 +307,7 @@ public class MakePhoto extends AppCompatActivity {
 
     // TODO: 02.06.2020 add sending vs viber 
     public void onClickPhotoSendViber(View view) {
-        Toast.makeText(this, "В разработке!!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "В разработке!!", Toast.LENGTH_SHORT).show();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
@@ -317,10 +318,7 @@ public class MakePhoto extends AppCompatActivity {
                 Log.d("permission", "permission denied to Contacts - requesting it in onClickPhotoSendWhatsApp");
                 String[] permissions = {Manifest.permission.WRITE_CONTACTS};
                 requestPermissions(permissions, 1);
-
             }
-
-
         }
 
         Snackbar.make(view, "Отправляю документы...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -559,9 +557,10 @@ public class MakePhoto extends AppCompatActivity {
 //                startActivity(Intent.createChooser(shareIntentW,"Выберите"));
 
 
-               startActivity(shareIntentW);
+//               startActivity(shareIntentW);
+
 //              shareIntent.setSelector( emailSelectorIntent );
-//            startActivity(Intent.createChooser(shareIntentW,"choose"));
+                startActivity(Intent.createChooser(shareIntentW,"choose WhatsApp"));
 
         } else {
 
@@ -600,15 +599,15 @@ public class MakePhoto extends AppCompatActivity {
                 uris.add(uri);
             }
 
-            Intent shareIntentW = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            shareIntentW.setPackage("com.viber.voip");
-            shareIntentW.setType("text/plain");
+            Intent shareIntentV = new Intent(Intent.ACTION_SEND_MULTIPLE);
+            shareIntentV.setPackage("com.viber.voip");
+            shareIntentV.setType("text/plain");
 
-            shareIntentW.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntentW.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            shareIntentV.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntentV.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
-            shareIntentW.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-            startActivity(shareIntentW);
+            shareIntentV.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+            startActivity(Intent.createChooser(shareIntentV,"Viber"));
         } else {
 
             Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
