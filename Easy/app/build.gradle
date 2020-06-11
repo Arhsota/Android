@@ -2,7 +2,7 @@
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 04.06.20 23:40
+ *  * Last modified 12.06.20 0:20
  *
  */
 
@@ -15,8 +15,8 @@ android {
         applicationId "com.arhsota.easy"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 20
-        versionName "2.6.1"
+        versionCode 21
+        versionName "2.6.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

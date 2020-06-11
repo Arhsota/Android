@@ -1,10 +1,10 @@
-<!--
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 29.01.20 23:38
+  ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 29.01.20 23:38
+  ~  * Last modified 12.06.20 0:20
   ~  */
-  -->
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"

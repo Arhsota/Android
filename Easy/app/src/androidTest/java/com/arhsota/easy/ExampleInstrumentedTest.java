@@ -1,5 +1,13 @@
 package com.arhsota.easy;
 
+/*******************************************************************************
+ *
+ *  * Created by Andrey Sevastianov on 12 nov 2019
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 12.06.20 0:20
+ *
+ ******************************************************************************/
+
 import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;

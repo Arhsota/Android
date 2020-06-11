@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.05.20 22:05
+ *  * Last modified 12.06.20 0:20
  *
  ******************************************************************************/
 
