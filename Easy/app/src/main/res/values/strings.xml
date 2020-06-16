@@ -2,7 +2,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.06.20 0:20
+  ~  * Last modified 16.06.20 22:30
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -67,8 +67,7 @@
     <string name="krown">Обработка</string>
     <string name="make_photo_send_viber">Отправить документы по VIBER</string>
     <string name="make_photo_send_telegram">Отправить документы по TELEGRAM</string>
-
-
+    <string name="date_end_insurance">Оконч.действующего полиса</string>
 
 
 </resources>

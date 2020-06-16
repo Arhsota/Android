@@ -3,10 +3,10 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.06.20 0:20
+  ~  * Last modified 16.06.20 23:50
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="make_photo_send_viber">Отправить документы по VIBER</string>
+    <dimen name="checkbox_top">10dp</dimen>
 </resources>

@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.06.20 0:20
+  ~  * Last modified 16.06.20 22:25
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -20,7 +20,7 @@
         android:id="@+id/btnPhotoDoc4"
         android:layout_width="@dimen/make_photo_width"
         android:layout_height="@dimen/make_photo_height_send"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/make_photo_top_send"
         android:onClick="onClickPhotoSendViber"
         android:text="@string/make_photo_send_viber"
         app:backgroundTint="#CF655D"
@@ -33,7 +33,7 @@
         android:id="@+id/btnPhotoDoc5"
         android:layout_width="@dimen/make_photo_width"
         android:layout_height="@dimen/make_photo_height_send"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/make_photo_top_send"
         android:onClick="onClickPhotoSendTelegram"
         android:text="@string/make_photo_send_telegram"
         app:backgroundTint="#CF655D"

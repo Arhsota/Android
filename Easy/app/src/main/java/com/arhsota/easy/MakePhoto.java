@@ -3,7 +3,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.06.20 0:20
+ *  * Last modified 12.06.20 0:22
  *
  ******************************************************************************/
 
@@ -572,100 +572,9 @@ public class MakePhoto extends AppCompatActivity {
 
     }
 
-    private void choiceViber() {
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-            StrictMode.setVmPolicy(builder.build());
 
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED) {
-
-                Log.d("permission", "permission denied to Contacts - requesting it");
-                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                requestPermissions(permissions, 1);
-
-            }
-        }
-
-        String[] listOfPictures = directory.list();
-        if (listOfPictures != null) {
-
-            Uri uri;
-            ArrayList<Uri> uris = new ArrayList<>();
-            for (String file : listOfPictures) {
-                uri = Uri.parse("file://" + directory.toString() + "/" + file);
-                uris.add(uri);
-            }
-
-            Intent shareIntentV = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            shareIntentV.setPackage("com.viber.voip");
-            shareIntentV.setType("text/plain");
-
-            shareIntentV.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntentV.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
-            shareIntentV.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-
-            if (shareIntentV.resolveActivity(getPackageManager()) != null) {
-//                startActivity(shareIntent);
-                startActivity(Intent.createChooser(shareIntentV, "Выберите"));
-            } else {
-                Toast.makeText(MakePhoto.this, "Не установлен Viber! Установите, пожалуйста",
-                        Toast.LENGTH_LONG).show();
-                return;
-            }
-//            startActivity(Intent.createChooser(shareIntentV,"Viber"));
-        } else {
-
-            Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
-                    Toast.LENGTH_LONG).show();
-            return;
-        }
-    }
-
-    private void choiceTelegram() {
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-            StrictMode.setVmPolicy(builder.build());
-
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED) {
-
-                Log.d("permission", "permission denied to Contacts - requesting it");
-                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                requestPermissions(permissions, 1);
-
-            }
-        }
-
-        String[] listOfPictures = directory.list();
-        if (listOfPictures != null) {
-
-            Uri uri;
-            ArrayList<Uri> uris = new ArrayList<>();
-            for (String file : listOfPictures) {
-                uri = Uri.parse("file://" + directory.toString() + "/" + file);
-                uris.add(uri);
-            }
-
-            Intent shareIntentT = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            shareIntentT.setPackage("org.telegram.messenger");
-            shareIntentT.setType("text/plain");
-
-            shareIntentT.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntentT.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
-            shareIntentT.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-            startActivity(Intent.createChooser(shareIntentT,"Telegram"));
-        } else {
-
-            Toast.makeText(MakePhoto.this, "Вы ничего не сфотографировали, папка пустая",
-                    Toast.LENGTH_LONG).show();
-            return;
-        }
-    }
+//    WVT - means WhatsApp + Viber + Telegram. One void for all
     private void choiceWVT(String myPackage, String myPackageTitle) {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -716,8 +625,6 @@ public class MakePhoto extends AppCompatActivity {
             return;
         }
     }
-    // TODO: 11.06.2020 add sending vs telegram
-    // TODO: 11.06.2020 check dimens in layout MakePhoto
     public void onClickPhotoSendTelegram(View view) {
 //        Toast.makeText(this, "В разработке!!", Toast.LENGTH_SHORT).show();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -766,8 +673,6 @@ public class MakePhoto extends AppCompatActivity {
                     " номер Easy Осаго сохранен в тел. книге, просто добавьте его в отправители", Toast.LENGTH_LONG).show();
             onAddContact();
         }
-        // TODO: 11.06.2020 make one void choice with (package) 
-        // TODO: 11.06.2020 check existing pacckage as in choiceEmail
 //      Telegram choice
         choiceWVT("org.telegram.messenger","Telegram");
 
