@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 28.06.20 20:57
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,7 +32,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/colorBackground"
-        android:fontFamily="@font/tablo2"
+        android:fontFamily="@font/tablo3"
         android:gravity="center"
         android:onClick="onClickWorkTimer"
         android:text="00:00"
@@ -49,7 +57,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="@dimen/margin_top_score_left"
         android:colorAccent="@color/colorBackground"
-        android:fontFamily="@font/tablo2"
+        android:fontFamily="@font/tablo3"
         android:gravity="center"
         android:inputType="number"
         android:onClick="onClickPlayer1"
@@ -73,7 +81,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/colorBackground"
-        android:fontFamily="@font/tablo2"
+        android:fontFamily="@font/tablo3"
         android:gravity="center"
         android:inputType="number"
         android:onClick="onClickPlayer2"
@@ -94,6 +102,7 @@
         android:layout_marginTop="@dimen/start_button_top"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:textColor="@color/colorRadioButton"
         android:onClick="onClickReset"
         android:text="@string/reset"
         android:textSize="@dimen/text_size_start_button"
@@ -109,6 +118,7 @@
         android:layout_marginTop="@dimen/start_button_top"
         android:layout_marginEnd="@dimen/rest_score_button_end"
         android:layout_marginRight="@dimen/rest_score_button_end"
+        android:textColor="@color/colorRadioButton"
         android:onClick="onClickResetScore"
         android:text="@string/reset_score"
         android:textSize="@dimen/text_size_reset_score_button"
@@ -126,6 +136,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/colorRadioButton"
         android:onClick="onClickPlayer1"
         android:text="@string/player_1"
         android:textSize="@dimen/text_size_button_player"
@@ -142,6 +153,7 @@
         android:layout_alignBottom="@+id/buttonPlayer1"
         android:layout_marginBottom="8dp"
         android:onClick="onClickPlayer2"
+        android:textColor="@color/colorRadioButton"
         android:text="@string/player_2"
         android:textSize="@dimen/text_size_button_player"
         app:cornerRadius="@dimen/radius_reset_button"
@@ -205,6 +217,7 @@
         android:layout_marginTop="@dimen/margin_top_minus1"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:textColor="@color/colorRadioButton"
         android:onClick="onClickScoreAdj1"
         android:text="@string/adj_score"
         android:textSize="@dimen/text_size_button_adjust"
@@ -224,6 +237,7 @@
         android:layout_marginTop="@dimen/margin_top_minus1"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:textColor="@color/colorRadioButton"
         android:onClick="onClickScoreAdj2"
         android:text="@string/adj_score"
         android:textSize="@dimen/text_size_button_adjust"

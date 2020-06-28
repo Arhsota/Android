@@ -1,3 +1,11 @@
+/*******************************************************************************
+ *
+ *  * Created by Andrey Sevastianov on 28.06.20 21:50
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 28.06.20 19:33
+ *
+ ******************************************************************************/
+
 package com.arhsota.tablo;
 
 import org.junit.Test;

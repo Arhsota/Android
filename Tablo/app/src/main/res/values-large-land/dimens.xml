@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 28.06.20 21:06
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <resources>
     <dimen name="margin_top_time_view">100dp</dimen>
     <dimen name="text_size_score">150sp</dimen>
@@ -34,7 +42,7 @@
     <dimen name="rest_score_button_end">8dp</dimen>
     <dimen name="margin_top_minus1">180dp</dimen>
     <dimen name="margin_top_score_left">200dp</dimen>
-    <dimen name="margin_top_score_right">190dp</dimen>
+    <dimen name="margin_top_score_right">200dp</dimen>
     <dimen name="margin_end_score_adj">692dp</dimen>
     <dimen name="button_score_adj_width">55dp</dimen>
     <dimen name="button_score_adj_height">37dp</dimen>

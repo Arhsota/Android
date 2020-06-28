@@ -7,6 +7,14 @@
  nothing new, only improvement
 */
 
+/*******************************************************************************
+ *
+ *  * Created by Andrey Sevastianov on 2018
+ *  * Copyright (c) 2018,2019,2020 . All rights reserved.
+ *  * Last modified 28.06.20 19:33
+ *
+ ******************************************************************************/
+
 package com.arhsota.tablo;
 
 import android.app.Activity;

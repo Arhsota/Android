@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 28.06.20 19:33
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <resources>
     <dimen name="margin_top_time_view">170dp</dimen>
      <dimen name="text_size_score">50sp</dimen>
