@@ -3,18 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <item android:id="@+id/action_create_save"
-        android:title="@string/action_create_save"
-        android:orderInCategory="1"
-        app:showAsAction="ifRoom" />
-
-
     <item android:id="@+id/action_share"
         android:title="@string/action_share"
         tools:ignore="AppCompatResource"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_create_save"
+        android:title="@string/action_create_save"
         android:orderInCategory="2"
         app:showAsAction="ifRoom" />
-
     <item android:id="@+id/action_history"
         android:title="@string/action_history"
         android:orderInCategory="3"
@@ -24,6 +21,10 @@
     <item android:id="@+id/action_sign_up"
         android:title="Sign up"
         android:orderInCategory="4"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_help"
+        android:title="@string/help"
+        android:orderInCategory="5"
         app:showAsAction="ifRoom"
 
         />

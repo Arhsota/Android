@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI 2.8.1</string>
+    <string name="app_name">BMI 2.8.2</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
@@ -33,5 +33,20 @@
     <string name="my_length">Length:</string>
     <string name="my_age">Age:</string>
     <string name="for_subject_field">My Body Mass Index on:</string>
-
+    <string name="help">\?</string>
+    <string name="help_text">
+    1. Enter your weight in kg."\n
+    2. Enter your length in cm.\n
+    3. Enter your age. \n
+    4. Click button CALCULATE. \n
+    5. You should see digits on top, this is your BMI. \n
+    6. Under the button CALCULATE, you should see a tick, what BMI is recommended in that ages. \n
+    7. For better view, under this tick, you should see visual bar. \n
+    8. Menu button SAVE saves your result in phone memory. \n
+    9. Menu button HISTORY reveals your result from phone's memory. \n
+    10.Menu button SHARE shares your result \n
+    11.Menu button Sign Up - in work, wait for future versions \n
+    12.Menu button ? - this text
+        ENJOY!!
+    </string>
 </resources>
