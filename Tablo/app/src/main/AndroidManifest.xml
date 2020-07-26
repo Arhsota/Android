@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Created by Andrey Sevastianov on 26.07.20 23:09
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 28.06.20 19:33
+  ~  * Last modified 24.07.20 19:06
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -13,25 +13,26 @@
 
     <uses-permission
         android:name="android.permission.READ_PHONE_STATE"
-
         tools:node="remove" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Help"
+            android:screenOrientation="landscape"
+            android:label="Справка"/>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7279174300665421~2703649226" />
 
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="landscape">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

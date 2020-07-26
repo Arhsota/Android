@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Created by Andrey Sevastianov on 26.07.20 23:09
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 28.06.20 21:06
+  ~  * Last modified 24.07.20 18:47
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -13,8 +13,8 @@
     <dimen name="text_size_time_view">200sp</dimen>
     <dimen name="margin_right_score">50dp</dimen>
     <dimen name="margin_end_right_score">50dp</dimen>
-    <dimen name="radio_button_top">16dp</dimen>
-    <dimen name="start_button_top">16dp</dimen>
+    <dimen name="radio_button_top">8dp</dimen>
+    <dimen name="start_button_top">8dp</dimen>
     <dimen name="text_size_radio_button">34sp</dimen>
     <dimen name="start_button_width">260dp</dimen>
     <dimen name="start_button_height">57dp</dimen>
@@ -29,7 +29,7 @@
     <dimen name="margin_end_player2">32dp</dimen>
     <dimen name="text_size_start_button">24sp</dimen>
     <dimen name="margin_top_radio_button">8dp</dimen>
-    <dimen name="text_size_button_adjust">34sp</dimen>
+    <dimen name="text_size_button_adjust">20sp</dimen>
     <dimen name="text_size_reset_score_button">24sp</dimen>
     <dimen name="margin_start_button_reset_score">8dp</dimen>
     <dimen name="margin_left_button_reset_score">8dp</dimen>
@@ -40,9 +40,9 @@
     <dimen name="margin_start_5min_button">8dp</dimen>
     <dimen name="margin_left_5min_button">8dp</dimen>
     <dimen name="rest_score_button_end">8dp</dimen>
-    <dimen name="margin_top_minus1">180dp</dimen>
-    <dimen name="margin_top_score_left">200dp</dimen>
-    <dimen name="margin_top_score_right">200dp</dimen>
+    <dimen name="margin_top_minus1">110dp</dimen>
+    <dimen name="margin_top_score_left">140dp</dimen>
+    <dimen name="margin_top_score_right">140dp</dimen>
     <dimen name="margin_end_score_adj">692dp</dimen>
     <dimen name="button_score_adj_width">55dp</dimen>
     <dimen name="button_score_adj_height">37dp</dimen>

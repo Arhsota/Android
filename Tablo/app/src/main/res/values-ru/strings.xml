@@ -1,8 +1,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Created by Andrey Sevastianov on 26.07.20 23:09
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 28.06.20 19:33
+  ~  * Last modified 26.07.20 21:58
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -15,7 +15,15 @@
     <string name="player_1">Игрок 1</string>
     <string name="_5_min">5 м</string>
     <string name="_10_min">10 м</string>
-    <string name="adj_score"> - </string>
+    <string name="adj_score"> минус </string>
     <string name="reset_score">Сброс Счета/Куб</string>
     <string name="dice">Кубики</string>
+    <string name="help">
+        1. Кнопки 5м и 10м устанавливают таймер на 5 или 10 минут. Кнопка КУБИКИ для взброса кубиков\n
+        2. Кнопка СБРОС СЧЕТА сбрасывает счет и кубики. Кнопка УСТ СбРОС ТАЙМЕРА устанавл. или сбрасывает таймер\n
+        3. Цифры в центре это таймер. При клике по нему запускается или останавливается\n
+        4. При нажатии на кнопки ИГРОК или на цифру счета, счет увеличивается. Кнопка МИНУС корректирует счет\n
+    </string>
+    <string name="help_menu">Помощь</string>
+    <string name="save_result_menu">Сохранить</string>
 </resources>

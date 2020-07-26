@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Created by Andrey Sevastianov on 26.07.20 23:09
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 28.06.20 21:06
+  ~  * Last modified 24.07.20 19:40
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <dimen name="margin_top_time_view">50dp</dimen>
+    <dimen name="margin_top_time_view">30dp</dimen>
     <dimen name="text_size_score">70sp</dimen>
     <dimen name="text_size_time_view">100sp</dimen>
     <dimen name="margin_right_score">4dp</dimen>
@@ -28,8 +28,8 @@
     <dimen name="margin_start_player1">22dp</dimen>
     <dimen name="margin_end_player2">22dp</dimen>
     <dimen name="text_size_start_button">8sp</dimen>
-    <dimen name="margin_top_radio_button">8dp</dimen>
-    <dimen name="text_size_button_adjust">20sp</dimen>
+    <dimen name="margin_top_radio_button">2dp</dimen>
+    <dimen name="text_size_button_adjust">12sp</dimen>
     <dimen name="text_size_reset_score_button">8sp</dimen>
     <dimen name="margin_start_button_reset_score">8dp</dimen>
     <dimen name="margin_left_button_reset_score">8dp</dimen>
@@ -40,9 +40,9 @@
     <dimen name="margin_start_5min_button">0dp</dimen>
     <dimen name="margin_left_5min_button">0dp</dimen>
     <dimen name="rest_score_button_end">24dp</dimen>
-    <dimen name="margin_top_minus1">60dp</dimen>
-    <dimen name="margin_top_score_left">70dp</dimen>
-    <dimen name="margin_top_score_right">70dp</dimen>
+    <dimen name="margin_top_minus1">40dp</dimen>
+    <dimen name="margin_top_score_left">20dp</dimen>
+    <dimen name="margin_top_score_right">20dp</dimen>
     <dimen name="margin_end_score_adj">392dp</dimen>
     <dimen name="button_score_adj_width">37dp</dimen>
     <dimen name="button_score_adj_height">27dp</dimen>

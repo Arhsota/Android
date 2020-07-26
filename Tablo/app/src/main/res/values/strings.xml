@@ -1,8 +1,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Created by Andrey Sevastianov on 26.07.20 23:09
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 28.06.20 19:33
+  ~  * Last modified 24.07.20 19:54
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -15,7 +15,15 @@
     <string name="player_1">Player 1</string>
     <string name="_5_min">5 m</string>
     <string name="_10_min">10 m</string>
-    <string name="adj_score"> - </string>
+    <string name="adj_score"> minus </string>
     <string name="reset_score">Reset Score/Dice</string>
     <string name="dice">Dice</string>
+    <string name="help">
+        1. Buttons 5m and 10m sets timer on 5 or 10 minutes. Button DICES for starting dices\n
+        2. Button RESET SCORE_DICES resets score and dices. Button SET_RESET TIMER is for setting and resetting timer\n
+        3. Digits in the center is timer. Clicking on it one can start or stop it\n
+        4. Clicking on the button PLAYER, score is incrementing. Button MINUS is for correcting score счет\n
+    </string>
+    <string name="help_menu">Help</string>
+    <string name="save_result_menu">Save Result</string>
 </resources>

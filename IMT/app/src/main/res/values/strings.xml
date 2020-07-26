@@ -35,7 +35,8 @@
     <string name="for_subject_field">My Body Mass Index on:</string>
     <string name="help">\?</string>
     <string name="help_text">
-    1. Enter your weight in kg."\n
+        "\n
+    1. Enter your weight in kg.\n
     2. Enter your length in cm.\n
     3. Enter your age. \n
     4. Click button CALCULATE. \n

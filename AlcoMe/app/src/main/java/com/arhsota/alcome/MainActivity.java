@@ -1,3 +1,11 @@
+/*******************************************************************************
+ *
+ *  * Created by Andrey Sevastianov on 2019 September
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 14.07.20 19:02
+ *
+ ******************************************************************************/
+
 package com.arhsota.alcome;
 
 // Info of hour much time remains alcohol in your body
@@ -5,7 +13,7 @@ package com.arhsota.alcome;
 // 2019 September, October, 10 november
 // 2020 February
 // Arkhangelsk
-// ver 1.4 improved but not published
+
 
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;

@@ -9,15 +9,16 @@
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 2018
- *  * Copyright (c) 2018,2019,2020 . All rights reserved.
- *  * Last modified 28.06.20 19:33
+ *  * Created by Andrey Sevastianov on 26.07.20 23:09
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 24.07.20 18:12
  *
  ******************************************************************************/
 
 package com.arhsota.tablo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -25,6 +26,8 @@ import android.os.Handler;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -69,6 +72,37 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
 
     private InterstitialAd mInterstitialAd;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Заполнение меню; элементы (если они есть) добавляются на панель действий.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()) {
+            case R.id.action_create_save:
+                //Код, выполняемый при выборе элемента Create Save
+                Toast.makeText(MainActivity.this, "In Work",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.action_help:
+                Intent intent_help = new Intent(this, Help.class);
+                startActivity(intent_help);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,9 +165,10 @@ public class MainActivity extends AppCompatActivity {
       //  savedInstanceState.putBoolean("player1", player1);
         savedInstanceState.putInt("scorePlayer1", scorePlayer1);
         savedInstanceState.putInt("scorePlayer2", scorePlayer2);
-        seconds = secondsChoice;
+//        seconds = secondsChoice;
 
     }
+
 //    page 176
     @Override
     protected void onStop() {

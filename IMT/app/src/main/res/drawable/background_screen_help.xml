@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 14.07.20 19:02
+  ~  * Created by Andrey Sevastianov on 21.07.20 20:22
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 08.09.19 10:40
+  ~  * Last modified 21.07.20 20:21
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-</resources>
+<bitmap
+
+    android:src="@drawable/background_screen"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

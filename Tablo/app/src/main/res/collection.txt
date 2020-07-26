@@ -1,0 +1,2 @@
+android:fontFamily="@font/tablo3"
+android:layout_width="@dimen/button_score_adj_width"

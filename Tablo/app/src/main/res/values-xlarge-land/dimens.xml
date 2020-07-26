@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 28.06.20 21:50
+  ~  * Created by Andrey Sevastianov on 26.07.20 23:09
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 28.06.20 19:33
+  ~  * Last modified 26.07.20 22:57
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -41,8 +41,8 @@
     <dimen name="margin_left_5min_button">8dp</dimen>
     <dimen name="rest_score_button_end">8dp</dimen>
     <dimen name="margin_top_minus1">180dp</dimen>
-    <dimen name="margin_top_score_left">250dp</dimen>
-    <dimen name="margin_top_score_right">240dp</dimen>
+    <dimen name="margin_top_score_left">210dp</dimen>
+    <dimen name="margin_top_score_right">200dp</dimen>
     <dimen name="margin_end_score_adj">692dp</dimen>
     <dimen name="button_score_adj_width">55dp</dimen>
     <dimen name="button_score_adj_height">37dp</dimen>
