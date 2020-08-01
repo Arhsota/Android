@@ -15,8 +15,8 @@ android {
         applicationId "com.arhsota.easy"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 22
-        versionName "2.7"
+        versionCode 24
+        versionName "2.7.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
