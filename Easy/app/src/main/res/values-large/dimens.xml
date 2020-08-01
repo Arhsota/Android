@@ -3,10 +3,16 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 16.06.20 23:50
+  ~  * Last modified 01.08.20 15:50
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
     <dimen name="checkbox_top">10dp</dimen>
+    <dimen name="cornerRadius">33dp</dimen>
+    <dimen name="top_whatsapp">76dp</dimen>
+    <dimen name="button_whatsapp_width">75dp</dimen>
+    <dimen name="button_send_width">165dp</dimen>
+    <dimen name="button_send_height">75dp</dimen>
+    <dimen name="margin_top_send_telegram">70dp</dimen>
 </resources>

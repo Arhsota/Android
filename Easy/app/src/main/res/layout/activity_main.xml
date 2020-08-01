@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.06.20 0:22
+  ~  * Last modified 01.08.20 13:36
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -14,31 +14,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/design_default_color_primary"
-        app:tint = "#FDF5F0F0"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/callph"
@@ -50,6 +30,16 @@
         app:rippleColor="@color/cardview_light_background"
         app:tint = "#FDF5F0F0"
         app:srcCompat="@drawable/ic_action_phone" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/app_bar_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:rippleColor="@color/cardview_light_background"
+        app:tint = "#FDF5F0F0"
+        app:srcCompat="@android:drawable/ic_menu_help" />
 
 
 

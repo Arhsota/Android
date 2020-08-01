@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.06.20 0:22
+  ~  * Last modified 31.07.20 21:32
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -12,4 +12,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#463B40</color>
     <color name="colorBackground">#6BCDDA</color>
+    <color name="transparent">#00000000</color>
 </resources>

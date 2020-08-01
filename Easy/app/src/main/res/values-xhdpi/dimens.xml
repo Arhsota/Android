@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 16.06.20 23:54
+  ~  * Last modified 01.08.20 16:21
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -16,17 +16,23 @@
     <dimen name="make_photo_top_2">15dp</dimen>
     <dimen name="make_photo_top_3">15dp</dimen>
     <dimen name="make_photo_top_send">15dp</dimen>
-    <dimen name="content_top_phone">12dp</dimen>
-    <dimen name="content_photo_top">34dp</dimen>
+    <dimen name="content_top_phone">22dp</dimen>
+    <dimen name="content_photo_top">84dp</dimen>
     <dimen name="content_check_box">16dp</dimen>
-    <dimen name="content_text_agreement_start">50dp</dimen>
-    <dimen name="content_textview_width">200dp</dimen>
-    <dimen name="content_textview_height">70dp</dimen>
+    <dimen name="content_text_agreement_start">32dp</dimen>
+    <dimen name="content_textview_width">296dp</dimen>
+    <dimen name="content_textview_height">121dp</dimen>
     <dimen name="content_texthelp_height">300dp</dimen>
     <dimen name="content_top_dealer_code">20dp</dimen>
     <dimen name="content_top_expire_date">16dp</dimen>
-    <dimen name="button_top_expire_date">70dp</dimen>
-    <dimen name="button_top_main_photo">150dp</dimen>
+    <dimen name="button_top_expire_date">80dp</dimen>
+    <dimen name="button_top_main_photo">120dp</dimen>
     <dimen name="content_text_view_top">20dp</dimen>
     <dimen name="checkbox_top">10dp</dimen>
+    <dimen name="cornerRadius">33dp</dimen>
+    <dimen name="top_whatsapp">10dp</dimen>
+    <dimen name="button_whatsapp_width">75dp</dimen>
+    <dimen name="button_send_width">165dp</dimen>
+    <dimen name="button_send_height">75dp</dimen>
+    <dimen name="margin_top_send_telegram">10dp</dimen>
 </resources>

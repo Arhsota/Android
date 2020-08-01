@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 16.06.20 23:50
+  ~  * Last modified 01.08.20 12:52
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -28,7 +28,6 @@
         android:inputType="phone"
         android:textColor="#FDF5F0F0"
         android:textColorHint="#FDF5F0F0"
-        app:cornerRadius="66dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,8 +39,11 @@
         android:layout_height="116dp"
         android:layout_marginTop="@dimen/button_top_main_photo"
         android:onClick="onClickPhoto"
+        android:textColor="#FD0E0E0E"
+        android:textColorHint="#FD0E0E0E"
         android:text="@string/content_make_main"
         app:cornerRadius="20dp"
+        app:backgroundTint="#BBB4C3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

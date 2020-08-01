@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.06.20 0:22
+  ~  * Last modified 31.07.20 23:45
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -13,7 +13,7 @@
     android:viewportHeight="108"
     android:viewportWidth="108"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="#008577"
+    <path android:fillColor="#3DDC84"
           android:pathData="M0,0h108v108h-108z"/>
     <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
           android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>

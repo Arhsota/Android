@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.06.20 0:22
+ *  * Last modified 01.08.20 13:44
  *
  ******************************************************************************/
 
@@ -278,11 +278,12 @@ public class MainActivity extends AppCompatActivity {
 
 //        ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
 
+/*         !!!!! only for toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-// Calling manager Lavinia
+*/
+// Calling manager Lavinia from fab
 
             final FloatingActionButton callphone = findViewById(R.id.callph);
 
@@ -300,9 +301,27 @@ public class MainActivity extends AppCompatActivity {
 
             });
 
+//  Launching help from fab
+             final FloatingActionButton fab_help = findViewById(R.id.app_bar_help);
+
+             fab_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+                 public void onClick(View view) {
+
+                 Toast.makeText(MainActivity.this, "Помощь",
+                        Toast.LENGTH_LONG).show();
+
+                 fabHelp();
+
+              }
+
+
+
+             });
+
 
 //   Send docs from folder Easy by mail
-
+/*
         FloatingActionButton fab = findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -342,9 +361,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         );
-
+*/
 
     }
+
+    private void fabHelp() {
+        Intent intent = new Intent(this, Help.class);
+        startActivity(intent);
+    }
+
     private void choiceEmail() {
         String[] listOfPictures = directory.list();
         if (listOfPictures != null) {

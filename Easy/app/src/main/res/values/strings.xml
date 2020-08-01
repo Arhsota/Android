@@ -2,12 +2,12 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 16.06.20 22:30
+  ~  * Last modified 01.08.20 16:16
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">Easy 2.6.2</string>
+    <string name="app_name">Easy 2.7</string>
     <string name="action_settings">Справка</string>
     <string name="action_callevacuator">Эвакуатор</string>
     <string name="action_krown">Антикор N1</string>
@@ -36,7 +36,6 @@
     <string name="make_photo_1">Фото ВУ и Свидетельства ТС лицевая сторона</string>
     <string name="make_photo_2">Фото ВУ и Свидетельства ТС  оборотная сторона</string>
     <string name="make_photo_3">Фото предыдущего полиса (при наличии)</string>
-    <string name="make_photo_send">Отправить документы по WhatsApp</string>
     <string name="phone_number">+79600058880</string>
     <string name="phone_number2">+79022865609</string>
     <string name="phone_number_evacuator">+79626594277</string>
@@ -56,18 +55,20 @@
         5. Нажмите кнопку СДЕЛАТЬ ФОТО ДОКУМЕНТОВ, сфотографируйте свои документы.\n
         6. Отправьте документы: \n1-й способ, через Электронную почту - клик на иконке "конвертик".\n
              2-й способ - WhatsApp - клик по кнопке WHATSAPP (создастся контакт Easy ОСАГО,
-             его необходимо внести в отправители).\n
-        7. Для вызова эвакуатора, выберите меню ЭВАКУАТОР \n
-        8. Для антикорозийной обработки KROWN, выберите меню АНТИКОР #1\n
+             его необходимо внести в отправители). А также Viber или Telegram\n
+        7. Для вызова эвакуатора, выберите меню ЭВАКУАТОР (Актуально для г. Архангельск)\n
+        8. Для антикорозийной обработки KROWN, выберите меню АНТИКОР #1 (Актуально для г. Архангельск)\n
         9. Ожидайте звонок или письмо с выгодным предложением.\n\n
         Не забывайте давать разрешения, запрашиваемые приложением
         Вы всегда можете получить помощь, просто нажав на значок ТЕЛЕФОННОЙ ТРУБКИ.
 
         </string>
     <string name="krown">Обработка</string>
-    <string name="make_photo_send_viber">Отправить документы по VIBER</string>
-    <string name="make_photo_send_telegram">Отправить документы по TELEGRAM</string>
-    <string name="date_end_insurance">Оконч.действующего полиса</string>
+    <string name="make_photo_send">Отправить по WhatsApp</string>
+    <string name="make_photo_send_viber">Отправить по VIBER</string>
+    <string name="make_photo_send_telegram">Отправить по TELEGRAM</string>
+    <string name="make_photo_send_email">Отправить по эл. почте</string>
+    <string name="date_end_insurance">Дата окончания страховки</string>
 
 
 </resources>

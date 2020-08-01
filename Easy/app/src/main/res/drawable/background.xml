@@ -3,11 +3,11 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on 12 nov 2019
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.06.20 0:22
+  ~  * Last modified 31.07.20 20:44
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <bitmap
 
-    android:src="@drawable/easy_main_screen"
+    android:src="@drawable/background_easy_2"
     xmlns:android="http://schemas.android.com/apk/res/android" />

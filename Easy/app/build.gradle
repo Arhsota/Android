@@ -2,7 +2,7 @@
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 17.06.20 0:03
+ *  * Last modified 31.07.20 21:55
  *
  */
 
@@ -13,10 +13,10 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.arhsota.easy"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 29
-        versionCode 21
-        versionName "2.6.2"
+        versionCode 22
+        versionName "2.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

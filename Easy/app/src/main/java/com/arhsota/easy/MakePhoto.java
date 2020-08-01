@@ -3,7 +3,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.06.20 0:22
+ *  * Last modified 01.08.20 14:05
  *
  ******************************************************************************/
 
@@ -30,6 +30,8 @@ import android.os.StrictMode;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -76,6 +78,79 @@ public class MakePhoto extends AppCompatActivity {
         myPhone = getIntent().getStringExtra("TELE");
         createDirectory();
         btnDoc = findViewById(R.id.btnPhotoDoc1);
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_help) {
+            Intent intent = new Intent(this, Help.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.action_callevacuator) {
+
+            Toast.makeText(MakePhoto.this, "Вызываю эвакуатор!!!",
+                    Toast.LENGTH_LONG).show();
+
+            callPhone(getString (R.string.phone_number_evacuator));
+
+//           Toast.makeText(MainActivity.this, "В разработке",
+//                    Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        if (id == R.id.action_krown) {
+
+            Toast.makeText(MakePhoto.this, "Звонок в Krown",
+                    Toast.LENGTH_LONG).show();
+            callPhone(getString (R.string.phone_number_krown));
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void callPhone (final String strCallNumber){
+
+//         Calling total procedure
+
+
+// Checking permissions. If Not asks owner to make it by himself
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+            if (checkSelfPermission(Manifest.permission.CALL_PHONE)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to CALL PHONE - requesting it");
+                String[] permissions = {Manifest.permission.CALL_PHONE};
+                requestPermissions(permissions, 1);
+
+
+            }
+            else {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + strCallNumber));
+                startActivity(intent);
+            }
+
+        }
 
 
     }
@@ -174,7 +249,7 @@ public class MakePhoto extends AppCompatActivity {
 
 
 
-    public void onClickPhotoFabEmail(View view) {
+    public void onClickPhotoEmail(View view) {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         Snackbar.make(view, "Отправляю документы...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
