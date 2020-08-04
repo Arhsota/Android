@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ /*
+  ~  * Created by Andrey Sevastianov on 05.08.20 0:04
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 03.08.20 0:39
+  ~  */
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_screen_help"
     tools:context=".MainActivity">
 
 
@@ -142,10 +151,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="@dimen/button_margin_bottom"
-        android:background="@color/colorBtnCalc"
+        android:backgroundTint="#33258029"
         android:enabled="false"
         android:text="@string/butt_name"
-        app:cornerRadius="66dp"
+        app:cornerRadius="33dp"
         app:layout_constraintBottom_toTopOf="@+id/text_table"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -1,24 +1,12 @@
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 2018
+ *  * Created by Andrey Sevastianov on 05.08.20 0:04
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 21.07.20 22:01
+ *  * Last modified 21.07.20 22:02
  *
  ******************************************************************************/
 
 package com.arhsota.android.imt;
-
-// version 2.7 some improvements such as normal input and translation in English version
-// version 2.8 adding progress bar
-// version 2.8.1 move button calculate a little bit higher
-// and a little bit in text in main string with data
-// version 2.8.2 help screen
-// my first real soft based on lesson 8 Skillberg
-// calculating index body fat based on your weight and length both for male and female
-// Sevastyanov Andrey, 2018,2019, 2020
-// Arkhangelsk, Sabetta
-// Copyright (c) all rights reserved
-
 
 import android.app.Activity;
 import android.content.Context;

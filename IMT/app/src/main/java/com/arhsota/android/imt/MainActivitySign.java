@@ -1,3 +1,11 @@
+/*******************************************************************************
+ *
+ *  * Created by Andrey Sevastianov on 05.08.20 0:04
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 05.11.19 23:30
+ *
+ ******************************************************************************/
+
 package com.arhsota.android.imt;
 
 import android.app.Activity;

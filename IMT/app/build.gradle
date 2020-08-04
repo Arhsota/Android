@@ -1,3 +1,11 @@
+/*******************************************************************************
+ *
+ *  * Created by Andrey Sevastianov on 05.08.20 0:04
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 04.08.20 23:54
+ *
+ ******************************************************************************/
+
 apply plugin: 'com.android.application'
 
 android {
@@ -6,8 +14,8 @@ android {
         applicationId "com.arhsota.android.imt"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 19
-        versionName '2.8.2'
+        versionCode 20
+        versionName '2.8.3'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

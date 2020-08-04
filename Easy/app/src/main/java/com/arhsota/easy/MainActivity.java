@@ -4,7 +4,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 01.08.20 13:44
+ *  * Last modified 02.08.20 23:54
  *
  ******************************************************************************/
 
@@ -486,13 +486,14 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // No menu at all on this acivivty
+/*
         if (id == R.id.action_help) {
             Intent intent = new Intent(this, Help.class);
             startActivity(intent);
             return true;
         }
-
+*/
         if (id == R.id.action_callevacuator) {
 
            Toast.makeText(MainActivity.this, "Вызываю эвакуатор!!!",

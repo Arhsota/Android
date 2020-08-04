@@ -3,7 +3,7 @@ package com.arhsota.easy;
  *
  *  * Created by Andrey Sevastianov on 12 nov 2019
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 01.08.20 14:05
+ *  * Last modified 02.08.20 23:54
  *
  ******************************************************************************/
 
@@ -96,13 +96,15 @@ public class MakePhoto extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // Nikita asks not to duplicate help
+/*
+
         if (id == R.id.action_help) {
             Intent intent = new Intent(this, Help.class);
             startActivity(intent);
             return true;
         }
-
+*/
         if (id == R.id.action_callevacuator) {
 
             Toast.makeText(MakePhoto.this, "Вызываю эвакуатор!!!",
