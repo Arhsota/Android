@@ -1,8 +1,14 @@
+// my first real soft based on lesson 8 Skillberg
+// calculating index body fat based on your weight and length both for male and female
+// Sevastyanov Andrey, 2018, september
+// Arkhangelsk
+
+
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 05.08.20 0:04
+ *  * Created by Andrey Sevastianov on 2018, september
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 21.07.20 22:02
+ *  * Last modified 12.08.20 19:18
  *
  ******************************************************************************/
 
@@ -10,6 +16,7 @@ package com.arhsota.android.imt;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 
@@ -33,6 +40,7 @@ import android.widget.Toast;
 //import androidx.appcompat.app.AppCompatActivity;
 //import androidx.core.view.MenuItemCompat;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
@@ -47,6 +55,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -57,8 +71,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AdView mAdView;
-//    private FirebaseAnalytics mFirebaseAnalytics;
+    //    private FirebaseAnalytics mFirebaseAnalytics;
     private ShareActionProvider shareActionProvider;
 
  //   private RewardedVideoAd mRewardedVideoAd;
@@ -71,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextW;
     private EditText editTextL;
     private EditText editTextAge;
-//    private Button button;
-    private   double myweight;
     // str_XXX for intent
     private   String str_IMT ;
     private   String str_IMT_mail ;
@@ -90,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
     private   boolean fillTextL = false;
     private   boolean fillTextA = false;
 
+    private String str_History;
+
     final String LOG_TAG = "myLogs";
 
     final String FILENAME = "file";
@@ -101,23 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
-
-    private final int num19 = 19;
-    private final int num20 = 20;
-    private final int num21 = 21;
-    private final int num22 = 22;
-    private final int num23 = 23;
-    private final int num24 = 24;
-    private final int num25 = 25;
-    private final int num26 = 26;
-    private final int num27 = 27;
-    private final int num28 = 28;
-    private final int num29 = 59;
-    private final int num34 = 34;
-    private final int num44 = 44;
-    private final int num54 = 54;
-    private final int num64 = 64;
-
 
 
     @Override
@@ -161,9 +157,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(chosenIntent);
                 return true;
 
+            case R.id.action_share_history:
+                readFile();
+                Intent intent_his = new Intent(Intent.ACTION_SEND);
+                intent_his.setType("text/plain");
+                intent_his.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.for_subject_field) + str_Date);
+                intent_his.putExtra(Intent.EXTRA_TEXT, str_History);
+//          page 143 always choose intent
+                String chooserTitleHis = getString(R.string.share_history);
+                Intent chosenIntentHis = Intent.createChooser(intent_his, chooserTitleHis);
+                startActivity(chosenIntentHis);
+                return true;
+
             case R.id.action_history:
-               Intent intent_history = new Intent(this, History.class);
+                Intent intent_history = new Intent(this, History.class);
                 startActivity(intent_history);
+                return true;
+
+            case R.id.history_clear:
+                historyClear();
                 return true;
 
 //todo
@@ -184,6 +196,79 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void readFile() {
+        try {
+            // открываем поток для чтения
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    openFileInput(FILENAME)));
+            String str  = "";
+            // TODO: 11.08.2020 read not line by line but till the end of file
+            // TODO: 11.08.2020 clean history
+
+            // читаем содержимое
+//            while ((str = br.readLine()) != null) {
+            while ((str =br.readLine()) != null) {
+                Log.d(LOG_TAG, str);
+                str_History = str;
+            }
+//           str_History[10] =  "\n";
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void historyClear() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(R.string.confirm);
+        builder.setMessage(R.string.are_you_shure);
+
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                writeEmptyFile();
+                Toast.makeText(MainActivity.this, "История удалена",
+                        Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // Do nothing
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+        
+        
+    }
+    
+
+    private void writeEmptyFile() {
+        try {
+            // отрываем поток для записи
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                    openFileOutput(FILENAME, MODE_PRIVATE)));
+            // пишем данные
+            bw.append(" ");
+            // закрываем поток
+            bw.close();
+            Log.d(LOG_TAG, "Файл записан");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -207,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
        // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        mAdView = findViewById(R.id.adView);
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -347,24 +432,27 @@ public class MainActivity extends AppCompatActivity {
             str_Date = date;
            // str_Date = "MyDate";
 
-            myweight = Double.parseDouble(weight);
+            //    private Button button;
+            double myweight = Double.parseDouble(weight);
             mylength = Double.parseDouble(length)/100;
             myage = Double.parseDouble(age);
 //            Not devide to zero
             if (mylength == 0)  {
                mylength = 1;
             }
-            myresult = myweight/(mylength * mylength); //calculating IMT
+            myresult = myweight /(mylength * mylength); //calculating IMT
             str_IMT =  String.format("%.2f",myresult); // making string format
             ProgressBar progressBar = findViewById(R.id.progressBar);
             textMinImt = findViewById(R.id.minImt);
             textMaxImt = findViewById(R.id.maxImt);
 
+            int num19 = 19;
             if (myage < num19) {
                 Toast.makeText(MainActivity.this, R.string.too_young,
                       Toast.LENGTH_LONG).show();
 
             }
+            int num24 = 24;
             if ((myage >= num19) && (myage <= num24)){
 
                 textViewTable.setText( R.string.text_table3);
@@ -378,9 +466,12 @@ public class MainActivity extends AppCompatActivity {
                 textMaxImt.setText(String.valueOf(num24));
 
             }
+            int num25 = 25;
+            int num34 = 34;
             if ((myage > num24) && (myage <= num34)){
                 textViewTable.setText(R.string.text_table4);
                 progressBar.setMax(num25);
+                int num20 = 20;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     progressBar.setMin(num20);
                 }
@@ -388,9 +479,12 @@ public class MainActivity extends AppCompatActivity {
                 textMinImt.setText(String.valueOf(num20));
                 textMaxImt.setText(String.valueOf(num25));
             }
+            int num44 = 44;
             if ((myage > num34) && (myage <= num44)){
                 textViewTable.setText(R.string.text_table5);
+                int num26 = 26;
                 progressBar.setMax(num26);
+                int num21 = 21;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     progressBar.setMin(num21);
                 }
@@ -399,9 +493,12 @@ public class MainActivity extends AppCompatActivity {
                 textMaxImt.setText(String.valueOf(num26));
 
             }
+            int num54 = 54;
             if ((myage > num44) && (myage <= num54)){
                 textViewTable.setText(R.string.text_table6);
+                int num27 = 27;
                 progressBar.setMax(num27);
+                int num22 = 22;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     progressBar.setMin(num22);
                 }
@@ -410,9 +507,12 @@ public class MainActivity extends AppCompatActivity {
                 textMaxImt.setText(String.valueOf(num27));
 
             }
+            int num28 = 28;
+            int num64 = 64;
             if ((myage > num54) && (myage <= num64)){
                 textViewTable.setText(R.string.text_table7);
                 progressBar.setMax(num28);
+                int num23 = 23;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     progressBar.setMin(num23);
                 }
@@ -424,6 +524,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (myage > num64) {
                 textViewTable.setText(R.string.text_table8);
+                int num29 = 59;
                 progressBar.setMax(num29);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     progressBar.setMin(num24);
@@ -443,7 +544,7 @@ public class MainActivity extends AppCompatActivity {
             if (myresult < num19) {
                 textView.setTextColor(Color.RED);
                 }
-            if ((myresult >= num19) && (myresult <=num24)) {
+            if ((myresult >= num19) && (myresult <= num24)) {
                 textView.setTextColor(Color.BLACK);
             }
             if ((myresult > num25) && (myresult <= num28)) {

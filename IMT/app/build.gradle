@@ -1,8 +1,10 @@
+
+
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 05.08.20 0:04
+ *  * Created by Andrey Sevastianov on 12.08.20 19:21
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 04.08.20 23:54
+ *  * Last modified 12.08.20 19:21
  *
  ******************************************************************************/
 
@@ -14,8 +16,8 @@ android {
         applicationId "com.arhsota.android.imt"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 20
-        versionName '2.8.3'
+        versionCode 22
+        versionName '2.9'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

@@ -1,8 +1,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 05.08.20 0:04
+  ~  * Created by Andrey Sevastianov on 12.08.20 19:21
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 13.07.20 20:46
+  ~  * Last modified 12.08.20 17:49
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -11,29 +11,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <item android:id="@+id/action_share"
+    <item android:id="@+id/share"
         android:title="@string/action_share"
         tools:ignore="AppCompatResource"
-        android:orderInCategory="1"
-        app:showAsAction="ifRoom" />
+        android:orderInCategory="10"
+
+        app:showAsAction="ifRoom" >
+    <menu>
+        <item android:id="@+id/action_share"
+            android:title="@string/share_current_result" />
+        <item android:id="@+id/action_share_history"
+            android:title="@string/share_history" />
+    </menu>
+   </item>
     <item android:id="@+id/action_create_save"
         android:title="@string/action_create_save"
-        android:orderInCategory="2"
+        android:orderInCategory="20"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/action_history"
         android:title="@string/action_history"
-        android:orderInCategory="3"
+        android:orderInCategory="30"
         app:showAsAction="ifRoom"
-        android:actionProviderClass="android.widget.ShareActionProvider"
+
         tools:ignore="AppCompatResource" />
+    <item android:id="@+id/history_clear"
+        android:title="@string/history_clear"
+        android:orderInCategory="40"
+        app:showAsAction="ifRoom" />
     <item android:id="@+id/action_sign_up"
         android:title="Sign up"
-        android:orderInCategory="4"
+        android:orderInCategory="50"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/action_help"
         android:title="@string/help"
-        android:orderInCategory="5"
+        android:orderInCategory="60"
         app:showAsAction="ifRoom"
-
         />
 </menu>

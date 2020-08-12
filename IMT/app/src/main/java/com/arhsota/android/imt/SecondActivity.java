@@ -1,8 +1,8 @@
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 05.08.20 0:04
+ *  * Created by Andrey Sevastianov on 12.08.20 19:21
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 05.11.19 23:32
+ *  * Last modified 12.08.20 18:25
  *
  ******************************************************************************/
 
@@ -21,6 +21,7 @@ import com.google.android.gms.ads.AdView;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
@@ -52,7 +53,7 @@ public class SecondActivity extends Activity {
       //  MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
      //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-
+//        String eol = System.getProperty("line.separator");
 
         mAdViewSecond = findViewById(R.id.adViewSecond);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -66,7 +67,9 @@ public class SecondActivity extends Activity {
         str_Length = getIntent().getStringExtra("Length");
         str_Age = getIntent().getStringExtra("Age");
         str_Date = getIntent().getStringExtra("Date");
-        str_Main_Output = str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age;
+        str_Main_Output = getString(R.string.date) + " " + str_Date + ", " + getString(R.string.my_IMT) + " " + str_IMT + ", " +
+                getString(R.string.my_weight) + " " + str_Weight + ", " + getString(R.string.my_length) + str_Length + ", " +
+                getString(R.string.my_age) + " "+ str_Age + " | " ;
         writeFile();
       //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
 
@@ -78,11 +81,15 @@ public class SecondActivity extends Activity {
     }
     void writeFile() {
         try {
+
             // отрываем поток для записи
+
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-                    openFileOutput(FILENAME, MODE_PRIVATE)));
+                    openFileOutput(FILENAME, MODE_APPEND)));
             // пишем данные
             bw.append(str_Main_Output);
+
+
             // закрываем поток
             bw.close();
             Log.d(LOG_TAG, "Файл записан");

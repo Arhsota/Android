@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 05.08.20 0:04
+  ~  * Created by Andrey Sevastianov on 12.08.20 19:21
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 04.08.20 23:52
+  ~  * Last modified 12.08.20 19:21
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">ИМТ 2.8.3</string>
+    <string name="app_name">ИМТ 2.9</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
@@ -32,6 +33,7 @@
     <string name="title_history">История</string>
     <string name="action_share">Поделиться</string>
     <string name="action_history">История</string>
+    <string name="history_clear">Очистить историю</string>
 
     <string name="too_young">Вы слишком молоды, чтоб беспокоится</string>
 
@@ -59,9 +61,19 @@
     7. Так же, для наглядности, под этой подсказкой, появится визуальная полоска. \n
     8. Кнопка СОХРАНИТЬ позволяет записать текущий результат в память телефона. \n
     9. Кнопка меню ИСТОРИЯ позволяет извлечь сохраненный результат из памяти телефона. \n
-    10.Кнопка меню ПОДЕЛИТЬСЯ позволяет отправить Ваши данные \n
-    11.Кнопка меню Sign Up - в разработке
-    12.Кнопка меню ? - этот текст
+    10. Кнопка меню ОЧИСТИТЬ ИСТОРИЮ удаляет ваши сохраненные данные, но обязательно спросит Вас перед этим \n
+    11.Кнопка меню ПОДЕЛИТЬСЯ позволяет отправить Ваши данные. Либо текущие, либо сохраненные \n
+    12.Кнопка меню Sign Up - в разработке
+    13.Кнопка меню ? - этот текст
     </string>
+
+    <string name="date">Дата: </string>
+    <string name="confirm">Подтверждение очистки</string>
+    <string name="are_you_shure">Уверены?</string>
+    <string name="yes">ДА</string>
+    <string name="no">НЕТ</string>
+
+    <string name="share_current_result">Делимся текущим результатом</string>
+    <string name="share_history">Делимся историей</string>
 
 </resources>

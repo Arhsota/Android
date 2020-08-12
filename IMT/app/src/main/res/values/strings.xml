@@ -1,13 +1,13 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 05.08.20 0:04
+  ~  * Created by Andrey Sevastianov on 12.08.20 19:21
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 04.08.20 23:52
+  ~  * Last modified 12.08.20 19:21
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">BMI 2.8.3</string>
+    <string name="app_name">BMI 2.9</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
@@ -29,6 +29,7 @@
     <string name="title_history">Your History</string>
     <string name="action_share">Share</string>
     <string name="action_history">History</string>
+    <string name="history_clear">History clear</string>
     <string name="too_young">Too young, to be in table of age</string>
     <string name="saving">Saving...</string>
     <string name="reading">Reading...</string>
@@ -53,9 +54,19 @@
     7. For better view, under this tick, you should see visual bar. \n
     8. Menu button SAVE saves your result in phone memory. \n
     9. Menu button HISTORY reveals your result from phone's memory. \n
-    10.Menu button SHARE shares your result \n
-    11.Menu button Sign Up - in work, wait for future versions \n
-    12.Menu button ? - this text
+    10.Menu button HISTORY CLEAR delete all information, previously saved, but app will ask you before \n
+    11.Menu button SHARE shares your result. Either current data, or saved data\n
+    12.Menu button Sign Up - in work, wait for future versions \n
+    13.Menu button ? - this text
         ENJOY!!
     </string>
+    <string name="date">Date: </string>
+    <string name="confirm">Confirm</string>
+    <string name="are_you_shure">Are you sure?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="share_current_result">Share Current Result</string>
+    <string name="share_history">Share History</string>
+
+
 </resources>

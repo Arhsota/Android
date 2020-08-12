@@ -1,8 +1,8 @@
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 05.08.20 0:04
+ *  * Created by Andrey Sevastianov on 12.08.20 19:21
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 03.01.19 12:16
+ *  * Last modified 12.08.20 18:37
  *
  ******************************************************************************/
 
@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +35,7 @@ import java.util.Date;
 
 public class History extends Activity {
 
-    private TextView tvHistory;
-    private AdView mAdViewSecond;
+
 
     final String LOG_TAG = "myLogs";
 
@@ -59,6 +59,9 @@ public class History extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history);
 
+        TextView tvHistory; /* local var */
+        AdView mAdViewSecond; /* local var */
+
         //  MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
         //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
@@ -69,6 +72,7 @@ public class History extends Activity {
         mAdViewSecond.loadAd(adRequest);
 
         tvHistory = findViewById(R.id.result_history);
+        tvHistory.setMovementMethod(new ScrollingMovementMethod());
 
 
       /*  str_IMT = getIntent().getStringExtra("IMT");
@@ -93,12 +97,16 @@ public class History extends Activity {
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     openFileInput(FILENAME)));
             String str  = "";
+           // TODO: 11.08.2020 read not line by line but till the end of file
+           // TODO: 11.08.2020 clean history
+
             // читаем содержимое
-            while ((str = br.readLine()) != null) {
+//            while ((str = br.readLine()) != null) {
+            while ((str =br.readLine()) != null) {
                 Log.d(LOG_TAG, str);
                 str_History = str;
             }
-          //  str_History = str;
+//           str_History[10] =  "\n";
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
