@@ -23,6 +23,7 @@ import android.graphics.Color;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -40,6 +41,7 @@ import android.widget.Toast;
 //import androidx.appcompat.app.AppCompatActivity;
 //import androidx.core.view.MenuItemCompat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -51,6 +53,12 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 //import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnCompleteListener;
+import com.google.android.play.core.tasks.OnFailureListener;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -74,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     //    private FirebaseAnalytics mFirebaseAnalytics;
     private ShareActionProvider shareActionProvider;
 
- //   private RewardedVideoAd mRewardedVideoAd;
+    //   private RewardedVideoAd mRewardedVideoAd;
 
     private TextView textView;
     private TextView textViewTable;
@@ -85,21 +93,21 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextL;
     private EditText editTextAge;
     // str_XXX for intent
-    private   String str_IMT ;
-    private   String str_IMT_mail ;
+    private String str_IMT;
+    private String str_IMT_mail;
 
-    private   String str_Weight= "0";
-    private   String str_Length = "0";
-    private   String str_Age = "0";
-    private   String str_Date = "0";
+    private String str_Weight = "0";
+    private String str_Length = "0";
+    private String str_Age = "0";
+    private String str_Date = "0";
 
-    private   double mylength;
-    private   double myage;
-    private   double myresult;
+    private double mylength;
+    private double myage;
+    private double myresult;
 
-    private   boolean fillTextW = false;  // checking for filling all 3 input parametres
-    private   boolean fillTextL = false;
-    private   boolean fillTextA = false;
+    private boolean fillTextW = false;  // checking for filling all 3 input parametres
+    private boolean fillTextL = false;
+    private boolean fillTextA = false;
 
     private String str_History;
 
@@ -114,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private final String YOUR_ADMOB_APP_ID = "ca-app-pub-7279174300665421~3105181624";
-
+    ReviewInfo reviewInfo;
+    ReviewManager manager;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -125,13 +134,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-   @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        manager = ReviewManagerFactory.create(this);
 
 
         switch (item.getItemId()) {
             case R.id.action_create_save:
                 //Код, выполняемый при выборе элемента Create Save
+                Review();
                 Intent intent = new Intent(this, SecondActivity.class);
                 intent.setType("text/plain");
                 intent.putExtra("IMT", str_IMT);
@@ -139,18 +150,18 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("Length", str_Length);
                 intent.putExtra("Age", str_Age);
                 intent.putExtra("Date", str_Date);
-             //   str_IMT_mail= str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age;
+                //   str_IMT_mail= str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age;
                 startActivity(intent);
-            //    textViewW.setText(getString(R.string.name_text_table_detail_weight,str_weight));
+                //    textViewW.setText(getString(R.string.name_text_table_detail_weight,str_weight));
 
                 return true;
             case R.id.action_share:
                 Intent intent_mes = new Intent(Intent.ACTION_SEND);
                 intent_mes.setType("text/plain");
-                intent_mes.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.for_subject_field) + str_Date);
-                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date + " "+ getString(R.string.my_IMT) + " " + str_IMT
-                        + " " + getString(R.string.my_weight) + " " +str_Weight + " " + getString(R.string.my_length)
-                        + " " + str_Length + " " + getString(R.string.my_age) + " " +str_Age);
+                intent_mes.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.for_subject_field) + str_Date);
+                intent_mes.putExtra(Intent.EXTRA_TEXT, str_Date + " " + getString(R.string.my_IMT) + " " + str_IMT
+                        + " " + getString(R.string.my_weight) + " " + str_Weight + " " + getString(R.string.my_length)
+                        + " " + str_Length + " " + getString(R.string.my_age) + " " + str_Age);
 //          page 143 always choose intent
                 String chooserTitle = getString(R.string.share);
                 Intent chosenIntent = Intent.createChooser(intent_mes, chooserTitle);
@@ -161,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 readFile();
                 Intent intent_his = new Intent(Intent.ACTION_SEND);
                 intent_his.setType("text/plain");
-                intent_his.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.for_subject_field) + str_Date);
+                intent_his.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.for_subject_field) + str_Date);
                 intent_his.putExtra(Intent.EXTRA_TEXT, str_History);
 //          page 143 always choose intent
                 String chooserTitleHis = getString(R.string.share_history);
@@ -181,10 +192,11 @@ public class MainActivity extends AppCompatActivity {
 //todo
             case R.id.action_sign_up:
                 // todo: NOTHING YET, waiting for next version
-               // Intent intent_main_activity_sign = new Intent(this, MainActivitySign.class);
-               // startActivity(intent_main_activity_sign);
-                Toast.makeText(MainActivity.this, R.string.in_work,
-                        Toast.LENGTH_LONG).show();
+                // Intent intent_main_activity_sign = new Intent(this, MainActivitySign.class);
+                // startActivity(intent_main_activity_sign);
+                Review();
+
+//                Toast.makeText(MainActivity.this, R.string.in_work,Toast.LENGTH_LONG).show();
                 return true;
 
             case R.id.action_help:
@@ -197,6 +209,56 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    private void Review(){
+        Task<ReviewInfo> request = manager.requestReviewFlow();
+        request.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // We can get the ReviewInfo object
+                ReviewInfo reviewInfo = task.getResult();
+                Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
+                flow.addOnCompleteListener(task1-> {
+                    // The flow has finished. The API does not indicate whether the user
+                    // reviewed or not, or even whether the review dialog was shown. Thus, no
+                    // matter the result, we continue our app flow.
+                    // TODO: 30.09.2020 Clear Toast in further releases 
+                    Toast.makeText(MainActivity.this, "Review Completed, Thank You!", Toast.LENGTH_SHORT).show();
+                });
+            } else {
+                // There was some problem, continue regardless of the result.
+                Toast.makeText(MainActivity.this, "In-App Request Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+ /*
+   private void Review() {
+        manager.requestReviewFlow().addOnCompleteListener(new OnCompleteListener<ReviewInfo>() {
+            @Override
+            public void onComplete(@NonNull Task<ReviewInfo> task) {
+                if (task.isSuccessful()) {
+                    reviewInfo = task.getResult();
+                    manager.launchReviewFlow(MainActivity.this, reviewInfo).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(Exception e) {
+                            Toast.makeText(MainActivity.this, "Rating Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(MainActivity.this, "Review Completed, Thank You!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                Toast.makeText(MainActivity.this, "In-App Request Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+*/
 
     private void readFile() {
         try {
@@ -243,6 +305,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 // Do nothing
+
+
+
                 dialog.dismiss();
             }
         });
@@ -288,6 +353,8 @@ public class MainActivity extends AppCompatActivity {
 //        working real banner ca-app-pub-7279174300665421/8731793267
 //        test id for interpage ca-app-pub-3940256099942544/1033173712 for layout XML
 //        working real page ca-app-pub-7279174300665421/5898016751
+
+
 
         MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
        // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
