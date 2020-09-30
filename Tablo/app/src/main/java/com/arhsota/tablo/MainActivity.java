@@ -17,14 +17,12 @@
 
 package com.arhsota.tablo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Handler;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,15 +31,24 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnCompleteListener;
+import com.google.android.play.core.tasks.OnFailureListener;
+import com.google.android.play.core.tasks.Task;
 
 import java.util.Random;
 
-import androidx.appcompat.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 
 //import com.facebook.FacebookSdk;
 // import com.facebook.appevents.AppEventsLogger;
@@ -72,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
 
     private InterstitialAd mInterstitialAd;
+    ReviewInfo reviewInfo;
+    ReviewManager manager;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,13 +92,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        manager = ReviewManagerFactory.create(this);
 
         switch (item.getItemId()) {
             case R.id.action_create_save:
                 //Код, выполняемый при выборе элемента Create Save
-                Toast.makeText(MainActivity.this, "In Work",
+                Toast.makeText(MainActivity.this, R.string.inwork,
                         Toast.LENGTH_SHORT).show();
+                // TODO: 30.09.2020 error om Review 
+                Review();
                 return true;
 
             case R.id.action_help:
@@ -102,6 +113,30 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    private void Review() {
+        Task<ReviewInfo> request = manager.requestReviewFlow();
+        request.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // We can get the ReviewInfo object
+                ReviewInfo reviewInfo = task.getResult();
+                Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
+                flow.addOnCompleteListener(task1-> {
+                    // The flow has finished. The API does not indicate whether the user
+                    // reviewed or not, or even whether the review dialog was shown. Thus, no
+                    // matter the result, we continue our app flow.
+                    // TODO: 30.09.2020 Clear Toast in further releases
+                    Toast.makeText(MainActivity.this, "Review Completed, Thank You!", Toast.LENGTH_SHORT).show();
+                });
+            } else {
+                // There was some problem, continue regardless of the result.
+                Toast.makeText(MainActivity.this, "In-App Request Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
 
 
     @Override

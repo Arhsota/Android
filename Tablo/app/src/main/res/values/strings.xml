@@ -7,7 +7,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">ScoreBoard 1.9.3</string>
+    <string name="app_name">ScoreBoard 1.9.4</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Set/Reset Timer</string>
@@ -26,4 +26,5 @@
     </string>
     <string name="help_menu">Help</string>
     <string name="save_result_menu">Save Result</string>
+    <string name="inwork">In Work</string>
 </resources>
