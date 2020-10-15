@@ -7,7 +7,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">BMI 3.2</string>
+    <string name="app_name">BMI 3.3</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>
@@ -31,8 +31,8 @@
     <string name="action_history">History</string>
     <string name="history_clear">History clear</string>
     <string name="too_young">Too young, to be in table of age</string>
-    <string name="saving">Saving...</string>
-    <string name="reading">Reading...</string>
+    <string name="saving">Saving…</string>
+    <string name="reading">Reading…</string>
     <string name="minimum_password">Minimum password</string>
     <string name="auth_failed">Auth failed</string>
     <string name="in_work">in work</string>

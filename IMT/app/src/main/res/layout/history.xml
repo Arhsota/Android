@@ -7,49 +7,38 @@
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
     android:background="@drawable/background_screen_help"
+    tools:context="com.arhsota.android.imt.History"
+    android:orientation="vertical">
 
-    tools:context="com.arhsota.android.imt.History">
 
-    <TextView
-        android:id="@+id/result_history"
-        android:layout_width="350dp"
-        android:layout_height="360dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:background="@android:color/transparent"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbarStyle="insideOverlay"
-        android:scrollbars="vertical"
-        android:text="@string/result_text_before"
-        android:textColor="@color/colorHelloText"
-        android:textSize="@dimen/text_size_second_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ListView
+        android:id="@+id/lvMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewSecond"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="52dp"
         app:adSize="LARGE_BANNER"
         app:adUnitId="ca-app-pub-7279174300665421/5527400646"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_history"
-        app:layout_constraintVertical_bias="0.961">
+         >
 
     </com.google.android.gms.ads.AdView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</LinearLayout>
 

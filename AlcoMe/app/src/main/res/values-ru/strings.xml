@@ -7,7 +7,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">AlcoMe 1.4</string>
+    <string name="app_name">AlcoMe 1.5</string>
     <string name="action_settings">Настройка</string>
 
 
@@ -18,6 +18,8 @@
     <string name="remaining_time">Осталось </string>
     <string name="start_timer">Таймер</string>
     <string name="calculate">РАССЧИТАТЬ</string>
+    <string name="enter_ml">Введите объем</string>
+    <string name="you_are_not_drinker">Вы трезвенник!</string>
 
 
     <string-array name="alcolist">

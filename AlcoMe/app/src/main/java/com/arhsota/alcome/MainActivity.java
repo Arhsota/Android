@@ -27,6 +27,10 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.Task;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
+    ReviewManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         wasRunning = running;
-       // running = false;
+        // running = false;
     }
     //    page 179
     @Override
@@ -147,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
             running = true;
         }
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -171,11 +178,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick100(View view) {
+
         isClick100 = true;
         isClick300 = false;
         isClick500 = false;
 
 
+
+    }
+
+    private void Review() {
+        Task<ReviewInfo> request = manager.requestReviewFlow();
+        request.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // We can get the ReviewInfo object
+                ReviewInfo reviewInfo = task.getResult();
+                Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
+                flow.addOnCompleteListener(task1-> {
+                    // The flow has finished. The API does not indicate whether the user
+                    // reviewed or not, or even whether the review dialog was shown. Thus, no
+                    // matter the result, we continue our app flow.
+                    // TODO: 30.09.2020 Clear Toast in further releases
+                    Toast.makeText(MainActivity.this, "Review Completed, Thank You!", Toast.LENGTH_SHORT).show();
+                });
+            } else {
+                // There was some problem, continue regardless of the result.
+                Toast.makeText(MainActivity.this, "In-App Request Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void onClick300(View view) {
@@ -214,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
         String strRemain = getString((R.string.remain)) + ": ";
         String strHours  = " " +getString((R.string.hours)) ;
 
-
+        manager = ReviewManagerFactory.create(this);
 
 //        timeStr = getResources().getStringArray(R.array.remain_array)[26];
   //      seconds = Integer.parseInt(testStr);
@@ -236,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_0_30);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -251,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_1_44);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick300) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_1_29);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick300) && (posWeight == 2)) {
@@ -263,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_1_03);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 0)) {
+                        Review();
                         timeStr = getString(R.string.remain_2_54);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 1)) {
@@ -287,6 +320,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_0_45);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -308,6 +342,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_1_57);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick300) && (posWeight == 3)) {
+                        Review();
                         timeStr = getString(R.string.remain_1_44);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick300) && (posWeight == 4)) {
@@ -338,6 +373,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_1_07);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -374,6 +410,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_4_54);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 3)) {
+                        Review();
                         timeStr = getString(R.string.remain_4_21);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 4)) {
@@ -389,6 +426,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_1_22);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -425,6 +463,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_5_59);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 3)) {
+                        Review();
                         timeStr = getString(R.string.remain_5_19);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 4)) {
@@ -439,6 +478,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_2_14);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -478,6 +518,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_8_42);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 4)) {
+                        Review();
                         timeStr = getString(R.string.remain_7_50);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     break;
@@ -488,6 +529,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_2_59);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -524,6 +566,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_13_03);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 3)) {
+                        Review();
                         timeStr = getString(R.string.remain_11_36);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 4)) {
@@ -537,6 +580,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_3_44);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -564,6 +608,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_7_50);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 0)) {
+                        Review();
                         timeStr = getString(R.string.remain_21_45);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 1)) {
@@ -625,6 +670,7 @@ public class MainActivity extends AppCompatActivity {
                         timeStr = getString(R.string.remain_19_20);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick500) && (posWeight == 4)) {
+                        Review();
                         timeStr = getString(R.string.remain_17_24);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     break;
@@ -635,6 +681,7 @@ public class MainActivity extends AppCompatActivity {
 //                        timeStr = getResources().getStringArray(R.array.remain_array)[26];
                         textViewRemainTime.setText(strRemain + timeStr + strHours); }
                     if ((isClick100) && (posWeight == 1)) {
+                        Review();
                         timeStr = getString(R.string.remain_5_13);
                         textViewRemainTime.setText(strRemain + timeStr + strHours);}
                     if ((isClick100) && (posWeight == 2)) {
@@ -683,7 +730,7 @@ public class MainActivity extends AppCompatActivity {
 
          }
         else {
-            Toast.makeText(getApplicationContext(), "Enter ml", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.enter_ml, Toast.LENGTH_SHORT).show();
         }
         }
    private void runTimer() {
@@ -708,7 +755,7 @@ public class MainActivity extends AppCompatActivity {
                // for the last minute
                //    String time_min = String.format("%02d:%02d", secs, secs100);
                if (seconds == 0) {
-                   Toast.makeText(MainActivity.this, "You are not a drinker!",
+                   Toast.makeText(MainActivity.this, R.string.you_are_not_drinker,
                            Toast.LENGTH_SHORT).show();
                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                    MediaPlayer mp = MediaPlayer.create(getApplicationContext(), notification);

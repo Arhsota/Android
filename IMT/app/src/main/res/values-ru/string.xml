@@ -9,7 +9,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">ИМТ 3.2</string>
+    <string name="app_name">ИМТ 3.3</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
@@ -37,8 +37,8 @@
 
     <string name="too_young">Вы слишком молоды, чтоб беспокоится</string>
 
-    <string name="saving">Записываю...</string>
-    <string name="reading">Считываю...</string>
+    <string name="saving">Записываю…</string>
+    <string name="reading">Считываю…</string>
     <string name="minimum_password">минимальный пароль</string>
     <string name="auth_failed">ошибка аутендификации</string>
     <string name="in_work">В разработке</string>

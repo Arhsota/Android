@@ -125,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
     ReviewInfo reviewInfo;
     ReviewManager manager;
 
+    private String str_Main_Output;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
@@ -142,16 +144,22 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_create_save:
                 //Код, выполняемый при выборе элемента Create Save
+                Toast.makeText(MainActivity.this, R.string.saving,Toast.LENGTH_LONG).show();
                 Review();
-                Intent intent = new Intent(this, SecondActivity.class);
-                intent.setType("text/plain");
-                intent.putExtra("IMT", str_IMT);
-                intent.putExtra("Weight", str_Weight);
-                intent.putExtra("Length", str_Length);
-                intent.putExtra("Age", str_Age);
-                intent.putExtra("Date", str_Date);
+//                str_Main_Output = str_IMT;
+                  str_Main_Output = getString(R.string.date) + " " + str_Date + ", " + getString(R.string.my_IMT) + " " + str_IMT + ", " +
+                       getString(R.string.my_weight) + " " + str_Weight + ", " + getString(R.string.my_length) + str_Length + ", " +
+                       getString(R.string.my_age) + " "+ str_Age + "|" ;
+                writeFile();
+//                Intent intent = new Intent(this, SecondActivity.class);
+//                intent.setType("text/plain");
+//                intent.putExtra("IMT", str_IMT);
+//                intent.putExtra("Weight", str_Weight);
+//                intent.putExtra("Length", str_Length);
+//                intent.putExtra("Age", str_Age);
+//                intent.putExtra("Date", str_Date);
                 //   str_IMT_mail= str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age;
-                startActivity(intent);
+                //   startActivity(intent);
                 //    textViewW.setText(getString(R.string.name_text_table_detail_weight,str_weight));
 
                 return true;
@@ -335,7 +343,26 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    void writeFile() {
+        try {
 
+            // отрываем поток для записи
+
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                    openFileOutput(FILENAME, MODE_APPEND)));
+            // пишем данные
+            bw.append(str_Main_Output);
+
+
+            // закрываем поток
+            bw.close();
+            Log.d(LOG_TAG, "Файл записан");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,7 +7,7 @@
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,6 +27,11 @@
         android:textColor="@color/colorHelloText"
         android:textSize="@dimen/text_size_second_activity" />
 
+    <ListView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adViewSecond"
         android:layout_width="wrap_content"
@@ -37,4 +42,6 @@
         ads:adUnitId="ca-app-pub-7279174300665421/5527400646">
 
     </com.google.android.gms.ads.AdView>
-</RelativeLayout>
+
+
+</LinearLayout>

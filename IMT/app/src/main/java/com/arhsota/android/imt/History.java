@@ -14,6 +14,8 @@ import android.os.Bundle;
 
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +52,7 @@ public class History extends Activity {
     private String str_Age;
     private String str_History;
     private String line;
-
+    String[] arraystrIMT;
     //   private FirebaseAnalytics mFirebaseAnalytics;
 
 
@@ -65,14 +67,16 @@ public class History extends Activity {
         //  MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
         //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        String[] names = { "Иван", "Марья", "Петр", "Антон", "Даша", "Борис",
+                "Костя", "Игорь", "Анна", "Денис", "Андрей" };
 
 
         mAdViewSecond = findViewById(R.id.adViewSecond);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdViewSecond.loadAd(adRequest);
 
-        tvHistory = findViewById(R.id.result_history);
-        tvHistory.setMovementMethod(new ScrollingMovementMethod());
+//        tvHistory = findViewById(R.id.result_history);
+//        tvHistory.setMovementMethod(new ScrollingMovementMethod());
 
 
       /*  str_IMT = getIntent().getStringExtra("IMT");
@@ -83,13 +87,23 @@ public class History extends Activity {
 */
         readFile();
         //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
-        tvHistory.setText (str_History );
+//        tvHistory.setText (str_History );
 
 
      //   tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
 
         Toast.makeText(History.this, R.string.reading,
                 Toast.LENGTH_LONG).show();
+
+        // находим список
+        ListView lvMain = (ListView) findViewById(R.id.lvMain);
+
+        // создаем адаптер
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, arraystrIMT);
+
+        // присваиваем адаптер списку
+        lvMain.setAdapter(adapter);
     }
     void readFile() {
        try {
@@ -103,8 +117,9 @@ public class History extends Activity {
             // читаем содержимое
 //            while ((str = br.readLine()) != null) {
             while ((str =br.readLine()) != null) {
-                Log.d(LOG_TAG, str);
-                str_History = str;
+                arraystrIMT = str.split("|");
+//                Log.d(LOG_TAG, str);
+//                str_History = str;
             }
 //           str_History[10] =  "\n";
         } catch (FileNotFoundException e) {
