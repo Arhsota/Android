@@ -1,8 +1,8 @@
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 12.08.20 19:21
+ *  * Created by Andrey Sevastianov on Septenber 2018
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.08.20 18:37
+ *  * Last modified 16.10.20 16:40
  *
  ******************************************************************************/
 
@@ -26,6 +26,7 @@ import com.google.android.gms.ads.MobileAds;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,8 +68,7 @@ public class History extends Activity {
         //  MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
         //   mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        String[] names = { "Иван", "Марья", "Петр", "Антон", "Даша", "Борис",
-                "Костя", "Игорь", "Анна", "Денис", "Андрей" };
+
 
 
         mAdViewSecond = findViewById(R.id.adViewSecond);
@@ -85,27 +85,35 @@ public class History extends Activity {
         str_Age = getIntent().getStringExtra("Age");
         str_Date = getIntent().getStringExtra("Date");
 */
+
         readFile();
+
         //  String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
 //        tvHistory.setText (str_History );
 
 
      //   tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+        if (arraystrIMT == null) {
+            Toast.makeText(History.this, R.string.nohistory,
+                    Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(History.this, R.string.reading,
+                    Toast.LENGTH_LONG).show();
 
-        Toast.makeText(History.this, R.string.reading,
-                Toast.LENGTH_LONG).show();
+            // находим список
+            ListView lvMain = (ListView) findViewById(R.id.lvMain);
 
-        // находим список
-        ListView lvMain = (ListView) findViewById(R.id.lvMain);
+            // создаем адаптер
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, arraystrIMT);
 
-        // создаем адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, arraystrIMT);
-
-        // присваиваем адаптер списку
-        lvMain.setAdapter(adapter);
+            // присваиваем адаптер списку
+            lvMain.setAdapter(adapter);
+        }
     }
     void readFile() {
+
        try {
             // открываем поток для чтения
             BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -117,10 +125,12 @@ public class History extends Activity {
             // читаем содержимое
 //            while ((str = br.readLine()) != null) {
             while ((str =br.readLine()) != null) {
-                arraystrIMT = str.split("|");
-//                Log.d(LOG_TAG, str);
-//                str_History = str;
+                arraystrIMT = str.split(",");
+                Log.d(LOG_TAG, str);
+                str_History = str;
             }
+           // TODO: 15.10.2020 parse String to array  
+//            int i=str_History.length();
 //           str_History[10] =  "\n";
         } catch (FileNotFoundException e) {
             e.printStackTrace();

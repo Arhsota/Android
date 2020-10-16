@@ -1,8 +1,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 12.08.20 19:21
+  ~  * Created by Andrey Sevastianov on Septenber 2018
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.08.20 19:21
+  ~  * Last modified 16.10.20 16:40
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -67,6 +67,7 @@
     <string name="no">NO</string>
     <string name="share_current_result">Share Current Result</string>
     <string name="share_history">Share History</string>
+    <string name="nohistory">No history yet</string>
 
 
 </resources>

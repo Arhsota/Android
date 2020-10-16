@@ -2,9 +2,9 @@
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 12.08.20 19:21
+  ~  * Created by Andrey Sevastianov on Septenber 2018
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.08.20 19:21
+  ~  * Last modified 16.10.20 16:40
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -75,5 +75,6 @@
 
     <string name="share_current_result">Делимся текущим результатом</string>
     <string name="share_history">Делимся историей</string>
+    <string name="nohistory">Ничего не сохранено</string>
 
 </resources>

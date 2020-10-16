@@ -6,9 +6,9 @@
 
 /*******************************************************************************
  *
- *  * Created by Andrey Sevastianov on 2018, september
+ *  * Created by Andrey Sevastianov on Septenber 2018
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 12.08.20 19:18
+ *  * Last modified 16.10.20 16:40
  *
  ******************************************************************************/
 
@@ -139,17 +139,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         manager = ReviewManagerFactory.create(this);
+//        for help in array
 
 
         switch (item.getItemId()) {
             case R.id.action_create_save:
                 //Код, выполняемый при выборе элемента Create Save
+                if (str_IMT !=null) {
+                  str_IMT = str_IMT.replace(",", ".");
+                }
                 Toast.makeText(MainActivity.this, R.string.saving,Toast.LENGTH_LONG).show();
                 Review();
 //                str_Main_Output = str_IMT;
-                  str_Main_Output = getString(R.string.date) + " " + str_Date + ", " + getString(R.string.my_IMT) + " " + str_IMT + ", " +
-                       getString(R.string.my_weight) + " " + str_Weight + ", " + getString(R.string.my_length) + str_Length + ", " +
-                       getString(R.string.my_age) + " "+ str_Age + "|" ;
+                  str_Main_Output = getString(R.string.date) + " " + str_Date + " " + getString(R.string.my_IMT) + " " + str_IMT + " " +
+                       getString(R.string.my_weight) + " " + str_Weight + " " + getString(R.string.my_length) + str_Length + " " +
+                       getString(R.string.my_age) + " "+ str_Age + "," ;
                 writeFile();
 //                Intent intent = new Intent(this, SecondActivity.class);
 //                intent.setType("text/plain");
@@ -229,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                     // reviewed or not, or even whether the review dialog was shown. Thus, no
                     // matter the result, we continue our app flow.
                     // TODO: 30.09.2020 Clear Toast in further releases 
-                    Toast.makeText(MainActivity.this, "Review Completed, Thank You!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "Review Completed, Thank You!", Toast.LENGTH_SHORT).show();
                 });
             } else {
                 // There was some problem, continue regardless of the result.

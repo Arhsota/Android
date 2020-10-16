@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
-  ~  * Created by Andrey Sevastianov on 12.08.20 19:21
+  ~  * Created by Andrey Sevastianov on Septenber 2018
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 12.08.20 18:35
+  ~  * Last modified 16.10.20 16:40
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -13,16 +13,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
-    android:background="@drawable/background_screen_help"
-    tools:context="com.arhsota.android.imt.History"
-    android:orientation="vertical">
+    android:background="@color/colorTextTable1"
+    android:orientation="vertical"
+    tools:context="com.arhsota.android.imt.History">
 
 
     <ListView
         android:id="@+id/lvMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         />
+        android:layout_height="wrap_content" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewSecond"
@@ -32,12 +31,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="52dp"
         app:adSize="LARGE_BANNER"
-        app:adUnitId="ca-app-pub-7279174300665421/5527400646"
-         >
+        app:adUnitId="ca-app-pub-7279174300665421/5527400646">
 
     </com.google.android.gms.ads.AdView>
-
-
 
 
 </LinearLayout>
