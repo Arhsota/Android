@@ -93,6 +93,7 @@ public class History extends Activity {
 
 
      //   tvView.setText(str_Date + " Ваш ИМТ: " + str_IMT + " Вес: " + str_Weight + " Рост " + str_Length + " Возраст: " + str_Age);
+//        If you click History when you installed app for the first time
         if (arraystrIMT == null) {
             Toast.makeText(History.this, R.string.nohistory,
                     Toast.LENGTH_LONG).show();
@@ -119,8 +120,6 @@ public class History extends Activity {
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     openFileInput(FILENAME)));
             String str  = "";
-           // TODO: 11.08.2020 read not line by line but till the end of file
-           // TODO: 11.08.2020 clean history
 
             // читаем содержимое
 //            while ((str = br.readLine()) != null) {
@@ -129,38 +128,13 @@ public class History extends Activity {
                 Log.d(LOG_TAG, str);
                 str_History = str;
             }
-           // TODO: 15.10.2020 parse String to array  
-//            int i=str_History.length();
-//           str_History[10] =  "\n";
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-   /*     try {
-            InputStream inputStream = openFileInput(FILENAME);
-
-            if (inputStream != null) {
-                InputStreamReader isr = new InputStreamReader(inputStream);
-                BufferedReader reader = new BufferedReader(isr);
-             //   String line;
-                StringBuilder builder = new StringBuilder();
-
-                while ((line = reader.readLine()) != null) {
-                      builder.append(line + "\n");
-                 //   Log.d ("History","IMT");
-                }
-
-                inputStream.close();
-              //  mEditText.setText(builder.toString());
-            }
-        } catch (Throwable t) {
-            Toast.makeText(getApplicationContext(),
-                    "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
-        }
-        */
-    }
+      }
 
 
 
