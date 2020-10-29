@@ -17,6 +17,10 @@
 
 package com.arhsota.tablo;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -27,12 +31,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -46,6 +53,7 @@ import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.android.play.core.tasks.Task;
 
+
 import java.util.Random;
 
 //import android.support.v7.app.AppCompatActivity;
@@ -54,7 +62,7 @@ import java.util.Random;
 // import com.facebook.appevents.AppEventsLogger;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     //Количество секунд на секундомере
     private int seconds = 305;
     private int secondsChoice = 305;
@@ -82,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
     ReviewInfo reviewInfo;
     ReviewManager manager;
 
+    TimerFragment frag1;
+    DiceFragment frag2;
+    FragmentTransaction fTrans;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
@@ -92,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+//        for rating API need
         manager = ReviewManagerFactory.create(this);
 
         switch (item.getItemId()) {
@@ -146,6 +159,11 @@ public class MainActivity extends AppCompatActivity {
 
         MobileAds.initialize(this,
                 "ca-app-pub-7279174300665421~2703649226");
+//     for fragments
+        frag1 = new TimerFragment();
+        frag2 = new DiceFragment();
+
+
 
 
         //test ad ca-app-pub-3940256099942544/6300978111
@@ -164,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAdClosed() {
                 // Load the next interstitial.
                 mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
             }
 
         });
@@ -299,7 +318,8 @@ public class MainActivity extends AppCompatActivity {
 
         boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked.
-
+        FragmentManager fragmentManager = getFragmentManager()
+        FragmentTransaction fTrans = fragmentManager.beginTransaction();
 
         switch (view.getId()) {
             case R.id.radioButton5:
@@ -313,6 +333,7 @@ public class MainActivity extends AppCompatActivity {
                     secondsChoice = 305;
                     radioButton10.setChecked(false);
                     radioButtonCube.setChecked(false);
+                    fTrans.add(R.id.frgmCont,frag1);
 
                 }
                 break;
@@ -346,6 +367,7 @@ public class MainActivity extends AppCompatActivity {
                 // Do nothing.
                 break;
         }
+        fTrans.commit();
     }
     public void startCubes(){
            if (clickCube){

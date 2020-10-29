@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on Septenber 2018
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 16.10.20 16:40
+  ~  * Last modified 29.10.20 19:11
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -17,5 +17,6 @@
     <dimen name="field_text">80dp</dimen>
     <dimen name="button_margin_bottom">40dp</dimen>
     <dimen name="table_text_margin_bottom">80dp</dimen>
+    <dimen name="button_height">70dp</dimen>
 
 </resources>

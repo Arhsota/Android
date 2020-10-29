@@ -2,12 +2,12 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on Septenber 2018
   ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 16.10.20 16:40
+  ~  * Last modified 29.10.20 18:19
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">BMI 3.3</string>
+    <string name="app_name">BMI 3.4</string>
     <string name="result_text_before">Your index is: ___</string>
     <string name="result_text">Your index is: %1$s</string>
     <string name="butt_name">Calculate</string>

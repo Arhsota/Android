@@ -8,7 +8,7 @@
  *
  *  * Created by Andrey Sevastianov on Septenber 2018
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 16.10.20 16:40
+ *  * Last modified 29.10.20 22:15
  *
  ******************************************************************************/
 
@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 
 
@@ -59,8 +60,8 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.android.play.core.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
 
 
 import java.io.BufferedReader;
@@ -544,6 +545,8 @@ public class MainActivity extends AppCompatActivity {
             textMinImt = findViewById(R.id.minImt);
             textMaxImt = findViewById(R.id.maxImt);
 
+
+
             int num19 = 19;
             if (myage < num19) {
                 Toast.makeText(MainActivity.this, R.string.too_young,
@@ -563,6 +566,13 @@ public class MainActivity extends AppCompatActivity {
                 textMinImt.setText(String.valueOf(num19));
                 textMaxImt.setText(String.valueOf(num24));
 
+                if ((myresult >= num19+1.5) && (myresult <=num24-1)) {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                }
+                else {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+                }
+
             }
             int num25 = 25;
             int num34 = 34;
@@ -576,6 +586,13 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setProgress((int) myresult);
                 textMinImt.setText(String.valueOf(num20));
                 textMaxImt.setText(String.valueOf(num25));
+
+                if ((myresult >= num20+1.5) && (myresult <=num25-1 )) {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                }
+                else {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+                }
             }
             int num44 = 44;
             if ((myage > num34) && (myage <= num44)){
@@ -589,6 +606,13 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setProgress((int) myresult);
                 textMinImt.setText(String.valueOf(num21));
                 textMaxImt.setText(String.valueOf(num26));
+
+                if ((myresult >= num21+1.5) && (myresult <=num26-1 )) {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                }
+                else {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+                }
 
             }
             int num54 = 54;
@@ -604,6 +628,13 @@ public class MainActivity extends AppCompatActivity {
                 textMinImt.setText(String.valueOf(num22));
                 textMaxImt.setText(String.valueOf(num27));
 
+                if ((myresult >= num22+1.5) && (myresult <=num27-1 )) {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                }
+                else {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+                }
+
             }
             int num28 = 28;
             int num64 = 64;
@@ -618,6 +649,13 @@ public class MainActivity extends AppCompatActivity {
                 textMinImt.setText(String.valueOf(num23));
                 textMaxImt.setText(String.valueOf(num28));
 
+                if ((myresult >= num23+1.5) && (myresult <=num28-1 )) {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                }
+                else {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+                }
+
             }
 
             if (myage > num64) {
@@ -630,6 +668,13 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setProgress((int) myresult);
                 textMinImt.setText(String.valueOf(num24));
                 textMaxImt.setText(String.valueOf(num29));
+
+                if ((myresult >= num24+1.5) && (myresult <=num29-1 )) {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+                }
+                else {
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+                }
 
             }
 

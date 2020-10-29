@@ -7,7 +7,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">ScoreBoard 1.9.5</string>
+    <string name="app_name">ScoreBoard 2.0</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Set/Reset Timer</string>
@@ -27,4 +27,6 @@
     <string name="help_menu">Help</string>
     <string name="save_result_menu">Save Result</string>
     <string name="inwork">In Work</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

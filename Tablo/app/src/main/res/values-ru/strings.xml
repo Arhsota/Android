@@ -7,7 +7,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">Табло 1.9.5</string>
+    <string name="app_name">Табло 2.0</string>
     <string name="start">Старт</string>
     <string name="stop">Стоп</string>
     <string name="reset">Уст/Сбр Таймера</string>
@@ -27,4 +27,11 @@
     <string name="help_menu">Помощь</string>
     <string name="save_result_menu">Сохранить</string>
     <string name="inwork">В разработке</string>
+
+    <string name="frag1_text">Fragment 1</string>
+    <string name="frag2_text">Fragment 2</string>
+    <string name="add">Add</string>
+    <string name="remove">Remove</string>
+    <string name="replace">Replace</string>
+    <string name="stack">add to Back Stack</string>
 </resources>

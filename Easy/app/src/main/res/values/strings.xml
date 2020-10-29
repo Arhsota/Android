@@ -7,7 +7,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">Easy 2.7.5</string>
+    <string name="app_name">Easy 2.7.6</string>
     <string name="action_settings">Справка</string>
     <string name="action_callevacuator">Эвакуатор</string>
     <string name="action_krown">Антикор N1</string>

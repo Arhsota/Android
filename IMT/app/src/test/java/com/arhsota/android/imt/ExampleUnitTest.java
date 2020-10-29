@@ -3,7 +3,7 @@
  *  * Created by Andrey Sevastianov on Septenber 2018
  *  * Copyright (c) 2020 . All rights reserved.
  *  * Last modified 16.10.20 16:40
- *
+ *  
  ******************************************************************************/
 
 package com.arhsota.android.imt;
