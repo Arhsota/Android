@@ -1,8 +1,8 @@
 /*******************************************************************************
  *
  *  * Created by Andrey Sevastianov on Septenber 2018
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 16.10.20 16:40
+ *  * Copyright (c) 2021 . All rights reserved.
+ *  * Last modified 29.03.21 0:25
  *
  ******************************************************************************/
 
@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class Help extends AppCompatActivity {
     private TextView textView;
@@ -29,8 +31,12 @@ public class Help extends AppCompatActivity {
         textView = findViewById(R.id.textHelp);
         textView.setMovementMethod(new ScrollingMovementMethod());
 
-        MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
-        // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+
+        });
 
         mAdView = findViewById(R.id.adViewHelp);
         AdRequest adRequest = new AdRequest.Builder().build();

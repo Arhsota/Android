@@ -2,8 +2,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
   ~  * Created by Andrey Sevastianov on 10 january 2019
-  ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 18.10.20 14:59
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 18.10.20 16:19
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -23,7 +23,6 @@
 
     <Button
         android:id="@+id/time_view"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -33,17 +32,17 @@
         android:layout_marginTop="@dimen/margin_top_time_view"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@color/colorBackground"
-
+        android:fontFamily="@font/tablo"
         android:gravity="center"
-
+        android:onClick="onClickWorkTimer"
         android:text="00:00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/colorTimer"
+        android:background="@color/colorBackground"
         android:textSize="@dimen/text_size_time_view"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

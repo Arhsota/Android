@@ -1,23 +1,29 @@
 
 
+/******************************************************************************
+ *
+ * Here we only changed gradle, new version of libraries. This is for update
+ * page in Console (new images and video)
+ */
+
 /*******************************************************************************
  *
  *  * Created by Andrey Sevastianov on 10 january 2019
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.10.20 15:19
+ *  * Copyright (c) 2021 . All rights reserved.
+ *  * Last modified 25.04.21 23:02
  *
  ******************************************************************************/
 
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.arhsota.tablo"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 14
-        versionName "2.0"
+        versionName "1.9.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -43,31 +49,30 @@ dependencies {
  //   implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 //    implementation 'androidx.core:core-ktx:1.2.0-alpha03'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.3.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 //  implementation 'com.google.android.gms:play-services-ads:18.1.1'
 
 //    implementation 'com.google.firebase:firebase-core:17.2.1'
-    implementation 'com.google.firebase:firebase-auth:19.4.0'
-    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.4'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 //    implementation 'com.google.firebase:firebase-database:19.2.0'
 //  implementation 'com.google.firebase:firebase-perf:19.0.0'
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-analytics:17.6.0'
-    implementation 'com.google.firebase:firebase-ads:19.4.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.3'
+    implementation 'com.google.firebase:firebase-ads:20.0.0'
     // Add the SDK for Firebase Cloud Messaging
-    implementation 'com.google.firebase:firebase-messaging:20.3.0'
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
     //    for in-app rating
-    implementation 'com.google.android.play:core:1.8.2'
+    implementation 'com.google.android.play:core:1.10.0'
 
 
 }
 apply plugin: 'com.google.gms.google-services'
 
 // Apply the Performance Monitoring plugin
-apply plugin: 'com.google.firebase.firebase-perf'
+//apply plugin: 'com.google.firebase.firebase-perf'

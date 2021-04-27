@@ -6,6 +6,13 @@
  *
  ******************************************************************************/
 
+/******************************************************************************
+ *
+ * Here we only changed gradle, new version of libraries. This is for update
+ * page in Console
+ *
+ ******************************************************************************/
+
 package com.arhsota.alcome;
 
 // Info of hour much time remains alcohol in your body
@@ -23,7 +30,11 @@ import android.os.Bundle;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,6 +43,7 @@ import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.Task;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -75,25 +87,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MobileAds.initialize(this,
-                "ca-app-pub-7279174300665421~4445221287");
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+
+        });
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-7279174300665421/4010107019");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        //      interpage ad
 
-        mInterstitialAd.setAdListener(new AdListener() {
+        InterstitialAd.load(this,"ca-app-pub-7279174300665421/6564833801", adRequest, new InterstitialAdLoadCallback() {
+            private static final String TAG = "";
+
             @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+                Log.i(TAG, "onAdLoaded");
             }
 
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.i(TAG, loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
         });
+
        /* Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -212,10 +237,12 @@ public class MainActivity extends AppCompatActivity {
         isClick100 = false;
         isClick300 = true;
         isClick500 = false;
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
+        
+        // interpage adds
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(MainActivity.this);
         } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
+            Log.d("TAG", "The interstitial ad wasn't ready yet.");
         }
 
     }
@@ -224,11 +251,9 @@ public class MainActivity extends AppCompatActivity {
         isClick100 = false;
         isClick300 = false;
         isClick500 = true;
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+
+        // interpage adds
+        // TODO: 27.04.2021 put code of starting add as in choice above (mabe later) 
     }
 
     public void onClickCalculate(View view) {

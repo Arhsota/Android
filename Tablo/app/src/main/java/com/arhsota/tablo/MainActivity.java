@@ -7,20 +7,23 @@
  nothing new, only improvement
 */
 
+/******************************************************************************
+ *
+ * Here we only changed gradle, new version of libraries. This is for update
+ * page in Console
+ *
+ ******************************************************************************/
+
 /*******************************************************************************
  *
  *  * Created by Andrey Sevastianov on 10 january 2019
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 18.10.20 14:59
+ *  * Copyright (c) 2021 . All rights reserved.
+ *  * Last modified 26.04.21 0:46
  *
  ******************************************************************************/
 
 package com.arhsota.tablo;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -31,20 +34,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
@@ -53,8 +56,10 @@ import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.android.play.core.tasks.Task;
 
-
 import java.util.Random;
+
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 //import android.support.v7.app.AppCompatActivity;
 
@@ -62,7 +67,7 @@ import java.util.Random;
 // import com.facebook.appevents.AppEventsLogger;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     //Количество секунд на секундомере
     private int seconds = 305;
     private int secondsChoice = 305;
@@ -90,10 +95,6 @@ public class MainActivity extends Activity {
     ReviewInfo reviewInfo;
     ReviewManager manager;
 
-    TimerFragment frag1;
-    DiceFragment frag2;
-    FragmentTransaction fTrans;
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Заполнение меню; элементы (если они есть) добавляются на панель действий.
@@ -104,7 +105,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        for rating API need
         manager = ReviewManagerFactory.create(this);
 
         switch (item.getItemId()) {
@@ -157,22 +157,48 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MobileAds.initialize(this,
-                "ca-app-pub-7279174300665421~2703649226");
-//     for fragments
-        frag1 = new TimerFragment();
-        frag2 = new DiceFragment();
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
 
+        });
 
+//        MobileAds.initialize(this,
+//                "ca-app-pub-7279174300665421~2703649226");
 
 
         //test ad ca-app-pub-3940256099942544/6300978111
         //real ad ca-app-pub-7279174300665421/3496010231
 
+//      banner
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
+//      interpage ad
+
+        InterstitialAd.load(this,"ca-app-pub-7279174300665421/6564833801", adRequest, new InterstitialAdLoadCallback() {
+            private static final String TAG = "";
+
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+                Log.i(TAG, "onAdLoaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.i(TAG, loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
+        });
+
+
+/*
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-7279174300665421/6564833801");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
@@ -182,11 +208,10 @@ public class MainActivity extends Activity {
             public void onAdClosed() {
                 // Load the next interstitial.
                 mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
             }
 
         });
-
+*/
        // seconds = secondsChoice;
         if (savedInstanceState != null) {
             seconds = savedInstanceState.getInt("seconds");
@@ -318,31 +343,29 @@ public class MainActivity extends Activity {
 
         boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked.
-        FragmentManager fragmentManager = getFragmentManager()
-        FragmentTransaction fTrans = fragmentManager.beginTransaction();
+
 
         switch (view.getId()) {
             case R.id.radioButton5:
                 // interpage adds
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(MainActivity.this);
                 } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
                 }
                 if (checked) {
                     secondsChoice = 305;
                     radioButton10.setChecked(false);
                     radioButtonCube.setChecked(false);
-                    fTrans.add(R.id.frgmCont,frag1);
 
                 }
                 break;
             case R.id.radioButton10:
                 // interpage adds
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(MainActivity.this);
                 } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
                 }
                 if (checked) {
                     secondsChoice = 605;
@@ -367,7 +390,6 @@ public class MainActivity extends Activity {
                 // Do nothing.
                 break;
         }
-        fTrans.commit();
     }
     public void startCubes(){
            if (clickCube){

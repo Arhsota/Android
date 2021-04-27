@@ -3,13 +3,13 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
   ~  * Created by Andrey Sevastianov on Septenber 2018
-  ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 29.10.20 18:19
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 26.04.21 21:46
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">ИМТ 3.4</string>
+    <string name="app_name">ИМТ 3.5</string>
     <string name="butt_name">Рассчитать</string>
     <string name="result_text_before">Ваш индекс: __ </string>
     <string name="result_text">Ваш индекс: %1$s</string>
@@ -76,5 +76,6 @@
     <string name="share_current_result">Делимся текущим результатом</string>
     <string name="share_history">Делимся историей</string>
     <string name="nohistory">Ничего не сохранено</string>
+
 
 </resources>

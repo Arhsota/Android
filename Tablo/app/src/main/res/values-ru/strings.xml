@@ -1,13 +1,13 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
   ~  * Created by Andrey Sevastianov on 10 january 2019
-  ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 18.10.20 15:24
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 25.04.21 22:46
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">Табло 2.0</string>
+    <string name="app_name">Табло 1.9.6</string>
     <string name="start">Старт</string>
     <string name="stop">Стоп</string>
     <string name="reset">Уст/Сбр Таймера</string>
@@ -27,11 +27,4 @@
     <string name="help_menu">Помощь</string>
     <string name="save_result_menu">Сохранить</string>
     <string name="inwork">В разработке</string>
-
-    <string name="frag1_text">Fragment 1</string>
-    <string name="frag2_text">Fragment 2</string>
-    <string name="add">Add</string>
-    <string name="remove">Remove</string>
-    <string name="replace">Replace</string>
-    <string name="stack">add to Back Stack</string>
 </resources>

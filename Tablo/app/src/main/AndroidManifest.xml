@@ -2,8 +2,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
   ~  * Created by Andrey Sevastianov on 10 january 2019
-  ~  * Copyright (c) 2020 . All rights reserved.
-  ~  * Last modified 18.10.20 14:59
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 18.10.20 16:19
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -11,6 +11,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.arhsota.tablo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.READ_PHONE_STATE"
         tools:node="remove" />

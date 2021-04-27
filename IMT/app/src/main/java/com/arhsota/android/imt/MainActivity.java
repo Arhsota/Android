@@ -1,14 +1,22 @@
+
 // my first real soft based on lesson 8 Skillberg
 // calculating index body fat based on your weight and length both for male and female
 // Sevastyanov Andrey, 2018, september
-// Arkhangelsk
+// Arkhangelsk, Sabetta, Nottingham
+
+/******************************************************************************
+ *
+ * Here we change format for weight: integer to double
+ *
+ *
+ ******************************************************************************/
 
 
 /*******************************************************************************
  *
  *  * Created by Andrey Sevastianov on Septenber 2018
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 29.10.20 22:15
+ *  * Copyright (c) 2021 . All rights reserved.
+ *  * Last modified 26.04.21 22:03
  *
  ******************************************************************************/
 
@@ -49,10 +57,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
 
 import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 //import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
@@ -102,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     private String str_Age = "0";
     private String str_Date = "0";
 
+    private double myweight;
     private double mylength;
     private double myage;
     private double myresult;
@@ -169,6 +182,20 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.action_share:
+                // interpage adds
+/*
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
+
+ */
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(MainActivity.this);
+                } else {
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                }
                 Intent intent_mes = new Intent(Intent.ACTION_SEND);
                 intent_mes.setType("text/plain");
                 intent_mes.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.for_subject_field) + str_Date);
@@ -388,13 +415,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
+//        MobileAds.initialize(this, "ca-app-pub-7279174300665421~3105181624");
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+
+        });
        // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+/*
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-7279174300665421/5898016751");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
@@ -408,7 +441,25 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+*/
+        InterstitialAd.load(this,"ca-app-pub-7279174300665421/6564833801", adRequest, new InterstitialAdLoadCallback() {
+            private static final String TAG = "";
 
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+                Log.i(TAG, "onAdLoaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.i(TAG, loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
+        });
         textView = findViewById(R.id.result_out);
 
         textViewTable = findViewById(R.id.text_table);
@@ -451,6 +502,7 @@ public class MainActivity extends AppCompatActivity {
 
 
           }
+
         );
 
         button.setOnClickListener(onClickListener);
@@ -514,12 +566,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             KeyboardHide.hide(view); // Hide keyboard after click on button CALCULATE
-            // interpage adds
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+
             String weight = editTextW.getText().toString();
             String length = editTextL.getText().toString();
             String age = editTextAge.getText().toString();
@@ -660,7 +707,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (myage > num64) {
                 textViewTable.setText(R.string.text_table8);
-                int num29 = 59;
+                int num29 = 29;
                 progressBar.setMax(num29);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     progressBar.setMin(num24);
