@@ -7,38 +7,41 @@
  nothing new, only improvement
 */
 
-/******************************************************************************
- *
- * Here we only changed gradle, new version of libraries. This is for update
- * page in Console
- *
- ******************************************************************************/
 
 /*******************************************************************************
  *
  *  * Created by Andrey Sevastianov on 10 january 2019
- *  * Copyright (c) 2021 . All rights reserved.
- *  * Last modified 26.04.21 0:46
+ *  * Copyright (c) 2022 . All rights reserved.
+ *  * Last modified 28.01.2022, 15:37
  *
  ******************************************************************************/
 
 package com.arhsota.tablo;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdListener;
@@ -56,6 +59,17 @@ import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.android.play.core.tasks.Task;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.Random;
 
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -89,11 +103,37 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton radioButton10;
     private RadioButton radioButtonCube;
 
+    private String player;
+    private EditText playerV;
+
+    final String LOG_TAG = "myLogs";
+
+    String FILEDATA = "file";
+    String FILESAVE = "filesave";
+    String MODEAPPEND = "MODE_APPEND";
+    String MODEWRITE = "MODE_PRIVATE";
+    String CLOSEFILEWRITE = "write";
+    String CLOSEFILEAPPEND = "append";
+    private Object userNameLeft = " ";
+    private Object userNameRight = " ";
+    private String strSave;
+    private String strUser;
+    private String strDate;
+    private String str_Main_Output;
+//    String a0,a1,a2,a3,a4,a5,a6,a7,a8,a9 = "";
+    String[] playerNames = {"player0","player1","player2","player3","player4","player5",
+            "player6","player7","player8","player9"};
+    String[] subStr = new String[9];
+    String[] data = new String[9]; // use to connect and display spinner adapter
+    ArrayList<String> users = new ArrayList();
+    ArrayAdapter<String> adapter;
+    ListView usersList;
     private AdView mAdView;
 
     private InterstitialAd mInterstitialAd;
     ReviewInfo reviewInfo;
     ReviewManager manager;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,12 +148,85 @@ public class MainActivity extends AppCompatActivity {
         manager = ReviewManagerFactory.create(this);
 
         switch (item.getItemId()) {
-            case R.id.action_create_save:
+            case R.id.action_save_result:
                 //Код, выполняемый при выборе элемента Create Save
-                Toast.makeText(MainActivity.this, R.string.inwork,
+                Toast.makeText(MainActivity.this, R.string.save_result,
                         Toast.LENGTH_SHORT).show();
-                // TODO: 30.09.2020 error om Review 
+                // TODO: 30.09.2020 error om Review
+                strSave = strDate + " " + userNameLeft + " " + scorePlayer1 +
+                        ":" + scorePlayer2 + " " + userNameRight + ",";
+//                File fileSave = new File(FILESAVE);
+                appendFile(new File(FILESAVE),strSave);
                 Review();
+                return true;
+
+            case R.id.action_read_result:
+                //Код, выполняемый при выборе элемента Create Save
+                Toast.makeText(MainActivity.this,R.string.read_result,
+                        Toast.LENGTH_SHORT).show();
+                Intent intent_history = new Intent(this, History.class);
+                startActivity(intent_history);
+                // TODO: 30.09.2020 error om Review
+                return true;
+
+            case R.id.action_share_mes:
+                //Код, выполняемый при выборе элемента Create Save
+//                Toast.makeText(MainActivity.this,R.string.share, Toast.LENGTH_SHORT).show();
+                strSave = strDate + " " + userNameLeft + " " + scorePlayer1 +
+                        ":" + scorePlayer2 + " " + userNameRight + ",";
+                Intent intent_mes = new Intent(Intent.ACTION_SEND);
+                intent_mes.setType("text/plain");
+                intent_mes.putExtra(Intent.EXTRA_SUBJECT, "Current Result");
+                intent_mes.putExtra(Intent.EXTRA_TEXT,strSave);
+                startActivity(intent_mes);
+                String chooserTitle = getString(R.string.share);
+                Intent chosenIntent = Intent.createChooser(intent_mes, chooserTitle);
+                startActivity(chosenIntent);
+                return true;
+
+            case R.id.action_share_history:
+                //Код, выполняемый при выборе элемента Create Save
+//                Toast.makeText(MainActivity.this,R.string.share, Toast.LENGTH_SHORT).show();
+                File fileSave = new File(FILESAVE);
+                File fileDir = getBaseContext().getFilesDir();
+
+//        File sdDir = Environment.getExternalStorageDirectory();
+//        String fileName = fileData.getName(); // get file name
+                File destination= new File( fileDir+"/"+FILESAVE );
+                if (destination.exists()) {
+                    readFile(fileSave);
+                }
+                else {
+                    Toast.makeText(MainActivity.this,"No History", Toast.LENGTH_SHORT).show();
+                }
+
+                Intent intent_his = new Intent(Intent.ACTION_SEND);
+                intent_his.setType("text/plain");
+                intent_his.putExtra(Intent.EXTRA_SUBJECT, "History Result");
+                intent_his.putExtra(Intent.EXTRA_TEXT,str_Main_Output);
+                startActivity(intent_his);
+                String chooserTitle2 = getString(R.string.share);
+                Intent chosenIntent2 = Intent.createChooser(intent_his, chooserTitle2);
+                startActivity(chosenIntent2);
+                return true;
+
+            case R.id.action_clear_result:
+                //Код, выполняемый при выборе элемента Create Save
+                Toast.makeText(MainActivity.this,R.string.clear_result,
+                        Toast.LENGTH_SHORT).show();
+                historyClear();
+                return true;
+
+            case R.id.action_edit_player:
+                //Код, выполняемый при выборе элемента Create Save
+                Toast.makeText(MainActivity.this, R.string.edit_player, Toast.LENGTH_SHORT).show();
+                Intent intent_player = new Intent(this, Player.class);
+                startActivity(intent_player);
+                return true;
+
+            case R.id.action_create_timer:
+                //Код, выполняемый при выборе элемента Create Save
+                Toast.makeText(MainActivity.this, R.string.inwork, Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.action_help:
@@ -148,9 +261,68 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    private void readFile(File file) {
+        try {
+            // открываем поток для чтения
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    openFileInput(String.valueOf(file))));
+            String str  = "";
+            // TODO: 11.08.2020 read not line by line but till the end of file
 
+            // читаем содержимое
+//            while ((str = br.readLine()) != null) {
+            while ((str =br.readLine()) != null) {
+                Log.d(LOG_TAG, str);
+                strUser = str;
+            }
 
+           str_Main_Output = strUser;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    void writeFile(File file, String strWrite) {
+
+        try {
+                // отрываем поток для записи
+
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                        openFileOutput(String.valueOf(file), MODE_PRIVATE)));
+                // пишем данные
+                bw.write(strWrite);
+
+            // закрываем поток
+            bw.close();
+            Log.d(LOG_TAG, "Файл записан " + String.valueOf(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void appendFile(File file, String strWrite) {
+
+        try {
+            // отрываем поток для записи
+
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                    openFileOutput(String.valueOf(file), MODE_APPEND)));
+            // пишем данные
+            bw.append(strWrite);
+
+            // закрываем поток
+            bw.close();
+            Log.d(LOG_TAG, "Файл записан " + String.valueOf(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,21 +369,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-/*
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-7279174300665421/6564833801");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-            }
-
-        });
-*/
        // seconds = secondsChoice;
         if (savedInstanceState != null) {
             seconds = savedInstanceState.getInt("seconds");
@@ -232,6 +389,99 @@ public class MainActivity extends AppCompatActivity {
         String strScorePlayer2 = String.format("%d",scorePlayer2);
         scoreViewPlayer2.setText(strScorePlayer2);
 
+        File fileData = new File(FILEDATA);
+        File fileDir = getBaseContext().getFilesDir();
+//        File sdDir = Environment.getExternalStorageDirectory();
+//        String fileName = fileData.getName(); // get file name
+        File destination= new File( fileDir+"/"+FILEDATA ); // create destination file with name and dir.
+        if (destination.exists()) {
+            for (int i = 0; i < 9; i++) {
+                 data[i] = "";
+                }
+            readFile(fileData);
+            strUser = strUser.replace("null", "player");
+            strUser = strUser.replace("]", "");
+            strUser = strUser.replace("[", "");
+            strUser = strUser.replace(" ", "");
+
+            String delimeter = ","; // Разделитель
+            subStr = strUser.split(delimeter); // Разделения строки str с помощью метода split()
+
+            for (int i = 0; i < subStr.length; i++) {
+                    data[i] = subStr[i];
+
+            }
+            int n = subStr.length;
+              for (int i = 0; i < n; i++){
+                users.add (i,data[i]);
+              }
+
+            }
+        else{
+            for (int i = 0; i < 9; i++) {
+                data[i] = playerNames[i];
+            }
+        }
+
+
+        // адаптер
+        String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime());
+        strDate = date;
+        Spinner spinner = (Spinner) findViewById(R.id.buttonPlayer1);
+        int posAlcoType = spinner.getSelectedItemPosition();
+//        userNameLeft = String.valueOf(spinner.getItemIdAtPosition(posAlcoType));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+//        manager = ReviewManagerFactory.create(this);
+        spinner.setAdapter(adapter);
+        // заголовок
+        spinner.setPrompt("Choose player");
+        // выделяем элемент
+//        spinner.setSelection(1);
+        // устанавливаем обработчик нажатия
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                userNameLeft = spinner.getSelectedItem();
+                // показываем позиция нажатого элемента
+//                Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                userNameLeft = spinner.getSelectedItem();
+            }
+        });
+
+//        String[] data2 = {"player1", "player2", "three", "four", "five"};
+        // адаптер
+        Spinner spinner2 = (Spinner) findViewById(R.id.buttonPlayer2);
+//        int posAlcoType = spinner.getSelectedItemPosition();
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+//        manager = ReviewManagerFactory.create(this);
+        spinner2.setAdapter(adapter2);
+        // заголовок
+        spinner2.setPrompt("Choose player");
+        // выделяем элемент
+        spinner2.setSelection(1);
+        // устанавливаем обработчик нажатия
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                userNameRight = spinner2.getSelectedItem();
+                // показываем позиция нажатого элемента
+//                Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                userNameRight = spinner2.getSelectedItem();
+            }
+        });
     }
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -298,8 +548,7 @@ public class MainActivity extends AppCompatActivity {
                 // for the last minute
             //    String time_min = String.format("%02d:%02d", secs, secs100);
                 if (seconds == 0) {
-                    Toast.makeText(MainActivity.this, "Game OVER",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.game_over, Toast.LENGTH_SHORT).show();
                     Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                     MediaPlayer mp = MediaPlayer.create(getApplicationContext(), notification);
                     mp.start();
@@ -319,20 +568,41 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickPlayer1(View view) {
         if  (!clickCube) {
+            /*
             TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
             scorePlayer1 = scorePlayer1 + 1;
             String strScorePlayer1 = String.format("%d", scorePlayer1);
             scoreViewPlayer1.setText(strScorePlayer1);
+            */
+//            changePlayer1();
         }
     }
 
     public void onClickPlayer2(View view) {
         if (!clickCube) {
+            /*
             TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
             scorePlayer2 = scorePlayer2 + 1;
             String strScorePlayer2 = String.format("%d", scorePlayer2);
             scoreViewPlayer2.setText(strScorePlayer2);
+
+             */
+//            changePlayer2();
         }
+    }
+    public void onClickScore1(View view) {
+//        No need to check clickCube as in earlier version
+            TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
+            scorePlayer1 = scorePlayer1 + 1;
+            String strScorePlayer1 = String.format("%d", scorePlayer1);
+            scoreViewPlayer1.setText(strScorePlayer1);
+    }
+    public void onClickScore2(View view) {
+        //        No need to check clickCube as in earlier version
+            TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
+            scorePlayer2 = scorePlayer2 + 1;
+            String strScorePlayer2 = String.format("%d", scorePlayer2);
+            scoreViewPlayer2.setText(strScorePlayer2);
     }
 
     public void onClickSecondsRadio(View view) {
@@ -381,7 +651,10 @@ public class MainActivity extends AppCompatActivity {
                     radioButton5.setChecked(false);
                     radioButton10.setChecked(false);
                     clickCube = true;
-                    startCubes();
+//                    beforeCubes();
+                    Intent intent_emptycubes = new Intent(this, EmptyCubes.class);
+                    startActivity(intent_emptycubes);
+//                    startCubes();
                  //   clickCube = false;
                 }
                 break;
@@ -391,6 +664,30 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+    public void beforeCubes() {
+        if (clickCube) {
+//            Random r1 = new Random();
+//            int i1 = r1.nextInt(7 - 1) + 1;
+            Handler handler = new Handler();
+            for (int i = 0; i < 7; i++) {
+                scorePlayer1 = i;
+                TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
+                String strScorePlayer1 = String.format("%d",scorePlayer1);
+//                scoreViewPlayer1.setText(strScorePlayer1);
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        scoreViewPlayer1.setText(strScorePlayer1);
+                    }
+                }, 10000);
+            }
+//            Random r2 = new Random();
+//            int i2 = r2.nextInt(7 - 1) + 1;
+//            scorePlayer2 = i2;
+        }
+    }
+
     public void startCubes(){
            if (clickCube){
                Random r1 = new Random();
@@ -411,7 +708,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickScoreAdj1(View view) {
-        if ((scorePlayer1 > 0) && (!clickCube)) {
+        //        No need to check clickCube as in earlier version
+        if (scorePlayer1 > 0) {
             TextView scoreViewPlayer1 = (TextView) findViewById(R.id.leftScore);
             scorePlayer1 -= 1;
             String strScorePlayer1 = String.format("%d", scorePlayer1);
@@ -421,7 +719,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickScoreAdj2(View view) {
-        if ((scorePlayer2 > 0) && (!clickCube)) {
+        if (scorePlayer2 > 0 ) {
             TextView scoreViewPlayer2 = (TextView) findViewById(R.id.rightScore);
             scorePlayer2 -= 1;
             String strScorePlayer2 = String.format("%d", scorePlayer2);
@@ -469,6 +767,42 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    private void historyClear() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(R.string.confirm);
+        builder.setMessage(R.string.are_you_shure);
+
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                writeFile(new File(FILESAVE),"");
+                Toast.makeText(MainActivity.this, "История удалена",
+                        Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // Do nothing
+
+
+
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
+    }
+
 
 
 }

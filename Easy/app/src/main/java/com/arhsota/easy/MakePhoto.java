@@ -53,6 +53,7 @@ import java.util.List;
 
 import static android.content.Intent.EXTRA_SUBJECT;
 import static android.content.Intent.createChooser;
+import static android.os.Build.*;
 
 public class MakePhoto extends AppCompatActivity {
 
@@ -83,6 +84,13 @@ public class MakePhoto extends AppCompatActivity {
         myPhone = getIntent().getStringExtra("TELE");
         createDirectory();
         btnDoc = findViewById(R.id.btnPhotoDoc1);
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (!isStoragePermissionGranted()) {
+                ActivityCompat.requestPermissions(this, new String[]
+                        {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
+        }
 
 
     }
@@ -169,7 +177,7 @@ public class MakePhoto extends AppCompatActivity {
 
 // Checking permissions. If Not asks owner to make it by himself
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
 
             if (checkSelfPermission(Manifest.permission.CALL_PHONE)
                     == PackageManager.PERMISSION_DENIED) {
@@ -192,7 +200,7 @@ public class MakePhoto extends AppCompatActivity {
 
     public void onClickPhotoDoc(View view) {
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -211,6 +219,44 @@ public class MakePhoto extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_CODE_PHOTO);
 
 
+
+    }
+
+
+
+
+    public boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.M) {
+            if (checkSelfPermission(android.Manifest.permission.
+                    WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG,"Permission is granted");
+                return true;
+            } else {
+                Log.v(TAG,"Permission is revoked");
+                ActivityCompat.requestPermissions(this, new
+                        String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG,"Permission is granted");
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions,
+                grantResults);
+        if(grantResults.length > 0 && grantResults[0] ==
+                PackageManager.PERMISSION_GRANTED){
+            Log.v(TAG,"Permission: "+permissions[0]+ " was "+grantResults[0]);
+    //write file to external storage
+
+
+        }
     }
 
 
@@ -363,7 +409,7 @@ public class MakePhoto extends AppCompatActivity {
 
 
     public void onClickPhotoSendWhatsApp(View view) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -417,7 +463,7 @@ public class MakePhoto extends AppCompatActivity {
 
     public void onClickPhotoSendViber(View view) {
 //        Toast.makeText(this, "В разработке!!", Toast.LENGTH_SHORT).show();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -471,7 +517,7 @@ public class MakePhoto extends AppCompatActivity {
           String contactId = null;
         // Check the SDK version and whether the permission is already granted or not.
         //         If higher than 6.0 grants are already done
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -511,7 +557,7 @@ public class MakePhoto extends AppCompatActivity {
     public String hasWhatsApp(String contactID) {
         String rowContactId = null;
         boolean hasWhatsApp;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -545,7 +591,7 @@ public class MakePhoto extends AppCompatActivity {
 //        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
 //        StrictMode.setVmPolicy(builder.build());
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -591,7 +637,7 @@ public class MakePhoto extends AppCompatActivity {
 
     private void choiceWhatsApp() {
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -687,7 +733,7 @@ public class MakePhoto extends AppCompatActivity {
 //    WVT - means WhatsApp + Viber + Telegram. One void for all
     private void choiceWVT(String myPackage, String myPackageTitle) {
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 
@@ -737,7 +783,7 @@ public class MakePhoto extends AppCompatActivity {
     }
     public void onClickPhotoSendTelegram(View view) {
 //        Toast.makeText(this, "В разработке!!", Toast.LENGTH_SHORT).show();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
 

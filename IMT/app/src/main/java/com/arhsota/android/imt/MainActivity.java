@@ -6,7 +6,7 @@
 
 /******************************************************************************
  *
- * Here we change format for weight: integer to double
+ * Here we made a frame for ticks
  *
  *
  ******************************************************************************/
@@ -16,7 +16,7 @@
  *
  *  * Created by Andrey Sevastianov on Septenber 2018
  *  * Copyright (c) 2021 . All rights reserved.
- *  * Last modified 26.04.21 22:03
+ *  * Last modified 25.12.2021, 15:21
  *
  ******************************************************************************/
 
@@ -44,6 +44,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.ShareActionProvider;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 //import android.support.v7.widget.ShareActionProvider;
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
     //   private RewardedVideoAd mRewardedVideoAd;
 
     private TextView textView;
+    private TextView textViewBMR;
     private TextView textViewTable;
     private TextView textMinImt;
     private TextView textMaxImt;
@@ -113,15 +115,20 @@ public class MainActivity extends AppCompatActivity {
     private String str_Length = "0";
     private String str_Age = "0";
     private String str_Date = "0";
+    private String str_BMR = "0";
 
     private double myweight;
     private double mylength;
     private double myage;
     private double myresult;
+    private double myBMR;
+    private double styleBMR;
 
     private boolean fillTextW = false;  // checking for filling all 3 input parametres
     private boolean fillTextL = false;
     private boolean fillTextA = false;
+    private boolean isClickMan = false;
+    private boolean isClickWoman = true;
 
     private String str_History;
 
@@ -441,7 +448,10 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+
 */
+
+
         InterstitialAd.load(this,"ca-app-pub-7279174300665421/6564833801", adRequest, new InterstitialAdLoadCallback() {
             private static final String TAG = "";
 
@@ -461,6 +471,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         textView = findViewById(R.id.result_out);
+        textViewBMR = findViewById(R.id.result_bmr);
 
         textViewTable = findViewById(R.id.text_table);
 
@@ -474,6 +485,31 @@ public class MainActivity extends AppCompatActivity {
         editTextW = findViewById(R.id.weight);
         editTextL = findViewById(R.id.length);
         editTextAge = findViewById(R.id.age);
+
+        Spinner spinnerActivityStyle = (Spinner) findViewById(R.id.activity_style);
+        String selected = spinnerActivityStyle.getSelectedItem().toString();
+        int posActivityStyle = spinnerActivityStyle.getSelectedItemPosition();
+
+        switch (posActivityStyle) {
+
+            case 0:
+                styleBMR = 1.2;
+                break; // сидячий образ жизни — 1,2;
+            case 1:
+                styleBMR = 1.375;
+                break; // умеренная активность (легкие физические нагрузки либо занятия 1–3 раз в неделю) — 1,375;
+            case 2:
+                styleBMR = 1.55;
+                break; // средняя активность (занятия 3–5 раз в неделю) — 1,55;
+            case 3:
+                styleBMR = 1.725;
+                break; // активные люди (интенсивные нагрузки, занятия 6–7 раз в неделю) — 1,725;
+            case 4:
+                styleBMR = 1.9;
+                break; // спортсмены и люди, выполняющие сходные нагрузки (6–7 раз в неделю), — 1,9.
+
+        }
+
 
 
 //        reading weight
@@ -567,6 +603,31 @@ public class MainActivity extends AppCompatActivity {
 
             KeyboardHide.hide(view); // Hide keyboard after click on button CALCULATE
 
+            Spinner spinnerActivityStyle = (Spinner) findViewById(R.id.activity_style);
+            String selected = spinnerActivityStyle.getSelectedItem().toString();
+            int posActivityStyle = spinnerActivityStyle.getSelectedItemPosition();
+
+            switch (posActivityStyle) {
+
+                case 0:
+                    styleBMR = 1.2;
+                    break; // сидячий образ жизни — 1,2;
+                case 1:
+                    styleBMR = 1.375;
+                    break; // умеренная активность (легкие физические нагрузки либо занятия 1–3 раз в неделю) — 1,375;
+                case 2:
+                    styleBMR = 1.55;
+                    break; // средняя активность (занятия 3–5 раз в неделю) — 1,55;
+                case 3:
+                    styleBMR = 1.725;
+                    break; // активные люди (интенсивные нагрузки, занятия 6–7 раз в неделю) — 1,725;
+                case 4:
+                    styleBMR = 1.9;
+                    break; // спортсмены и люди, выполняющие сходные нагрузки (6–7 раз в неделю), — 1,9.
+
+            }
+
+
             String weight = editTextW.getText().toString();
             String length = editTextL.getText().toString();
             String age = editTextAge.getText().toString();
@@ -587,11 +648,22 @@ public class MainActivity extends AppCompatActivity {
                mylength = 1;
             }
             myresult = myweight /(mylength * mylength); //calculating IMT
-            str_IMT =  String.format("%.2f",myresult); // making string format
+//            str_IMT =  String.format("%.2f",str_IMT); // making string format
             ProgressBar progressBar = findViewById(R.id.progressBar);
             textMinImt = findViewById(R.id.minImt);
             textMaxImt = findViewById(R.id.maxImt);
 
+            if (isClickWoman) {
+
+//                BMR = 655,0955 + (9,5634 * вес в кг) + (1,8496 * рост в см) – (4,6756 * возраст в годах).
+                myBMR = 655.0955 + (9.5634 * myweight) + (1.8496 * mylength * 100) - (4.6756 * myage);
+                myBMR = myBMR * styleBMR;
+            }
+            else {
+//                BMR = 66,4730 + (13,7516 * вес в кг) + (5,0033 * рост в см) – (6,7550 * возраст в годах).
+                myBMR = 66.4730 + (13.7516 * myweight) + (5.0033 * mylength * 100) - (6.7550 * myage);
+                myBMR = myBMR * styleBMR;
+            }
 
 
             int num19 = 19;
@@ -726,10 +798,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-//            String myresultStr = Double.toString(myresult);
+//          Main output on the top
+
+
 
             String myresultStrFormat = String.format("%.2f",myresult);
-            textView.setText(getString(R.string.result_text,myresultStrFormat));
+            str_IMT = myresultStrFormat;
+//            str_IMT =  String.format("%.2f",str_IMT); // making string format
+            str_BMR = String.format("%.0f",myBMR);
+            textView.setText(getString(R.string.result_text,str_IMT));
+            textViewBMR.setText(getString(R.string.result_bmr,str_BMR));
 
             if (myresult < num19) {
                 textView.setTextColor(Color.RED);
@@ -749,10 +827,21 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
     };
 
     public void signClick(View view) {
         Intent intent_main_activity_sign = new Intent(this, MainActivitySign.class);
         startActivity(intent_main_activity_sign);
+    }
+
+    public void onClickWoman(View view) {
+        isClickWoman = true;
+        isClickMan = false;
+    }
+
+    public void onClickMan(View view) {
+        isClickWoman = false;
+        isClickMan = true;
     }
 }

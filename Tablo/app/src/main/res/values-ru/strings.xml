@@ -1,13 +1,13 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
   ~  * Created by Andrey Sevastianov on 10 january 2019
-  ~  * Copyright (c) 2021 . All rights reserved.
-  ~  * Last modified 25.04.21 22:46
+  ~  * Copyright (c) 2022 . All rights reserved.
+  ~  * Last modified 28.01.2022, 15:37
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">Табло 1.9.6</string>
+    <string name="app_name">Табло 2.2.2</string>
     <string name="start">Старт</string>
     <string name="stop">Стоп</string>
     <string name="reset">Уст/Сбр Таймера</string>
@@ -22,9 +22,30 @@
         1. Кнопки 5м и 10м устанавливают таймер на 5 или 10 минут. Кнопка КУБИКИ для взброса кубиков\n
         2. Кнопка СБРОС СЧЕТА сбрасывает счет и кубики. Кнопка УСТ СбРОС ТАЙМЕРА устанавл. или сбрасывает таймер\n
         3. Цифры в центре это таймер. При клике по нему запускается или останавливается\n
-        4. При нажатии на кнопки ИГРОК или на цифру счета, счет увеличивается. Кнопка МИНУС корректирует счет\n
+        4. При нажатии на цифру счета, счет увеличивается. Кнопка МИНУС корректирует счет\n
+        5. Можете выбрать из списка игроков по умолчанию или создать новых. Разрешается 9 игроков. После конфигурации игроков, возврат на начальный экран
+           надо сделать с помощью стрелки вверху слева, чтобы изменения вступили в силу.\n
+        6. В ИСТОРИИ РЕЗУЛЬТАТОВ можно сохранить, прочитать или удалить данные игры \n
     </string>
     <string name="help_menu">Помощь</string>
-    <string name="save_result_menu">Сохранить</string>
+    <string name="save_result_menu">История результатов</string>
     <string name="inwork">В разработке</string>
+    <string name="config">Настройка</string>
+    <string name="limit_9_players">Не более 9 игроков!</string>
+    <string name="game_over">Стоп ИГРА</string>
+    <string name="edit_player">Редакт. игроков</string>
+    <string name="create_timer">Создать таймер</string>
+    <string name="save_result">Сохранить</string>
+    <string name="read_result">Считать</string>
+    <string name="clear_result">Очистить</string>
+    <string name="confirm">Подтверждение</string>
+    <string name="are_you_shure">Вы уверены?</string>
+    <string name="yes">ДА</string>
+    <string name="no">НЕТ</string>
+    <string name="nohistory">Нет истории результатов</string>
+    <string name="reading">Считываю…</string>
+    <string name="share">Поделиться</string>
+    <string name="share_current_result">Текущий результат</string>
+    <string name="share_history">Историей</string>
+    <string name="start_dices">Бросай кубик</string>
 </resources>

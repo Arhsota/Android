@@ -2,14 +2,15 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on Septenber 2018
   ~  * Copyright (c) 2021 . All rights reserved.
-  ~  * Last modified 26.04.21 21:46
+  ~  * Last modified 25.12.2021, 15:21
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">BMI 3.5</string>
+    <string name="app_name">BMI 3.7.2</string>
     <string name="result_text_before">Your index is: ___</string>
-    <string name="result_text">Your index is: %1$s</string>
+    <string name="result_text">Your index is:   %1$s</string>
+    <string name="result_bmr">Your BMR is: %1$s</string>
     <string name="butt_name">Calculate</string>
     <string name="hint_txt_weight">Weight,kg</string>
     <string name="hint_txt_length">Length,cm</string>
@@ -17,12 +18,12 @@
 
 
     <string name="text_table1">Table of BMI according age groups</string>
-    <string name="text_table3">19 to 24 age you should have 19 to 24 BMI</string>
-    <string name="text_table4">25 to 34 age you should have	20 to 25 BMI</string>
-    <string name="text_table5">35 to 44 age you should have 21 to 26 BMI</string>
-    <string name="text_table6">45 to 54 age you should have 22 to 27 BMI</string>
-    <string name="text_table7">55 to 64 age you should have 23 to 28 BMI</string>
-    <string name="text_table8">65 and elder age you should have 24 to 29</string>
+    <string name="text_table3">from 19 to 24 age you should have 19 to 24 BMI</string>
+    <string name="text_table4">from 25 to 34 age you should have	20 to 25 BMI</string>
+    <string name="text_table5">from 35 to 44 age you should have 21 to 26 BMI</string>
+    <string name="text_table6">from 45 to 54 age you should have 22 to 27 BMI</string>
+    <string name="text_table7">from 55 to 64 age you should have 23 to 28 BMI</string>
+    <string name="text_table8">from 65 age and elder age you should have 24 to 29</string>
 
     <string name="action_create_save">Save</string>
     <string name="title_second_activity">Your Result</string>
@@ -45,19 +46,30 @@
     <string name="help">\?</string>
     <string name="help_text">
         "\n
+        Metabolism is the chemical reactions in the body's
+        cells that change food into energy.
+        Our bodies need this energy to do everything
+        from moving to thinking to growing.
+        Specific proteins in the body
+        control the chemical reactions of metabolism.
+        Here we use equation of Harris-Benedict.
+        The BMR value is your daily calories
     1. Enter your weight in kg.\n
     2. Enter your length in cm.\n
     3. Enter your age. \n
-    4. Click button CALCULATE. \n
-    5. You should see digits on top, this is your BMI. \n
-    6. Under the button CALCULATE, you should see a tick, what BMI is recommended in that ages. \n
-    7. For better view, under this tick, you should see visual bar. \n
-    8. Menu button SAVE saves your result in phone memory. \n
-    9. Menu button HISTORY reveals your result from phone's memory. \n
-    10.Menu button HISTORY CLEAR delete all information, previously saved, but app will ask you before \n
-    11.Menu button SHARE shares your result. Either current data, or saved data\n
-    12.Menu button Sign Up - in work, wait for future versions \n
-    13.Menu button ? - this text
+    4. Enter your style of life \n
+    5. Enter your gender \n
+    6. Click button CALCULATE. \n
+    7. You should see digits on top, this is your BMI and BMR \n
+    8. BMI is index of your mass and BMR is level of calories per day \n
+    9.Under the button CALCULATE, you should see a tip, what BMI is recommended in that ages. \n
+    10.For better view, under this tip, you should see visual bar. \n
+    11.Menu button SAVE saves your result in phone memory. \n
+    12.Menu button HISTORY reveals your result from phone's memory. \n
+    13.Menu button HISTORY CLEAR delete all information, previously saved, but app will ask you before \n
+    14.Menu button SHARE shares your result. Either current data, or saved data\n
+    15.Menu button Sign Up - in work, wait for future versions \n
+    16.Menu button ? - this text
         ENJOY!!
     </string>
     <string name="date">Date: </string>
@@ -69,6 +81,18 @@
     <string name="share_history">Share History</string>
     <string name="nohistory">No history yet</string>
     <string name="spravka">Help</string>
+    <string name="tip">Recommendation</string>
+    <string name="choose_gender">Choose gender:</string>
+    <string name="woman">Female</string>
+    <string name="man">Male</string>
+
+    <string-array name="activity_style">
+        <item>seating style of life</item>
+        <item>low activity</item>
+        <item>average activity</item>
+        <item>active people</item>
+        <item>sportsman</item>
+    </string-array>
 
 
 </resources>

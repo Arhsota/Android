@@ -2,8 +2,8 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
   ~  * Created by Andrey Sevastianov on 10 january 2019
-  ~  * Copyright (c) 2021 . All rights reserved.
-  ~  * Last modified 26.04.21 0:43
+  ~  * Copyright (c) 2022 . All rights reserved.
+  ~  * Last modified 25.01.2022, 19:14
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -17,6 +17,7 @@
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
+    android:background="@color/colorBackground"
     tools:context=".MainActivity">
 
     <Button
@@ -60,7 +61,7 @@
 
         android:gravity="center"
         android:inputType="number"
-        android:onClick="onClickPlayer1"
+        android:onClick="onClickScore1"
         android:text="0"
         android:textAllCaps="true"
         android:textColor="@color/colorScore"
@@ -83,7 +84,7 @@
         android:background="@color/colorBackground"
         android:gravity="center"
         android:inputType="number"
-        android:onClick="onClickPlayer2"
+        android:onClick="onClickScore2"
         android:text="0"
         android:textColor="@color/colorScore"
         android:textSize="@dimen/text_size_score"
@@ -126,8 +127,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
+    <Spinner
         android:id="@+id/buttonPlayer1"
+
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,14 +138,13 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="8dp"
         android:textColor="@color/colorRadioButton"
-        android:onClick="onClickPlayer1"
-        android:text="@string/player_1"
-        android:textSize="@dimen/text_size_button_player"
-        app:cornerRadius="@dimen/radius_reset_button"
+        android:background="#F7F7F8"
+        android:popupBackground="#F8F8FA"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <Spinner
         android:id="@+id/buttonPlayer2"
 
         android:layout_width="wrap_content"
@@ -151,9 +152,11 @@
         android:layout_alignEnd="@+id/rightScore"
         android:layout_alignBottom="@+id/buttonPlayer1"
         android:layout_marginBottom="8dp"
-        android:onClick="onClickPlayer2"
-        android:textColor="@color/colorRadioButton"
+
+        android:background="#F7F7F8"
+        android:popupBackground="@color/colorRadioButton"
         android:text="@string/player_2"
+        android:textColor="@color/colorRadioButton"
         android:textSize="@dimen/text_size_button_player"
         app:cornerRadius="@dimen/radius_reset_button"
         app:layout_constraintBottom_toBottomOf="parent"

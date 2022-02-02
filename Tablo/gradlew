@@ -6,8 +6,14 @@
 ##
 ##############################################################################
 
-# Attempt to set APP_HOME
-# Resolve links: $0 may be a link
+################################################################################
+# /*
+#  * Created by Andrey Sevastianov on 10 january 2019
+#  * Copyright (c) 2022 . All rights reserved.
+#  * Last modified 20.10.2021, 20:10
+#  */
+################################################################################
+
 PRG="$0"
 # Need this for relative symlinks.
 while [ -h "$PRG" ] ; do

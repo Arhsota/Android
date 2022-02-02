@@ -3,7 +3,7 @@
   ~ /*
   ~  * Created by Andrey Sevastianov on Septenber 2018
   ~  * Copyright (c) 2021 . All rights reserved.
-  ~  * Last modified 29.03.21 0:25
+  ~  * Last modified 25.12.2021, 15:21
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
@@ -20,11 +20,8 @@
         android:id="@+id/result_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
         android:background="@android:color/transparent"
         android:text="@string/result_text_before"
         android:textColor="@color/colorHelloText"
@@ -33,29 +30,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/result_bmr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/transparent"
+        android:text="BMR:"
+        android:textColor="@color/colorHelloText"
+        android:textSize="@dimen/text_size_W_L_A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_out" />
+
+
+    <Spinner
+        android:id="@+id/activity_style"
+        android:layout_width="169dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="@dimen/margin_top_style"
+        android:entries="@array/activity_style"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculate_btn" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutW"
 
         style="@style/TextInputLayoutStyle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/margin_top_w"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#33258029"
         android:hint="@string/hint_txt_weight"
         app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_out"
-        app:layout_constraintVertical_bias="0.274">
+        app:layout_constraintTop_toBottomOf="@+id/result_bmr"
+        app:layout_constraintVertical_bias="0.17">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/weight"
-
             android:layout_width="@dimen/field_text"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/height_W_L_A"
+            android:background="#20749A"
             android:inputType="numberDecimal"
             android:textSize="@dimen/text_size_W_L_A"
             android:textStyle="bold" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -63,63 +88,63 @@
         style="@style/TextInputLayoutStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:hint="@string/hint_txt_length"
         app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutA"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toEndOf="@+id/textInputLayoutW"
-        app:layout_constraintTop_toBottomOf="@+id/result_out"
-        app:layout_constraintVertical_bias="0.274">
+        app:layout_constraintTop_toBottomOf="@+id/result_bmr"
+        app:layout_constraintVertical_bias="0.168">
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/length"
-
             android:layout_width="@dimen/field_text"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/height_W_L_A"
+            android:background="#20749A"
             android:inputType="number"
             android:textSize="@dimen/text_size_W_L_A"
             android:textStyle="bold" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutA"
         style="@style/TextInputLayoutStyle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
         android:hint="@string/hint_txt_age"
-
         app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_out"
-        app:layout_constraintVertical_bias="0.274">
+        app:layout_constraintTop_toBottomOf="@+id/result_bmr"
+        app:layout_constraintVertical_bias="0.175">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/age"
-
             android:layout_width="@dimen/field_text"
-            android:layout_height="60dp"
-
+            android:layout_height="@dimen/height_W_L_A"
+            android:background="#20749A"
             android:inputType="number"
             android:textSize="@dimen/text_size_W_L_A"
             android:textStyle="bold" />
-    </com.google.android.material.textfield.TextInputLayout>
 
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300dp"
         android:layout_height="40dp"
+        android:layout_marginBottom="@dimen/bottom_from_progbar_ad"
         android:indeterminate="false"
-        android:progressDrawable="@android:drawable/progress_horizontal"
 
+        android:progressDrawable="@android:drawable/progress_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_table" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -127,70 +152,95 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_adview"
-        android:layout_marginBottom="@dimen/margin_bottom_adview"
+        android:layout_marginBottom="4dp"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-7279174300665421/8731793267"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent">
 
     </com.google.android.gms.ads.AdView>
-
-    <Button
-        android:id="@+id/calculate_btn"
-
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginTop="@dimen/margin_top_calc_button"
-        android:layout_marginBottom="@dimen/margin_bottom_calc_but"
-        android:backgroundTint="#33258029"
-        android:enabled="false"
-        android:text="@string/butt_name"
-        app:cornerRadius="33dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_table"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_texttable"
-        android:gravity="center_horizontal"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculate_btn" />
 
     <TextView
         android:id="@+id/minImt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
         android:text="min"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_table" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/maxImt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
         android:text="max"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_table" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+
+    <Button
+        android:id="@+id/calculate_btn"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/margin_top_calculatebtn"
+        android:backgroundTint="#33258029"
+        android:enabled="false"
+        android:text="@string/butt_name"
+        app:cornerRadius="33dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutW" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/text_table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_text_table"
+        android:textSize="@dimen/text_size_texttable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_style" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="148dp"
+        android:layout_height="92dp"
+        android:layout_marginBottom="@dimen/margin_bottom_activitystyle"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/activity_style"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toEndOf="@+id/calculate_btn">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_gender"
+            />
+        <RadioButton
+            android:id="@+id/radioWoman"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+
+            android:checked="true"
+            android:onClick="onClickWoman"
+            android:text="@string/woman" />
+
+        <RadioButton
+            android:id="@+id/radioMan"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+
+            android:onClick="onClickMan"
+            android:text="@string/man" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

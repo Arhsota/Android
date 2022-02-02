@@ -4,20 +4,20 @@
  *
  *  * Created by Andrey Sevastianov on Septenber 2018
  *  * Copyright (c) 2021 . All rights reserved.
- *  * Last modified 26.04.21 21:46
+ *  * Last modified 25.12.2021, 15:21
  *
  ******************************************************************************/
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.internal.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.arhsota.android.imt"
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 32
-        versionName '3.5'
+        targetSdkVersion 31
+        versionCode 36
+        versionName '3.7.2'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -48,36 +48,35 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 //    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-  //  implementation 'androidx.core:core-ktx:1.1.0-alpha05'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+//    implementation 'androidx.core:core-ktx:1.8.0-alpha01'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 //    implementation 'com.google.android.gms:play-services-ads:18.1.1'
    // implementation "com.android.support:appcompat-v7:28.0.0"
 
     //    advertisment and Firebase
-    implementation 'com.google.firebase:firebase-auth:20.0.4'
-    implementation 'com.google.android.gms:play-services-auth:19.0.0'
-    implementation 'com.google.firebase:firebase-database:19.7.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-database:20.0.3'
  //   implementation 'com.google.firebase:firebase-perf:19.0.0'
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-analytics:18.0.3'
-    implementation 'com.google.firebase:firebase-ads:20.0.0'
+    implementation 'com.google.firebase:firebase-analytics:20.0.0'
+    implementation 'com.google.firebase:firebase-ads:20.5.0'
 //    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
 
 //    implementation 'com.google.firebase:firebase-core:16.0.6'
     // Add the SDK for Firebase Cloud Messaging
-    implementation 'com.google.firebase:firebase-messaging:21.1.0'
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
 //    for in-app rating
-    implementation 'com.google.android.play:core:1.10.0'
+    implementation 'com.google.android.play:core:1.10.2'
 }
 
 //apply plugin: 'com.google.gms.google-services'
 
 // Apply the Performance Monitoring plugin
 //apply plugin: 'com.google.firebase.firebase-perf'
-
 apply plugin: 'com.google.gms.google-services'

@@ -1,13 +1,13 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ /*
   ~  * Created by Andrey Sevastianov on 10 january 2019
-  ~  * Copyright (c) 2021 . All rights reserved.
-  ~  * Last modified 25.04.21 22:46
+  ~  * Copyright (c) 2022 . All rights reserved.
+  ~  * Last modified 28.01.2022, 15:37
   ~  */
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <resources>
-    <string name="app_name">ScoreBoard 1.9.6</string>
+    <string name="app_name">ScoreBoard 2.2.2</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Set/Reset Timer</string>
@@ -22,9 +22,30 @@
         1. Buttons 5m and 10m sets timer on 5 or 10 minutes. Button DICES for starting dices\n
         2. Button RESET SCORE_DICES resets score and dices. Button SET_RESET TIMER is for setting and resetting timer\n
         3. Digits in the center is timer. Clicking on it one can start or stop it\n
-        4. Clicking on the button PLAYER, score is incrementing. Button MINUS is for correcting score счет\n
+        4. Clicking on the SCORE  is incrementing. Button MINUS is for correcting score счет\n
+        5. You can choose players from default list or create the new. Only 9 players. After configuration players you should return to
+           the main screen using arrow in the left upper corner to accept changes.\n
+        6. In menu HISTORY RESULT you can save, read or delete data of the game \
     </string>
     <string name="help_menu">Help</string>
-    <string name="save_result_menu">Save Result</string>
+    <string name="save_result_menu">History Result</string>
     <string name="inwork">In Work</string>
+    <string name="config">Configure</string>
+    <string name="limit_9_players">Only 9 players allowed!</string>
+    <string name="game_over">Game OVER</string>
+    <string name="edit_player">Edit player</string>
+    <string name="create_timer">Create timer</string>
+    <string name="save_result">Save</string>
+    <string name="read_result">Read</string>
+    <string name="clear_result">Clear</string>
+    <string name="confirm">Confirm</string>
+    <string name="are_you_shure">Are you sure?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="nohistory">No history yet</string>
+    <string name="reading">Считываю…</string>
+    <string name="share">Share</string>
+    <string name="share_current_result">Share current result</string>
+    <string name="share_history">Share history</string>
+    <string name="start_dices">Start Dices</string>
 </resources>

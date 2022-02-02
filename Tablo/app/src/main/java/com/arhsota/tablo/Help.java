@@ -1,8 +1,8 @@
 /*******************************************************************************
  *
  *  * Created by Andrey Sevastianov on 10 january 2019
- *  * Copyright (c) 2021 . All rights reserved.
- *  * Last modified 26.04.21 0:11
+ *  * Copyright (c) 2022 . All rights reserved.
+ *  * Last modified 25.01.2022, 19:53
  *
  ******************************************************************************/
 
